@@ -6,16 +6,16 @@
   <title>首页 - 星光树脂制品（昆山）有限公司</title>
   <style>
     :root {
-      --primary: #0B2D5B;
-      --primary-light: #1A4A8A;
-      --accent: #C5A036;
-      --accent-light: #E8C547;
+      --primary: #006EB6;
+      --primary-light: #0088D4;
+      --accent: #FFB511;
+      --accent-light: #FFCB4D;
       --text: #1A1A2E;
       --text-muted: #5A6270;
       --bg: #F5F7FA;
       --white: #FFFFFF;
       --border: #E2E8F0;
-      --shadow: 0 4px 24px rgba(11,45,91,0.08);
+      --shadow: 0 4px 24px rgba(0,110,182,0.08);
       --radius: 8px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,39 +25,43 @@
     .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
     .logo { display: flex; align-items: center; gap: 12px; }
     .logo-img { height: 48px; width: auto; object-fit: contain; display: block; }
-    .logo-text { font-size: 15px; line-height: 1.3; font-weight: 700; color: var(--primary); }
-    .logo-sub { font-size: 10px; line-height: 1.3; color: var(--text-muted); font-weight: 400; }
+    .logo-text { font-size: 18px; line-height: 1.5; font-weight: 700; color: var(--primary); }
+    .logo-sub { font-size: 12px; line-height: 1.5; color: var(--text-muted); font-weight: 400; }
     [id] { scroll-margin-top: 88px; }
     .nav { display: flex; gap: 4px; align-items: stretch; }
     .nav > li { list-style: none; position: relative; }
-    .nav > li > a { display: flex; align-items: center; height: 72px; padding: 0 16px; font-size: 14px; color: var(--text); position: relative; transition: color 0.25s ease; white-space: nowrap; line-height: 1; }
-    .nav > li > a::after { content: ''; position: absolute; left: 16px; right: 16px; bottom: 0; height: 2px; background: var(--primary); border-radius: 1px 1px 0 0; transform: scaleX(0); transition: transform 0.25s ease; }
+    .nav > li > a { display: flex; align-items: center; height: 72px; padding: 0 16px; font-size: 16px; color: var(--text); position: relative; transition: color 0.25s ease; white-space: nowrap; line-height: 1.6; }
+    .nav > li > a::after { content: ''; position: absolute; left: 16px; right: 16px; bottom: 0; height: 4px; background: var(--primary); transform: scaleX(0); transition: transform 0.25s ease; }
     .nav > li > a:hover, .nav > li > a.active, .nav > li:hover > a { color: var(--primary); }
     .nav > li > a:hover::after, .nav > li > a.active::after, .nav > li:hover > a::after { transform: scaleX(1); }
-    .nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 240px; background: var(--white); border-radius: var(--radius); box-shadow: 0 8px 32px rgba(11,45,91,0.12), 0 2px 8px rgba(0,0,0,0.06); border: 1px solid var(--border); padding: 6px 0; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s; z-index: 1001; list-style: none; }
-    .nav-dropdown::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
+    .nav-dropdown { position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%) translateY(12px); width: max-content; background: var(--white); border-radius: 12px; box-shadow: 0 20px 50px rgba(0,110,182,0.16), 0 8px 20px rgba(0,0,0,0.06); border: 1px solid rgba(0,110,182,0.1); padding: 6px 0; opacity: 0; visibility: hidden; transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s; z-index: 1001; list-style: none; }
+    .nav-dropdown::after { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
     .nav > li:hover > .nav-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
     .nav-dropdown li { list-style: none; }
-    .nav-dropdown a { display: block; padding: 10px 20px; font-size: 13px; color: var(--text-muted); transition: color 0.15s ease, background 0.15s ease; white-space: nowrap; line-height: 1; }
-    .nav-dropdown a:hover { color: var(--primary); background: rgba(11,45,91,0.04); }
+    .nav-dropdown a { display: block; position: relative; padding: 11px 18px; font-size: 14px; color: var(--text); transition: color 0.2s ease, background 0.2s ease; white-space: nowrap; line-height: 1.6; }
+    .nav-dropdown a::before { content: ''; position: absolute; left: 8px; top: 50%; transform: translateY(-50%); width: 3px; height: 0; border-radius: 2px; background: var(--accent); transition: height 0.2s ease; }
+    .nav-dropdown a:hover { color: var(--primary); background: rgba(0,110,182,0.05); }
+    .nav-dropdown a:hover::before { height: 14px; }
     .lang-switch { display: flex; border: 1px solid #E2E8F0; border-radius: 20px; overflow: hidden; flex-shrink: 0; }
-    .lang-btn { padding: 6px 14px; font-size: 13px; border: none; background: transparent; color: #5A6270; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+    .lang-btn { padding: 5px 10px; font-size: 12px; border: none; background: transparent; color: #5A6270; cursor: pointer; font-family: inherit; transition: all 0.2s; width: 46px;}
     .lang-btn.active { background: var(--primary); color: var(--white); }
     .hero { position: relative; background: var(--primary); overflow: hidden; line-height: 0; }
-    .hero-video { width: 100%; height: auto; display: block; opacity: 0.7; vertical-align: top; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(11,45,91,0.85) 0%, rgba(11,45,91,0.4) 100%); display: flex; align-items: center; justify-content: center; line-height: 1.7; }
+    .hero-video { width: 100%; height: auto; display: block; opacity: 0.7; vertical-align: top; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(7 84 160 / 85%) 0%, rgba(0, 110, 182, 0.45) 35%, transparent 50%); display: flex; align-items: center; justify-content: center; line-height: 1.7; }
     .hero-content { max-width: 1280px; width: 100%; margin: 0 auto; padding: 0 24px; color: var(--white); text-align: left; }
     .hero-tag { display: inline-block; background: var(--accent); color: var(--primary); padding: 4px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
-    .hero h1 { font-size: 48px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+    .hero h1 { font-size: 48px; font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
     .hero p { font-size: 18px; opacity: 0.9; max-width: 600px; margin-bottom: 32px; }
     .hero-desc { white-space: nowrap; line-height: 1; max-width: none; }
     .hero-btns { display: flex; gap: 16px; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; }
-    .btn-primary { background: var(--accent); color: var(--primary); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 26px; border-radius: 50px; font-size: 14px; font-weight: 400; cursor: pointer; transition: all 0.2s; border: none; }
+    .btn-primary { background: var(--accent); color: var(--white); }
     .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
     .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.6); }
-    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
-    .section { padding: 80px 24px; }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .btn-arrow { width: 16px; height: 16px; flex-shrink: 0; transition: transform 0.2s ease; }
+    .btn:hover .btn-arrow { transform: translateX(3px); }
+    .section { padding: 60px 24px 90px; }
     .section-inner { max-width: 1280px; margin: 0 auto; }
     .section-header { text-align: center; margin-bottom: 48px; }
     .section-label { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
@@ -71,137 +75,467 @@
     .card h3 { font-size: 18px; color: var(--primary); margin-bottom: 8px; }
     .card p { font-size: 14px; color: var(--text-muted); }
     .logo-section { background: var(--white); }
-    .logo-visual { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 48px; display: flex; align-items: center; justify-content: center; min-height: 320px; }
-    .logo-showcase { max-width: 100%; width: auto; height: auto; max-height: 260px; object-fit: contain; display: block; }
-    .logo-points { list-style: none; }
-    .logo-points li { padding: 16px 0; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text-muted); display: flex; gap: 12px; }
-    .logo-points li::before { content: "★"; color: var(--accent); flex-shrink: 0; }
+    .logo-section .section-desc { max-width: 920px; font-size: 15px; line-height: 2; color: var(--text-muted); margin-top: 22px; }
+    .logo-layout { display: grid; grid-template-columns: minmax(240px, 300px) 1fr; overflow: hidden; }
+    .logo-hero { display: flex; align-items: center; justify-content: center; }
+    .logo-hero-img { display: block; width: auto; height: auto; max-width: 100%; max-height: 180px; object-fit: contain; }
+    .logo-stories { display: flex; flex-direction: column; justify-content: center; }
+    .logo-story-item { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; }
+    .logo-story-item::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 9px; }
+    .logo-story-item:first-child { padding-top: 0; }
+    .logo-story-item:last-child { padding-bottom: 0; border-bottom: none; }
+    .logo-story-title { font-size: 15px; font-weight: 600; color: var(--primary); line-height: 1.5; margin-bottom: 8px; }
+    .logo-story-desc { flex: 1; min-width: 0; font-size: 14px; line-height: 1.85; color: var(--text-muted); }
+    .logo-story-brand { color: var(--accent); font-weight: 600; }
+    .vision-section { background: linear-gradient(180deg, rgba(0,110,182,0.03) 0%, var(--bg) 42%); }
+    .vision-header { margin-bottom: 36px; }
+    .vision-title-wrap { position: relative; display: inline-block; margin-bottom: 12px; }
+    .vision-watermark { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -58%); font-size: clamp(36px, 5vw, 56px); font-weight: 700; color: rgba(0, 110, 182, 0.06); letter-spacing: 0.14em; white-space: nowrap; pointer-events: none; user-select: none; line-height: 1; }
+    .vision-section .section-title { position: relative; z-index: 1; margin-bottom: 0; }
+    .vision-section .section-desc { margin-top: 10px; }
+    .vision-divider { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 22px; }
+    .vision-divider-line { flex: 1; max-width: 180px; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,110,182,0.18), transparent); }
+    .vision-divider-star { color: var(--primary); font-size: 14px; line-height: 1; }
     .vision-grid { display: flex; flex-direction: column; gap: 20px; }
     .vision-row { display: grid; gap: 20px; }
     .vision-row-top { grid-template-columns: repeat(3, 1fr); }
     .vision-row-bottom { grid-template-columns: repeat(4, 1fr); }
-    .vision-item { background: var(--white); border-left: 4px solid var(--accent); padding: 20px 24px; border-radius: 0 8px 8px 0; box-shadow: var(--shadow); }
-    .vision-num { font-size: 28px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
-    .vision-item p { font-size: 14px; color: var(--text-muted); }
+    .vision-card { position: relative; background: var(--white); border-radius: 14px; padding: 26px 22px 22px; box-shadow: 0 6px 28px rgba(0,110,182,0.08); border: 1px solid rgba(0,110,182,0.06); overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .vision-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,110,182,0.12); }
+    .vision-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+    .vision-card-num-wrap { display: flex; flex-direction: column; gap: 8px; }
+    .vision-card-num { font-size: 34px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; }
+    .vision-card-num-line { width: 34px; height: 4px; border-radius: 2px; }
+    .vision-card--gold .vision-card-num { color: #E8A000; }
+    .vision-card--gold .vision-card-num-line { background: linear-gradient(90deg, #FFB511, #FF9500); }
+    .vision-card--blue .vision-card-num { color: var(--primary); }
+    .vision-card--blue .vision-card-num-line { background: linear-gradient(90deg, var(--primary), var(--primary-light)); }
+    .vision-card-icon { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--white); box-shadow: 0 6px 16px rgba(0,110,182,0.18); }
+    .vision-card-icon svg { width: 24px; height: 24px; display: block; }
+    .vision-card--gold .vision-card-icon { background: linear-gradient(135deg, #FFB511 0%, #FF9500 100%); box-shadow: 0 6px 16px rgba(255,181,17,0.35); }
+    .vision-card--blue .vision-card-icon { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); }
+    .vision-card-title { font-size: 17px; font-weight: 700; color: var(--primary); line-height: 1.4; margin-bottom: 10px; }
+    .vision-card-desc { font-size: 14px; line-height: 1.85; color: var(--text-muted); }
+    .vision-card-deco { position: absolute; right: -28px; bottom: -28px; width: 110px; height: 110px; border: 2px solid rgba(0,110,182,0.06); border-radius: 50%; pointer-events: none; }
+    .vision-card-deco::before { content: ""; position: absolute; inset: 14px; border: 2px solid rgba(0,110,182,0.05); border-radius: 50%; }
+    .vision-card-deco::after { content: ""; position: absolute; inset: 28px; border: 2px solid rgba(0,110,182,0.04); border-radius: 50%; }
     .intro-section { background: var(--white); color: var(--text); position: relative; overflow: hidden; }
-    .intro-section::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
-    .intro-section .section-header { margin-bottom: 40px; }
-    .intro-section .section-title { color: var(--primary); }
-    .intro-kpi { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--white); border-radius: 16px; padding: 32px 16px; margin-bottom: 48px; box-shadow: var(--shadow); border: 1px solid rgba(11,45,91,0.06); }
-    .intro-kpi-item { text-align: center; padding: 0 16px; position: relative; }
-    .intro-kpi-item:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 48px; background: var(--border); }
-    .intro-kpi-num { font-size: 32px; font-weight: 700; color: var(--accent); line-height: 1.2; letter-spacing: -0.02em; }
-    .intro-kpi-num em { font-style: normal; font-size: 18px; font-weight: 600; color: var(--primary); margin-left: 2px; }
-    .intro-kpi-label { font-size: 13px; color: var(--text-muted); margin-top: 8px; letter-spacing: 0.04em; }
+    .intro-block {
+      position: relative;
+      padding: 0 0 52px;
+      min-height: 320px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .intro-block-bg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 52%;
+      height: 95%;
+      object-fit: cover;
+      object-position: right center;
+      pointer-events: none;
+      user-select: none;
+      mask-image: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.35) 32%, rgba(0,0,0,0.95) 52%, #000 68%);
+      -webkit-mask-image: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.35) 32%, rgba(0,0,0,0.95) 52%, #000 68%);
+    }
+    .intro-block-content { position: relative; z-index: 1; max-width: 100%; margin: 0 auto; }
+    .intro-block-title {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      color: #1A1A2E;
+      line-height: 1.45;
+      margin-bottom: 24px;
+      letter-spacing: 0.01em;
+    }
+    .intro-block-desc {
+      font-size: 15px;
+      line-height: 2;
+      color: var(--text-muted);
+      max-width: 920px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+    .intro-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 100%;
+      margin: 0 auto;
+      gap: 0;
+    }
+    .intro-stat {
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      min-width: 0;
+    }
+    .intro-stat:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 52px;
+      background: var(--border);
+    }
+    .intro-stat-num {
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--primary);
+      line-height: 1.15;
+      letter-spacing: 0em;
+      margin-bottom: 12px;
+    }
+    .intro-stat-num em,
+    .intro-stat-num .intro-stat-unit {
+      font-style: normal;
+      font-size: 0.55em;
+      font-weight: 700;
+      vertical-align: baseline;
+    }
+    .intro-stat-label {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text);
+    }
+    .intro-outro {
+      margin-top: 24px;
+      padding: 28px 32px;
+      background: linear-gradient(180deg, rgba(0,110,182,0.05) 0%, rgba(0,110,182,0.02) 100%);
+      border: 1px solid rgba(0,110,182,0.08);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,110,182,0.05);
+    }
+    .intro-outro-text {
+      font-size: 14px;
+      line-height: 1.95;
+      color: var(--text-muted);
+      margin: 0;
+      text-align: justify;
+    }
     .intro-cards { display: flex; flex-direction: column; gap: 28px; }
-    .intro-card { display: grid; grid-template-columns: 1fr 420px; gap: 0; align-items: stretch; background: var(--white); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; border: 1px solid rgba(11,45,91,0.06); transition: transform 0.25s ease, box-shadow 0.25s ease; }
-    .intro-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(11,45,91,0.12); }
+    .intro-card { display: grid; grid-template-columns: 1fr 400px; gap: 0; align-items: stretch; background: var(--white); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden;  transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .intro-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,110,182,0.12); }
     .intro-card:nth-child(even) { grid-template-columns: 420px 1fr; }
     .intro-card:nth-child(even) .intro-card-body { order: 2; }
     .intro-card:nth-child(even) .intro-card-media { order: 1; }
-    .intro-card-body { padding: 36px 40px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+    .intro-card-body { padding: 30px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+    .intro-card-kicker { font-size: 14px; color: var(--primary-light); font-weight: 500; letter-spacing: 0.04em; line-height: 1.5; }
     .intro-card-title { font-size: 22px; font-weight: 700; color: var(--primary); line-height: 1.35; }
+    .intro-card-subtitle { font-size: 15px; font-weight: 600; color: var(--primary); line-height: 1.65; }
     .intro-card-desc { font-size: 15px; line-height: 1.95; color: var(--text-muted); }
-    .intro-card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-    .intro-card-tag { font-size: 12px; padding: 4px 12px; border-radius: 20px; background: var(--bg); color: var(--primary); border: 1px solid var(--border); }
-    .intro-card-media { position: relative; overflow: hidden; min-height: 220px; background: #eef1f6; }
+    .history-section .section-desc { max-width: 920px; font-size: 15px; line-height: 2; color: var(--text-muted); margin-top: 22px; }
+    .intro-title-wrap { position: relative; display: inline-block;  }
+    .intro-watermark { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -58%); font-size: clamp(32px, 4.5vw, 52px); font-weight: 700; color: rgba(0, 110, 182, 0.06); letter-spacing: 0.12em; white-space: nowrap; pointer-events: none; user-select: none; line-height: 1; }
+    .history-section .section-title,
+    .logo-section .section-title { position: relative; z-index: 1; color: var(--primary); margin-bottom: 0; font-size: 30px; }
+    .intro-divider { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 14px; }
+    .intro-divider-line { flex: 1; max-width: 180px; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,110,182,0.18), transparent); }
+    .intro-divider-star { color: var(--primary); font-size: 14px; line-height: 1; }
+    .intro-card-tag { font-size: 12px; padding: 4px 12px; border-radius: 20px; background: #f6f6f6; color: #666666; }
+    .intro-card-features { display: grid; grid-template-columns: repeat(6, 1fr); background: rgba(0, 110, 182, 0.04); border: 1px solid rgba(0, 110, 182, 0.08); border-radius: 8px; overflow: hidden; }
+    .intro-card-feature { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 18px 10px; color: var(--primary); position: relative; text-align: center; }
+    .intro-card-feature:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 56px; background: rgba(0, 110, 182, 0.12); }
+    .intro-card-feature-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--primary); }
+    .intro-card-feature-icon svg { width: 32px; height: 32px; stroke-width: 1.75; }
+    .intro-card-feature-icon img { width: 32px; height: 32px; display: block; object-fit: contain; }
+    .intro-card-feature-label { font-size: 13px; font-weight: 500; line-height: 1.3; letter-spacing: 0.02em; white-space: nowrap; }
+    .intro-card-media { position: relative; overflow: hidden; height: 318px; background: #eef1f6; }
     .intro-card-media > img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .intro-card-media--fade { background: var(--white); }
+    .intro-card-media--fade > img {
+      object-fit: cover;
+      object-position: right center;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 14%, rgba(0,0,0,0.55) 26%, rgba(0,0,0,0.88) 38%, #000 48%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 14%, rgba(0,0,0,0.55) 26%, rgba(0,0,0,0.88) 38%, #000 48%);
+    }
     .intro-card:hover .intro-card-media > img { transform: scale(1.03); }
     .intro-card-strip { display: grid; grid-template-columns: repeat(4, 1fr); height: 100%; min-height: 220px; gap: 3px; }
     .intro-card-strip-item { position: relative; overflow: hidden; }
     .intro-card-strip-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
     .intro-card:hover .intro-card-strip-item img { transform: scale(1.05); }
-    .intro-card-strip-item span { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 8px 10px; font-size: 11px; font-weight: 600; color: var(--white); text-align: center; background: linear-gradient(transparent, rgba(11,45,91,0.82)); letter-spacing: 0.02em; }
-    .footer { background: linear-gradient(180deg, #0c2f5c 0%, #071E3D 100%); color: rgba(255,255,255,0.78); padding: 56px 24px 28px; }
-    .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: minmax(280px, 340px) 1fr; gap: 48px 56px; align-items: start; }
-    .footer-brand-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .intro-card-strip-item span { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 8px 10px; font-size: 11px; font-weight: 600; color: var(--white); text-align: center; background: linear-gradient(transparent, rgba(0,110,182,0.82)); letter-spacing: 0.02em; }
+    /* 高性能改性树脂材料 & 应用领域 */
+    .resin-module { margin-top: 8px; display: flex; flex-direction: column; gap: 24px; }
+    .resin-panel {
+      position: relative;
+      overflow: hidden;
+      background: #f4f9fd;
+      border: 1px solid rgba(0,110,182,0.1);
+      border-radius: 16px;
+      padding: 32px 36px 28px;
+      box-shadow: 0 4px 24px rgba(0,110,182,0.06);
+    }
+    .resin-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("img/banner/image 28.png") center / cover no-repeat;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .resin-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(244,249,253,0.82) 0%, rgba(238,246,252,0.88) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .resin-panel-head,
+    .resin-panel-body,
+    .resin-panel-apps { position: relative; z-index: 1; }
+    .resin-panel-head { text-align: left; margin-bottom: 4px; }
+    .resin-panel-bar { display: block; width: 36px; height: 4px; background: var(--primary); border-radius: 2px; margin-bottom: 14px; }
+    .resin-panel-title { font-size: 26px; font-weight: 700; color: var(--text); line-height: 1.35; margin: 0 0 6px; }
+    .resin-panel-sub { font-size: 11px; font-weight: 500; color: #9aa8b8; letter-spacing: 0.1em; text-transform: uppercase; margin: 0; }
+    .resin-panel-body { position: relative; display: grid; margin: 16px 0 8px; min-height: 0; }
+    .resin-panel-main { grid-column: 1; position: relative; z-index: 1; }
+    .resin-panel-text { font-size: 14px; line-height: 2; color: var(--text-muted); margin: 0; max-width: 100%; }
+    .resin-panel-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; max-width: 100%; }
+    .resin-panel-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px 5px 8px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,110,182,0.14);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      line-height: 1.2;
+      white-space: nowrap;
+      box-shadow: 0 1px 4px rgba(0,110,182,0.06);
+    }
+    .resin-panel-tag-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0,110,182,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .resin-panel-tag-icon svg { width: 13px; height: 13px; stroke-width: 1.8; display: block; }
+    .resin-panel-visual { position: absolute; right: 0; top: -108px; width: min(430px, calc(50% - 4px)); margin: 0; display: flex; flex-direction: column; gap: 0; background: transparent; pointer-events: none; }
+    .resin-radar-wrap { background: transparent; padding: 0; line-height: normal; width: 100%; }
+    .resin-radar-chart { position: relative; width: 100%; max-width: 430px; aspect-ratio: 1; margin: 0 auto; }
+    .resin-radar-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+    .resin-radar-ring { fill: none; stroke: rgba(0,110,182,0.08); stroke-width: 1; }
+    .resin-radar-grid { stroke: rgba(0,110,182,0.14); stroke-width: 1; fill: none; stroke-dasharray: 4 4; }
+    .resin-radar-grid-outer { stroke: rgba(0,110,182,0.55); stroke-width: 2; fill: rgba(0,110,182,0.06); stroke-dasharray: none; }
+    .resin-radar-axis { stroke: rgba(0,110,182,0.1); stroke-width: 1; stroke-dasharray: 3 4; }
+    .resin-radar-dot { fill: var(--white); stroke: var(--primary); stroke-width: 2.5; }
+    .resin-radar-hub {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #5ec4ff 0%, #0088d4 42%, #006eb6 72%, #005a96 100%);
+      box-shadow: 0 10px 28px rgba(0,110,182,0.32), inset 0 2px 10px rgba(255,255,255,0.38), inset 0 -4px 8px rgba(0,60,100,0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      z-index: 2;
+      padding: 8px;
+    }
+    .resin-radar-hub-title { font-size: 11px; font-weight: 700; line-height: 1.35; letter-spacing: 0.02em; margin: 0; }
+    .resin-radar-nodes { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; z-index: 3; }
+    .resin-radar-node { position: absolute; display: flex; align-items: center; gap: 7px; max-width: 108px; pointer-events: auto; }
+    .resin-radar-node--v0 { left: 50%; top: 10%; flex-direction: column; text-align: center; max-width: 120px; transform: translate(-50%, 0); }
+    .resin-radar-node--v1 { left: 89%; top: 32%; flex-direction: row; text-align: left; transform: translate(-100%, -50%); }
+    .resin-radar-node--v2 { left: 94%; top: 55%; flex-direction: row; text-align: left; transform: translate(-100%, -50%); }
+    .resin-radar-node--v3 { left: 65%; top: 74%; flex-direction: column; text-align: center; max-width: 120px; transform: translate(-50%, 0); }
+    .resin-radar-node--v4 { left: 35%; top: 74%; flex-direction: column; text-align: center; max-width: 120px; transform: translate(-50%, 0); }
+    .resin-radar-node--v5 { left: 6%; top: 55%; flex-direction: row-reverse; text-align: right; transform: translate(0, -50%); }
+    .resin-radar-node--v6 { left: 8%; top: 32%; flex-direction: row-reverse; text-align: right; transform: translate(0, -50%); }
+    .resin-radar-node-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid rgba(0,110,182,0.12);
+      box-shadow: 0 4px 12px rgba(0,110,182,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .resin-radar-node-icon svg { width: 18px; height: 18px; stroke-width: 1.6; display: block; }
+    .resin-radar-node-icon img { width: 18px; height: 18px; display: block; object-fit: contain; }
+    .resin-radar-node-text { min-width: 0; }
+    .resin-radar-node-title { font-size: 11px; font-weight: 700; color: var(--primary); line-height: 1.3; margin: 0; white-space: nowrap; }
+    .resin-panel-apps { position: relative; z-index: 1; padding-top: 68px; }
+    .resin-panel-features-head { font-size: 15px; font-weight: 700; color: var(--primary); margin: 0 0 12px; letter-spacing: 0.04em; }
+    .resin-panel-apps-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+    .resin-panel-app-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 14px 6px; text-align: center; text-decoration: none; color: inherit; background: var(--white); border: 1px solid rgba(0,110,182,0.1); border-radius: 10px; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 1px 4px rgba(0,110,182,0.04); }
+    .resin-panel-app-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,110,182,0.08); }
+    .resin-panel-app-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0; }
+    .resin-panel-app-icon svg { width: 26px; height: 26px; stroke-width: 1.5; display: block; }
+    .resin-panel-app-title { font-size: 11px; font-weight: 500; color: var(--text); line-height: 1.3; margin: 0; letter-spacing: 0.01em; }
+    .footer { background: linear-gradient(180deg, #006EB6 0%, #005e9b 100%); color: rgba(255,255,255,0.78); padding: 56px 24px 0; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .footer-brand-head { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
     .footer-brand-head:hover { opacity: 0.92; }
-    .footer-brand-logo { height: 52px; width: auto; object-fit: contain; display: block; flex-shrink: 0; }
-    .footer-brand-cn { font-size: 18px; font-weight: 700; color: var(--white); line-height: 1.35; margin-bottom: 4px; }
-    .footer-brand-en { font-size: 10px; color: rgba(255,255,255,0.55); line-height: 1.4; letter-spacing: 0.02em; }
-    .footer-brand-desc { font-size: 13px; line-height: 1.85; color: rgba(255,255,255,0.72); margin-bottom: 24px; }
+    .footer-contact .logo-text { color: var(--white); }
+    .footer-contact .logo-sub { color: rgba(255,255,255,0.55); }
+    .footer-body { display: grid; grid-template-columns: minmax(300px, 360px) 1fr; gap: 40px 48px; align-items: start; padding-bottom: 40px; }
+    .footer-contact { display: flex; flex-direction: column; gap: 0; min-width: 0; }
+    .footer-contact-col { min-width: 0; }
+    .footer-contact-col + .footer-contact-col { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.14); }
     .footer-brand-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-brand-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.82); }
-    .footer-brand-icon { width: 18px; flex-shrink: 0; text-align: center; opacity: 0.85; margin-top: 2px; }
-    .footer-brand-list .footer-brand-divider { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 16px; margin-top: 4px; }
+    .footer-brand-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.65; color: rgba(255,255,255); }
+    .footer-brand-icon { width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; opacity: 0.9; margin-top: 2px; color: var(--accent-light); }
+    .footer-brand-icon svg { width: 16px; height: 16px; display: block; stroke-width: 1.6; }
     .footer-brand-list strong { color: var(--white); font-weight: 600; }
     .footer-brand-list a { color: var(--accent-light); }
-    .footer-nav { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px 20px; }
-    .footer-col h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.35); letter-spacing: 0.02em; }
+    .footer-brand-list a.footer-link-plain { color: rgba(255,255,255,0.82); text-decoration: none; }
+    .footer-brand-list a.footer-link-plain:hover { color: var(--white); }
+    .footer-office-name { display: block; color: var(--white); font-weight: 600; margin-bottom: 12px; font-size: 13px; }
+    .footer-nav { display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: space-between; gap: 16px 20px; min-width: 0; width: 100%; }
+    .footer-col { flex: 0 0 auto; width: max-content; max-width: max-content; }
+    .footer-col h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 5px; padding-bottom: 3px; letter-spacing: 0.02em; white-space: nowrap; display: inline-block; border-bottom: 2px solid var(--accent); }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 10px; }
     .footer-col ul li:last-child { margin-bottom: 0; }
-    .footer-col ul a { font-size: 12px; line-height: 1.55; color: rgba(255,255,255,0.72); transition: color 0.2s; display: inline-block; }
+    .footer-col ul a { font-size: 12px; line-height: 1.55; color: rgba(255,255,255,0.72); transition: color 0.2s; display: inline-block; white-space: nowrap; }
     .footer-col ul a:hover { color: var(--accent-light); }
-    .footer-bottom { max-width: 1280px; margin: 36px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); text-align: center; font-size: 12px; color: rgba(255,255,255,0.45); }
-    .history-layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start; }
-    .history-sidebar { background: var(--white); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; height: 560px; max-height: 560px; }
-    .history-sidebar-scroll { flex: 1; min-height: 0; overflow-y: auto; padding: 20px 12px 20px 0; overscroll-behavior: contain; }
-    .history-sidebar-scroll::-webkit-scrollbar { width: 4px; }
-    .history-sidebar-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-    .history-sidebar-track { position: relative; padding: 4px 16px 4px 40px; }
-    .history-sidebar-track::before { content: ""; position: absolute; left: 23px; top: 12px; bottom: 12px; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--primary)); border-radius: 1px; }
-    .history-sidebar-item { display: flex; align-items: flex-start; gap: 0; width: 100%; text-align: left; border: none; background: transparent; cursor: pointer; padding: 10px 14px 10px 0; border-radius: 10px; margin-bottom: 2px; position: relative; font-family: inherit; transition: background 0.2s, color 0.2s; color: var(--text); }
-    .history-sidebar-item:hover:not(.active) { background: var(--bg); }
-    .history-sidebar-item.active { background: var(--primary); color: var(--white); box-shadow: 0 4px 16px rgba(11,45,91,0.2); }
-    .history-sidebar-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--primary); background: var(--white); flex-shrink: 0; margin-top: 5px; position: absolute; left: -23px; z-index: 1; transition: all 0.25s; }
-    .history-sidebar-item.active .history-sidebar-dot { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px rgba(197,160,54,0.35); }
-    .history-sidebar-item:hover:not(.active) .history-sidebar-dot { border-color: var(--accent); }
-    .history-sidebar-year { display: block; font-size: 16px; font-weight: 700; line-height: 1.3; margin-bottom: 2px; }
-    .history-sidebar-brief { display: block; font-size: 12px; line-height: 1.5; opacity: 0.75; }
-    .history-sidebar-item.active .history-sidebar-brief { opacity: 0.9; }
-    .history-panel { background: var(--white); border-radius: 16px; box-shadow: var(--shadow); padding: 32px 36px; min-height: 560px; display: flex; flex-direction: column; box-sizing: border-box; }
-    .history-panel-head { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
-    .history-panel-intro { min-width: 0; }
-    .history-panel-year { font-size: 40px; font-weight: 700; color: var(--primary); line-height: 1.1; margin-bottom: 8px; }
-    .history-panel-subtitle { font-size: 16px; color: var(--text-muted); margin-bottom: 12px; }
-    .history-panel-accent { width: 48px; height: 4px; background: var(--accent); border-radius: 2px; }
-    .history-panel-list { list-style: none; flex: 1; overflow-y: auto; margin: 0 0 20px; padding-right: 8px; min-height: 100px; max-height: 220px; }
-    .history-panel-list::-webkit-scrollbar { width: 4px; }
-    .history-panel-list::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
-    .history-panel-list li { font-size: 14px; color: var(--text-muted); padding: 8px 0 8px 18px; position: relative; line-height: 1.7; }
-    .history-panel-list li::before { content: ""; position: absolute; left: 0; top: 16px; width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
-    .history-panel-gallery { display: flex; flex-wrap: nowrap; gap: 12px; overflow-x: auto; flex-shrink: 0; min-height: 108px; margin-top: auto; padding-bottom: 4px; }
-    .history-panel-gallery::-webkit-scrollbar { height: 4px; }
-    .history-panel-gallery::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-    .history-panel-gallery.is-empty { display: none; min-height: 0; }
-    .history-panel-gallery img { height: 100px; width: auto; max-width: 150px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); flex-shrink: 0; background: var(--bg); }
-    .history-panel-body { flex: 1; display: flex; flex-direction: column; min-height: 0; opacity: 1; transition: opacity 0.2s; }
-    .history-panel-body.is-switching { opacity: 0.4; }
+    .footer-bottom { padding: 24px 0 28px; border-top: 1px solid rgba(255,255,255,0.12); text-align: center; font-size: 12px; color: rgba(255,255,255,0.45); }
+    .history-section { background: var(--bg); }
+    .history-layout { position: relative; padding: 8px 0 0; }
+    .history-h-stage { position: relative; padding-top: 8px; }
+    .history-h-line { position: absolute; left: 0; width: 0; top: 52px; height: 2px; background: rgba(0, 136, 212, 0.32); z-index: 0; pointer-events: none; }
+    .history-h-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; z-index: 1; transition: opacity 0.25s ease; }
+    .history-h-cols.is-switching { opacity: 0.45; }
+    .history-col { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+    .history-col-year { font-size: 24px; font-weight: 700; color: var(--primary); line-height: 1; margin-bottom: 18px; }
+    .history-col-node { position: relative; z-index: 2; margin-bottom: 0; flex-shrink: 0; }
+    .history-node-dot { display: block; width: 14px; height: 14px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 5px var(--bg); }
+    .history-col-connector { width: 2px; height: 24px; background: rgba(0, 136, 212, 0.32); flex-shrink: 0; }
+    .history-col-card { width: 100%; background: var(--white); border-radius: 12px; box-shadow: 0 6px 24px rgba(0, 110, 182, 0.1); border: 1px solid rgba(0, 110, 182, 0.06); padding: 18px 14px 14px 12px; min-height: 168px; box-sizing: border-box; display: flex; flex-direction: column; }
+    .history-card-track { position: relative; flex: 1; }
+    .history-card-track::before { content: ""; position: absolute; left: 5px; top: var(--track-line-top, 18px); height: var(--track-line-height, 0px); width: 2px; background: rgba(0, 136, 212, 0.28); border-radius: 1px; }
+    .history-card-track.is-single::before { display: none; }
+    .history-card-event { display: grid; grid-template-columns: 12px 1fr; column-gap: 10px; align-items: start; padding: 8px 0; position: relative; }
+    .history-event-dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--primary); background: var(--white); justify-self: center; margin-top: 5px; position: relative; z-index: 1; box-sizing: border-box; }
+    .history-event-text { font-size: 13px; color: var(--text); line-height: 1.65; min-width: 0; }
+    .history-card-gallery { display: flex; flex-wrap: nowrap; gap: 8px; overflow-x: auto; margin-top: 12px; flex-shrink: 0; scrollbar-width: thin; }
+    .history-card-gallery::-webkit-scrollbar { height: 4px; }
+    .history-card-gallery::-webkit-scrollbar-thumb { background: rgba(0, 110, 182, 0.15); border-radius: 2px; }
+    .history-card-gallery img { height: 72px; width: auto; max-width: 120px; min-width: 56px; object-fit: cover; border-radius: 6px; border: 1px solid rgba(0, 110, 182, 0.1); flex-shrink: 0; background: var(--bg); box-shadow: 0 2px 8px rgba(0, 110, 182, 0.06); transition: transform 0.22s ease, box-shadow 0.22s ease; cursor: zoom-in; }
+    .history-card-gallery img:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 110, 182, 0.12); }
+    .history-lightbox { position: fixed; inset: 0; z-index: 10001; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0.25s ease; }
+    .history-lightbox.is-open { opacity: 1; visibility: visible; }
+    .history-lightbox-backdrop { position: absolute; inset: 0; background: rgba(26, 26, 46, 0.82); backdrop-filter: blur(4px); }
+    .history-lightbox-panel { position: relative; z-index: 1; max-width: min(92vw, 960px); max-height: 90vh; display: flex; flex-direction: column; align-items: center; }
+    .history-lightbox-img { display: block; max-width: 100%; max-height: calc(90vh - 56px); object-fit: contain; border-radius: 10px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35); background: var(--white); }
+    .history-lightbox-caption { margin-top: 14px; font-size: 14px; color: rgba(255, 255, 255, 0.88); text-align: center; }
+    .history-lightbox-close { position: absolute; top: -44px; right: 0; width: 36px; height: 36px; border: none; border-radius: 50%; background: rgba(255, 255, 255, 0.14); color: var(--white); font-size: 24px; line-height: 1; cursor: pointer; transition: background 0.2s; }
+    .history-lightbox-close:hover { background: rgba(255, 255, 255, 0.24); }
+    .history-lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border: none; border-radius: 50%; background: rgba(255, 255, 255, 0.14); color: var(--white); font-size: 28px; line-height: 1; cursor: pointer; transition: background 0.2s; display: inline-flex; align-items: center; justify-content: center; font-family: inherit; }
+    .history-lightbox-nav:hover { background: rgba(255, 255, 255, 0.24); }
+    .history-lightbox-prev { left: -56px; }
+    .history-lightbox-next { right: -56px; }
+    .history-lightbox-nav.is-hidden { display: none; }
+    .history-h-nav { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 28px; }
+    .history-h-btn { width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(0, 110, 182, 0.18); background: var(--white); color: var(--primary); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s, opacity 0.2s; box-shadow: 0 2px 10px rgba(0, 110, 182, 0.08); font-family: inherit; }
+    .history-h-btn:hover:not(:disabled) { background: rgba(0, 110, 182, 0.06); border-color: rgba(0, 110, 182, 0.35); }
+    .history-h-btn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+    .history-h-btn svg { width: 18px; height: 18px; }
+    .history-h-indicator { font-size: 13px; color: var(--text-muted); min-width: 88px; text-align: center; }
     .cta-bar { background: linear-gradient(135deg, var(--primary), var(--primary-light)); padding: 48px 24px; text-align: center; color: var(--white); }
     .cta-bar h2 { font-size: 28px; margin-bottom: 12px; }
     .cta-bar p { opacity: 0.85; margin-bottom: 24px; }
     .prototype-badge { position: fixed; bottom: 16px; right: 16px; background: var(--accent); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; z-index: 9999; }
     @media (max-width: 1100px) {
-      .footer-nav { grid-template-columns: repeat(3, 1fr); }
+      .footer-body { grid-template-columns: minmax(260px, 320px) 1fr; gap: 28px 32px; }
+      .footer-nav { flex-wrap: wrap; justify-content: flex-start; gap: 24px 28px; }
+      .intro-stats { grid-template-columns: repeat(2, 1fr); row-gap: 32px; max-width: 520px; }
+      .intro-stat:nth-child(2)::after { display: none; }
+      .intro-stat:nth-child(1)::after,
+      .intro-stat:nth-child(3)::after { height: 44px; }
+      .intro-block { padding: 0 0 40px; min-height: 280px; }
+      .intro-block-bg { object-position: right center; }
+      .intro-block-desc { margin-bottom: 36px; font-size: 14px; }
+      .resin-panel { padding: 28px 24px 24px; }
+      .resin-panel-body { gap: 28px; }
+      .resin-panel-apps-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      .vision-row-top { grid-template-columns: repeat(2, 1fr); }
+      .vision-row-bottom { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 960px) {
+      .resin-panel-body { grid-template-columns: 1fr; margin: 18px 0 8px; }
+      .resin-panel-main { grid-column: auto; }
+      .resin-panel-visual { position: static; order: -1; width: 100%; max-width: 380px; margin: 0 auto 12px; pointer-events: auto; }
+      .resin-panel-apps-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
     }
     @media (max-width: 768px) {
       .nav { display: none; }
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
-      .footer-nav { grid-template-columns: repeat(2, 1fr); }
-      .intro-kpi { grid-template-columns: repeat(2, 1fr); padding: 28px 12px; gap: 24px 0; }
-      .intro-kpi-item::after { display: none; }
-      .intro-kpi-num { font-size: 26px; }
+      .footer-inner { gap: 0; }
+      .footer-body { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
+      .footer-nav { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+      .intro-block { padding: 0 0 32px; margin-bottom: 28px; min-height: 260px; }
+      .intro-block-bg { object-position: right bottom; mask-image: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.5) 38%, #000 62%); -webkit-mask-image: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.5) 38%, #000 62%); }
+      .intro-stats { grid-template-columns: repeat(2, 1fr); row-gap: 28px; max-width: 100%; }
+      .intro-stat { padding: 0 10px; }
+      .intro-stat:nth-child(2)::after { display: none; }
+      .intro-stat-num { font-size: 36px; margin-bottom: 8px; }
+      .intro-stat-label { font-size: 13px; }
+      .history-section .section-title,
+      .logo-section .section-title { font-size: 28px; }
       .intro-card, .intro-card:nth-child(even) { grid-template-columns: 1fr; }
       .intro-card:nth-child(even) .intro-card-body, .intro-card:nth-child(even) .intro-card-media { order: unset; }
       .intro-card-media { min-height: 200px; }
       .intro-card-body { padding: 28px 24px; }
       .intro-card-title { font-size: 20px; }
-      .intro-card-strip { grid-template-columns: repeat(2, 1fr); min-height: 240px; }
+      .resin-panel { padding: 24px 18px 20px; }
+      .resin-panel-title { font-size: 22px; }
+      .resin-panel-body { margin: 18px 0; gap: 20px; }
+      .resin-radar-chart { max-width: 320px; }
+      .resin-radar-node-title { font-size: 11px; }
+      .resin-radar-hub { width: 80px; height: 80px; }
+      .resin-radar-hub-title { font-size: 10px; }
+      .resin-panel-apps-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .resin-panel-app-title { font-size: 10px; white-space: normal; }
+      .resin-panel-tag { font-size: 11px; padding: 4px 10px 4px 7px; }
+      .intro-outro { padding: 22px 20px; margin-top: 20px; }
+      .intro-outro-text { font-size: 13px; line-height: 1.85; }
       .vision-row-top, .vision-row-bottom { grid-template-columns: 1fr; }
-      .history-layout { grid-template-columns: 1fr; }
-      .history-sidebar { height: 300px; max-height: 300px; }
-      .history-panel { min-height: auto; padding: 24px 20px; }
-      .history-panel-year { font-size: 32px; }
-      .history-panel-gallery img { height: 80px; max-width: 120px; }
-      .history-panel-list { max-height: none; }
+      .vision-card { padding: 24px 20px 20px; }
+      .vision-card-num { font-size: 30px; }
+      .history-h-line { top: 48px; }
+      .history-h-cols { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .history-col-year { font-size: 20px; margin-bottom: 14px; }
+      .history-col-card { min-height: 140px; padding: 16px 12px 14px 10px; }
+      .history-lightbox { padding: 16px; }
+      .history-lightbox-close { top: -40px; right: 0; }
+      .history-lightbox-prev { left: 8px; }
+      .history-lightbox-next { right: 8px; }
+      .history-lightbox-nav { background: rgba(26, 26, 46, 0.55); }
+      .logo-layout { grid-template-columns: 1fr; }
+      .logo-hero { padding: 36px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .logo-hero-img { max-height: 140px; }
+      .logo-stories { padding: 28px 24px; }
+      .logo-story-item { padding: 18px 0; }
       .hero h1 { font-size: 32px; }
     }
   </style>
 </head>
 <body>
-  <div class="prototype-badge">原型 v1.0</div>
 
   <header class="header">
     <div class="header-inner">
@@ -228,10 +562,10 @@
             <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
             <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
             <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
-            <li><a href="innovation.html#equipment">试验分析仪器 & 摩擦学检测设备</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
           </ul>
         </li>
-        <li>
+        <li class="nav-has-mega">
           <a href="products.html">产品核心</a>
           <ul class="nav-dropdown">
             <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
@@ -265,6 +599,7 @@
           <a href="contact.html">联系我们</a>
           <ul class="nav-dropdown">
             <li><a href="contact.html#contact-info">联系方式</a></li>
+            <li><a href="contact.html#contact-map">电子地图</a></li>
             <li><a href="contact.html#contact-form">客户留言</a></li>
           </ul>
         </li>
@@ -273,16 +608,16 @@
     </div>
   </header>
 
-  <!-- Hero 视频区（原型占位图） -->
+  <!-- Hero 主视觉区 -->
   <section class="hero">
-    <img class="hero-video" src="img/vcr.png" alt="首页视频占位图">
+    <img class="hero-video" src="img/vcr.png" alt="首页主视觉">
     <div class="hero-overlay">
       <div class="hero-content">
-        <h1>成为酚醛树脂行业的耀眼之星</h1>
+        <h1>成为树脂行业的<br>耀眼之星</h1>
         <p class="hero-desc">技术开发型商业合作伙伴，提供定制化的解决方案</p>
         <div class="hero-btns">
-          <a href="innovation.html" class="btn btn-primary">探索创新中心</a>
-          <a href="products.html" class="btn btn-outline">了解产品核心</a>
+          <a href="innovation.html" class="btn btn-primary">探索创新中心<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+          <a href="products.html" class="btn btn-outline">了解产品核心<svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
@@ -291,138 +626,244 @@
   <!-- 企业简介 -->
   <section class="section intro-section">
     <div class="section-inner">
-      <div class="section-header">
-        <h2 class="section-title" id="intro">企业简介</h2>
-        <p class="section-desc">星光树脂制品（昆山）有限公司成立于1993年11月，是由星光工业株式会社与日本伊藤忠商事株式会社合资投资的企业，公司注册资本2000万美元，占地面积约5.4万㎡。</p>
+      <div class="intro-block">
+        <img class="intro-block-bg" src="img/banner/Group 53.png" alt="" aria-hidden="true">
+        <div class="intro-block-content">
+          <h2 class="intro-block-title" id="intro">企业简介</h2>
+          <p class="intro-block-desc">星光树脂制品（昆山）有限公司成立于1993年11月，是由星光工业株式会社与日本伊藤忠商事株式会社合资投资的企业，<br>公司注册资本2000万美元，占地面积约5.4万㎡。</p>
+          <div class="intro-stats">
+            <div class="intro-stat">
+              <div class="intro-stat-num">1993</div>
+              <div class="intro-stat-label">公司成立</div>
+            </div>
+            <div class="intro-stat">
+              <div class="intro-stat-num">2000<em>万</em></div>
+              <div class="intro-stat-label">美元注册资本</div>
+            </div>
+            <div class="intro-stat">
+              <div class="intro-stat-num">5.4<em>万</em><span class="intro-stat-unit">㎡</span></div>
+              <div class="intro-stat-label">占地面积</div>
+            </div>
+            <div class="intro-stat">
+              <div class="intro-stat-num">90<em>年</em></div>
+              <div class="intro-stat-label">技术积累</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="intro-kpi">
-        <div class="intro-kpi-item">
-          <div class="intro-kpi-num">1993<em>年</em></div>
-          <div class="intro-kpi-label">成立</div>
-        </div>
-        <div class="intro-kpi-item">
-          <div class="intro-kpi-num">2000<em>万</em></div>
-          <div class="intro-kpi-label">美元注册资本</div>
-        </div>
-        <div class="intro-kpi-item">
-          <div class="intro-kpi-num">5.4<em>万</em></div>
-          <div class="intro-kpi-label">㎡ 占地面积</div>
-        </div>
-        <div class="intro-kpi-item">
-          <div class="intro-kpi-num">90<em>年</em></div>
-          <div class="intro-kpi-label">技术积累</div>
+      <div class="resin-module">
+        <div class="resin-panel">
+          <div class="resin-panel-head">
+            <h3 class="resin-panel-title">摩擦学技术，定制解决方案</h3>
+          </div>
+          <div class="resin-panel-body">
+            <div class="resin-panel-main">
+              <p class="resin-panel-text">公司以热固性酚醛树脂、特种工程塑料为基础，运用独创的摩擦学技术研发的【高性能改性树脂材料】，<br>拥有【滑动・传动・制动・密封】的核心特性，<br>提供耐高温、耐摩擦、耐磨损，自润滑、水润滑，轻量化以及高密封性等特殊功能，<br>作为技术开发型的商业合作伙伴，为各行各业提供定制化的解决方案，引领行业创新。</p>
+              <div class="resin-panel-tags" role="list" aria-label="服务优势">
+                <span class="resin-panel-tag" role="listitem">
+                  <span class="resin-panel-tag-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg></span>
+                  定制化研发
+                </span>
+                <span class="resin-panel-tag" role="listitem">
+                  <span class="resin-panel-tag-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+                  品质保障
+                </span>
+                <span class="resin-panel-tag" role="listitem">
+                  <span class="resin-panel-tag-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
+                  绿色制造
+                </span>
+                <span class="resin-panel-tag" role="listitem">
+                  <span class="resin-panel-tag-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg></span>
+                  长期合作
+                </span>
+              </div>
+            </div>
+            <div class="resin-panel-visual">
+              <div class="resin-radar-wrap">
+                <div class="resin-radar-chart" role="img" aria-label="材料性能雷达图：耐高温、耐摩擦、耐磨损、自润滑、水润滑、轻量化、高密封性">
+                  <svg class="resin-radar-svg" viewBox="0 0 400 400" aria-hidden="true">
+                    <defs>
+                      <radialGradient id="resinRadarGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="rgba(0,110,182,0.06)"/>
+                        <stop offset="100%" stop-color="rgba(0,110,182,0)"/>
+                      </radialGradient>
+                    </defs>
+                    <circle cx="200" cy="200" r="168" fill="url(#resinRadarGlow)"/>
+                    <circle class="resin-radar-ring" cx="200" cy="200" r="140"/>
+                    <circle class="resin-radar-ring" cx="200" cy="200" r="108"/>
+                    <circle class="resin-radar-ring" cx="200" cy="200" r="76"/>
+                    <g transform="translate(200,200)">
+                      <polygon class="resin-radar-grid" points="0,-20 15.6,-12.5 19.5,4.5 8.7,18.0 -8.7,18.0 -19.5,4.5 -15.6,-12.5"/>
+                      <polygon class="resin-radar-grid" points="0,-40 31.3,-24.9 39.0,8.9 17.4,36.0 -17.4,36.0 -39.0,8.9 -31.3,-24.9"/>
+                      <polygon class="resin-radar-grid" points="0,-60 46.9,-37.4 58.5,13.4 26.0,54.1 -26.0,54.1 -58.5,13.4 -46.9,-37.4"/>
+                      <polygon class="resin-radar-grid" points="0,-80 62.5,-49.9 78.0,17.8 34.7,72.1 -34.7,72.1 -78.0,17.8 -62.5,-49.9"/>
+                      <polygon class="resin-radar-grid-outer" points="0,-100 78.2,-62.3 97.5,22.3 43.4,90.1 -43.4,90.1 -97.5,22.3 -78.2,-62.3"/>
+                      <line class="resin-radar-axis" x1="0" y1="0" x2="0" y2="-100"/>
+                      <line class="resin-radar-axis" x1="0" y1="0" x2="78.2" y2="-62.3"/>
+                      <line class="resin-radar-axis" x1="0" y1="0" x2="97.5" y2="22.3"/>
+                      <line class="resin-radar-axis" x1="0" y1="0" x2="43.4" y2="90.1"/>
+                      <line class="resin-radar-axis" x1="0" y1="0" x2="-43.4" y2="90.1"/>
+                      <line class="resin-radar-axis" x1="0" y1="0" x2="-97.5" y2="22.3"/>
+                      <line class="resin-radar-axis" x1="0" y1="0" x2="-78.2" y2="-62.3"/>
+                      <circle class="resin-radar-dot" cx="0" cy="-100" r="5"/>
+                      <circle class="resin-radar-dot" cx="78.2" cy="-62.3" r="5"/>
+                      <circle class="resin-radar-dot" cx="97.5" cy="22.3" r="5"/>
+                      <circle class="resin-radar-dot" cx="43.4" cy="90.1" r="5"/>
+                      <circle class="resin-radar-dot" cx="-43.4" cy="90.1" r="5"/>
+                      <circle class="resin-radar-dot" cx="-97.5" cy="22.3" r="5"/>
+                      <circle class="resin-radar-dot" cx="-78.2" cy="-62.3" r="5"/>
+                    </g>
+                  </svg>
+                  <div class="resin-radar-hub">
+                    <p class="resin-radar-hub-title">高性能改性<br>树脂材料</p>
+                  </div>
+                  <ul class="resin-radar-nodes">
+                    <li class="resin-radar-node resin-radar-node--v0">
+                      <span class="resin-radar-node-icon" aria-hidden="true"><img src="img/图标/温度计.svg" alt=""></span>
+                      <div class="resin-radar-node-text">
+                        <p class="resin-radar-node-title">耐高温</p>
+                      </div>
+                    </li>
+                    <li class="resin-radar-node resin-radar-node--v1">
+                      <span class="resin-radar-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9c2 2 4 2 6 0s4-2 6 0"/><path d="M4 15c2 2 4 2 6 0s4-2 6 0"/></svg></span>
+                      <div class="resin-radar-node-text">
+                        <p class="resin-radar-node-title">耐摩擦</p>
+                      </div>
+                    </li>
+                    <li class="resin-radar-node resin-radar-node--v2">
+                      <span class="resin-radar-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg></span>
+                      <div class="resin-radar-node-text">
+                        <p class="resin-radar-node-title">耐磨损</p>
+                      </div>
+                    </li>
+                    <li class="resin-radar-node resin-radar-node--v3">
+                      <span class="resin-radar-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span>
+                      <div class="resin-radar-node-text">
+                        <p class="resin-radar-node-title">自润滑</p>
+                      </div>
+                    </li>
+                    <li class="resin-radar-node resin-radar-node--v4">
+                      <span class="resin-radar-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg></span>
+                      <div class="resin-radar-node-text">
+                        <p class="resin-radar-node-title">水润滑</p>
+                      </div>
+                    </li>
+                    <li class="resin-radar-node resin-radar-node--v5">
+                      <span class="resin-radar-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" x2="2" y1="8" y2="22"/><line x1="17.5" x2="9" y1="15" y2="15"/></svg></span>
+                      <div class="resin-radar-node-text">
+                        <p class="resin-radar-node-title">轻量化</p>
+                      </div>
+                    </li>
+                    <li class="resin-radar-node resin-radar-node--v6">
+                      <span class="resin-radar-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg></span>
+                      <div class="resin-radar-node-text">
+                        <p class="resin-radar-node-title">高密封性</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="resin-panel-apps">
+            <h4 class="resin-panel-features-head">应用领域</h4>
+            <div class="resin-panel-apps-grid">
+              <a href="products.html" class="resin-panel-app-card">
+                <span class="resin-panel-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span>
+                <span class="resin-panel-app-title">汽车</span>
+              </a>
+              <a href="products.html" class="resin-panel-app-card">
+                <span class="resin-panel-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.8 5.6 2.2 7.9"/><path d="M12 2v8"/></svg></span>
+                <span class="resin-panel-app-title">船舶</span>
+              </a>
+              <a href="products.html" class="resin-panel-app-card">
+                <span class="resin-panel-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 18h18"/><path d="M12 6v12"/></svg></span>
+                <span class="resin-panel-app-title">钢铁</span>
+              </a>
+              <a href="products.html" class="resin-panel-app-card">
+                <span class="resin-panel-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 8v3"/><path d="M10 10l2-2 2 2"/><path d="M12 16v-3"/><path d="M10 14l2 2 2-2"/></svg></span>
+                <span class="resin-panel-app-title">电梯</span>
+              </a>
+              <a href="products.html" class="resin-panel-app-card">
+                <span class="resin-panel-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756l-1.471.294a1 1 0 0 0-.618.786l-.317 2.248"/></svg></span>
+                <span class="resin-panel-app-title">冲压机</span>
+              </a>
+              <a href="products.html" class="resin-panel-app-card">
+                <span class="resin-panel-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg></span>
+                <span class="resin-panel-app-title">复印机/打印机</span>
+              </a>
+              <a href="products.html" class="resin-panel-app-card">
+                <span class="resin-panel-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg></span>
+                <span class="resin-panel-app-title">产业机电</span>
+              </a>
+              <a href="products.html" class="resin-panel-app-card">
+                <span class="resin-panel-app-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg></span>
+                <span class="resin-panel-app-title">医疗</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="intro-cards">
-        <article class="intro-card">
-          <div class="intro-card-body">
-            <h3 class="intro-card-title">摩擦学技术，定制解决方案</h3>
-            <p class="intro-card-desc">公司以热固性酚醛树脂、特种工程塑料为基础，运用独创的摩擦学技术研发的【高性能改性树脂材料】，拥有【滑动・传动・制动・密封】的核心特性，提供耐高温、耐摩擦、耐磨损，自润滑、水润滑，轻量化以及高密封性等特殊功能，作为技术开发型的商业合作伙伴，为各行各业提供定制化的解决方案，引领行业创新。</p>
-            <div class="intro-card-tags">
-              <span class="intro-card-tag">耐高温</span>
-              <span class="intro-card-tag">耐摩擦</span>
-              <span class="intro-card-tag">耐磨损</span>
-              <span class="intro-card-tag">自润滑</span>
-              <span class="intro-card-tag">水润滑</span>
-              <span class="intro-card-tag">轻量化</span>
-              <span class="intro-card-tag">高密封性</span>
-            </div>
-          </div>
-          <div class="intro-card-media">
-            <img src="img/intro/5ec36e5dd2860.jpg" alt="摩擦学技术与树脂制品">
-          </div>
-        </article>
-        <article class="intro-card">
-          <div class="intro-card-body">
-            <h3 class="intro-card-title">多元应用，绿色共生</h3>
-            <p class="intro-card-desc">产品广泛运用于汽车、船舶、钢铁、电梯、冲压机、复印机、打印机等自动办公设备、产业机电、医疗等行业。<br>星光树脂基于自身优势，致力于智能制造的转型升级，利用星光工业株式会社独特材料技术研发的制高点，紧跟工业4.0时代的步伐，致力于创造互联未来，加速开拓清洁能源、机器人、氢能源、AI、互联网城市交通工具等领域；星光树脂始终践行绿色、环保、节能的发展理念，实现与自然界和谐共生。</p>
-            <div class="intro-card-tags">
-              <span class="intro-card-tag">汽车</span>
-              <span class="intro-card-tag">船舶</span>
-              <span class="intro-card-tag">钢铁</span>
-              <span class="intro-card-tag">电梯</span>
-              <span class="intro-card-tag">冲压机</span>
-              <span class="intro-card-tag">复印机</span>
-              <span class="intro-card-tag">打印机</span>
-              <span class="intro-card-tag">自动办公设备</span>
-              <span class="intro-card-tag">产业机电</span>
-              <span class="intro-card-tag">医疗</span>
-            </div>
-          </div>
-          <div class="intro-card-media">
-            <div class="intro-card-strip">
-              <div class="intro-card-strip-item"><img src="img/intro/auto.jpg" alt="汽车领域"><span>汽车</span></div>
-              <div class="intro-card-strip-item"><img src="img/intro/ship.jpg" alt="船舶领域"><span>船舶</span></div>
-              <div class="intro-card-strip-item"><img src="img/intro/industry.jpg" alt="产业机电"><span>产业机电</span></div>
-              <div class="intro-card-strip-item"><img src="img/intro/medical.jpg" alt="医疗行业"><span>医疗</span></div>
-            </div>
-          </div>
-        </article>
+      <div class="intro-outro">
+        <p class="intro-outro-text">星光树脂基于自身优势，致力于智能制造的转型升级，利用星光工业珠式会社独特材料技术研发的制高点，紧跟工业4.0时代的步伐，致力于创造互联未来，加速开拓清洁能源、机器人、氢能源、AI、互联网城市交通工具等领域；星光树脂始终践行绿色、环保、节能的发展理念，实现与自然界和谐共生。</p>
       </div>
     </div>
   </section>
 
   <!-- 发展历程 -->
-  <section class="section">
+  <section class="section history-section">
     <div class="section-inner">
       <div class="section-header">
-        <h2 class="section-title" id="history">发展历程</h2>
+        <div class="intro-title-wrap">
+          <span class="intro-watermark" aria-hidden="true">HISTORY</span>
+          <h2 class="section-title" id="history">发展历程</h2>
+        </div>
         <p class="section-desc">自1993年成立至今，见证星光树脂的成长与突破</p>
       </div>
-      <div class="history-layout">
-        <aside class="history-sidebar">
-          <div class="history-sidebar-scroll" id="historySidebarScroll">
-            <div class="history-sidebar-track" id="historyTrack">
-              <button type="button" class="history-sidebar-item active" data-year="2026" data-brief="荣获多项行业与政府奖项"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2026</span><span class="history-sidebar-brief">荣获多项行业与政府奖项</span></span><template><li>荣获昆山市慈善总会【2025年突出贡献会员单位】表彰</li><li>荣获海德世爱科特中国BU【供应协力奖】表彰</li><li>荣获夏普办公设备（常熟）有限公司【品质优秀奖】表彰</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2025" data-brief="多项客户供应商表彰"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2025</span><span class="history-sidebar-brief">多项客户供应商表彰</span></span><template><li>荣获嘉兴村上汽车配件有限公司【纳期优秀奖】表彰</li><li>荣获芦森科技（无锡）有限公司【长青合作贡献奖】表彰</li><li>荣获施耐德电气【优质合作供应商】表彰</li><li>荣获宁波爱发科真空技术有限公司【三十载同行・卓越伙伴奖】表彰</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2024" data-brief="成立30周年与多项荣誉"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2024</span><span class="history-sidebar-brief">成立30周年与多项荣誉</span></span><template><li>荣获周市镇【绿色安全示范企业】称号</li><li>荣获周市镇【科技创新奖】表彰</li><li>星光树脂制品（昆山）有限公司成立30周年</li><li>昆山昆剧院捐赠</li><li>取得 ISO45001 认证</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2023" data-brief="和谐劳动关系与政府表彰"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2023</span><span class="history-sidebar-brief">和谐劳动关系与政府表彰</span></span><template><li>荣获周市镇【和谐劳动贡献奖】表彰</li><li>荣获周市镇【落户二十年日企】表彰</li><li>西郷董事长荣获周市镇【一衣带水友谊奖】表彰</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2022" data-brief="慈善荣誉与抗疫复产"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2022</span><span class="history-sidebar-brief">慈善荣誉与抗疫复产</span></span><template><li>荣获昆山市【慈善总会第五届荣誉副会长单位】称号</li><li>受上海疫情影响，公司4月闭环式复工复产；第二次疫情物资捐赠</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2021" data-brief="创新转型与绿色安全表彰"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2021</span><span class="history-sidebar-brief">创新转型与绿色安全表彰</span></span><template><li>荣获昆山市【创新转型高质量发展先进企业】表彰</li><li>西郷董事长荣获周市镇【周市之友】荣誉称号</li><li>荣获周市镇【十大绿色安全企业】表彰</li><li>荣获苏州市【劳动关系和谐企业】称号</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2020" data-brief="抗疫捐赠与复工复产"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2020</span><span class="history-sidebar-brief">抗疫捐赠与复工复产</span></span><template><li>武汉新冠疫情爆发，公司防疫物资捐赠【12台热成像测温设备】</li><li>荣获昆山周市镇【高效复工复产企业】称号</li><li>荣获苏州市【无偿献血先进奖】称号</li><li>荣获昆山周市镇【抗疫爱心企业】称号</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2019" data-brief="成立25周年与高机能密封件"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2019</span><span class="history-sidebar-brief">成立25周年与高机能密封件</span></span><template><li>星光树脂制品（昆山）有限公司成立25周年</li><li>高机能密封件生产开始</li><li>获得【安全生产标准化二级证书】</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2018" data-brief="无偿献血与员工纳凉节"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2018</span><span class="history-sidebar-brief">无偿献血与员工纳凉节</span></span><template><li>荣获【2016-2017年度昆山市无偿献血先进集体】称号</li><li>2018年【第一届纳凉节】</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2017" data-brief="成都事务所成立"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2017</span><span class="history-sidebar-brief">成都事务所成立</span></span><template><li>成都事务所成立</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2015" data-brief="昆山市慈善企业"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2015</span><span class="history-sidebar-brief">昆山市慈善企业</span></span><template><li>荣获【昆山市慈善企业】称号</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2014" data-brief="成立20周年与船级社认证"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2014</span><span class="history-sidebar-brief">成立20周年与船级社认证</span></span><template><li>星光树脂制品（昆山）有限公司成立20周年</li><li>获得【中国船级社工厂认可证书】</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2013" data-brief="全国民主管理与广州事务所"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2013</span><span class="history-sidebar-brief">全国民主管理与广州事务所</span></span><template><li>荣获全国民主管理【示范单位】称号</li><li>广州事务所成立</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2008" data-brief="南门与道路启用"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2008</span><span class="history-sidebar-brief">南门与道路启用</span></span><template><li>公司南门、南北道路的启用</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2007" data-brief="TS16949认证与新仓库"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2007</span><span class="history-sidebar-brief">TS16949认证与新仓库</span></span><template><li>取得 TS16949 认证</li><li>建成新仓库投入使用</li><li>荣获全国民主管理【先进单位】称号</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2006" data-brief="先进集体与ISO14001更新"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2006</span><span class="history-sidebar-brief">先进集体与ISO14001更新</span></span><template><li>荣获昆山市【先进集体】称号</li><li>更新 ISO14001:2004 年版认证通过</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2005" data-brief="模范职工之家与和谐企业"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2005</span><span class="history-sidebar-brief">模范职工之家与和谐企业</span></span><template><li>荣获中华全国总工会【模范职工之家】称号</li><li>荣获【全省和谐劳动关系模范企业】称号</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2004" data-brief="成立10周年与双优企业"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2004</span><span class="history-sidebar-brief">成立10周年与双优企业</span></span><template><li>星光树脂制品（昆山）有限公司成立10周年</li><li>荣获【全国外商投资"双优"企业】称号</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2002" data-brief="ISO14001环境管理体系认证"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2002</span><span class="history-sidebar-brief">ISO14001环境管理体系认证</span></span><template><li>取得 ISO14001:1996 年版认证</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="2001" data-brief="高机能工场成立"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">2001</span><span class="history-sidebar-brief">高机能工场成立</span></span><template><li>高机能工场成立，开始生产热固性树脂产品</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="1999" data-brief="ISO9001质量管理体系认证"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">1999</span><span class="history-sidebar-brief">ISO9001质量管理体系认证</span></span><template><li>取得 ISO9001 认证</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="1998" data-brief="涂装工场成立"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">1998</span><span class="history-sidebar-brief">涂装工场成立</span></span><template><li>涂装工场成立</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="1996" data-brief="工会委员会成立"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">1996</span><span class="history-sidebar-brief">工会委员会成立</span></span><template><li>工会委员会成立</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="1995" data-brief="新工场建成与S-BEAR导入"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">1995</span><span class="history-sidebar-brief">新工场建成与S-BEAR导入</span></span><template><li>建成新成形工场、新组立工场</li><li>荣获苏州海关【A级信用企业】称号</li><li>精密 S-BEAR 材料押出工程导入</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="1994" data-brief="正式量产出荷日本"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">1994</span><span class="history-sidebar-brief">正式量产出荷日本</span></span><template><li>正式开工投入量产，第一批产品出荷日本</li></template></button>
-              <button type="button" class="history-sidebar-item" data-year="1993" data-brief="公司批准成立"><span class="history-sidebar-dot"></span><span><span class="history-sidebar-year">1993</span><span class="history-sidebar-brief">公司批准成立</span></span><template><li>星光树脂制品（昆山）有限公司批准成立</li></template></button>
-            </div>
-          </div>
-        </aside>
-        <div class="history-panel">
-          <div class="history-panel-head">
-            <div class="history-panel-intro">
-              <div class="history-panel-year" id="historyDetailYear">2026</div>
-              <p class="history-panel-subtitle" id="historyDetailSubtitle">荣获多项行业与政府奖项</p>
-              <div class="history-panel-accent"></div>
-            </div>
-          </div>
-          <div class="history-panel-body" id="historyPanelBody">
-            <ul class="history-panel-list" id="historyDetailList">
-              <li>荣获昆山市慈善总会【2025年突出贡献会员单位】表彰</li>
-              <li>荣获海德世爱科特中国BU【供应协力奖】表彰</li>
-              <li>荣获夏普办公设备（常熟）有限公司【品质优秀奖】表彰</li>
-            </ul>
-            <div class="history-panel-gallery" id="historyGallery">
-              <img src="img/history/pro_20260203085659_71088.png" alt="2026年">
-              <img src="img/history/pro_20260203085659_24834.png" alt="2026年">
-              <img src="img/history/pro_20260318094319_97363.png" alt="2026年">
-            </div>
-          </div>
+      <div class="history-layout" id="historyModule">
+        <div class="history-h-stage">
+          <div class="history-h-line" aria-hidden="true"></div>
+          <div class="history-h-cols" id="historyCols"></div>
         </div>
+        <div class="history-h-nav">
+          <button type="button" class="history-h-btn" id="historyPrev" aria-label="查看更早年份" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <span class="history-h-indicator" id="historyIndicator"></span>
+          <button type="button" class="history-h-btn" id="historyNext" aria-label="查看更新年份">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="history-data-source" hidden id="historyDataSource">
+        <div id="historyTrack">
+              <button type="button" class="history-sidebar-item active" data-year="2026" data-brief="荣获多项行业与政府奖项"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2026</span><span class="history-sidebar-brief">荣获多项行业与政府奖项</span></span><template><li>荣获昆山市慈善总会【2025年突出贡献会员单位】表彰</li><li>荣获海德世爱科特中国BU【供应协力奖】表彰</li><li>荣获夏普办公设备（常熟）有限公司【品质优秀奖】表彰</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2025" data-brief="多项客户供应商表彰"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2025</span><span class="history-sidebar-brief">多项客户供应商表彰</span></span><template><li>荣获嘉兴村上汽车配件有限公司【纳期优秀奖】表彰</li><li>荣获芦森科技（无锡）有限公司【长青合作贡献奖】表彰</li><li>荣获施耐德电气【优质合作供应商】表彰</li><li>荣获宁波爱发科真空技术有限公司【三十载同行・卓越伙伴奖】表彰</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2024" data-brief="成立30周年与多项荣誉"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2024</span><span class="history-sidebar-brief">成立30周年与多项荣誉</span></span><template><li>荣获周市镇【绿色安全示范企业】称号</li><li>荣获周市镇【科技创新奖】表彰</li><li>星光树脂制品（昆山）有限公司成立30周年</li><li>昆山昆剧院捐赠</li><li>取得 ISO45001 认证</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2023" data-brief="和谐劳动关系与政府表彰"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2023</span><span class="history-sidebar-brief">和谐劳动关系与政府表彰</span></span><template><li>荣获周市镇【和谐劳动贡献奖】表彰</li><li>荣获周市镇【落户二十年日企】表彰</li><li>西郷董事长荣获周市镇【一衣带水友谊奖】表彰</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2022" data-brief="慈善荣誉与抗疫复产"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2022</span><span class="history-sidebar-brief">慈善荣誉与抗疫复产</span></span><template><li>荣获昆山市【慈善总会第五届荣誉副会长单位】称号</li><li>受上海疫情影响，公司4月闭环式复工复产；第二次疫情物资捐赠</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2021" data-brief="创新转型与绿色安全表彰"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2021</span><span class="history-sidebar-brief">创新转型与绿色安全表彰</span></span><template><li>荣获昆山市【创新转型高质量发展先进企业】表彰</li><li>西郷董事长荣获周市镇【周市之友】荣誉称号</li><li>荣获周市镇【十大绿色安全企业】表彰</li><li>荣获苏州市【劳动关系和谐企业】称号</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2020" data-brief="抗疫捐赠与复工复产"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2020</span><span class="history-sidebar-brief">抗疫捐赠与复工复产</span></span><template><li>武汉新冠疫情爆发，公司防疫物资捐赠【12台热成像测温设备】</li><li>荣获昆山周市镇【高效复工复产企业】称号</li><li>荣获苏州市【无偿献血先进奖】称号</li><li>荣获昆山周市镇【抗疫爱心企业】称号</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2019" data-brief="成立25周年与高机能密封件"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2019</span><span class="history-sidebar-brief">成立25周年与高机能密封件</span></span><template><li>星光树脂制品（昆山）有限公司成立25周年</li><li>高机能密封件生产开始</li><li>获得【安全生产标准化二级证书】</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2018" data-brief="无偿献血与员工纳凉节"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2018</span><span class="history-sidebar-brief">无偿献血与员工纳凉节</span></span><template><li>荣获【2016-2017年度昆山市无偿献血先进集体】称号</li><li>2018年【第一届纳凉节】</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2017" data-brief="成都事务所成立"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2017</span><span class="history-sidebar-brief">成都事务所成立</span></span><template><li>成都事务所成立</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2015" data-brief="昆山市慈善企业"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2015</span><span class="history-sidebar-brief">昆山市慈善企业</span></span><template><li>荣获【昆山市慈善企业】称号</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2014" data-brief="成立20周年与船级社认证"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2014</span><span class="history-sidebar-brief">成立20周年与船级社认证</span></span><template><li>星光树脂制品（昆山）有限公司成立20周年</li><li>获得【中国船级社工厂认可证书】</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2013" data-brief="全国民主管理与广州事务所"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2013</span><span class="history-sidebar-brief">全国民主管理与广州事务所</span></span><template><li>荣获全国民主管理【示范单位】称号</li><li>广州事务所成立</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2008" data-brief="南门与道路启用"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2008</span><span class="history-sidebar-brief">南门与道路启用</span></span><template><li>公司南门、南北道路的启用</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2007" data-brief="TS16949认证与新仓库"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2007</span><span class="history-sidebar-brief">TS16949认证与新仓库</span></span><template><li>取得 TS16949 认证</li><li>建成新仓库投入使用</li><li>荣获全国民主管理【先进单位】称号</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2006" data-brief="先进集体与ISO14001更新"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2006</span><span class="history-sidebar-brief">先进集体与ISO14001更新</span></span><template><li>荣获昆山市【先进集体】称号</li><li>更新 ISO14001:2004 年版认证通过</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2005" data-brief="模范职工之家与和谐企业"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2005</span><span class="history-sidebar-brief">模范职工之家与和谐企业</span></span><template><li>荣获中华全国总工会【模范职工之家】称号</li><li>荣获【全省和谐劳动关系模范企业】称号</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2004" data-brief="成立10周年与双优企业"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2004</span><span class="history-sidebar-brief">成立10周年与双优企业</span></span><template><li>星光树脂制品（昆山）有限公司成立10周年</li><li>荣获【全国外商投资"双优"企业】称号</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2002" data-brief="ISO14001环境管理体系认证"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2002</span><span class="history-sidebar-brief">ISO14001环境管理体系认证</span></span><template><li>取得 ISO14001:1996 年版认证</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="2001" data-brief="高机能工场成立"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">2001</span><span class="history-sidebar-brief">高机能工场成立</span></span><template><li>高机能工场成立，开始生产热固性树脂产品</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="1999" data-brief="ISO9001质量管理体系认证"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">1999</span><span class="history-sidebar-brief">ISO9001质量管理体系认证</span></span><template><li>取得 ISO9001 认证</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="1998" data-brief="涂装工场成立"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">1998</span><span class="history-sidebar-brief">涂装工场成立</span></span><template><li>涂装工场成立</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="1996" data-brief="工会委员会成立"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">1996</span><span class="history-sidebar-brief">工会委员会成立</span></span><template><li>工会委员会成立</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="1995" data-brief="新工场建成与S-BEAR导入"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">1995</span><span class="history-sidebar-brief">新工场建成与S-BEAR导入</span></span><template><li>建成新成形工场、新组立工场</li><li>荣获苏州海关【A级信用企业】称号</li><li>精密 S-BEAR 材料押出工程导入</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="1994" data-brief="正式量产出荷日本"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">1994</span><span class="history-sidebar-brief">正式量产出荷日本</span></span><template><li>正式开工投入量产，第一批产品出荷日本</li></template></button>
+              <button type="button" class="history-sidebar-item" data-year="1993" data-brief="公司批准成立"><span class="history-sidebar-dot"></span><span class="history-sidebar-content"><span class="history-sidebar-year">1993</span><span class="history-sidebar-brief">公司批准成立</span></span><template><li>星光树脂制品（昆山）有限公司批准成立</li></template></button>
+            </div>
       </div>
     </div>
   </section>
@@ -431,39 +872,143 @@
   <section class="section logo-section">
     <div class="section-inner">
       <div class="section-header">
-        <h2 class="section-title" id="logo">品牌标识解说</h2>
-      </div>
-      <div class="grid-2">
-        <div class="logo-visual">
-          <img src="img/logo.png" alt="品牌标识" class="logo-showcase">
+        <div class="intro-title-wrap">
+          <span class="intro-watermark" aria-hidden="true">BRAND</span>
+          <h2 class="section-title" id="logo">品牌标识解说</h2>
         </div>
-        <ul class="logo-points">
-          <li>酚醛树脂是人类最早发明的合成树脂。1909年，由 L.H. 贝克兰实现实用化，并被命名为「酚醛树脂（胶木）」。本公司自 1936 年起，以自主研发酚醛树脂滑动材料为起点，怀揣「成为酚醛树脂行业的耀眼之星」的愿景，将公司名称定为【星光】。</li>
-          <li>品牌标识中的 9 颗星星大小各不相同，象征着围绕在企业身边的个人、企业与合作团体，都带着独特的个性发光发热。我们希望所有伙伴都能彼此认可、尊重各自的特质，在深度联结中携手绽放更耀眼的光芒。</li>
-          <li>星星整体勾勒出「S」形，寓意着企业与所有利益相关方，将在并肩同行中实现螺旋式成长，共同奔赴长远发展。</li>
-        </ul>
+        <p class="section-desc">了解星光标识背后的故事与深意</p>
+      </div>
+      <div class="logo-layout">
+        <div class="logo-hero">
+          <img src="img/logo.png" alt="星光树脂品牌标识" class="logo-hero-img">
+        </div>
+        <div class="logo-stories">
+          <div class="logo-story-item">
+            <p class="logo-story-desc">酚醛树脂是人类最早发明的合成树脂。1909 年，由 L.H. 贝克兰（L.H. Baekeland）实现实用化，并被命名为   “酚醛树脂（BAKELITE）”本公司自 1936 年起，自主研发酚醛树脂的滑动材料为起点开启事业，怀揣着 “成为酚醛树脂行业的耀眼之星” 的愿景，将公司名称定为<span class="logo-story-brand">【STARLITE】</span></p>
+          </div>
+          <div class="logo-story-item">
+            <p class="logo-story-desc">品牌标识中的 9 颗星星大小各不相同，象征着围绕在 STARLITE 身边的个人、企业与合作团体，都带着独特的个性发光发热。我们希望所有伙伴都能彼此认可、尊重各自的特质，在深度联结中携手绽放更耀眼的光芒。</p>
+          </div>
+          <div class="logo-story-item">
+            <p class="logo-story-desc">星星整体勾勒出 “S” 形，寓意着 STARLITE 与所有利益相关方，将在并肩同行中实现螺旋式成长，共同奔赴长远发展。</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 理念&愿景&使命 -->
-  <section class="section">
+  <section class="section vision-section">
     <div class="section-inner">
-      <div class="section-header">
-        <h2 class="section-title" id="vision">理念 & 愿景 & 使命</h2>
+      <div class="section-header vision-header">
+        <div class="vision-title-wrap">
+          <span class="vision-watermark" aria-hidden="true">VISION</span>
+          <h2 class="section-title" id="vision">理念 & 愿景 & 使命</h2>
+        </div>
         <p class="section-desc">公司根本准则 — 七项核心理念指引企业前行</p>
       </div>
       <div class="vision-grid">
         <div class="vision-row vision-row-top">
-          <div class="vision-item"><div class="vision-num">01</div><p>企业以人为本，培育优秀的人才，应用高精度的设备和技术、发展自己的领域，把敬爱他人作为企业的信条。</p></div>
-          <div class="vision-item"><div class="vision-num">02</div><p>进攻是最好的防御，积极果断的采取行动，才无后顾之忧。</p></div>
-          <div class="vision-item"><div class="vision-num">03</div><p>在技术革新日新月异的时代，持有强烈的创新、开发热情，具有与时俱进的欲望。</p></div>
+          <article class="vision-card vision-card--gold">
+            <div class="vision-card-top">
+              <div class="vision-card-num-wrap">
+                <span class="vision-card-num">01</span>
+                <span class="vision-card-num-line"></span>
+              </div>
+              <div class="vision-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-1a6 6 0 0 1 12 0v1"/></svg>
+              </div>
+            </div>
+            <h3 class="vision-card-title">以企业为本</h3>
+            <p class="vision-card-desc">企业以人为本，培养优秀的人才，应用高精度的设备和技术，发展自己的领域，把敬爱他人作为企业的信条。</p>
+            <div class="vision-card-deco" aria-hidden="true"></div>
+          </article>
+          <article class="vision-card vision-card--blue">
+            <div class="vision-card-top">
+              <div class="vision-card-num-wrap">
+                <span class="vision-card-num">02</span>
+                <span class="vision-card-num-line"></span>
+              </div>
+              <div class="vision-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+            </div>
+            <h3 class="vision-card-title">注重质量与安全</h3>
+            <p class="vision-card-desc">进攻是最好的防御，积极果断的采取行动，才无后顾之忧。</p>
+            <div class="vision-card-deco" aria-hidden="true"></div>
+          </article>
+          <article class="vision-card vision-card--gold">
+            <div class="vision-card-top">
+              <div class="vision-card-num-wrap">
+                <span class="vision-card-num">03</span>
+                <span class="vision-card-num-line"></span>
+              </div>
+              <div class="vision-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+              </div>
+            </div>
+            <h3 class="vision-card-title">创新 & 持续进步</h3>
+            <p class="vision-card-desc">在技术革新日新月异的时代，持有强烈的创新、开发热情，具有与时俱进的欲望。</p>
+            <div class="vision-card-deco" aria-hidden="true"></div>
+          </article>
         </div>
         <div class="vision-row vision-row-bottom">
-          <div class="vision-item"><div class="vision-num">04</div><p>不拘泥于模仿，投入资金及人才到独有技术的研究中，并以此为传统。</p></div>
-          <div class="vision-item"><div class="vision-num">05</div><p>在面对世界级的竞争对手时，开拓视野，拥有展翅高飞的气概。</p></div>
-          <div class="vision-item"><div class="vision-num">06</div><p>紧密团结在组织之中，齐心协力，勇往直前，不惧艰险，成为具有强大凝聚力的集团。</p></div>
-          <div class="vision-item"><div class="vision-num">07</div><p>器宇轩昂，高举理想旗帜，为实现其宏伟目标而努力奋斗。</p></div>
+          <article class="vision-card vision-card--blue">
+            <div class="vision-card-top">
+              <div class="vision-card-num-wrap">
+                <span class="vision-card-num">04</span>
+                <span class="vision-card-num-line"></span>
+              </div>
+              <div class="vision-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V2"/><path d="M8.5 2h7"/><path d="M14 9.3a6 6 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
+              </div>
+            </div>
+            <h3 class="vision-card-title">专注 & 专业</h3>
+            <p class="vision-card-desc">不拘泥于模仿，投入资金及人才到独有技术的研究中，并以此为传统。</p>
+            <div class="vision-card-deco" aria-hidden="true"></div>
+          </article>
+          <article class="vision-card vision-card--gold">
+            <div class="vision-card-top">
+              <div class="vision-card-num-wrap">
+                <span class="vision-card-num">05</span>
+                <span class="vision-card-num-line"></span>
+              </div>
+              <div class="vision-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+              </div>
+            </div>
+            <h3 class="vision-card-title">开拓 & 进取</h3>
+            <p class="vision-card-desc">在面对世界级的竞争对手时，开拓视野，拥有展翅高飞的气概。</p>
+            <div class="vision-card-deco" aria-hidden="true"></div>
+          </article>
+          <article class="vision-card vision-card--blue">
+            <div class="vision-card-top">
+              <div class="vision-card-num-wrap">
+                <span class="vision-card-num">06</span>
+                <span class="vision-card-num-line"></span>
+              </div>
+              <div class="vision-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+            </div>
+            <h3 class="vision-card-title">团队协作 & 凝聚力</h3>
+            <p class="vision-card-desc">紧密团结在组织之中，齐心协力，勇往直前，不惧风险，成为具有强大凝聚力的集团。</p>
+            <div class="vision-card-deco" aria-hidden="true"></div>
+          </article>
+          <article class="vision-card vision-card--gold">
+            <div class="vision-card-top">
+              <div class="vision-card-num-wrap">
+                <span class="vision-card-num">07</span>
+                <span class="vision-card-num-line"></span>
+              </div>
+              <div class="vision-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4"/><path d="m16 6 3-3"/></svg>
+              </div>
+            </div>
+            <h3 class="vision-card-title">追求卓越 & 使命必达</h3>
+            <p class="vision-card-desc">器宇轩昂，高举理想旗帜，为实现其宏伟目标而努力奋斗。</p>
+            <div class="vision-card-deco" aria-hidden="true"></div>
+          </article>
         </div>
       </div>
     </div>
@@ -471,22 +1016,31 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-brand-head">
-          <img src="img/logo.png" alt="STARLITE" class="footer-brand-logo">
-          <div>
-            <div class="footer-brand-cn">星光树脂</div>
-            <div class="footer-brand-en">Starlite Plastic Products</div>
+      <div class="footer-body">
+        <div class="footer-contact">
+          <a href="index.html" class="footer-brand-head logo">
+            <img src="img/logo-白.png" alt="STARLITE" class="logo-img">
+            <div>
+              <div class="logo-text">星光树脂制品（昆山）有限公司</div>
+              <div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div>
+            </div>
+          </a>
+          <div class="footer-contact-col">
+            <ul class="footer-brand-list">
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>+86-512-57641220 · 传真 +86-512-57641211</span></li>
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
+            </ul>
           </div>
-        </a>
-        <ul class="footer-brand-list">
-          <li><span class="footer-brand-icon">📞</span><span><br>+86-512-57641220 · 传真 +86-512-57641211</span></li>
-          <li><span class="footer-brand-icon">📍</span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
-          <li class="footer-brand-divider"><span class="footer-brand-icon">📞</span><span><strong>星光工业株式会社</strong><br>+816-6956-2240 · <a href="https://starlite.co.jp/" target="_blank" rel="noopener">starlite.co.jp</a></span></li>
-          <li><span class="footer-brand-icon">📍</span><span>日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002</span></li>
-        </ul>
-      </div>
-      <div class="footer-nav">
+          <div class="footer-contact-col">
+            <strong class="footer-office-name">星光工业株式会社</strong>
+            <ul class="footer-brand-list">
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>电 话：+816-6956-2240 · 传 真：+816-6956-2715</span></li>
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>地 址：日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮 编：535-0002</span></li>
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span><span>网 址：<a href="https://starlite.co.jp/" class="footer-link-plain" target="_blank" rel="noopener">https://starlite.co.jp/</a></span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-nav">
         <div class="footer-col">
           <h4>首页</h4>
           <ul>
@@ -499,10 +1053,10 @@
         <div class="footer-col">
           <h4>创新中心</h4>
           <ul>
-            <li><a href="innovation.html#timeline">摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
             <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
             <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
-            <li><a href="innovation.html#equipment">试验分析仪器&检测设备</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -538,73 +1092,258 @@
         <div class="footer-col">
           <h4>联系我们</h4>
           <ul>
-            <li><a href="contact.html#info">联系方式</a></li>
-            <li><a href="contact.html#map">电子地图</a></li>
-            <li><a href="contact.html#message">客户留言</a></li>
+            <li><a href="contact.html#contact-info">联系方式</a></li>
+            <li><a href="contact.html#contact-map">电子地图</a></li>
+            <li><a href="contact.html#contact-form">客户留言</a></li>
           </ul>
         </div>
+        </div>
       </div>
+      <div class="footer-bottom">版权所有：星光树脂制品（昆山）有限公司 All Rights Reserved | 苏ICP备12003553号-1</div>
     </div>
-    <div class="footer-bottom">© 2026 星光树脂制品（昆山）有限公司 · 网站原型</div>
   </footer>
+
+  <div class="history-lightbox" id="historyLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="查看大图">
+    <div class="history-lightbox-backdrop" data-history-close></div>
+    <div class="history-lightbox-panel">
+      <button type="button" class="history-lightbox-close" data-history-close aria-label="关闭">&times;</button>
+      <button type="button" class="history-lightbox-nav history-lightbox-prev is-hidden" id="historyLightboxPrev" aria-label="上一张">&lsaquo;</button>
+      <button type="button" class="history-lightbox-nav history-lightbox-next is-hidden" id="historyLightboxNext" aria-label="下一张">&rsaquo;</button>
+      <img class="history-lightbox-img" id="historyLightboxImg" src="" alt="">
+      <div class="history-lightbox-caption" id="historyLightboxCaption"></div>
+    </div>
+  </div>
 <script>
 document.querySelectorAll('.lang-switch').forEach(function(s){s.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){s.querySelectorAll('.lang-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active')})})});
 
 (function(){
   var historyImages = {"2026":["img/history/pro_20260203085659_71088.png","img/history/pro_20260203085659_24834.png","img/history/pro_20260318094319_97363.png"],"2025":["img/history/pro_20260203085131_96202.png","img/history/pro_20260203085131_63541.png","img/history/pro_20260203085131_38191.png","img/history/pro_20260203085131_36466.png"],"2024":["img/history/pro_20240829141318_60790.png","img/history/pro_20240829142010_37971.png","img/history/pro_20240829142010_59714.png","img/history/pro_20240829142010_76329.png","img/history/pro_20240902115249_47797.png","img/history/pro_20240902115353_19832.png"],"2023":["img/history/pro_20231103160452_96948.png","img/history/pro_20231103161059_28032.png","img/history/pro_20231103161059_49777.png"],"2022":["img/history/pro_20231103160730_30042.png","img/history/pro_20231103162616_51567.png"],"2021":["img/history/pro_20231103160829_30343.png","img/history/pro_20231103160829_94620.png","img/history/pro_20231103160829_77902.png","img/history/pro_20231103160829_40288.png"],"2020":["img/history/pro_20231103162555_56594.png","img/history/pro_20231103162555_34133.png","img/history/pro_20231103162718_90847.png","img/history/pro_20231103162718_60256.png"],"2019":["img/history/pro_20200424135721_44447.png","img/history/pro_20200424135722_30891.png","img/history/pro_20200515094554_71522.png","img/history/pro_20200519144602_24907.png"],"2018":["img/history/pro_20200321101855_56201.png","img/history/pro_20200515094938_39558.png","img/history/pro_20200515094938_30078.png","img/history/pro_20200515095240_90039.png"],"2017":["img/history/pro_20200424135311_23125.png"],"2015":["img/history/pro_20200327163915_69742.png"],"2014":["img/history/pro_20200321101512_32199.png","img/history/pro_20200327102654_77167.png","img/history/pro_20200515095437_91585.png"],"2013":["img/history/pro_20200327164327_81174.png","img/history/pro_20200424135352_85375.png"],"2008":["img/history/pro_20200327163850_91132.png","img/history/pro_20200330130045_74538.png"],"2007":["img/history/pro_20200330110510_26828.png","img/history/pro_20200515112040_77747.png","img/history/pro_20200515112040_86493.png","img/history/pro_20200605131745_94194.png"],"2006":["img/history/pro_20200518104332_32958.png"],"2005":["img/history/pro_20200327102614_35405.png","img/history/pro_20200330110332_19756.png"],"2004":["img/history/pro_20200330110314_40974.png","img/history/pro_20200330110314_17111.png"],"2002":["img/history/pro_20200606084750_30661.png"],"2001":["img/history/pro_20200515112126_29551.png"],"1999":["img/history/pro_20200605131733_44371.png"],"1998":["img/history/pro_20200327102524_32427.png"],"1996":["img/history/pro_20200321101059_62825.png","img/history/pro_20200327102512_23008.png"],"1995":["img/history/pro_20200321101039_30531.png","img/history/pro_20200327102503_97205.png"],"1994":["img/history/pro_20200327162400_45578.png","img/history/pro_20200327162433_25271.png","img/history/pro_20200330110232_56022.png"],"1993":["img/history/pro_20200327105211_32961.png","img/history/pro_20200515112258_37239.png","img/history/pro_20200515112258_69349.png","img/history/pro_20200518104057_18565.png"]};
-  var items = Array.prototype.slice.call(document.querySelectorAll('.history-sidebar-item'));
-  var detailYear = document.getElementById('historyDetailYear');
-  var detailSubtitle = document.getElementById('historyDetailSubtitle');
-  var detailList = document.getElementById('historyDetailList');
-  var gallery = document.getElementById('historyGallery');
-  var panelBody = document.getElementById('historyPanelBody');
-  if (!items.length || !detailYear || !detailList) return;
+  var dataItems = Array.prototype.slice.call(document.querySelectorAll('#historyTrack .history-sidebar-item'));
+  var colsEl = document.getElementById('historyCols');
+  var indicatorEl = document.getElementById('historyIndicator');
+  var prevBtn = document.getElementById('historyPrev');
+  var nextBtn = document.getElementById('historyNext');
+  var historyModule = document.getElementById('historyModule');
+  var historyLine = document.querySelector('.history-h-line');
+  var historyStage = document.querySelector('.history-h-stage');
+  var lightbox = document.getElementById('historyLightbox');
+  var lightboxImg = document.getElementById('historyLightboxImg');
+  var lightboxCaption = document.getElementById('historyLightboxCaption');
+  var lightboxPrev = document.getElementById('historyLightboxPrev');
+  var lightboxNext = document.getElementById('historyLightboxNext');
+  var currentGallery = [];
+  var currentGalleryImgs = [];
+  var currentGalleryIndex = 0;
+  var startIndex = 0;
+  var wheelLocked = false;
+  if (!dataItems.length || !colsEl) return;
 
-  function updateGallery(year) {
-    if (!gallery) return;
-    var imgs = historyImages[year] || [];
-    gallery.innerHTML = imgs.map(function(src){
-      return '<img src="' + src + '" alt="' + year + '年">';
-    }).join('');
-    gallery.classList.toggle('is-empty', imgs.length === 0);
+  function getVisibleCount() {
+    return window.matchMedia('(max-width: 768px)').matches ? 2 : 4;
   }
 
-  function scrollItemIntoView(item) {
-    var container = document.getElementById('historySidebarScroll');
-    if (!container || !item) return;
-    var itemRect = item.getBoundingClientRect();
-    var containerRect = container.getBoundingClientRect();
-    if (itemRect.top < containerRect.top + 8) {
-      container.scrollTop += itemRect.top - containerRect.top - 12;
-    } else if (itemRect.bottom > containerRect.bottom - 8) {
-      container.scrollTop += itemRect.bottom - containerRect.bottom + 12;
+  function getEvents(item) {
+    var tpl = item.querySelector('template');
+    if (!tpl) return [];
+    return Array.prototype.slice.call(tpl.content.querySelectorAll('li')).map(function(li){
+      return li.textContent.trim();
+    }).filter(Boolean);
+  }
+
+  function renderGallery(year) {
+    var imgs = historyImages[year] || [];
+    if (!imgs.length) return '';
+    return '<div class="history-card-gallery">' + imgs.map(function(src){
+      return '<img src="' + src + '" alt="' + year + '年">';
+    }).join('') + '</div>';
+  }
+
+  function renderColumn(item) {
+    if (!item) {
+      return '<div class="history-col history-col--empty"></div>';
+    }
+    var year = item.getAttribute('data-year');
+    var events = getEvents(item);
+    var eventsHtml = events.map(function(text){
+      return '<div class="history-card-event"><span class="history-event-dot"></span><span class="history-event-text">' + text + '</span></div>';
+    }).join('');
+    return (
+      '<div class="history-col">' +
+        '<div class="history-col-year">' + year + '</div>' +
+        '<div class="history-col-node"><span class="history-node-dot"></span></div>' +
+        '<div class="history-col-connector" aria-hidden="true"></div>' +
+        '<div class="history-col-card">' +
+          '<div class="history-card-track">' + eventsHtml + '</div>' +
+          renderGallery(year) +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  function updateNav() {
+    var visibleCount = getVisibleCount();
+    var maxStart = Math.max(0, dataItems.length - visibleCount);
+    if (startIndex > maxStart) startIndex = maxStart;
+    if (prevBtn) prevBtn.disabled = startIndex >= maxStart;
+    if (nextBtn) nextBtn.disabled = startIndex <= 0;
+    if (indicatorEl) {
+      var first = dataItems[startIndex];
+      var last = dataItems[Math.min(startIndex + visibleCount - 1, dataItems.length - 1)];
+      indicatorEl.textContent = first && last ? first.getAttribute('data-year') + ' — ' + last.getAttribute('data-year') : '';
     }
   }
 
-  function showIndex(index) {
-    index = Math.max(0, Math.min(items.length - 1, index));
-    var item = items[index];
-    items.forEach(function(n){ n.classList.remove('active'); });
-    item.classList.add('active');
-    if (panelBody) panelBody.classList.add('is-switching');
-    window.setTimeout(function(){
-      var year = item.getAttribute('data-year');
-      var brief = item.getAttribute('data-brief') || '';
-      detailYear.textContent = year;
-      if (detailSubtitle) detailSubtitle.textContent = brief;
-      var tpl = item.querySelector('template');
-      detailList.innerHTML = tpl ? tpl.innerHTML : '';
-      updateGallery(year);
-      if (panelBody) panelBody.classList.remove('is-switching');
-    }, 120);
-    scrollItemIntoView(item);
+  function updateHistoryLines() {
+    var dots = colsEl ? colsEl.querySelectorAll('.history-col:not(.history-col--empty) .history-node-dot') : [];
+    if (historyLine && historyStage) {
+      if (dots.length < 2) {
+        historyLine.style.width = '0';
+        historyLine.style.opacity = '0';
+      } else {
+        var stageRect = historyStage.getBoundingClientRect();
+        var firstRect = dots[0].getBoundingClientRect();
+        var lastRect = dots[dots.length - 1].getBoundingClientRect();
+        var firstCenterX = firstRect.left + firstRect.width / 2 - stageRect.left;
+        var lastCenterX = lastRect.left + lastRect.width / 2 - stageRect.left;
+        var centerY = firstRect.top + firstRect.height / 2 - stageRect.top;
+        historyLine.style.left = firstCenterX + 'px';
+        historyLine.style.width = Math.max(0, lastCenterX - firstCenterX) + 'px';
+        historyLine.style.top = centerY + 'px';
+        historyLine.style.opacity = '1';
+      }
+    }
+
+    if (!colsEl) return;
+    colsEl.querySelectorAll('.history-card-track').forEach(function(track) {
+      var events = track.querySelectorAll('.history-card-event');
+      if (events.length < 2) {
+        track.classList.add('is-single');
+        track.style.removeProperty('--track-line-top');
+        track.style.removeProperty('--track-line-height');
+        return;
+      }
+      track.classList.remove('is-single');
+      var firstDot = events[0].querySelector('.history-event-dot');
+      var lastDot = events[events.length - 1].querySelector('.history-event-dot');
+      if (!firstDot || !lastDot) return;
+      var trackRect = track.getBoundingClientRect();
+      var firstCenterY = firstDot.getBoundingClientRect().top + firstDot.offsetHeight / 2 - trackRect.top;
+      var lastCenterY = lastDot.getBoundingClientRect().top + lastDot.offsetHeight / 2 - trackRect.top;
+      track.style.setProperty('--track-line-top', firstCenterY + 'px');
+      track.style.setProperty('--track-line-height', Math.max(0, lastCenterY - firstCenterY) + 'px');
+    });
   }
 
-  items.forEach(function(item, index) {
-    item.addEventListener('click', function(){ showIndex(index); });
+  function renderWindow(animate) {
+    closeLightbox();
+    var visibleCount = getVisibleCount();
+    colsEl.style.gridTemplateColumns = 'repeat(' + visibleCount + ', 1fr)';
+    if (animate) colsEl.classList.add('is-switching');
+    window.setTimeout(function(){
+      var html = '';
+      for (var i = 0; i < visibleCount; i++) {
+        html += renderColumn(dataItems[startIndex + i]);
+      }
+      colsEl.innerHTML = html;
+      colsEl.classList.remove('is-switching');
+      updateNav();
+      updateHistoryLines();
+    }, animate ? 120 : 0);
+  }
+
+  function shiftWindow(delta) {
+    var visibleCount = getVisibleCount();
+    var maxStart = Math.max(0, dataItems.length - visibleCount);
+    var nextStart = Math.max(0, Math.min(maxStart, startIndex + delta));
+    if (nextStart === startIndex) return;
+    startIndex = nextStart;
+    renderWindow(true);
+  }
+
+  function updateLightboxImage() {
+    if (!lightboxImg || !currentGallery.length) return;
+    var activeImg = currentGalleryImgs[currentGalleryIndex];
+    lightboxImg.src = currentGallery[currentGalleryIndex];
+    lightboxImg.alt = activeImg ? (activeImg.getAttribute('alt') || '') : '';
+    if (lightboxCaption) {
+      lightboxCaption.textContent = (currentGallery.length > 1 ? (currentGalleryIndex + 1) + ' / ' + currentGallery.length + ' · ' : '') + (lightboxImg.alt || '');
+    }
+    var showNav = currentGallery.length > 1;
+    if (lightboxPrev) lightboxPrev.classList.toggle('is-hidden', !showNav);
+    if (lightboxNext) lightboxNext.classList.toggle('is-hidden', !showNav);
+  }
+
+  function openLightbox(img) {
+    if (!lightbox || !img) return;
+    var gallery = img.closest('.history-card-gallery');
+    var imgs = gallery ? Array.prototype.slice.call(gallery.querySelectorAll('img')) : [img];
+    currentGalleryImgs = imgs;
+    currentGallery = imgs.map(function(node){ return node.getAttribute('src'); });
+    currentGalleryIndex = Math.max(0, imgs.indexOf(img));
+    updateLightboxImage();
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lightboxImg) lightboxImg.src = '';
+  }
+
+  function shiftLightbox(delta) {
+    if (currentGallery.length <= 1) return;
+    currentGalleryIndex = (currentGalleryIndex + delta + currentGallery.length) % currentGallery.length;
+    updateLightboxImage();
+  }
+
+  if (colsEl) {
+    colsEl.addEventListener('click', function(e) {
+      var img = e.target.closest('.history-card-gallery img');
+      if (!img) return;
+      e.preventDefault();
+      openLightbox(img);
+    });
+  }
+
+  if (lightbox) {
+    lightbox.querySelectorAll('[data-history-close]').forEach(function(el) {
+      el.addEventListener('click', closeLightbox);
+    });
+  }
+  if (lightboxPrev) lightboxPrev.addEventListener('click', function(e){ e.stopPropagation(); shiftLightbox(-1); });
+  if (lightboxNext) lightboxNext.addEventListener('click', function(e){ e.stopPropagation(); shiftLightbox(1); });
+
+  document.addEventListener('keydown', function(e) {
+    if (!lightbox || !lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') shiftLightbox(-1);
+    else if (e.key === 'ArrowRight') shiftLightbox(1);
   });
 
-  showIndex(0);
+  if (prevBtn) prevBtn.addEventListener('click', function(){ shiftWindow(1); });
+  if (nextBtn) nextBtn.addEventListener('click', function(){ shiftWindow(-1); });
+
+  if (historyModule) {
+    historyModule.addEventListener('wheel', function(e) {
+      if (Math.abs(e.deltaY) < 8) return;
+      e.preventDefault();
+      if (wheelLocked) return;
+      wheelLocked = true;
+      window.setTimeout(function(){ wheelLocked = false; }, 380);
+      if (e.deltaY > 0) shiftWindow(1);
+      else shiftWindow(-1);
+    }, { passive: false });
+  }
+
+  window.addEventListener('resize', function(){
+    renderWindow(false);
+  });
+
+  renderWindow(false);
 })();
 </script>
 </body>

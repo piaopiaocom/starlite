@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>产品核心 - 星光树脂制品（昆山）有限公司</title>
   <style>
-    :root{--primary:#0B2D5B;--primary-light:#1A4A8A;--accent:#C5A036;--accent-light:#E8C547;--text:#1A1A2E;--text-muted:#5A6270;--bg:#F5F7FA;--white:#FFF;--border:#E2E8F0;--shadow:0 4px 24px rgba(11,45,91,0.08);--radius:8px}
+    :root{--primary:#006EB6;--primary-light:#0088D4;--accent:#FFB511;--accent-light:#FFCB4D;--text:#1A1A2E;--text-muted:#5A6270;--bg:#F5F7FA;--white:#FFF;--border:#E2E8F0;--shadow:0 4px 24px rgba(0,110,182,0.08);--radius:8px}
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);line-height:1.7}
@@ -14,30 +14,35 @@
     .header{background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.06);position:sticky;top:0;z-index:1000}
     .header-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:stretch;justify-content:space-between;height:72px}
     .logo{display:flex;align-items:center;gap:12px;align-self:center}.logo-img{height:48px;width:auto;object-fit:contain;display:block}
-    .logo-text{font-size:15px;line-height:1.3;font-weight:700;color:var(--primary)}.logo-sub{font-size:10px;line-height:1.3;color:var(--text-muted)}
+    .logo-text{font-size:18px;line-height:1.3;font-weight:700;color:var(--primary)}.logo-sub{font-size:12px;line-height:1.3;color:var(--text-muted)}
     .nav{display:flex;gap:4px;align-items:stretch;align-self:stretch}
     .nav>li{list-style:none;position:relative;display:flex;align-items:stretch}
-    .nav>li>a{display:flex;align-items:center;padding:0 16px;font-size:14px;line-height:1;color:var(--text);position:relative;transition:color .25s ease;white-space:nowrap}
+    .nav>li>a{display:flex;align-items:center;padding:0 16px;font-size:16px;line-height:1;color:var(--text);position:relative;transition:color .25s ease;white-space:nowrap}
     .nav>li>a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--primary);border-radius:1px 1px 0 0;transform:scaleX(0);transform-origin:center bottom;transition:transform .25s ease}
     .nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:var(--primary)}
     .nav>li>a:hover::after,.nav>li>a.active::after,.nav>li:hover>a::after{transform:scaleX(1)}
-    .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:240px;background:var(--white);border-radius:var(--radius);box-shadow:0 8px 32px rgba(11,45,91,0.12),0 2px 8px rgba(0,0,0,0.06);border:1px solid var(--border);padding:6px 0;opacity:0;visibility:hidden;transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:1001;list-style:none}
+    .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:240px;background:var(--white);border-radius:var(--radius);box-shadow:0 8px 32px rgba(0,110,182,0.12),0 2px 8px rgba(0,0,0,0.06);border:1px solid var(--border);padding:6px 0;opacity:0;visibility:hidden;transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:1001;list-style:none}
     .nav-dropdown::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
     .nav>li:hover>.nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
     .nav-dropdown li{list-style:none}
     .nav-dropdown a{display:block;padding:10px 20px;font-size:13px;color:var(--text-muted);transition:color .15s ease,background .15s ease;white-space:normal;line-height:1.45}
-    .nav-dropdown a:hover{color:var(--primary);background:rgba(11,45,91,0.04)}
+    .nav-dropdown a:hover{color:var(--primary);background:rgba(0,110,182,0.04)}
     .lang-switch{display:flex;border:1px solid var(--border);border-radius:20px;overflow:hidden;flex-shrink:0;align-self:center}.lang-btn{padding:6px 14px;font-size:13px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;font-family:inherit;transition:all .2s}.lang-btn.active{background:var(--primary);color:var(--white)}
-    .page-hero{background:linear-gradient(135deg,var(--primary),var(--primary-light));padding:72px 24px 64px;color:var(--white);text-align:center}
-    .page-hero h1{font-size:40px;margin-bottom:12px}.page-hero p{font-size:16px;opacity:.88;max-width:640px;margin:0 auto}
-    .section{padding:72px 24px}.section-alt{background:var(--white)}
+    .page-hero{position:relative;background:var(--bg);overflow:hidden;line-height:0}
+    .page-hero-img{width:100%;height:min(44vw,460px);min-height:320px;display:block;object-fit:cover;object-position:center right}
+    .page-hero-overlay{position:absolute;inset:0;display:flex;align-items:center;line-height:1.7;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.55) 38%,rgba(255,255,255,.15) 58%,transparent 72%)}
+    .page-hero-inner{pointer-events:auto;max-width:1280px;width:100%;margin:0 auto;padding:0 24px}
+    .page-hero h1{font-size:46px;font-weight:700;line-height:1.15;color:var(--text);letter-spacing:.02em;margin:0}
+    .page-hero-title-line{width:56px;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-light));border-radius:2px;margin:16px 0 14px}
+    .page-hero-desc{font-size:16px;color:var(--text-muted);line-height:1.75;margin:0;max-width:640px}
+    .section{padding:72px 24px;background:var(--white)}.section-alt{background:var(--bg)}
     .section-inner{max-width:1280px;margin:0 auto}
     .section-header{margin-bottom:40px}
     .section-title{font-size:28px;font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.35}
     .section-desc{color:var(--text-muted);font-size:15px;max-width:860px;line-height:1.9}
     .product-lead{font-size:15px;color:var(--text-muted);margin-bottom:28px;line-height:1.85;max-width:900px}
     .content-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch;margin-bottom:36px}
-    .desc-box{background:var(--white);border-radius:14px;padding:32px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06)}
+    .desc-box{background:var(--white);border-radius:14px;padding:32px;box-shadow:var(--shadow);border:1px solid rgba(0,110,182,.06)}
     .section-alt .desc-box{background:var(--bg)}
     .desc-box h4{font-size:18px;color:var(--primary);margin-bottom:14px}
     .desc-box p{font-size:14px;color:var(--text-muted);margin-bottom:12px;line-height:1.85}
@@ -45,32 +50,33 @@
     .shape-placeholder{background:linear-gradient(135deg,#e8edf3,#d0d9e6);border-radius:14px;min-height:260px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:14px;text-align:center;line-height:1.8;border:2px dashed #c0c8d4;padding:24px}
     .industries-label{font-size:16px;font-weight:700;color:var(--primary);margin-bottom:16px}
     .industries{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
-    .industry-card{background:var(--white);border-radius:12px;padding:20px 16px;text-align:center;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06);transition:transform .2s}
+    .industry-card{background:var(--white);border-radius:12px;padding:20px 16px;text-align:center;box-shadow:var(--shadow);border:1px solid rgba(0,110,182,.06);transition:transform .2s}
     .section-alt .industry-card{background:var(--bg)}
     .industry-card:hover{transform:translateY(-3px)}
     .industry-icon{font-size:28px;margin-bottom:8px;line-height:1}
     .industry-card h5{font-size:14px;color:var(--primary);font-weight:600;line-height:1.4}
-    .bakes-board{background:var(--white);border-radius:16px;padding:40px 36px 32px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06);border-top:4px solid var(--primary);margin-top:8px}
+    .bakes-board{background:var(--white);border-radius:16px;padding:40px 36px 32px;box-shadow:var(--shadow);border:1px solid rgba(0,110,182,.06);border-top:4px solid var(--primary);margin-top:8px}
     .bakes-props{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:40px}
     .bakes-props--5{grid-template-columns:repeat(5,1fr)}
     .bakes-props--7{grid-template-columns:repeat(7,1fr)}
     .bakes-lines--single{grid-template-columns:1fr}
-    .bakes-prop{background:var(--bg);border-radius:12px;padding:18px 12px;text-align:center;border:1px solid rgba(11,45,91,.08)}
-    .bakes-prop-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:rgba(11,45,91,.08);display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1}
+    .bakes-prop{background:var(--bg);border-radius:12px;padding:18px 12px;text-align:center;border:1px solid rgba(0,110,182,.08)}
+    .bakes-prop-icon{width:40px;height:40px;margin:0 auto 10px;border-radius:10px;background:rgba(0,110,182,.08);display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1}
+    .bakes-prop-icon img{width:22px;height:22px;display:block;object-fit:contain}
     .bakes-prop strong{display:block;font-size:13px;color:var(--primary);line-height:1.45;font-weight:700}
     .bakes-lines{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px}
-    .bakes-line{background:var(--bg);border-radius:14px;padding:24px;border:1px solid rgba(11,45,91,.08)}
+    .bakes-line{background:var(--bg);border-radius:14px;padding:24px;border:1px solid rgba(0,110,182,.08)}
     .bakes-line h4{font-size:17px;color:var(--primary);margin-bottom:8px;line-height:1.4}
     .bakes-line-desc{font-size:13px;color:var(--text-muted);line-height:1.8;margin-bottom:18px}
     .bakes-flow{display:flex;align-items:stretch;gap:8px;overflow-x:auto;padding-bottom:4px}
-    .bakes-flow-step{flex:1;min-width:88px;background:var(--white);border-radius:10px;padding:12px 10px;text-align:center;border:1px solid rgba(11,45,91,.06)}
+    .bakes-flow-step{flex:1;min-width:88px;background:var(--white);border-radius:10px;padding:12px 10px;text-align:center;border:1px solid rgba(0,110,182,.06)}
     .bakes-flow-step strong{display:block;font-size:11px;color:var(--primary);margin-bottom:6px;line-height:1.45;font-weight:700}
     .bakes-flow-step span{font-size:11px;color:var(--text-muted);line-height:1.55}
     .bakes-flow-arrow{flex-shrink:0;display:flex;align-items:center;color:var(--accent);font-size:18px;opacity:.7}
-    .bakes-flow-outcome{margin-top:14px;padding:12px 14px;background:rgba(197,160,54,.1);border:1px solid rgba(197,160,54,.28);border-radius:10px;font-size:13px;color:var(--text);line-height:1.65}
+    .bakes-flow-outcome{margin-top:14px;padding:12px 14px;background:rgba(255,181,17,.1);border:1px solid rgba(255,181,17,.28);border-radius:10px;font-size:13px;color:var(--text);line-height:1.65}
     .bakes-flow-outcome strong{color:var(--primary)}
     .bakes-industries{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-    .bakes-industry{background:var(--bg);border-radius:12px;padding:20px 12px;text-align:center;border:1px solid rgba(11,45,91,.08);transition:transform .2s}
+    .bakes-industry{background:var(--bg);border-radius:12px;padding:20px 12px;text-align:center;border:1px solid rgba(0,110,182,.08);transition:transform .2s}
     .bakes-industry:hover{transform:translateY(-3px)}
     .bakes-industry-icon{font-size:28px;margin-bottom:8px;line-height:1}
     .bakes-industry h5{font-size:14px;color:var(--primary);font-weight:600;line-height:1.4}
@@ -79,85 +85,206 @@
     .section-alt .bakes-line{background:var(--white)}
     .section-alt .bakes-flow-step{background:var(--bg)}
     .section-alt .bakes-industry{background:var(--white)}
-    .eco-card{background:var(--white);border-radius:16px;padding:36px 40px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06);border-top:4px solid #40916C}
+    .eco-card{background:var(--white);border-radius:16px;padding:36px 40px;box-shadow:var(--shadow);border:1px solid rgba(0,110,182,.06);border-top:4px solid #40916C}
     .section-alt .eco-card{background:var(--bg)}
-    .biomass-board{background:var(--white);border-radius:16px;padding:40px 36px 32px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06);border-top:4px solid #40916C}
-    .section-alt .biomass-board{background:var(--bg)}
-    .biomass-board-title{font-size:24px;font-weight:700;color:var(--primary);text-align:center;margin-bottom:10px;line-height:1.4}
-    .biomass-board-subtitle{font-size:15px;color:var(--text-muted);text-align:center;margin-bottom:36px;line-height:1.85;max-width:720px;margin-left:auto;margin-right:auto}
-    .biomass-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-    .biomass-col{display:flex;flex-direction:column;align-items:center;gap:16px}
-    .biomass-inputs{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;background:var(--bg);border:1px solid rgba(11,45,91,.08);border-radius:12px;padding:16px}
-    .section-alt .biomass-inputs{background:var(--white)}
-    .biomass-input{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
-    .biomass-input-media{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#e8edf3,#d0d9e6);border-radius:8px;border:1px dashed #c0c8d4;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted);padding:8px;line-height:1.5}
-    .biomass-input-label{font-size:13px;font-weight:600;color:var(--primary);line-height:1.45}
-    .biomass-arrow{font-size:28px;color:#40916C;line-height:1;opacity:.75}
-    .biomass-output{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;text-align:center}
-    .biomass-output-media{width:100%;aspect-ratio:4/2;background:linear-gradient(135deg,#e8edf3,#d0d9e6);border-radius:12px;border:1px dashed #c0c8d4;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted);padding:8px;line-height:1.5}
-    .biomass-output-label{font-size:14px;font-weight:700;color:var(--primary);line-height:1.45}
-    .biomass-poster{margin-top:32px;text-align:center}
-    .biomass-poster img{max-width:100%;height:auto;border-radius:12px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.08)}
-    .biomass-poster-caption{margin-top:12px;font-size:13px;color:var(--text-muted)}
-    .other-card{background:var(--white);border-radius:16px;padding:36px 40px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06);border-top:4px solid #8B5E3C}
-    .section-alt .other-card{background:var(--bg)}
-    .other-block+.other-block{margin-top:48px;padding-top:48px;border-top:1px solid rgba(11,45,91,.1)}
-    .other-block-title{font-size:22px;font-weight:700;color:var(--primary);margin-bottom:8px;line-height:1.4}
-    .other-block-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px}
-    .other-product{background:var(--bg);border-radius:14px;padding:28px 32px;margin-bottom:24px;border:1px solid rgba(11,45,91,.06)}
-    .section-alt .other-product{background:var(--white)}
-    .other-product:last-of-type{margin-bottom:0}
-    .other-product h4{font-size:18px;color:var(--primary);margin-bottom:8px;line-height:1.4}
+    .bakes-eyebrow--eco{background:rgba(64,145,108,.12);color:#40916C}
+    #biomass .bakes-intro-inner{grid-template-columns:1fr}
+    #biomass .bakes-intro-head{grid-column:1/-1}
+    .biomass-process-block{grid-column:1/-1;margin-top:8px}
+    .biomass-card--board .bakes-process-header{line-height:1.5}
+    .biomass-card--board .bakes-process-body{padding:28px 32px 32px}
+    .biomass-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+    .biomass-col{display:flex;flex-direction:column;align-items:center;padding:0 20px}
+    .biomass-col:not(:last-child){border-right:1px solid rgba(0,110,182,.08)}
+    .biomass-col-title{font-size:15px;font-weight:700;color:var(--primary);text-align:center;line-height:1.45}
+    .biomass-card .bakes-process-body{align-items:center}
+    .biomass-inputs-row{display:flex;align-items:flex-start;gap:6px;width:100%;justify-content:center}
+    .biomass-inputs-row .bakes-process-step{flex:1;min-width:0;max-width:140px}
+    .biomass-inputs-row .bakes-process-arrow{align-self:flex-start;margin-top:clamp(1.8rem,7vw,5rem);font-size:16px;color:var(--primary-light);opacity:.8}
+    .biomass-arrow-down{text-align:center;font-size:24px;color:var(--primary-light);line-height:1;opacity:.75;margin:14px 0 12px}
+    .biomass-output-step{width:100%}
+    .biomass-output-step .bakes-process-step-media{aspect-ratio:16/10;border-radius:10px}
+    #other .bakes-intro-inner{grid-template-columns:1fr}
+    #other .bakes-intro-head{grid-column:1/-1}
+    #other .bakes-intro{padding-bottom:48px}
+    .other-process-block{grid-column:1/-1;margin-top:8px}
+    .other-process-block+.other-process-block{margin-top:0px;padding-top:0}
+    .other-product-card{margin-bottom:24px}
+    .other-product-card:last-child{margin-bottom:0}
+    .other-product-layout{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:28px;align-items:start}
+    .other-disaster-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;align-items:stretch}
+    .other-disaster-grid .other-product-card{margin-bottom:0;height:100%}
+    .other-emet-layout{display:flex;flex-direction:column;gap:16px}
+    .other-emet-main-row{display:grid;grid-template-columns:minmax(0,400px) 1fr;gap:20px;align-items:stretch}
+    .other-emet-main-row .other-product-visual{align-self:stretch}
+    .other-emet-main-row .other-checklist{align-self:center;grid-template-columns:1fr;gap:8px}
+    .other-emet-layout .other-product-visual img:first-child{width:100%;height:100%;height:240px;aspect-ratio:auto;object-fit:cover}
+    .other-emet-layout .other-product-logo{max-width:100px}
+    .other-emet-content .other-badge-row{margin:0}
+    .other-toilet-body{display:flex;flex-direction:column;gap:16px;height:100%}
+    .other-toilet-body .other-tagline{margin:0}
+    .other-note-row{display:flex;flex-wrap:wrap;gap:10px}
+    .other-note-pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--primary);font-weight:600;line-height:1.5;padding:8px 14px;background:rgba(0,110,182,.06);border:1px solid rgba(0,110,182,.1);border-radius:999px}
+    .other-note-pill::before{content:"✓";font-size:12px;font-weight:700;color:var(--accent)}
+    .other-toilet-body .other-features-img{margin-top:20px}
+    .other-product-visual img{width:100%;height:auto;border-radius:10px;display:block;border:1px solid rgba(0,110,182,.08)}
+    .other-product-visual .other-product-logo{max-width:150px;margin-top:16px;border:none;box-shadow:none;background:transparent}
     .other-tagline{font-size:14px;color:var(--text-muted);margin-bottom:18px;line-height:1.85}
-    .other-label{font-size:14px;color:var(--text-muted);margin-bottom:14px;line-height:1.85;font-weight:600}
-    .other-badges{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
-    .other-badge{background:var(--white);border-radius:10px;padding:14px 12px;text-align:center;font-size:12px;color:var(--primary);font-weight:600;line-height:1.55;border:1px solid rgba(197,160,54,.25);box-shadow:0 2px 8px rgba(11,45,91,.04)}
-    .section-alt .other-badge{background:var(--bg)}
-    .other-checklist{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}
-    .other-checklist li{font-size:14px;color:var(--text-muted);padding-left:22px;position:relative;line-height:1.7}
-    .other-checklist li::before{content:"✓";position:absolute;left:0;color:#40916C;font-weight:700}
-    .other-feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
-    .other-feature-item{background:var(--white);border-radius:10px;padding:16px 12px;text-align:center;border:1px solid rgba(11,45,91,.08)}
-    .section-alt .other-feature-item{background:var(--bg)}
-    .other-feature-item strong{display:block;font-size:14px;color:var(--primary);margin-bottom:6px;line-height:1.45}
-    .other-feature-item span{font-size:12px;color:var(--text-muted);line-height:1.55}
-    .other-product-name{font-size:26px;font-weight:700;color:var(--primary);margin:16px 0 10px;line-height:1.35}
-    .other-product-name em{font-style:normal;color:#C45A11}
+    .other-badge-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+    .other-badge-item{flex:1 1 calc(33.333% - 8px);min-width:88px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;margin:0}
+    .other-badge-item img{width:100%;height:auto;display:block;border-radius:8px}
+    .other-badge-item figcaption{font-size:11px;color:var(--text-muted);line-height:1.45;font-weight:500}
+    .other-checklist{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0}
+    .other-checklist li{font-size:13px;color:var(--text-muted);padding:10px 12px 10px 32px;position:relative;line-height:1.6;background:rgba(0,110,182,.04);border:1px solid rgba(0,110,182,.06);border-radius:8px}
+    .other-checklist li::before{content:"✓";position:absolute;left:12px;top:10px;color:var(--primary);font-weight:700}
+    .other-note{font-size:14px;color:var(--text);font-weight:600;margin:0 0 16px;line-height:1.7}
+    .other-note--spaced{margin-top:20px}
+    .other-features-img{width:100%;height:auto;border-radius:10px;display:block;border:1px solid rgba(0,110,182,.08)}
+    .other-product-name{font-size:22px;font-weight:700;color:var(--primary);margin:0 0 12px;line-height:1.35}
+    .other-product-name em{font-style:normal;color:var(--accent)}
     .other-value{font-size:15px;color:var(--text);margin-bottom:20px;line-height:1.85}
     .other-value strong{color:var(--primary)}
+    .other-label{font-size:14px;color:var(--text-muted);margin-bottom:14px;line-height:1.85;font-weight:600}
     .other-props{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-    .other-prop-tag{background:rgba(11,45,91,.06);color:var(--primary);font-size:13px;padding:6px 14px;border-radius:20px;line-height:1.4}
-    .other-uses{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .other-use-item{background:var(--bg);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(11,45,91,.06)}
-    .section-alt .other-use-item{background:var(--white)}
-    .other-use-item strong{display:block;font-size:15px;color:var(--primary);margin-bottom:6px}
-    .other-use-item span{font-size:13px;color:var(--text-muted);line-height:1.6}
+    .other-props-row{display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px;margin-top:16px}
+    .other-props-row .other-label{margin:0;flex-shrink:0;white-space:nowrap}
+    .other-props-row .other-props{margin:0;flex:1;min-width:0}
+    .other-prop-tag{background:rgba(0,110,182,.06);color:var(--primary);font-size:13px;padding:6px 14px;border-radius:20px;line-height:1.4}
+    .barias-compare{margin-bottom:0px}
+    .barias-flow{display:flex;align-items:flex-start;gap:0;max-width:100%;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+    .barias-flow .bakes-process-step{flex:0 0 auto;width:min(168px,22vw);min-width:110px}
+    .barias-flow .bakes-process-step--wide{width:min(250px,32vw);min-width:160px}
+    .barias-flow .bakes-process-step--wide .bakes-process-step-media{aspect-ratio:16/11;border-radius:10px}
+    .barias-flow .bakes-process-step--contain .bakes-process-step-media{background:var(--bg)}
+    .barias-flow .bakes-process-step--contain .bakes-process-step-media img{object-fit:contain}
+    .barias-flow-group{display:flex;align-items:flex-start;flex-shrink:0;padding:16px 12px;border:1px solid rgba(0,110,182,.1);border-radius:14px;background:var(--bg);box-shadow:0 4px 16px rgba(0,110,182,.06)}
+    .barias-flow-group--uses{margin-left:30px;flex-direction:column;align-items:stretch;padding:14px 12px 16px}
+    .barias-flow-group-title{font-size:14px;font-weight:700;color:var(--text);margin:0 0 5px;line-height:1.45;text-align:center}
+    .barias-flow-group-body{display:flex;align-items:flex-start}
+    .barias-flow-group .barias-flow-divider{margin:0 10px}
+    .barias-flow-group .barias-flow-arrow{margin-left:4px;margin-right:4px}
+    .barias-flow-divider{width:1px;align-self:stretch;min-height:100px;background:rgba(0,110,182,.08);margin:0 12px;flex-shrink:0}
+    .barias-flow-arrow{flex-shrink:0;display:flex;align-items:center;color:var(--primary-light);font-size:18px;font-weight:700;opacity:.8;align-self:flex-start;margin:clamp(1.8rem,7vw,5rem) 10px 0}
     .clients-intro{text-align:center;color:var(--text-muted);margin-bottom:40px;font-size:16px;line-height:1.9;max-width:860px;margin-left:auto;margin-right:auto}
     .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
-    .client-logo{background:var(--bg);border-radius:12px;height:100px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);font-size:13px;color:var(--text-muted);border:1px solid rgba(11,45,91,.06);transition:transform .2s,border-color .2s}
+    .client-logo{background:var(--bg);border-radius:12px;height:100px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);font-size:13px;color:var(--text-muted);border:1px solid rgba(0,110,182,.06);transition:transform .2s,border-color .2s}
     .section-alt .client-logo{background:var(--white)}
     .client-logo:hover{transform:scale(1.03);border-color:var(--accent)}
-    .clients-note{background:rgba(197,160,54,.1);border:1px solid rgba(197,160,54,.35);border-radius:12px;padding:20px;text-align:center;margin-top:32px;font-size:14px;color:var(--text-muted)}
-    .footer{background:linear-gradient(180deg,#0c2f5c 0%,#071E3D 100%);color:rgba(255,255,255,.78);padding:56px 24px 28px}
-    .footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(280px,340px) 1fr;gap:48px 56px;align-items:start}
-    .footer-brand-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}.footer-brand-head:hover{opacity:.92}
-    .footer-brand-logo{height:52px;width:auto;object-fit:contain;display:block;flex-shrink:0}
-    .footer-brand-cn{font-size:18px;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:4px}
-    .footer-brand-en{font-size:10px;color:rgba(255,255,255,.55);line-height:1.4;letter-spacing:.02em}
+    .clients-note{background:rgba(255,181,17,.1);border:1px solid rgba(255,181,17,.35);border-radius:12px;padding:20px;text-align:center;margin-top:32px;font-size:14px;color:var(--text-muted)}
+    .footer{background:linear-gradient(180deg,#006EB6 0%,#005e9b 100%);color:rgba(255,255,255,.78);padding:56px 24px 0}
+    .footer-inner{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+    .footer-brand-head{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+    .footer-brand-head:hover{opacity:.92}
+    .footer-contact .logo-text{color:var(--white)}
+    .footer-contact .logo-sub{color:rgba(255,255,255,.55)}
+    .footer-body{display:grid;grid-template-columns:minmax(300px,360px) 1fr;gap:40px 48px;align-items:start;padding-bottom:40px}
+    .footer-contact{display:flex;flex-direction:column;gap:0;min-width:0}
+    .footer-contact-col{min-width:0}
+    .footer-contact-col+.footer-contact-col{margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14)}
     .footer-brand-list{list-style:none;display:flex;flex-direction:column;gap:12px}
-    .footer-brand-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.65;color:rgba(255,255,255,.82)}
-    .footer-brand-icon{width:18px;flex-shrink:0;text-align:center;opacity:.85;margin-top:2px}
-    .footer-brand-list .footer-brand-divider{border-top:1px solid rgba(255,255,255,.12);padding-top:16px;margin-top:4px}
+    .footer-brand-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.65;color:rgba(255,255,255)}
+    .footer-brand-icon{width:18px;height:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center;opacity:.9;margin-top:2px;color:var(--accent-light)}
+    .footer-brand-icon svg{width:16px;height:16px;display:block;stroke-width:1.6}
     .footer-brand-list strong{color:var(--white);font-weight:600}
     .footer-brand-list a{color:var(--accent-light)}
-    .footer-nav{display:grid;grid-template-columns:repeat(6,1fr);gap:16px 20px}
-    .footer-col h4{color:var(--white);font-size:15px;font-weight:600;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.35);letter-spacing:.02em}
-    .footer-col ul{list-style:none}.footer-col ul li{margin-bottom:10px}.footer-col ul li:last-child{margin-bottom:0}
-    .footer-col ul a{font-size:12px;line-height:1.55;color:rgba(255,255,255,.72);transition:color .2s;display:inline-block}.footer-col ul a:hover{color:var(--accent-light)}
-    .footer-bottom{max-width:1280px;margin:36px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:12px;color:rgba(255,255,255,.45)}
+    .footer-brand-list a.footer-link-plain{color:rgba(255,255,255,.82);text-decoration:none}
+    .footer-brand-list a.footer-link-plain:hover{color:var(--white)}
+    .footer-office-name{display:block;color:var(--white);font-weight:600;margin-bottom:12px;font-size:13px}
+    .footer-nav{display:flex;flex-wrap:nowrap;align-items:flex-start;justify-content:space-between;gap:16px 20px;min-width:0;width:100%}
+    .footer-col{flex:0 0 auto;width:max-content;max-width:max-content}
+    .footer-col h4{color:var(--white);font-size:15px;font-weight:600;margin-bottom:5px;padding-bottom:3px;letter-spacing:.02em;white-space:nowrap;display:inline-block;border-bottom:2px solid var(--accent)}
+    .footer-col ul{list-style:none}
+    .footer-col ul li{margin-bottom:10px}
+    .footer-col ul li:last-child{margin-bottom:0}
+    .footer-col ul a{font-size:12px;line-height:1.55;color:rgba(255,255,255,.72);transition:color .2s;display:inline-block;white-space:nowrap}
+    .footer-col ul a:hover{color:var(--accent-light)}
+    .footer-bottom{padding:24px 0 28px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:12px;color:rgba(255,255,255,.45)}
     .prototype-badge{position:fixed;bottom:16px;right:16px;background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;z-index:9999}
-    @media(max-width:1100px){.footer-nav{grid-template-columns:repeat(3,1fr)}.biomass-columns{grid-template-columns:1fr}.other-badges{grid-template-columns:1fr}.other-feature-grid{grid-template-columns:repeat(2,1fr)}.bakes-props,.bakes-props--5,.bakes-props--7{grid-template-columns:repeat(3,1fr)}.bakes-lines{grid-template-columns:1fr}.bakes-industries{grid-template-columns:repeat(3,1fr)}}
-    @media(max-width:768px){.nav{display:none}.footer-inner{grid-template-columns:1fr;gap:36px}.footer-nav{grid-template-columns:repeat(2,1fr)}.content-grid,.biomass-columns,.other-checklist,.other-uses{grid-template-columns:1fr}.other-feature-grid{grid-template-columns:1fr}.logo-grid{grid-template-columns:repeat(2,1fr)}.section{padding:56px 20px}.page-hero h1{font-size:28px}.other-card{padding:28px 20px}.bakes-board{padding:28px 20px}.bakes-props,.bakes-props--5,.bakes-props--7{grid-template-columns:repeat(2,1fr)}.bakes-industries{grid-template-columns:repeat(2,1fr)}}
+    /* BAKES® 区块 */
+    .bakes-section{padding:0;background:var(--white);overflow:hidden}
+    .bakes-intro{padding:64px 24px 0;position:relative}
+    .bakes-intro::before{content:'';position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(0,110,182,.07) 0%,transparent 68%);top:-160px;right:-100px;pointer-events:none}
+    .bakes-intro-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,420px);grid-template-rows:auto auto;gap:24px 48px;align-items:start;position:relative;z-index:1}
+    .bakes-intro-head{grid-column:1;grid-row:1}
+    .bakes-eyebrow{display:inline-block;font-size:12px;font-weight:700;color:var(--primary);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;padding:4px 12px;background:rgba(0,110,182,.08);border-radius:20px}
+    .bakes-intro-title{font-size:clamp(28px,3.2vw,36px);font-weight:700;color:var(--primary);line-height:1.35;margin-bottom:8px}
+    .bakes-intro-sub{font-size:16px;color:var(--primary-light);font-weight:600;margin-bottom:16px;line-height:1.5}
+    .bakes-intro-desc{font-size:14px;color:var(--text-muted);line-height:1.95;}
+    .bakes-intro-visual{grid-column:2;grid-row:1/3;align-self:start;display:flex;align-items:flex-start;justify-content:center;position:relative;z-index:1;padding-bottom:24px}
+    .bakes-radial{width:100%;max-width:400px;aspect-ratio:1;position:relative;margin-top:-30px;filter:drop-shadow(0 20px 48px rgba(0,110,182,.14));border: 1.5px solid rgba(0,110,182,.09);border-radius: 500px}
+    .bakes-radial-ring{position:absolute;inset:2%;border-radius:50%;border:1.5px solid rgba(0,110,182,.02);background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.95) 0%,rgba(232,243,252,.85) 55%,rgba(210,230,248,.5) 100%);pointer-events:none;z-index:0}
+    .bakes-radial-ring-inner{position:absolute;inset:20%;border-radius:50%;border:1px solid rgba(0,110,182,.1);background:transparent;pointer-events:none;z-index:0}
+    .bakes-radial-core{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:24%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#0088D4 0%,#006EB6 55%,#004F8A 100%);box-shadow:0 8px 28px rgba(0,79,138,.32);display:flex;align-items:center;justify-content:center;z-index:3}
+    .bakes-radial-core span{font-size:clamp(11px,2.8vw,15px);font-weight:700;color:var(--white);letter-spacing:.06em;line-height:1}
+    .bakes-radial-node{position:absolute;width:36%;z-index:2}
+    .bakes-radial-node--top{left:50%;top:0;transform:translateX(-50%)}
+    .bakes-radial-node--tr{right:-1%;top:22%}
+    .bakes-radial-node--br{right:9%;bottom:4%}
+    .bakes-radial-node--bl{left:9%;bottom:4%}
+    .bakes-radial-node--tl{left:-1%;top:22%}
+    .bakes-radial-node-inner{background:var(--white);border-radius:50%;aspect-ratio:1;padding:11% 9% 9%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 6px 24px rgba(0,110,182,.1),0 1px 4px rgba(0,0,0,.04);border:1px solid rgba(0,110,182,.06)}
+    .bakes-radial-icon{width:28%;aspect-ratio:1;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--primary);margin-bottom:6%}
+    .bakes-radial-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    .bakes-radial-node h4{font-size:clamp(9px,2.2vw,11px);font-weight:700;color:var(--primary);line-height:1.3;margin-bottom:4%}
+    .bakes-radial-node p{font-size:clamp(7px,1.6vw,9px);color:var(--text-muted);line-height:1.55;margin:0}
+    .bakes-radial-footer{position:absolute;right:8%;bottom:6%;font-size:clamp(7px,1.5vw,9px);font-weight:700;color:rgba(0,110,182,.45);letter-spacing:.12em;text-transform:uppercase;line-height:1.2;z-index:1;pointer-events:none}
+    .bakes-perf-grid{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));background:#ffffff;border:1px solid rgba(0,110,182,.08);border-radius:12px;overflow:hidden;margin-top:20px}
+    .bakes-perf-grid--5{grid-template-columns:repeat(5,minmax(0,1fr))}
+    .bakes-perf-grid--7{grid-template-columns:repeat(7,minmax(0,1fr))}
+    .bakes-section.section-alt{background:var(--bg)}
+    .bakes-section.section-alt .bakes-perf-grid{background:rgba(255,255,255,.85)}
+    .bakes-process-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:0;align-items:stretch}
+    .bakes-process-grid--double{grid-template-columns:1fr 1fr}
+    .bakes-process-grid--single{grid-template-columns:1fr}
+    .bakes-process-step-icon--placeholder{display:flex;align-items:center;justify-content:center;height:72px;background:rgba(0,110,182,.06);font-size:22px;border-radius:10px 10px 0 0}
+    .bakes-app-grid--6{grid-template-columns:repeat(6,1fr)}
+    .bakes-app-grid--7{grid-template-columns:repeat(7,1fr)}
+    .bakes-app-emoji{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e8edf3,#d0d9e6);font-size:32px;border-radius:50%;width:100%;height:100%}
+    .bakes-process-card .bakes-process-desc{margin:0 0 20px}
+    .bakes-perf-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:18px 10px;color:var(--primary);position:relative;text-align:center;transition:background .2s}
+    .bakes-perf-item:not(:last-child)::after{content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:48px;background:rgba(0,110,182,.1)}
+    .bakes-perf-item:hover{background:rgba(255,255,255,.55)}
+    .bakes-perf-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--primary);line-height:1}
+    .bakes-perf-icon svg{width:32px;height:32px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .bakes-perf-icon img{width:32px;height:32px;display:block;object-fit:contain}
+    #sbear .bakes-perf-item:first-child .bakes-perf-icon img{width:24px;height:24px}
+    .bakes-perf-item:nth-child(n+3) .bakes-perf-icon svg,.bakes-perf-item:nth-child(n+3) .bakes-perf-icon img{width:24px;height:24px}
+    .bakes-perf-item strong{font-size:12px;color:var(--text-muted);font-weight:500;line-height:1.35;display:block;word-break:keep-all;letter-spacing:.02em}
+    .bakes-process-block{grid-column:1/-1;grid-row:2;margin-bottom:48px;position:relative;z-index:2;top:30px}
+    .bakes-process-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+    .bakes-process-head .bakes-section-title{margin:0}
+    .bakes-process-en{font-size:11px;font-weight:700;color:var(--primary-light);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+    .bakes-body{max-width:1280px;margin:0 auto;padding:0 0 48px}
+    .bakes-section-title{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:700;color:var(--text);line-height:1.35;margin:0 0 30px}
+    .bakes-section-title::before{content:'';width:4px;height:22px;background:linear-gradient(180deg,var(--primary),var(--primary-light));border-radius:2px;flex-shrink:0}
+    .bakes-process-card{position:relative;background:var(--white);border-radius:16px;border:1px solid rgba(0,110,182,.08);box-shadow:0 8px 32px rgba(0,110,182,.08);display:flex;flex-direction:column;height:100%;overflow:hidden}
+    .bakes-process-header{padding:14px 24px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:var(--white);font-size:16px;font-weight:700;line-height:1.35}
+    .bakes-process-body{padding:20px 24px 18px;flex:1;display:flex;flex-direction:column}
+    .bakes-process-desc{font-size:14px;color:var(--text-muted);line-height:1.85;margin:0 0 20px}
+    .bakes-process-flow{display:flex;align-items:flex-start;gap:6px;margin:0}
+    .bakes-process-step{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .bakes-process-step-media{width:100%;aspect-ratio:1;background:var(--bg);border-radius:10px;border:1px solid rgba(0,110,182,.08);overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .bakes-process-step-media img{width:100%;height:100%;object-fit:cover;display:block;background-color:#ffffff}
+    .bakes-process-step-label{font-size:11px;color:var(--text);font-weight:600;line-height:1.45;text-align:center;margin:0}
+    .bakes-process-arrow{flex-shrink:0;display:flex;align-items:center;color:var(--primary-light);font-size:18px;font-weight:700;opacity:.7;align-self:flex-start;margin-top:clamp(1.8rem,7vw,5rem)}
+    .bakes-process-footer{display:flex;align-items:center;gap:12px;padding:14px 24px;margin-top:auto;background-color:#eef3fa;border-top:1px solid rgba(0,110,182,.06)}
+    .bakes-process-badge{display:inline-block;padding:4px 12px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:var(--white);font-size:12px;font-weight:700;border-radius:20px;white-space:nowrap;flex-shrink:0}
+    .bakes-process-app-text{font-size:13px;color:var(--text);line-height:1.6;font-weight:500}
+    .bakes-app-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:10px}
+    .bakes-app-card{background:transparent;border:none;border-radius:0;padding:0;overflow:visible;text-align:center;transition:transform .2s}
+    .bakes-app-card:hover{transform:translateY(-2px)}
+    .bakes-app-card:hover .bakes-app-media{box-shadow:0 6px 20px rgba(0,110,182,.15)}
+    .bakes-app-media{position:relative;width:100%;aspect-ratio:1/1;border-radius:50%;overflow:hidden;margin:0 auto;box-shadow:0 4px 12px rgba(0,110,182,.1);transition:box-shadow .2s}
+    .bakes-app-photo{width:100%;height:100%;object-fit:cover;display:block;border:none;box-shadow:none;border-radius:50%}
+    .bakes-app-caption{position:absolute;bottom:0;left:0;right:0;z-index:1;padding:0 8px 10px;text-align:center}
+    .bakes-app-caption::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:40px;background:rgba(0,0,0,.65);z-index:-1;pointer-events:none}
+    .bakes-app-card h5{font-size:12px;color:var(--white);font-weight:400;line-height:1.45;margin:0;position:relative;text-shadow:0 1px 4px rgba(0,0,0,.25);padding-top:18px}
+    .bakes-app-card--proposal .bakes-app-media{outline-offset:2px;box-shadow:none}
+    .bakes-app-card--proposal .bakes-app-caption::before{background:rgba(0,0,0,.68)}
+    .bakes-app-card--proposal h5{color:var(--white)}
+    .bakes-app-card--proposal .bakes-app-tag{font-size:10px;color:var(--accent-light);font-weight:700;letter-spacing:.04em;display:block;margin-bottom:2px;position:relative;padding-top:10px}
+    @media(max-width:1100px){.footer-body{grid-template-columns:minmax(260px,320px) 1fr;gap:28px 32px}.footer-nav{flex-wrap:wrap;justify-content:flex-start;gap:24px 28px}.biomass-columns{grid-template-columns:1fr}.biomass-col:not(:last-child){border-right:none;border-bottom:1px solid rgba(0,110,182,.08);padding-bottom:28px;margin-bottom:28px}.other-disaster-grid,.other-emet-main-row{grid-template-columns:1fr}.other-badge-item{flex:1 1 calc(50% - 6px)}.other-product-layout{grid-template-columns:1fr}.bakes-props,.bakes-props--5,.bakes-props--7{grid-template-columns:repeat(3,1fr)}.bakes-lines{grid-template-columns:1fr}.bakes-industries{grid-template-columns:repeat(3,1fr)}.bakes-intro-inner{grid-template-columns:1fr;grid-template-rows:auto auto auto auto;gap:24px}.bakes-intro-visual{grid-column:1;grid-row:2;max-width:400px;margin:0 auto;padding-bottom:0}.bakes-radial{margin-top:0}.bakes-perf-grid{grid-column:1;grid-row:3;grid-template-columns:repeat(3,1fr)}.bakes-perf-grid--5{grid-template-columns:repeat(3,1fr)}.bakes-perf-grid--7{grid-template-columns:repeat(4,1fr)}.bakes-perf-item:nth-child(3n)::after{display:none}.bakes-perf-item:nth-child(3n+1):not(:nth-child(3n))::after,.bakes-perf-item:nth-child(3n+2)::after{display:block}.bakes-process-block{grid-column:1;grid-row:4;margin-top:0;top:0}.bakes-process-grid{grid-template-columns:1fr}.bakes-app-grid{grid-template-columns:repeat(10,minmax(0,1fr));overflow-x:auto}.bakes-app-grid--6{grid-template-columns:repeat(6,minmax(0,1fr));overflow-x:auto}.bakes-app-grid--7{grid-template-columns:repeat(7,minmax(0,1fr));overflow-x:auto}}
+    @media(max-width:768px){.nav{display:none}.footer-inner{gap:0}.footer-body{grid-template-columns:1fr;gap:32px;padding-bottom:32px}.footer-nav{flex-wrap:wrap;justify-content:flex-start;gap:24px 16px}.content-grid,.other-checklist{grid-template-columns:1fr}.logo-grid{grid-template-columns:repeat(2,1fr)}.section{padding:56px 20px}.page-hero-img{min-height:280px;height:min(55vw,380px)}.page-hero-overlay{align-items:flex-end;background:linear-gradient(180deg,transparent 30%,rgba(255,255,255,.92) 100%)}.page-hero-inner{padding:0 20px 28px}.page-hero h1{font-size:30px}.page-hero-desc{font-size:14px;max-width:none}.bakes-board{padding:28px 20px}.bakes-props,.bakes-props--5,.bakes-props--7{grid-template-columns:repeat(2,1fr)}.bakes-industries{grid-template-columns:repeat(2,1fr)}.bakes-intro{padding:40px 20px 36px}.bakes-body{padding:40px 20px 56px}.bakes-perf-grid,.bakes-perf-grid--5,.bakes-perf-grid--7{grid-template-columns:repeat(2,1fr)}.bakes-perf-item::after{display:none!important}.bakes-perf-item strong{font-size:11px;white-space:normal}.bakes-app-grid{grid-template-columns:repeat(10,minmax(64px,1fr));gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}.bakes-app-grid--6{grid-template-columns:repeat(6,minmax(64px,1fr));gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}.bakes-app-grid--7{grid-template-columns:repeat(7,minmax(64px,1fr));gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}.bakes-section-title{font-size:20px;margin-bottom:20px}.bakes-process-head{flex-direction:column;align-items:flex-start;gap:8px}.bakes-process-en{font-size:10px}.bakes-process-body{padding:16px 16px 14px}.bakes-process-header{padding:12px 16px;font-size:15px}.bakes-process-flow{align-items:flex-start;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}.bakes-process-step{min-width:72px}.bakes-process-step-label{font-size:10px}.bakes-process-arrow{margin-top:1.6rem;font-size:14px}.bakes-process-footer{flex-wrap:wrap;padding:12px 16px}
   </style>
 </head>
 <body>
@@ -233,359 +360,688 @@
   </header>
 
   <section class="page-hero">
-    <h1>产品核心</h1>
-    <p>高性能改性树脂材料 — 滑动 · 传动 · 制动 · 密封</p>
+    <img class="page-hero-img" src="img/banner/产品核心.png" alt="产品核心">
+    <div class="page-hero-overlay">
+      <div class="page-hero-inner">
+        <h1>产品核心</h1>
+        <div class="page-hero-title-line"></div>
+        <p class="page-hero-desc">高性能改性树脂材料 — 滑动 · 传动 · 制动 · 密封</p>
+      </div>
+    </div>
   </section>
 
   <!-- 热固性树脂（BAKES®）性能 -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-header">
-        <h2 class="section-title" id="bakes">热固性树脂（BAKES®）性能</h2>
-      </div>
-      <div class="content-grid">
-        <div class="desc-box">
-          <p>基于本公司独特的材料设计技术，热硬化树脂酚醛树脂以及环氧树脂为基础，将有机・无机纤维等基材及填充材进行混合，发挥优越的滑动特性、耐热性、力学特性的功能性积层材料。</p>
+  <section class="bakes-section" id="bakes">
+    <div class="bakes-intro">
+      <div class="bakes-intro-inner">
+        <div class="bakes-intro-head">
+          <span class="bakes-eyebrow">BAKES®</span>
+          <h2 class="bakes-intro-title">热固性树脂（BAKES®）性能</h2>
+          <p class="bakes-intro-desc">基于本公司独特的材料设计技术，热硬化树脂酚醛树脂以及环氧树脂为基础，将有机・无机纤维等基材及填充材进行混合，发挥优越的滑动特性、耐热性、力学特性的功能性积层材料。</p>
+          <div class="bakes-perf-grid" role="list" aria-label="核心性能">
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <img src="img/图标/制动.svg" alt="">
+              </span>
+              <strong>高制动性</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9c2 2 4 2 6 0s4-2 6 0"/><path d="M4 15c2 2 4 2 6 0s4-2 6 0"/></svg>
+              </span>
+              <strong>低摩擦·低磨耗</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <img src="img/图标/温度计.svg" alt="">
+              </span>
+              <strong>耐热性</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <img src="img/图标/化学.svg" alt="">
+              </span>
+              <strong>耐药品性</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <img src="img/图标/标尺.svg" alt="">
+              </span>
+              <strong>尺寸稳定性</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+              </span>
+              <strong>高耐久·高强度</strong>
+            </div>
+          </div>        
         </div>
-        <div class="shape-placeholder">产品形状示意图<br>（文字替换为中文）</div>
-      </div>
-      <div class="bakes-board">
-        <p class="industries-label">核心性能</p>
-        <div class="bakes-props">
-          <div class="bakes-prop"><div class="bakes-prop-icon">↔</div><strong>高制动性</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">◎</div><strong>低摩擦 · 低磨耗</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">🌡</div><strong>耐热性</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">⚗</div><strong>耐药品性</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">📐</div><strong>尺寸稳定性</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">⬇</div><strong>高耐久 · 高强度</strong></div>
+        <div class="bakes-intro-visual">
+          <div class="bakes-radial" role="img" aria-label="BAKES® 五大能力：定制、高性能树脂、功能设计、分析评价、生产技术">
+            <div class="bakes-radial-ring" aria-hidden="true"></div>
+            <div class="bakes-radial-ring-inner" aria-hidden="true"></div>
+            <div class="bakes-radial-core"><span>BAK</span></div>
+            <article class="bakes-radial-node bakes-radial-node--top">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l8 4.5v7L12 18l-8-4.5v-7L12 2z"/><path d="M12 9.5l5.5-3M12 9.5v8.5M12 9.5L6.5 6.5"/></svg></span>
+                <h4>定制</h4>
+                <p>依据客户的要求特性，可以提供单品原始商品。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--tr">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v5c0 4.5-3.5 8-8 9-4.5-1-8-4.5-8-9v-5L12 3z"/><path d="M9.5 12l2 2 4.5-4.5"/></svg></span>
+                <h4>高性能树脂</h4>
+                <p>适用多种用途的材料开发技术和新的功能添加，提供满足客户的技术力。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--br">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v4M12 16v4M4 12h4M16 12h4"/><path d="M7 7l2.5 2.5M14.5 14.5L17 17M17 7l-2.5 2.5M9.5 14.5L7 17"/></svg></span>
+                <h4>功能设计</h4>
+                <p>利用CAD材料力学等的同时，运用丰富的试验及经验，探索最佳的形状。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--bl">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15 15l5.5 5.5"/></svg></span>
+                <h4>分析评价</h4>
+                <p>利用各种各样的分析仪器，提供恰当的解决方案。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--tl">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+                <h4>生产技术</h4>
+                <p>从原料到完成品的一条龙生产，提供良好的品质。</p>
+              </div>
+            </article>
+          </div>
         </div>
 
-        <p class="industries-label">产品工艺与应用案例</p>
-        <div class="bakes-lines">
-          <div class="bakes-line">
-            <h4>BAKES®</h4>
-            <p class="bakes-line-desc">以热硬化性树脂酚醛树脂以及环氧树脂为基础，将有机·无机纤维等基材和填充材料进行混合，发挥优越的滑动特性、耐热性、力学特性的功能性积层材料。</p>
-            <div class="bakes-flow">
-              <div class="bakes-flow-step"><strong>酚醛树脂</strong><span>热硬化性树脂</span></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>添加剂</strong><span>功能配方</span></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>布料含浸</strong><span>干燥制附胶片</span></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>积层压缩成形</strong><span>精加工</span></div>
-            </div>
-            <div class="bakes-flow-outcome"><strong>终端应用：</strong>炼钢滚轧用轧辊轴承</div>
+        <div class="bakes-process-block">
+          <div class="bakes-process-head">
+            <h3 class="bakes-section-title">产品工艺与应用案例</h3>
           </div>
-          <div class="bakes-line">
-            <h4>BAKES® for Brake Lining</h4>
-            <p class="bakes-line-desc">以热硬化性树脂酚醛树脂为基础，开发了兼顾摩擦系数的稳定性和耐磨损性，并且也不让对方金属磨损的摩擦材料。</p>
-            <div class="bakes-flow">
-              <div class="bakes-flow-step"><strong>酚醛树脂</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>强化纤维</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>混合树脂·添加剂</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>压缩成形</strong><span>精加工</span></div>
-            </div>
-            <div class="bakes-flow-outcome"><strong>终端应用：</strong>机械压力机用的离合器 / 制动器</div>
+          <div class="bakes-process-grid bakes-process-grid--double">
+            <article class="bakes-process-card">
+              <div class="bakes-process-header">BAKES®</div>
+              <div class="bakes-process-body">
+                <p class="bakes-process-desc">以热硬化性树脂酚醛树脂以及环氧树脂为基础，将有机・无机纤维等基材和填充材进行混合，发挥优越的滑动特性、耐热性、力学特性的功能性积层材料。</p>
+                <div class="bakes-process-flow">
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/bakes/Group 14.png" alt="酚醛树脂 + 添加剂"></div>
+                    <p class="bakes-process-step-label">酚醛树脂 + 添加剂</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/bakes/image1.png" alt="在布料上含浸树脂 + 添加剂"></div>
+                    <p class="bakes-process-step-label">在布料上含浸树脂 + 添加剂</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/bakes/app-roll-bearing.png" alt="使其干燥制作树脂片"></div>
+                    <p class="bakes-process-step-label">使其干燥制作树脂片</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/bakes/process-laminate-mold.png" alt="积层压缩成形 · 精加工"></div>
+                    <p class="bakes-process-step-label">积层压缩成形 · 精加工</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bakes-process-footer">
+                <span class="bakes-process-badge">终端应用</span>
+                <span class="bakes-process-app-text">炼钢滚轧用的轧辊轴承</span>
+              </div>
+            </article>
+            <article class="bakes-process-card">
+              <div class="bakes-process-header">BAKES® for Brake Lining</div>
+              <div class="bakes-process-body">
+                <p class="bakes-process-desc">以热硬化性树脂酚醛树脂为基础，开发了兼顾摩擦系数的稳定性和耐磨损性，并且也不让对方金属磨损的摩擦材料。</p>
+                <div class="bakes-process-flow">
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/bakes/Group 21.png" alt="酚醛树脂 + 强化纤维 + 添加剂"></div>
+                    <p class="bakes-process-step-label">酚醛树脂 + 强化纤维 + 添加剂</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/bakes/image 15.png" alt="将树脂 + 添加剂进行混合"></div>
+                    <p class="bakes-process-step-label">将树脂 + 添加剂进行混合</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/bakes/Group 22.png" alt="压缩成形 · 精加工"></div>
+                    <p class="bakes-process-step-label">压缩成形 · 精加工</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/bakes/image 18.png" alt="离合器 / 制动器"></div>
+                    <p class="bakes-process-step-label">离合器 / 制动器</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bakes-process-footer">
+                <span class="bakes-process-badge">终端应用</span>
+                <span class="bakes-process-app-text">机械压力机用的离合器 / 制动器</span>
+              </div>
+            </article>
           </div>
         </div>
+      </div>
+    </div>
 
-        <p class="industries-label">行业应用领域</p>
-        <div class="bakes-industries">
-          <div class="bakes-industry"><div class="bakes-industry-icon">⚙</div><h5>压力机 · 起重机制动器</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🛗</div><h5>电梯</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🏗</div><h5>土木建筑机械</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🚢</div><h5>船舶</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🚄</div><h5>铁路车辆</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">📄</div><h5>造纸</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🔥</div><h5>铁 / 铝滚轧</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🏺</div><h5>陶瓷</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🍽</div><h5>食品</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">💊</div><h5>药品处理生产线</h5></div>
-        </div>
+    <div class="bakes-body">
+      <h3 class="bakes-section-title">行业应用领域</h3>
+      <div class="bakes-app-grid">
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/bakes/icon/造纸.png" alt="造纸"><div class="bakes-app-caption"><h5>造纸</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/bakes/icon/铁铝滚轧.png" alt="铁铝滚轧"><div class="bakes-app-caption"><h5>铁/铝滚轧</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/bakes/icon/陶瓷.png" alt="陶瓷"><div class="bakes-app-caption"><h5>陶瓷</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/bakes/icon/食品.png" alt="食品"><div class="bakes-app-caption"><h5>食品</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/bakes/icon/药品处理生产线.png" alt="药品处理生产线"><div class="bakes-app-caption"><h5>药品处理生产线</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/bakes/icon/压力机起重机制动器.png" alt="压力机起重机制动器"><div class="bakes-app-caption"><h5>压力机、起重机<br>制动器</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/bakes/icon/电梯.png" alt="电梯"><div class="bakes-app-caption"><h5>电梯</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/bakes/icon/土木建筑机械.png" alt="土木建筑机械"><div class="bakes-app-caption"><h5>土木建筑机械</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/bakes/icon/船舶.png" alt="船舶"><div class="bakes-app-caption"><h5>船舶</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/bakes/icon/铁路车辆.png" alt="铁路车辆"><div class="bakes-app-caption"><h5>铁路车辆</h5></div></div></div>
       </div>
     </div>
   </section>
 
   <!-- 热固性树脂（ALP®）性能 -->
-  <section class="section section-alt">
-    <div class="section-inner">
-      <div class="section-header">
-        <h2 class="section-title" id="alp">热固性树脂（ALP®）性能</h2>
-      </div>
-      <div class="content-grid">
-        <div class="desc-box">
-          <p>以拥有低摩擦特性、耐热性、耐药品性、非粘着性等多种特性的聚四氟乙烯（PTFE）为基础，运用独自的高性能树脂材料技术以及材料设计技术提高耐磨耗性、压缩特性等的材料。</p>
-          <p>通过无润滑发挥着优越的滑动特性，适合所有的轴承、衬垫、密封件类。另，聚酰亚胺(PI)以及超高分子量聚乙烯(UHMWPE)等工程塑料为基础的材料也列入到阵营中。拥有丰富经验的人员，将根据产品用途从适合的材料及形状的选定、到评价分析技术提供最佳方案。从原料的混合、成形到机械加工的一条龙生产，从大量生产到多品种少量生产，可以广泛对应定制的需求。</p>
-        </div>
-        <div class="shape-placeholder">产品形状示意图<br>（文字替换为中文）</div>
-      </div>
-      <div class="bakes-board">
-        <p class="industries-label">核心性能</p>
-        <div class="bakes-props bakes-props--5">
-          <div class="bakes-prop"><div class="bakes-prop-icon">◻</div><strong>非粘着性</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">◎</div><strong>低摩擦 · 低磨损</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">⚗</div><strong>耐药品性</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">💧</div><strong>无润滑油</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">⬇</div><strong>高面压 · 高负荷</strong></div>
-        </div>
-
-        <p class="industries-label">产品工艺</p>
-        <div class="bakes-lines bakes-lines--single">
-          <div class="bakes-line">
-            <h4>STARLITE ALP®</h4>
-            <p class="bakes-line-desc">以具备低摩擦特性、耐热性、耐药品性、非粘着性等多种特性的树脂粉末为基础，提高其耐磨损性、压缩特性的材料。</p>
-            <div class="bakes-flow">
-              <div class="bakes-flow-step"><strong>树脂粉末</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>滑动添加剂</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>添加剂</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>材料混合</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>模具压缩成形</strong></div>
+  <section class="bakes-section section-alt" id="alp">
+    <div class="bakes-intro">
+      <div class="bakes-intro-inner">
+        <div class="bakes-intro-head">
+          <span class="bakes-eyebrow">ALP®</span>
+          <h2 class="bakes-intro-title">热固性树脂（ALP®）性能</h2>
+          <p class="bakes-intro-desc">以具备低摩擦特性・耐热性・耐药品性・非粘着性 等多 特性的树脂粉末为基础，提高其耐磨损性、 压缩特性的材料。
+          </p>
+          <div class="bakes-perf-grid bakes-perf-grid--5" role="list" aria-label="核心性能">
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12h8"/></svg>
+              </span>
+              <strong>非粘着性</strong>
             </div>
-            <div class="bakes-flow-outcome"><strong>终端应用：</strong>压缩机用密封圈</div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9c2 2 4 2 6 0s4-2 6 0"/><path d="M4 15c2 2 4 2 6 0s4-2 6 0"/></svg>
+              </span>
+              <strong>低摩擦·低磨损</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <img src="img/图标/化学.svg" alt="">
+              </span>
+              <strong>耐药品性</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              </span>
+              <strong>无润滑油</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+              </span>
+              <strong>高负荷高表面压力</strong>
+            </div>
+          </div>
+        </div>
+        <div class="bakes-intro-visual">
+          <div class="bakes-radial" role="img" aria-label="ALP® 五大能力：定制、高性能树脂、功能设计、分析评价、生产技术">
+            <div class="bakes-radial-ring" aria-hidden="true"></div>
+            <div class="bakes-radial-ring-inner" aria-hidden="true"></div>
+            <div class="bakes-radial-core"><span>ALP®</span></div>
+            <article class="bakes-radial-node bakes-radial-node--top">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l8 4.5v7L12 18l-8-4.5v-7L12 2z"/><path d="M12 9.5l5.5-3M12 9.5v8.5M12 9.5L6.5 6.5"/></svg></span>
+                <h4>定制</h4>
+                <p>依据客户的要求特性，可以提供单品原始商品。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--tr">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v5c0 4.5-3.5 8-8 9-4.5-1-8-4.5-8-9v-5L12 3z"/><path d="M9.5 12l2 2 4.5-4.5"/></svg></span>
+                <h4>高性能树脂</h4>
+                <p>适用多种用途的材料开发技术和新的功能添加，提供满足客户的技术力。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--br">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v4M12 16v4M4 12h4M16 12h4"/><path d="M7 7l2.5 2.5M14.5 14.5L17 17M17 7l-2.5 2.5M9.5 14.5L7 17"/></svg></span>
+                <h4>功能设计</h4>
+                <p>利用CAD材料力学等的同时，运用丰富的试验及经验，探索最佳的形状。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--bl">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15 15l5.5 5.5"/></svg></span>
+                <h4>分析评价</h4>
+                <p>利用各种各样的分析仪器，提供恰当的解决方案。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--tl">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+                <h4>生产技术</h4>
+                <p>从原料到完成品的一条龙生产，提供良好的品质。</p>
+              </div>
+            </article>
           </div>
         </div>
 
-        <p class="industries-label">行业应用领域</p>
-        <div class="bakes-industries">
-          <div class="bakes-industry"><div class="bakes-industry-icon">🍽</div><h5>制作面包用的滚筒</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🚗</div><h5>ALPCOMBI</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🔩</div><h5>活塞环</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🚢</div><h5>ALP®密封圈</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🏗</div><h5>载波盘</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">⭕</div>隔震材料</h5></div>
+        <div class="bakes-process-block">
+          <div class="bakes-process-head">
+            <h3 class="bakes-section-title">产品工艺与应用案例</h3>
+          </div>
+          <div class="bakes-process-grid bakes-process-grid--single">
+            <article class="bakes-process-card">
+              <div class="bakes-process-header">STARLITE ALP®</div>
+              <div class="bakes-process-body">
+                <p class="bakes-process-desc">以具备低摩擦特性、耐热性、耐药品性、非粘着性等多种特性的树脂粉末为基础，提高其耐磨损性、压缩特性的材料。</p>
+                <div class="bakes-process-flow">
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/alp/process/resin-powder.png" alt="树脂粉末"></div>
+                    <p class="bakes-process-step-label">树脂粉末</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true"> + </div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/alp/process/图片1.png" alt="滑动添加剂"></div>
+                    <p class="bakes-process-step-label">滑动添加剂</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true"> + </div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/alp/process/additive.jpg" alt="添加剂"></div>
+                    <p class="bakes-process-step-label">添加剂</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/alp/process/material-mixing.png" alt="材料混合"></div>
+                    <p class="bakes-process-step-label">材料混合</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/alp/process/compression-mold.png" alt="模具压缩成形"></div>
+                    <p class="bakes-process-step-label">模具压缩成形</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/alp/process/app-compressor-seal.png" alt="模具压缩成形"></div>
+                    <p class="bakes-process-step-label">压缩机用密封圈</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bakes-process-footer">
+                <span class="bakes-process-badge">终端应用</span>
+                <span class="bakes-process-app-text">压缩机用密封圈</span>
+              </div>
+            </article>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <div class="bakes-body">
+      <h3 class="bakes-section-title">行业应用领域</h3>
+      <div class="bakes-app-grid bakes-app-grid--6">
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/alp/应用行业/制作面包用的滚筒.png" alt="制作面包用的滚筒"><div class="bakes-app-caption"><h5>制作面包用的滚筒</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/alp/应用行业/ALPCOMBI®.png" alt="ALPCOMBI®"><div class="bakes-app-caption"><h5>ALPCOMBI®</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/alp/应用行业/活塞环.png" alt="活塞环"><div class="bakes-app-caption"><h5>活塞环</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/alp/应用行业/ALP®密封圈 .png" alt="ALP®密封圈"><div class="bakes-app-caption"><h5>ALP®密封圈</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/alp/应用行业/载波盘 .png" alt="载波盘"><div class="bakes-app-caption"><h5>载波盘</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/alp/应用行业/隔震材料.png" alt="隔震材料"><div class="bakes-app-caption"><h5>隔震材料</h5></div></div></div>
       </div>
     </div>
   </section>
 
   <!-- 热塑性树脂（S-BEAR®）性能 -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-header">
-        <h2 class="section-title" id="sbear">热塑性树脂（S-BEAR®）性能</h2>
-      </div>
-      <div class="content-grid">
-        <div class="desc-box">
-          <p>运用高性能树脂技术、本公司独特的材料设计技术、以及材料生产技术，以工程塑料为基础开发的注塑成形用高性能材料。在摩擦学特性的基础上，附加耐热性、导电性、难燃性等特性进行材料设计，与精密注塑成形技术相结合，可根据客户的需求大量生产的高性能产品。</p>
-        </div>
-        <div class="shape-placeholder">产品形状示意图<br>（文字替换为中文）</div>
-      </div>
-      <div class="bakes-board">
-        <p class="industries-label">核心性能</p>
-        <div class="bakes-props bakes-props--7">
-          <div class="bakes-prop"><div class="bakes-prop-icon">⚗</div><strong>耐药品性</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">◻</div><strong>轻量</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">◎</div><strong>低摩擦 低磨耗</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">💧</div><strong>无润滑剂</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">🌡</div><strong>耐热性</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">↕</div><strong>热传导性</strong></div>
-          <div class="bakes-prop"><div class="bakes-prop-icon">🔇</div><strong>静音性</strong></div>
-        </div>
-
-        <p class="industries-label">产品工艺</p>
-        <div class="bakes-lines">
-          <div class="bakes-line">
-            <h4>S-BEAR®</h4>
-            <p class="bakes-line-desc">以工程塑料为基础的注塑成型用的高功能材料。附加了耐热、导电、难燃等功能，可以大量生产的高功能产品。</p>
-            <div class="bakes-flow">
-              <div class="bakes-flow-step"><strong>工程塑料</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>填充剂(等)</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>添加剂</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>混炼·制作塑料粒子</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>精度注塑成型</strong></div>
-              <div class="bakes-flow-arrow" aria-hidden="true">→</div>
-              <div class="bakes-flow-step"><strong>产品·部件</strong></div>
+  <section class="bakes-section" id="sbear">
+    <div class="bakes-intro">
+      <div class="bakes-intro-inner">
+        <div class="bakes-intro-head">
+          <span class="bakes-eyebrow">S-BEAR®</span>
+          <h2 class="bakes-intro-title">热塑性树脂（S-BEAR®）性能</h2>
+          <p class="bakes-intro-desc">运用高性能树脂技术、本公司独特的材料设计技术、以及材料生产技术，以工程塑料为基础开发的注塑成形用高性能材料。在摩擦学特性的基础上，附加耐热性、导电性、难燃性等特性进行材料设计，与精密注塑成形技术相结合，可根据客户的需求大量生产的高性能产品。</p>
+          <div class="bakes-perf-grid bakes-perf-grid--7" role="list" aria-label="核心性能">
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true"><img src="img/图标/化学.svg" alt=""></span>
+              <strong>耐药品性</strong>
             </div>
-            <div class="bakes-flow-outcome">轴承、齿轮、轴套</div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/><path d="m8 8 8 8M16 8l-8 8"/></svg></span>
+              <strong>轻量</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9c2 2 4 2 6 0s4-2 6 0"/><path d="M4 15c2 2 4 2 6 0s4-2 6 0"/></svg></span>
+              <strong>低摩擦·低磨耗</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span>
+              <strong>无润滑油</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true"><img src="img/图标/温度计.svg" alt=""></span>
+              <strong>耐热性</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.5a4 4 0 1 1-4 0V4a2 2 0 1 1 4 0z"/></svg></span>
+              <strong>热传导性</strong>
+            </div>
+            <div class="bakes-perf-item" role="listitem">
+              <span class="bakes-perf-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>
+              <strong>静音性</strong>
+            </div>
           </div>
-          <div class="bakes-line">
-            <h4>树脂制小型减速机 / S-BEAR® DD</h4>
-            <p class="bakes-line-desc">今后的机器人传动装置用的树脂制小型减速机/制动器部品</p>
-            <div class="bakes-flow-outcome">S-BEAR® DD / 開発材 S-BEAR® X2002</div>
+        </div>
+        <div class="bakes-intro-visual">
+          <div class="bakes-radial" role="img" aria-label="S-BEAR 五大能力：定制、高性能树脂、材料设计、分析评价、生产技术">
+            <div class="bakes-radial-ring" aria-hidden="true"></div>
+            <div class="bakes-radial-ring-inner" aria-hidden="true"></div>
+            <div class="bakes-radial-core"><span>S-BEAR</span></div>
+            <article class="bakes-radial-node bakes-radial-node--top">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l8 4.5v7L12 18l-8-4.5v-7L12 2z"/><path d="M12 9.5l5.5-3M12 9.5v8.5M12 9.5L6.5 6.5"/></svg></span>
+                <h4>定制</h4>
+                <p>依据客户的要求特性，提供最合适的材料、形状的产品。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--tr">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v5c0 4.5-3.5 8-8 9-4.5-1-8-4.5-8-9v-5L12 3z"/><path d="M9.5 12l2 2 4.5-4.5"/></svg></span>
+                <h4>高性能树脂</h4>
+                <p>在客户追求的高性能树脂特性基础之上，提供附加耐热性、导电性、难燃性等功能。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--br">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v4M12 16v4M4 12h4M16 12h4"/><path d="M7 7l2.5 2.5M14.5 14.5L17 17M17 7l-2.5 2.5M9.5 14.5L7 17"/></svg></span>
+                <h4>材料设计</h4>
+                <p>运用多年经验培养的材料开发技术，根据客户需求提供独创材料。</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--bl">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15 15l5.5 5.5"/></svg></span>
+                <h4>分析评价</h4>
+                <p>运用丰富的高性能树脂评价仪器点·分析仪器以及CAE解析,提供最佳的解决方案</p>
+              </div>
+            </article>
+            <article class="bakes-radial-node bakes-radial-node--tl">
+              <div class="bakes-radial-node-inner">
+                <span class="bakes-radial-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="9" y="15" width="6" height="6" rx="1"/><path d="M6 9v3h3M18 9v3h-3M12 12v3"/></svg></span>
+                <h4>生产技术</h4>
+                <p>从原料粒子的开发制造到高精度模具制作以及精密注塑成型的一条龙生产，可对应高精度产品的量产。</p>
+              </div>
+            </article>
           </div>
         </div>
 
-        <p class="industries-label">行业应用领域</p>
-        <div class="bakes-industries">
-          <div class="bakes-industry"><div class="bakes-industry-icon">🧵</div><h5>纺织</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">⚙</div><h5>生产机械</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🚜</div><h5>掘机</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🚗</div><h5>汽车动力头</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🚪</div><h5>车门</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🔧</div><h5>发动机/刹车/转向系统</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🖨</div><h5>OA和影像</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">📷</div><h5>图像/承载单元</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🔩</div><h5>压缩机·油封</h5></div>
-          <div class="bakes-industry"><div class="bakes-industry-icon">🏠</div><h5>住宅设备</h5></div>
+        <div class="bakes-process-block">
+          <div class="bakes-process-head">
+            <h3 class="bakes-section-title">产品工艺与应用案例</h3>
+          </div>
+          <div class="bakes-process-grid bakes-process-grid--single">
+            <article class="bakes-process-card">
+              <div class="bakes-process-header">S-BEAR®</div>
+              <div class="bakes-process-body">
+                <p class="bakes-process-desc">以工程塑料为基础的注塑成形用的高功能材料。附加了耐热・导电・难燃等功能，可以大量生产的高功能产品。</p>
+                <div class="bakes-process-flow">
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/sbear/process/工程塑料.png" alt="工程塑料"></div>
+                    <p class="bakes-process-step-label">工程塑料</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">+</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/sbear/process/image3.png" alt="强化纤维"></div>
+                    <p class="bakes-process-step-label">强化纤维</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">+</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/sbear/process/Group 34.png" alt="添加剂"></div>
+                    <p class="bakes-process-step-label">添加剂</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/sbear/process/混炼制作塑料粒子.png" alt="混炼・制作塑料粒子"></div>
+                    <p class="bakes-process-step-label">混炼・制作塑料粒子</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/sbear/process/图片2.png" alt="精密注塑成形"></div>
+                    <p class="bakes-process-step-label">精密注塑成形</p>
+                  </div>
+                  <div class="bakes-process-arrow" aria-hidden="true">→</div>
+                  <div class="bakes-process-step">
+                    <div class="bakes-process-step-media"><img src="img/products/sbear/process/产业协作机器人驱动用齿轮.png" alt="精密注塑成形"></div>
+                    <p class="bakes-process-step-label">产业・协作机器人驱动用齿轮</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bakes-process-footer">
+                <span class="bakes-process-badge">终端应用</span>
+                <span class="bakes-process-app-text">产业・协作机器人驱动用齿轮</span>
+              </div>
+            </article>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <div class="bakes-body">
+      <h3 class="bakes-section-title">行业应用领域</h3>
+      <div class="bakes-app-grid bakes-app-grid--7">
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/sbear/应用行业/纺织生产机械.png" alt="纺织、生产机械"><div class="bakes-app-caption"><h5>纺织、生产机械</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/sbear/应用行业/重机.png" alt="重机"><div class="bakes-app-caption"><h5>重机</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/sbear/应用行业/汽车动力列车.png" alt="汽车动力列车/电动机器/泵/鼓风机"><div class="bakes-app-caption"><h5>汽车动力列车/电动机器/泵/鼓风机</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/sbear/应用行业/住宅设备.png" alt="住宅设备"><div class="bakes-app-caption"><h5>住宅设备</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/sbear/应用行业/OA机器.png" alt="OA机器"><div class="bakes-app-caption"><h5>OA机器</h5></div></div></div>
+          <div class="bakes-app-card"><div class="bakes-app-media"><img class="bakes-app-photo" src="img/products/sbear/应用行业/压缩机油封.png" alt="压缩机・油封"><div class="bakes-app-caption"><h5>压缩机・油封</h5></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- 非食用生物质 -->
-  <section class="section section-alt">
-    <div class="section-inner">
-      <div class="section-header">
-        <h2 class="section-title" id="biomass">非食用生物质摩擦材料</h2>
-      </div>
-      <div class="biomass-board">
-        <div class="biomass-columns">
-          <div class="biomass-col">
-            <div class="biomass-inputs">
-              <div class="biomass-input">
-                <div class="biomass-input-media">亚麻纤维<br>（图片待替换）</div>
-                <div class="biomass-input-label">亚麻纤维</div>
-              </div>
-              <div class="biomass-input">
-                <div class="biomass-input-media">生物质树脂<br>（图片待替换）</div>
-                <div class="biomass-input-label">生物质树脂</div>
+  <!-- 非食用生物质摩擦材料 -->
+  <section class="bakes-section section-alt" id="biomass">
+    <div class="bakes-intro">
+      <div class="bakes-intro-inner">
+        <div class="bakes-intro-head">
+          <span class="bakes-eyebrow bakes-eyebrow--eco">BIOMASS</span>
+          <h2 class="bakes-intro-title">非食用生物质摩擦材料</h2>
+          <p class="bakes-intro-desc">回应可持续性发展社会的提案首先从材料开始</p>
+        </div>
+
+        <div class="bakes-process-block biomass-process-block">
+          <article class="bakes-process-card biomass-card biomass-card--board">
+            <div class="bakes-process-header">基于生物质的材料开发</div>
+            <div class="bakes-process-body">
+              <div class="biomass-columns">
+                <div class="biomass-col">
+                  <div class="biomass-inputs-row">
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/biomass/flax-fiber.png" alt="亚麻纤维"></div>
+                      <p class="bakes-process-step-label">亚麻纤维</p>
+                    </div>
+                    <div class="bakes-process-arrow" aria-hidden="true">+</div>
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/biomass/biomass-resin.png" alt="生物质树脂"></div>
+                      <p class="bakes-process-step-label">生物质树脂</p>
+                    </div>
+                  </div>
+                  <div class="biomass-arrow-down" aria-hidden="true">↓</div>
+                  <div class="biomass-output-step">
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/biomass/car-frp.png" alt="汽车外板用植物 FRP"></div>
+                      <p class="biomass-col-title">汽车外板用植物 FRP</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="biomass-col">
+                  <div class="biomass-inputs-row">
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/biomass/cotton-fiber.png" alt="棉纤维"></div>
+                      <p class="bakes-process-step-label">棉纤维</p>
+                    </div>
+                    <div class="bakes-process-arrow" aria-hidden="true">+</div>
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/biomass/biomass-resin.png" alt="生物质酚醛树脂"></div>
+                      <p class="bakes-process-step-label">生物质酚醛树脂</p>
+                    </div>
+                  </div>
+                  <div class="biomass-arrow-down" aria-hidden="true">↓</div>
+                  <div class="biomass-output-step">
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/biomass/biomass-bakes.png" alt="生物质 BAKES"></div>
+                      <p class="biomass-col-title">生物质 BAKES®</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="biomass-col">
+                  <div class="biomass-inputs-row">
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/biomass/non-food-plant.png" alt="树脂用非可食植物"></div>
+                      <p class="bakes-process-step-label">树脂用非可食植物</p>
+                    </div>
+                    <div class="bakes-process-arrow" aria-hidden="true">+</div>
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/biomass/natural-additive.jpg" alt="天然原料添加剂"></div>
+                      <p class="bakes-process-step-label">天然原料添加剂</p>
+                    </div>
+                  </div>
+                  <div class="biomass-arrow-down" aria-hidden="true">↓</div>
+                  <div class="biomass-output-step">
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/biomass/biomass-sbear.png" alt="生物质 S-BEAR"></div>
+                      <p class="biomass-col-title">生物质 S-BEAR®</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="biomass-arrow" aria-hidden="true">↓</div>
-            <div class="biomass-output">
-              <div class="biomass-output-media">汽车外板用植物FRP<br>（图片待替换）</div>
-              <div class="biomass-output-label">汽车外板用植物FRP</div>
-            </div>
-          </div>
-          <div class="biomass-col">
-            <div class="biomass-inputs">
-              <div class="biomass-input">
-                <div class="biomass-input-media">棉纤维<br>（图片待替换）</div>
-                <div class="biomass-input-label">棉纤维</div>
-              </div>
-              <div class="biomass-input">
-                <div class="biomass-input-media">生物质酚醛树脂<br>（图片待替换）</div>
-                <div class="biomass-input-label">生物质酚醛树脂</div>
-              </div>
-            </div>
-            <div class="biomass-arrow" aria-hidden="true">↓</div>
-            <div class="biomass-output">
-              <div class="biomass-output-media">生物质BAKES<br>（图片待替换）</div>
-              <div class="biomass-output-label">生物质BAKES</div>
-            </div>
-          </div>
-          <div class="biomass-col">
-            <div class="biomass-inputs">
-              <div class="biomass-input">
-                <div class="biomass-input-media">树脂用非可食植物<br>（图片待替换）</div>
-                <div class="biomass-input-label">树脂用非可食植物</div>
-              </div>
-              <div class="biomass-input">
-                <div class="biomass-input-media">天然原料添加剂<br>（图片待替换）</div>
-                <div class="biomass-input-label">天然原料添加剂</div>
-              </div>
-            </div>
-            <div class="biomass-arrow" aria-hidden="true">↓</div>
-            <div class="biomass-output">
-              <div class="biomass-output-media">生物质S-BEAR<br>（图片待替换）</div>
-              <div class="biomass-output-label">生物质S-BEAR</div>
-            </div>
-          </div>
+          </article>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 暑热灾害对策用产品及其他事业 -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-header">
-        <h2 class="section-title" id="other">暑热灾害对策用产品及其他事业</h2>
-      </div>
-      <div class="other-card">
-
-        <!-- 灾害·暑热对策用产品 -->
-        <div class="other-block">
-          <h3 class="other-block-title">灾害·暑热对策用产品</h3>
-          <p class="other-block-sub">面向施工现场与灾害场景，提供暑热管理与应急卫生解决方案</p>
-
-          <div class="other-product">
-            <h4>eMET — 活用中暑数据的提案</h4>
-            <p class="other-tagline">从中暑风险数据中发现现场的暑热课题 → 改善</p>
-            <div class="other-badges">
-              <div class="other-badge">NETIS 认定</div>
-              <div class="other-badge">20 年佩戴者超 10,000 人<br>中暑发症数 0 件</div>
-              <div class="other-badge">举办中暑对策讲座<br>积累丰富使用实绩</div>
-            </div>
-            <ul class="other-checklist">
-              <li>庞大数据的可视化</li>
-              <li>eMET 的稼动状况管理</li>
-              <li>现场改善</li>
-              <li>把握每个人的风险</li>
-            </ul>
-          </div>
-
-          <div class="other-product">
-            <h4>灾难用厕所解决方案</h4>
-            <p class="other-tagline">万一发生某种状况时，谁都能把它变成日常用的厕所，即简易厕所</p>
-            <ul class="other-checklist">
-              <li>部品少，5 分钟简单组装</li>
-              <li>有很多减轻不安的装置</li>
-            </ul>
-            <div class="other-feature-grid">
-              <div class="other-feature-item">
-                <strong>耐风</strong>
-                <span>户外使用时不易被风吹倒</span>
-              </div>
-              <div class="other-feature-item">
-                <strong>里面不透 · 里面带锁</strong>
-                <span>保障隐私与安全</span>
-              </div>
-              <div class="other-feature-item">
-                <strong>带灯</strong>
-                <span>内部照明，夜间也可安心使用</span>
-              </div>
-              <div class="other-feature-item">
-                <strong>与地面形成平面</strong>
-                <span>轮椅等也可方便进出</span>
-              </div>
-            </div>
-          </div>
-
+  <section class="bakes-section" id="other">
+    <div class="bakes-intro">
+      <div class="bakes-intro-inner">
+        <div class="bakes-intro-head">
+          <span class="bakes-eyebrow">OTHER</span>
+          <h2 class="bakes-intro-title">其他事业</h2>
         </div>
 
-        <!-- 其他事业 -->
-        <div class="other-block">
-          <h3 class="other-block-title">其他事业 · STARLITE 工业整体</h3>
-          <p class="other-block-sub">多功能聚脲涂层。喷到的东西上面 + 其他功能</p>
-          <div class="other-product-name">STARLITE <em>BARIAS</em>®</div>
-          <p class="other-value">如果喷到发泡苯乙烯等上面，变成 <strong>轻量 × 坚韧</strong> 的素材。</p>
-          <p class="other-label">也加上了其他功能</p>
-          <div class="other-props">
-            <span class="other-prop-tag">耐药品</span>
-            <span class="other-prop-tag">控制附着</span>
-            <span class="other-prop-tag">耐磨损</span>
-            <span class="other-prop-tag">隔热</span>
-            <span class="other-prop-tag">耐冲击性</span>
-            <span class="other-prop-tag">防锈</span>
-            <span class="other-prop-tag">耐候性</span>
-            <span class="other-prop-tag">外观性</span>
-          </div>
-          <p class="other-label">用途提案</p>
-          <div class="other-uses">
-            <div class="other-use-item">
-              <strong>工厂作业用脚手架</strong>
-              <span>轻量且坚韧的结构件应用</span>
-            </div>
-            <div class="other-use-item">
-              <strong>游乐设施</strong>
-              <span>安全防护与外观兼顾的部件应用</span>
-            </div>
-          </div>
+        <div class="other-process-block">
 
+          <article class="bakes-process-card other-product-card">
+            <div class="bakes-process-header">STARLITE BARIAS® 多功能聚脲涂料、喷涂后可赋予基材多重附加性能</div>
+            <div class="bakes-process-body">
+              <p class="other-value">喷涂在泡沫塑料（发泡聚苯乙烯）等基材上，就能制成兼具 <strong>轻量化与高韧性</strong> 的复合材料。</p>
+              <div class="barias-compare">
+                <div class="barias-flow">
+                  <div class="barias-flow-group" style="padding:23px 15px">
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/other/barias-no-polyurea.jpg" alt="无聚脲"></div>
+                      <p class="bakes-process-step-label">无聚脲</p>
+                    </div>
+                    <div class="barias-flow-divider" aria-hidden="true"></div>
+                    <div class="bakes-process-step">
+                      <div class="bakes-process-step-media"><img src="img/products/other/barias-with-polyurea.jpg" alt="有聚脲"></div>
+                      <p class="bakes-process-step-label">有聚脲</p>
+                    </div>
+                    <div class="barias-flow-arrow" aria-hidden="true">→</div>
+                    <div class="bakes-process-step bakes-process-step--wide">
+                      <div class="bakes-process-step-media"><img src="img/products/other/barias-forklift-test.jpg" alt="叉车踩踏后的内部观察"></div>
+                      <p class="biomass-col-title">叉车踩踏后的内部观察</p>
+                    </div>
+                  </div>
+                  <div class="barias-flow-group barias-flow-group--uses">
+                    <p class="barias-flow-group-title">用途提案</p>
+                    <div class="barias-flow-group-body">
+                      <div class="bakes-process-step bakes-process-step--contain">
+                        <div class="bakes-process-step-media"><img src="img/products/other/barias-scaffold.png" alt="工厂作业用脚手架"></div>
+                        <p class="bakes-process-step-label">工厂作业用脚手架</p>
+                      </div>
+                      <div class="barias-flow-divider" aria-hidden="true"></div>
+                      <div class="bakes-process-step bakes-process-step--contain">
+                        <div class="bakes-process-step-media"><img src="img/products/other/barias-playground.png" alt="游乐设施"></div>
+                        <p class="bakes-process-step-label">游乐设施</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="other-props-row">
+                <p class="other-label">也附加了其他功能</p>
+                <div class="other-props">
+                  <span class="other-prop-tag">耐药品</span>
+                  <span class="other-prop-tag">控制附着</span>
+                  <span class="other-prop-tag">耐磨损</span>
+                  <span class="other-prop-tag">隔热</span>
+                  <span class="other-prop-tag">耐冲击性</span>
+                  <span class="other-prop-tag">防锈</span>
+                  <span class="other-prop-tag">耐候性</span>
+                  <span class="other-prop-tag">外观设计美感</span>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
 
+        <div class="other-process-block">
+          <div class="other-disaster-grid">
+            <article class="bakes-process-card other-product-card">
+              <div class="bakes-process-header">通过 eMET — 活用中暑数据的提案</div>
+              <div class="bakes-process-body">
+                <p class="other-value" style="margin-bottom:0">从中暑风险数据中发现现场的暑热课题 → 改善</p>
+                <div class="other-emet-layout">
+                  <div class="other-badge-row">
+                    <figure class="other-badge-item">
+                      <img src="img/products/other/badge-netis.jpg" alt="NETIS 认定">
+                      <figcaption>NETIS 认定</figcaption>
+                    </figure>
+                    <figure class="other-badge-item">
+                      <img src="img/products/other/badge-track-record.jpg" alt="20年佩戴者超10，000人 中暑发症数0件">
+                      <figcaption>20年佩戴者超10，000人 中暑发症数0件</figcaption>
+                    </figure>
+                    <figure class="other-badge-item">
+                      <img src="img/products/other/badge-seminar.jpg" alt="举办中暑对策的讲座 很多使用实绩！">
+                      <figcaption>举办中暑对策的讲座 很多使用实绩！</figcaption>
+                    </figure>
+                  </div>
+                  <div class="other-emet-main-row">
+                    <div class="other-product-visual">
+                      <img src="img/products/other/emet-hero.jpg" alt="施工现场暑热监测">
+                    </div>
+                    <ul class="other-checklist">
+                      <img src="img/products/other/emet-logo.jpg" alt="eMET" class="other-product-logo">
+                      <li>庞大数据的可视化</li>
+                      <li>eMET 的稼动状况管理</li>
+                      <li>现场改善</li>
+                      <li>把握每个人的风险</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="bakes-process-card other-product-card">
+              <div class="bakes-process-header">灾难用厕所解决方案</div>
+              <div class="bakes-process-body other-toilet-body">
+                <p class="other-value" style="margin-bottom:0">万一发生某种状况时，谁都能把它变成日常用的厕所即简易厕所房®</p>
+                <div class="other-note-row">
+                  <span class="other-note-pill">部品少，5 分钟简单组装</span>
+                  <span class="other-note-pill">有很多减轻不安的装置</span>
+                </div>
+                <img class="other-features-img" src="img/products/other/Group%2052.png" alt="简易厕所房解决方案">
+              </div>
+            </article>
+          </div>
       </div>
     </div>
   </section>
@@ -606,22 +1062,31 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-brand-head">
-          <img src="img/logo.png" alt="STARLITE" class="footer-brand-logo">
-          <div>
-            <div class="footer-brand-cn">星光树脂</div>
-            <div class="footer-brand-en">Starlite Plastic Products</div>
+      <div class="footer-body">
+        <div class="footer-contact">
+          <a href="index.html" class="footer-brand-head logo">
+            <img src="img/logo-白.png" alt="STARLITE" class="logo-img">
+            <div>
+              <div class="logo-text">星光树脂制品（昆山）有限公司</div>
+              <div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div>
+            </div>
+          </a>
+          <div class="footer-contact-col">
+            <ul class="footer-brand-list">
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>+86-512-57641220 · 传真 +86-512-57641211</span></li>
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
+            </ul>
           </div>
-        </a>
-        <ul class="footer-brand-list">
-          <li><span class="footer-brand-icon">📞</span><span><br>+86-512-57641220 · 传真 +86-512-57641211</span></li>
-          <li><span class="footer-brand-icon">📍</span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
-          <li class="footer-brand-divider"><span class="footer-brand-icon">📞</span><span><strong>星光工业株式会社</strong><br>+816-6956-2240 · <a href="https://starlite.co.jp/" target="_blank" rel="noopener">starlite.co.jp</a></span></li>
-          <li><span class="footer-brand-icon">📍</span><span>日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002</span></li>
-        </ul>
-      </div>
-      <div class="footer-nav">
+          <div class="footer-contact-col">
+            <strong class="footer-office-name">星光工业株式会社</strong>
+            <ul class="footer-brand-list">
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>电 话：+816-6956-2240 · 传 真：+816-6956-2715</span></li>
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>地 址：日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮 编：535-0002</span></li>
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span><span>网 址：<a href="https://starlite.co.jp/" class="footer-link-plain" target="_blank" rel="noopener">https://starlite.co.jp/</a></span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-nav">
         <div class="footer-col">
           <h4>首页</h4>
           <ul>
@@ -634,10 +1099,10 @@
         <div class="footer-col">
           <h4>创新中心</h4>
           <ul>
-            <li><a href="innovation.html#timeline">摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
             <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
             <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
-            <li><a href="innovation.html#equipment">试验分析仪器&检测设备</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -673,14 +1138,15 @@
         <div class="footer-col">
           <h4>联系我们</h4>
           <ul>
-            <li><a href="contact.html#info">联系方式</a></li>
-            <li><a href="contact.html#map">电子地图</a></li>
-            <li><a href="contact.html#message">客户留言</a></li>
+            <li><a href="contact.html#contact-info">联系方式</a></li>
+            <li><a href="contact.html#contact-map">电子地图</a></li>
+            <li><a href="contact.html#contact-form">客户留言</a></li>
           </ul>
         </div>
+        </div>
       </div>
+      <div class="footer-bottom">版权所有：星光树脂制品（昆山）有限公司 All Rights Reserved | 苏ICP备12003553号-1</div>
     </div>
-    <div class="footer-bottom">© 2026 星光树脂制品（昆山）有限公司 · 网站原型</div>
   </footer>
 <script>
 document.querySelectorAll('.lang-switch').forEach(function(s){s.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){s.querySelectorAll('.lang-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active')})})});

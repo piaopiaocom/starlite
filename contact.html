@@ -1,715 +1,721 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星光树脂 STARLITE - 联系我们</title>
-    <style>
-/* 基础样式重置 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --primary: #0B2D5B;
-    --primary-light: #1A4A8A;
-    --accent: #C5A036;
-    --accent-light: #E8C547;
-    --text: #1A1A2E;
-    --text-muted: #5A6270;
-    --bg: #F5F7FA;
-    --white: #FFFFFF;
-    --border: #E2E8F0;
-    --shadow: 0 4px 24px rgba(11,45,91,0.08);
-    --radius: 8px;
-
-    /* 兼容旧变量 */
-    --color-dark: #1a1a1a;
-    --color-medium: #666666;
-    --color-light: #999999;
-    --color-lighter: #CCCCCC;
-    --color-border: #E5E5E5;
-    --color-bg: #F5F5F5;
-    --color-white: #FFFFFF;
-    
-    /* 间距 */
-    --space-xs: 4px;
-    --space-sm: 8px;
-    --space-md: 16px;
-    --space-lg: 24px;
-    --space-xl: 32px;
-    --space-2xl: 48px;
-    --space-3xl: 64px;
-    
-    /* 字体 */
-    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    --font-size-sm: 12px;
-    --font-size-base: 14px;
-    --font-size-md: 16px;
-    --font-size-lg: 18px;
-    --font-size-xl: 24px;
-    --font-size-2xl: 32px;
-    
-    /* 边框 */
-    --border-width: 1px;
-    --border-color: var(--color-border);
-    --border-radius: 4px;
-}
-
-body {
-    font-family: "PingFang SC", "Microsoft YaHei", var(--font-family);
-    font-size: var(--font-size-base);
-    color: var(--color-dark);
-    background-color: var(--bg);
-    line-height: 1.7;
-}
-
-a { text-decoration: none; color: inherit; }
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--space-lg);
-}
-
-/* 导航栏 */
-.header { background: var(--white); box-shadow: 0 2px 12px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 1000; }
-.header-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
-.logo { display: flex; align-items: center; gap: 12px; }
-.logo-img { height: 48px; width: auto; object-fit: contain; display: block; }
-.logo-text { font-size: 15px; line-height: 1.3; font-weight: 700; color: var(--primary); }
-.logo-sub { font-size: 10px; line-height: 1.3; color: var(--text-muted); font-weight: 400; }
-[id] { scroll-margin-top: 88px; }
-.nav { display: flex; gap: 4px; align-items: stretch; }
-.nav > li { list-style: none; position: relative; }
-.nav > li > a { display: flex; align-items: center; height: 72px; padding: 0 16px; font-size: 14px; color: var(--text); position: relative; transition: color 0.25s ease; white-space: nowrap; line-height: 1; }
-.nav > li > a::after { content: ''; position: absolute; left: 16px; right: 16px; bottom: 0; height: 2px; background: var(--primary); border-radius: 1px 1px 0 0; transform: scaleX(0); transition: transform 0.25s ease; }
-.nav > li > a:hover, .nav > li > a.active, .nav > li:hover > a { color: var(--primary); }
-.nav > li > a:hover::after, .nav > li > a.active::after, .nav > li:hover > a::after { transform: scaleX(1); }
-.nav-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 240px; background: var(--white); border-radius: var(--radius); box-shadow: 0 8px 32px rgba(11,45,91,0.12), 0 2px 8px rgba(0,0,0,0.06); border: 1px solid var(--border); padding: 6px 0; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s; z-index: 1001; list-style: none; }
-.nav-dropdown::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
-.nav > li:hover > .nav-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-.nav-dropdown li { list-style: none; }
-.nav-dropdown a { display: block; padding: 10px 20px; font-size: 13px; color: var(--text-muted); transition: color 0.15s ease, background 0.15s ease; white-space: nowrap; line-height: 1; }
-.nav-dropdown a:hover { color: var(--primary); background: rgba(11,45,91,0.04); }
-.lang-switch { display: flex; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; flex-shrink: 0; }
-.lang-btn { padding: 6px 14px; font-size: 13px; border: none; background: transparent; color: var(--text-muted); cursor: pointer; font-family: inherit; transition: all 0.2s; }
-.lang-btn.active { background: var(--primary); color: var(--white); }
-.prototype-badge { position: fixed; bottom: 16px; right: 16px; background: var(--accent); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; z-index: 9999; }
-
-/* 主内容区 */
-.main-content {
-    min-height: calc(100vh - 72px);
-}
-
-/* 页面头部 */
-.page-header {
-    background: linear-gradient(135deg,var(--primary),var(--primary-light));
-    color: var(--color-white);
-    padding: var(--space-3xl) 0;
-    text-align: center;
-}
-
-.page-header h1 {
-    font-size: var(--font-size-2xl);
-    margin-bottom: var(--space-md);
-}
-
-.page-header p {
-    font-size: var(--font-size-md);
-    opacity: 0.8;
-}
-
-/* 通用区块 */
-.section {
-    padding: var(--space-3xl) 0;
-}
-
-/* 占位符样式 */
-.cross-line1,
-.cross-line2 {
-    position: absolute;
-    width: 60%;
-    height: 1px;
-    background: var(--color-lighter);
-}
-
-.cross-line1 {
-    transform: rotate(45deg);
-}
-
-.cross-line2 {
-    transform: rotate(-45deg);
-}
-
-.icon-placeholder {
-    width: 48px;
-    height: 48px;
-    border: 2px solid var(--color-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.icon-placeholder.circle {
-    border-radius: 50%;
-}
-
-.icon-placeholder.square {
-    border-radius: var(--border-radius);
-}
-
-.icon-placeholder.triangle {
-    width: 0;
-    height: 0;
-    border-left: 24px solid transparent;
-    border-right: 24px solid transparent;
-    border-bottom: 42px solid var(--color-dark);
-    border-top: none;
-}
-
-/* 联系我们 */
-.contact-content {
-    background: var(--color-bg);
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: var(--space-2xl);
-    align-items: start;
-}
-
-.contact-info,
-.contact-form {
-    background: var(--color-white);
-    border: var(--border-width) solid var(--color-border);
-    padding: var(--space-xl);
-}
-
-.contact-form {
-    position: sticky;
-    top: 80px;
-}
-
-.contact-info h2,
-.contact-form h2 {
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--space-lg);
-    color: var(--color-dark);
-}
-
-.info-list {
-    margin-bottom: var(--space-xl);
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    margin-bottom: var(--space-md);
-}
-
-.info-icon {
-    flex-shrink: 0;
-}
-
-.info-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.info-text .label {
-    font-size: var(--font-size-sm);
-    color: var(--color-light);
-}
-
-.info-text .value {
-    font-size: var(--font-size-base);
-    color: var(--color-dark);
-}
-
-/* 地图 */
-.map-section h3 {
-    font-size: var(--font-size-md);
-    margin-bottom: var(--space-md);
-    color: var(--color-dark);
-}
-
-.map-placeholder {
-    width: 100%;
-    height: 200px;
-    background: var(--color-bg);
-    border: var(--border-width) dashed var(--color-lighter);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.map-label {
-    font-size: var(--font-size-sm);
-    color: var(--color-light);
-    z-index: 1;
-}
-
-/* 表单 */
-.form-group {
-    margin-bottom: var(--space-md);
-}
-
-.form-group label {
-    display: block;
-    font-size: var(--font-size-sm);
-    color: var(--color-dark);
-    margin-bottom: var(--space-xs);
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: var(--space-sm);
-    border: var(--border-width) solid var(--color-border);
-    font-size: var(--font-size-base);
-    font-family: var(--font-family);
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-dark);
-}
-
-.form-group textarea {
-    resize: vertical;
-}
-
-/* 按钮 */
-.btn-primary {
-    border: var(--border-width) solid var(--color-dark);
-    background: var(--color-dark);
-    color: var(--color-white);
-    padding: var(--space-sm) var(--space-md);
-    font-size: var(--font-size-sm);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background: var(--color-medium);
-}
-
-/* 页脚 */
-.footer { background: linear-gradient(180deg, #0c2f5c 0%, #071E3D 100%); color: rgba(255,255,255,0.78); padding: 56px 24px 28px; }
-.footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: minmax(280px, 340px) 1fr; gap: 48px 56px; align-items: start; }
-.footer-brand-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-.footer-brand-head:hover { opacity: 0.92; }
-.footer-brand-logo { height: 52px; width: auto; object-fit: contain; display: block; flex-shrink: 0; }
-.footer-brand-cn { font-size: 18px; font-weight: 700; color: var(--white); line-height: 1.35; margin-bottom: 4px; }
-.footer-brand-en { font-size: 10px; color: rgba(255,255,255,0.55); line-height: 1.4; letter-spacing: 0.02em; }
-.footer-brand-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.footer-brand-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.82); }
-.footer-brand-icon { width: 18px; flex-shrink: 0; text-align: center; opacity: 0.85; margin-top: 2px; }
-.footer-brand-list .footer-brand-divider { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 16px; margin-top: 4px; }
-.footer-brand-list strong { color: var(--white); font-weight: 600; }
-.footer-brand-list a { color: var(--accent-light); }
-.footer-nav { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px 20px; }
-.footer-col h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.35); letter-spacing: 0.02em; }
-.footer-col ul { list-style: none; }
-.footer-col ul li { margin-bottom: 10px; }
-.footer-col ul li:last-child { margin-bottom: 0; }
-.footer-col ul a { font-size: 12px; line-height: 1.55; color: rgba(255,255,255,0.72); transition: color 0.2s; display: inline-block; }
-.footer-col ul a:hover { color: var(--accent-light); }
-.footer-bottom { max-width: 1280px; margin: 36px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); text-align: center; font-size: 12px; color: rgba(255,255,255,0.45); }
-
-/* 响应式设计 */
-@media (max-width: 991px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系我们 - 星光树脂制品（昆山）有限公司</title>
+  <style>
+    :root {
+      --primary: #006EB6;
+      --primary-light: #0088D4;
+      --accent: #FFB511;
+      --accent-light: #FFCB4D;
+      --text: #1A1A2E;
+      --text-muted: #5A6270;
+      --bg: #F5F7FA;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --shadow: 0 4px 24px rgba(0,110,182,0.08);
+      --shadow-lg: 0 12px 40px rgba(0,110,182,0.12);
+      --radius: 12px;
     }
-}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+    [id] { scroll-margin-top: 88px; }
 
-@media (max-width: 1100px) {
-    .footer-nav { grid-template-columns: repeat(3, 1fr); }
-}
+    /* Header */
+    .header { background: var(--white); box-shadow: 0 2px 12px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 1000; }
+    .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-img { height: 48px; width: auto; object-fit: contain; display: block; }
+    .logo-text { font-size: 18px; line-height: 1.5; font-weight: 700; color: var(--primary); }
+    .logo-sub { font-size: 12px; line-height: 1.5; color: var(--text-muted); font-weight: 400; }
+    .nav { display: flex; gap: 4px; align-items: stretch; }
+    .nav > li { list-style: none; position: relative; }
+    .nav > li > a { display: flex; align-items: center; height: 72px; padding: 0 16px; font-size: 16px; color: var(--text); position: relative; transition: color 0.25s ease; white-space: nowrap; line-height: 1.6; }
+    .nav > li > a::after { content: ''; position: absolute; left: 16px; right: 16px; bottom: 0; height: 4px; background: var(--primary); transform: scaleX(0); transition: transform 0.25s ease; }
+    .nav > li > a:hover, .nav > li > a.active, .nav > li:hover > a { color: var(--primary); }
+    .nav > li > a:hover::after, .nav > li > a.active::after, .nav > li:hover > a::after { transform: scaleX(1); }
+    .nav-dropdown { position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%) translateY(12px); width: max-content; background: var(--white); border-radius: 12px; box-shadow: 0 20px 50px rgba(0,110,182,0.16), 0 8px 20px rgba(0,0,0,0.06); border: 1px solid rgba(0,110,182,0.1); padding: 6px 0; opacity: 0; visibility: hidden; transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s; z-index: 1001; list-style: none; }
+    .nav-dropdown::after { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
+    .nav > li:hover > .nav-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown li { list-style: none; }
+    .nav-dropdown a { display: block; position: relative; padding: 11px 18px; font-size: 14px; color: var(--text); transition: color 0.2s ease, background 0.2s ease; white-space: nowrap; line-height: 1.6; }
+    .nav-dropdown a::before { content: ''; position: absolute; left: 8px; top: 50%; transform: translateY(-50%); width: 3px; height: 0; border-radius: 2px; background: var(--accent); transition: height 0.2s ease; }
+    .nav-dropdown a:hover { color: var(--primary); background: rgba(0,110,182,0.05); }
+    .nav-dropdown a:hover::before { height: 14px; }
+    .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; flex-shrink: 0; }
+    .lang-btn { padding: 5px 10px; font-size: 12px; border: none; background: transparent; color: var(--text-muted); cursor: pointer; font-family: inherit; transition: all 0.2s; width: 46px; }
+    .lang-btn.active { background: var(--primary); color: var(--white); }
+    .prototype-badge { position: fixed; bottom: 16px; right: 16px; background: var(--accent); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; z-index: 9999; }
 
-@media (max-width: 768px) {
-    .nav { display: none; }
-    .footer-inner { grid-template-columns: 1fr; gap: 36px; }
-    .footer-nav { grid-template-columns: repeat(2, 1fr); }
-}
-    </style>
+    /* Hero Banner */
+    .page-hero { position: relative; background: var(--bg); overflow: hidden; line-height: 0; }
+    .page-hero-img { width: 100%; height: min(44vw, 460px); min-height: 320px; display: block; object-fit: cover; object-position: center right; }
+    .page-hero-overlay { position: absolute; inset: 0; display: flex; align-items: center; line-height: 1.7; pointer-events: none; background: linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.55) 38%, rgba(255,255,255,0.15) 58%, transparent 72%); }
+    .page-hero-inner { pointer-events: auto; max-width: 1280px; width: 100%; margin: 0 auto; padding: 0 24px; }
+    .page-hero-tag { display: inline-block; background: var(--accent); color: var(--primary); padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 14px; letter-spacing: 0.04em; }
+    .page-hero h1 { font-size: 46px; font-weight: 700; line-height: 1.15; color: var(--text); letter-spacing: 0.02em; margin: 0; }
+    .page-hero-title-line { width: 56px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 2px; margin: 16px 0 14px; }
+    .page-hero-desc { font-size: 16px; color: var(--text-muted); line-height: 1.75; margin: 0; }
+
+    /* Sections */
+    .section { padding: 56px 24px; }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+    .section-header { margin-bottom: 32px; }
+    .section-header.is-center { text-align: center; }
+    .section-title-wrap { position: relative; display: inline-block; margin-bottom: 10px; }
+    .section-watermark { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -58%); font-size: clamp(32px, 5vw, 56px); font-weight: 700; color: rgba(0,110,182,0.06); letter-spacing: 0.12em; white-space: nowrap; pointer-events: none; user-select: none; line-height: 1; }
+    .section-title { position: relative; z-index: 1; font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 0; }
+    .section-desc { color: var(--text-muted); font-size: 15px; max-width: 720px; line-height: 1.85; margin-top: 10px; }
+    .section-header.is-center .section-desc { margin-left: auto; margin-right: auto; }
+
+    /* 联系方式 */
+    .contact-section { background: var(--white); padding-top: 48px; }
+
+    /* 电子地图 */
+    .map-section { background: var(--bg); }
+
+    /* 客户留言 */
+    .form-section { background: var(--white); }
+    .form-wrap { max-width: 760px; margin: 0 auto; }
+
+    .panel-box { background: var(--white); border-radius: 16px; border: 1px solid rgba(0,110,182,0.08); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+    .panel-box-head { padding: 20px 24px 16px; border-bottom: 1px solid var(--border); }
+    .panel-box-head h2 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .panel-box-head p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* 地图面板 */
+    .map-panel-body { min-height: 460px; background: #d8dce0; position: relative; overflow: hidden; }
+    .map-panel-body::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 40%), repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.35) 39px, rgba(255,255,255,0.35) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.35) 39px, rgba(255,255,255,0.35) 40px); pointer-events: none; }
+    .map-scene { position: relative; z-index: 1; width: 100%; height: 100%; min-height: 460px; display: flex; align-items: center; justify-content: center; padding: 48px 24px 56px; }
+    .map-controls { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 0; background: var(--white); border: 1px solid #b8bcc2; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); overflow: hidden; }
+    .map-ctrl-pad { display: grid; grid-template-columns: repeat(3, 28px); grid-template-rows: repeat(3, 28px); border-bottom: 1px solid #d0d4da; }
+    .map-ctrl-btn { border: none; background: var(--white); color: #666; font-size: 12px; cursor: default; display: flex; align-items: center; justify-content: center; font-family: inherit; padding: 0; }
+    .map-ctrl-btn.is-center { background: #f5f6f8; color: #999; font-size: 10px; }
+    .map-ctrl-zoom { display: flex; flex-direction: column; }
+    .map-ctrl-zoom .map-ctrl-btn { width: 84px; height: 28px; border-bottom: 1px solid #d0d4da; font-size: 16px; font-weight: 300; }
+    .map-ctrl-zoom .map-ctrl-btn:last-child { border-bottom: none; }
+    .map-marker-wrap { position: relative; display: flex; flex-direction: column; align-items: flex-start; max-width: 100%; margin-left: 48px; }
+    .map-info-bubble { position: relative; background: #f2f2f2; border: 1px solid #8a8f98; border-radius: 2px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); padding: 14px 18px 16px; text-align: left; max-width: min(420px, calc(100vw - 120px)); margin-bottom: 12px; }
+    .map-info-bubble::before { content: ''; position: absolute; left: 28px; bottom: -10px; width: 16px; height: 16px; background: #f2f2f2; border-right: 1px solid #8a8f98; border-bottom: 1px solid #8a8f98; transform: rotate(45deg); box-shadow: 3px 3px 6px rgba(0,0,0,0.08); }
+    .map-info-bubble::after { content: ''; position: absolute; left: 24px; bottom: -1px; width: 24px; height: 8px; background: #f2f2f2; }
+    .map-info-title { font-size: 15px; font-weight: 700; color: #b84a2f; line-height: 1.5; margin-bottom: 10px; }
+    .map-info-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .map-info-list li { font-size: 13px; line-height: 1.65; color: #333; }
+    .map-info-label { color: #333; }
+    .map-info-list a { color: #333; text-decoration: none; }
+    .map-info-list a:hover { color: var(--primary); }
+    .map-marker-pin { width: 22px; height: 28px; position: relative; flex-shrink: 0; margin-left: 24px; }
+    .map-marker-pin::before { content: ''; position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 18px; height: 18px; background: #4a4f58; border-radius: 2px 2px 0 0; }
+    .map-marker-pin::after { content: ''; position: absolute; left: 50%; top: 14px; transform: translateX(-50%); width: 0; height: 0; border-left: 11px solid transparent; border-right: 11px solid transparent; border-top: 14px solid #4a4f58; }
+
+    /* 留言表单 */
+    .form-panel-body { padding: 20px 24px 24px; flex: 1; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .form-group label span { color: var(--primary); margin-left: 2px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: inherit; color: var(--text); background: var(--bg); transition: border-color 0.2s, box-shadow 0.2s, background 0.2s; }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { outline: none; border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 3px rgba(0,110,182,0.1); }
+    .form-group textarea { resize: vertical; min-height: 88px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .btn-submit { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border: none; border-radius: 50px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: var(--white); font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; transition: transform 0.2s, box-shadow 0.2s; margin-top: 2px; }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,110,182,0.3); }
+    .btn-submit svg { width: 18px; height: 18px; }
+
+    /* 快捷联络条 */
+    .channel-bar { margin-top: 28px; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--bg); border-radius: 14px; border: 1px solid rgba(0,110,182,0.08); box-shadow: var(--shadow); overflow: hidden; }
+    .channel-item { padding: 18px 20px; display: flex; align-items: center; gap: 12px; border-right: 1px solid var(--border); transition: background 0.2s; }
+    .channel-item:last-child { border-right: none; }
+    .channel-item:hover { background: rgba(0,110,182,0.03); }
+    .channel-icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px; background: rgba(0,110,182,0.08); color: var(--primary); display: flex; align-items: center; justify-content: center; }
+    .channel-icon svg { width: 18px; height: 18px; }
+    .channel-label { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
+    .channel-value { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.45; word-break: break-all; }
+    .channel-value a { color: var(--primary); }
+    .channel-value a:hover { color: var(--primary-light); }
+
+    /* 联系方式：侧边 Tab + 详情 */
+    .contact-hub { display: grid; grid-template-columns: 240px 1fr; gap: 0; background: var(--bg); border-radius: 16px; border: 1px solid rgba(0,110,182,0.08); box-shadow: var(--shadow); overflow: hidden; min-height: 380px; }
+    .office-nav { background: var(--white); border-right: 1px solid var(--border); padding: 12px; display: flex; flex-direction: column; gap: 4px; }
+    .office-tab { display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px 14px; border: none; border-radius: 10px; background: transparent; cursor: pointer; font-family: inherit; text-align: left; transition: background 0.2s, color 0.2s; color: var(--text-muted); }
+    .office-tab:hover { background: rgba(0,110,182,0.05); color: var(--text); }
+    .office-tab.is-active { background: linear-gradient(135deg, rgba(0,110,182,0.1), rgba(0,110,182,0.04)); color: var(--primary); font-weight: 600; }
+    .office-tab-badge { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; background: rgba(0,110,182,0.08); color: var(--primary); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; }
+    .office-tab.is-active .office-tab-badge { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: var(--white); }
+    .office-tab-text { font-size: 13px; line-height: 1.4; }
+    .office-detail { padding: 32px 36px; position: relative; }
+    .office-pane { display: none; animation: fadeIn 0.28s ease; }
+    .office-pane.is-active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .office-pane-head { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px dashed rgba(0,110,182,0.15); }
+    .office-pane-title { font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.35; }
+    .office-pane-tag { font-size: 12px; font-weight: 600; color: var(--primary); background: rgba(0,110,182,0.08); padding: 4px 12px; border-radius: 20px; }
+    .office-pane-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 28px; }
+    .office-field { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: var(--white); border-radius: 12px; border: 1px solid rgba(0,110,182,0.06); }
+    .office-field.is-full { grid-column: 1 / -1; }
+    .office-field-icon { flex-shrink: 0; width: 42px; height: 42px; border-radius: 10px; background: rgba(0,110,182,0.07); color: var(--primary); display: flex; align-items: center; justify-content: center; }
+    .office-field-icon svg { width: 18px; height: 18px; }
+    .office-field-label { font-size: 12px; color: var(--text-muted); }
+    .office-field-value { font-size: 14px; color: var(--text); line-height: 1.65; font-weight: 500; }
+    .office-field-value a { color: var(--primary); }
+    .office-field-value a:hover { color: var(--primary-light); }
+
+    /* Footer */
+    .footer { background: linear-gradient(180deg, #006EB6 0%, #005e9b 100%); color: rgba(255,255,255,0.78); padding: 56px 24px 0; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .footer-brand-head { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .footer-brand-head:hover { opacity: 0.92; }
+    .footer-contact .logo-text { color: var(--white); }
+    .footer-contact .logo-sub { color: rgba(255,255,255,0.55); }
+    .footer-body { display: grid; grid-template-columns: minmax(300px, 360px) 1fr; gap: 40px 48px; align-items: start; padding-bottom: 40px; }
+    .footer-contact { display: flex; flex-direction: column; gap: 0; min-width: 0; }
+    .footer-contact-col { min-width: 0; }
+    .footer-contact-col + .footer-contact-col { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.14); }
+    .footer-brand-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-brand-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.65; color: rgba(255,255,255); }
+    .footer-brand-icon { width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; opacity: 0.9; margin-top: 2px; color: var(--accent-light); }
+    .footer-brand-icon svg { width: 16px; height: 16px; display: block; stroke-width: 1.6; }
+    .footer-brand-list strong { color: var(--white); font-weight: 600; }
+    .footer-brand-list a { color: var(--accent-light); }
+    .footer-brand-list a.footer-link-plain { color: rgba(255,255,255,0.82); text-decoration: none; }
+    .footer-brand-list a.footer-link-plain:hover { color: var(--white); }
+    .footer-office-name { display: block; color: var(--white); font-weight: 600; margin-bottom: 12px; font-size: 13px; }
+    .footer-nav { display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: space-between; gap: 16px 20px; min-width: 0; width: 100%; }
+    .footer-col { flex: 0 0 auto; width: max-content; max-width: max-content; }
+    .footer-col h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 5px; padding-bottom: 3px; letter-spacing: 0.02em; white-space: nowrap; display: inline-block; border-bottom: 2px solid var(--accent); }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li:last-child { margin-bottom: 0; }
+    .footer-col ul a { font-size: 12px; line-height: 1.55; color: rgba(255,255,255,0.72); transition: color 0.2s; display: inline-block; white-space: nowrap; }
+    .footer-col ul a:hover { color: var(--accent-light); }
+    .footer-bottom { padding: 24px 0 28px; border-top: 1px solid rgba(255,255,255,0.12); text-align: center; font-size: 12px; color: rgba(255,255,255,0.45); }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .channel-bar { grid-template-columns: repeat(2, 1fr); }
+      .channel-item:nth-child(2) { border-right: none; }
+      .channel-item:nth-child(1),
+      .channel-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+      .contact-hub { grid-template-columns: 1fr; }
+      .office-nav { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid var(--border); padding: 10px; }
+      .office-tab { flex: 1 1 calc(33.33% - 8px); min-width: 120px; padding: 10px 12px; }
+      .office-pane-grid { grid-template-columns: 1fr; }
+      .footer-body { grid-template-columns: minmax(260px, 320px) 1fr; gap: 28px 32px; }
+      .footer-nav { flex-wrap: wrap; justify-content: flex-start; gap: 24px 28px; }
+    }
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .page-hero-img { min-height: 280px; height: min(55vw, 380px); }
+      .page-hero-overlay { align-items: flex-end; background: linear-gradient(180deg, transparent 30%, rgba(255,255,255,0.92) 100%); }
+      .page-hero-inner { padding: 0 20px 28px; }
+      .page-hero h1 { font-size: 30px; }
+      .page-hero-desc { font-size: 14px; max-width: none; }
+      .section { padding: 40px 16px; }
+      .contact-section { padding-top: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+      .channel-bar { grid-template-columns: 1fr; }
+      .channel-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .channel-item:last-child { border-bottom: none; }
+      .office-tab { flex: 1 1 calc(50% - 6px); }
+      .office-detail { padding: 24px 20px; }
+      .office-pane-title { font-size: 18px; }
+      .map-scene { min-height: 400px; padding: 32px 16px 48px; }
+      .map-controls { left: 10px; transform: translateY(-50%) scale(0.85); transform-origin: left center; }
+      .map-marker-wrap { margin-left: 0; align-items: center; }
+      .map-marker-pin { margin-left: 24px; }
+      .map-info-bubble { max-width: calc(100vw - 80px); padding: 12px 14px 14px; }
+      .footer-inner { gap: 0; }
+      .footer-body { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
+      .footer-nav { flex-wrap: wrap; justify-content: flex-start; gap: 24px 16px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="prototype-badge">原型 v1.0</div>
 
-    <header class="header">
-        <div class="header-inner">
-            <a href="index.html" class="logo">
-                <img src="img/logo.png" alt="STARLITE" class="logo-img">
-                <div>
-                    <div class="logo-text">星光树脂制品（昆山）有限公司</div>
-                    <div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/logo.png" alt="STARLITE" class="logo-img">
+        <div>
+          <div class="logo-text">星光树脂制品（昆山）有限公司</div>
+          <div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div>
+        </div>
+      </a>
+      <ul class="nav">
+        <li>
+          <a href="index.html">首页</a>
+          <ul class="nav-dropdown">
+            <li><a href="index.html#intro">企业简介</a></li>
+            <li><a href="index.html#history">发展历程</a></li>
+            <li><a href="index.html#logo">品牌标识解说</a></li>
+            <li><a href="index.html#vision">理念 & 愿景 & 使命</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="innovation.html">创新中心</a>
+          <ul class="nav-dropdown">
+            <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器 & 摩擦学检测设备</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="products.html">产品核心</a>
+          <ul class="nav-dropdown">
+            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+            <li><a href="products.html#clients">合作客户</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">关于我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="about.html#honors">企业荣誉</a></li>
+            <li><a href="about.html#cert">认证资质</a></li>
+            <li><a href="about.html#sustain">可持续发展</a></li>
+            <li><a href="about.html#news">企业动态</a></li>
+            <li><a href="about.html#social">社会贡献</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="join.html">加入我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="join.html#welfare">人文关怀</a></li>
+            <li><a href="join.html#training">教育培训</a></li>
+            <li><a href="join.html#activities">员工活动</a></li>
+            <li><a href="join.html#careers">招贤纳士</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="contact.html" class="active">联系我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="contact.html#contact-info">联系方式</a></li>
+            <li><a href="contact.html#contact-map">电子地图</a></li>
+            <li><a href="contact.html#contact-form">客户留言</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-btn active" type="button">中文</button>
+        <button class="lang-btn" type="button">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Banner -->
+    <section class="page-hero">
+      <img class="page-hero-img" src="img/banner/26.png" alt="联系我们">
+      <div class="page-hero-overlay">
+        <div class="page-hero-inner">
+          <h1>联系我们</h1>
+          <div class="page-hero-title-line"></div>
+          <p class="page-hero-desc">期待与您的合作，共创美好未来。欢迎通过以下方式与我们取得联系。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="section contact-section" id="contact-info">
+      <div class="section-inner">
+        <div class="section-header is-center">
+          <div class="section-title-wrap">
+            <span class="section-watermark" aria-hidden="true">CONTACT</span>
+            <h2 class="section-title">联系方式</h2>
+          </div>
+          <p class="section-desc">我们在昆山总部及广州、成都设有事务所，各业务部门随时为您提供专业支持。</p>
+        </div>
+
+        <div class="contact-hub">
+          <nav class="office-nav" role="tablist">
+            <button class="office-tab is-active" type="button" role="tab" aria-selected="true" data-target="office-hq"><span class="office-tab-badge">总</span><span class="office-tab-text">昆山总部</span></button>
+            <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-hr"><span class="office-tab-badge">聘</span><span class="office-tab-text">人事招聘</span></button>
+            <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-gz"><span class="office-tab-badge">广</span><span class="office-tab-text">广州事务所</span></button>
+            <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-cd"><span class="office-tab-badge">蓉</span><span class="office-tab-text">成都事务所</span></button>
+            <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-hf"><span class="office-tab-badge">高</span><span class="office-tab-text">高机能品营业部</span></button>
+            <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-pm"><span class="office-tab-badge">精</span><span class="office-tab-text">精密化成品营业部</span></button>
+          </nav>
+
+          <div class="office-detail">
+            <!-- 昆山总部 -->
+            <div class="office-pane is-active" id="office-hq" role="tabpanel">
+              <div class="office-pane-head">
+                <h3 class="office-pane-title">星光树脂制品（昆山）有限公司</h3>
+                <span class="office-pane-tag">总部</span>
+              </div>
+              <div class="office-pane-grid">
+                <div class="office-field is-full">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                  <div><div class="office-field-label">地址</div><div class="office-field-value">江苏省昆山市周市镇陆杨迎宾西路2号</div></div>
                 </div>
-            </a>
-            <ul class="nav">
-                <li>
-                    <a href="index.html">首页</a>
-                    <ul class="nav-dropdown">
-                        <li><a href="index.html#intro">企业简介</a></li>
-                        <li><a href="index.html#history">发展历程</a></li>
-                        <li><a href="index.html#logo">品牌标识解说</a></li>
-                        <li><a href="index.html#vision">理念 & 愿景 & 使命</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="innovation.html">创新中心</a>
-                    <ul class="nav-dropdown">
-                        <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-                        <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
-                        <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
-                        <li><a href="innovation.html#equipment">试验分析仪器 & 摩擦学检测设备</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="products.html">产品核心</a>
-                    <ul class="nav-dropdown">
-                        <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
-                        <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
-                        <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
-                        <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-                        <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-                        <li><a href="products.html#clients">合作客户</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="about.html">关于我们</a>
-                    <ul class="nav-dropdown">
-                        <li><a href="about.html#honors">企业荣誉</a></li>
-                        <li><a href="about.html#cert">认证资质</a></li>
-                        <li><a href="about.html#sustain">可持续发展</a></li>
-                        <li><a href="about.html#news">企业动态</a></li>
-                        <li><a href="about.html#social">社会贡献</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="join.html">加入我们</a>
-                    <ul class="nav-dropdown">
-                        <li><a href="join.html#welfare">人文关怀</a></li>
-                        <li><a href="join.html#training">教育培训</a></li>
-                        <li><a href="join.html#activities">员工活动</a></li>
-                        <li><a href="join.html#careers">招贤纳士</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="contact.html" class="active">联系我们</a>
-                    <ul class="nav-dropdown">
-                        <li><a href="contact.html#contact-info">联系方式</a></li>
-                        <li><a href="contact.html#contact-form">客户留言</a></li>
-                    </ul>
-                </li>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                  <div><div class="office-field-label">电话</div><div class="office-field-value">+86-512-57641220</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="9" y1="20" x2="12" y2="20"/></svg></div>
+                  <div><div class="office-field-label">传真</div><div class="office-field-value">+86-512-57641211</div></div>
+                </div>
+                <div class="office-field is-full">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                  <div><div class="office-field-label">邮箱</div><div class="office-field-value"><a href="mailto:xingguang@starlite.cn">xingguang@starlite.cn</a></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 人事招聘 -->
+            <div class="office-pane" id="office-hr" role="tabpanel">
+              <div class="office-pane-head">
+                <h3 class="office-pane-title">人事招聘</h3>
+              </div>
+              <div class="office-pane-grid">
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                  <div><div class="office-field-label">电话</div><div class="office-field-value">+86-512-57644783</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                  <div><div class="office-field-label">邮箱</div><div class="office-field-value"><a href="mailto:zhaopin@starlite.cn">zhaopin@starlite.cn</a></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 广州事务所 -->
+            <div class="office-pane" id="office-gz" role="tabpanel">
+              <div class="office-pane-head">
+                <h3 class="office-pane-title">广州事务所</h3>
+              </div>
+              <div class="office-pane-grid">
+                <div class="office-field is-full">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                  <div><div class="office-field-label">地址</div><div class="office-field-value">广东省广州市天河区龙口西路金田北街15号</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                  <div><div class="office-field-label">电话</div><div class="office-field-value">+86-20-85237812</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="9" y1="20" x2="12" y2="20"/></svg></div>
+                  <div><div class="office-field-label">传真</div><div class="office-field-value">+86-20-85237812</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                  <div><div class="office-field-label">邮箱</div><div class="office-field-value"><a href="mailto:gaojiyingye@starlite.cn">gaojiyingye@starlite.cn</a></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 成都事务所 -->
+            <div class="office-pane" id="office-cd" role="tabpanel">
+              <div class="office-pane-head">
+                <h3 class="office-pane-title">成都事务所</h3>
+              </div>
+              <div class="office-pane-grid">
+                <div class="office-field is-full">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                  <div><div class="office-field-label">地址</div><div class="office-field-value">四川省成都市成华区双庆路16号</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                  <div><div class="office-field-label">电话</div><div class="office-field-value">+86-28-62399989</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="9" y1="20" x2="12" y2="20"/></svg></div>
+                  <div><div class="office-field-label">传真</div><div class="office-field-value">+86-28-62399989</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                  <div><div class="office-field-label">邮箱</div><div class="office-field-value"><a href="mailto:gaojiyingye@starlite.cn">gaojiyingye@starlite.cn</a></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 高机能品营业部 -->
+            <div class="office-pane" id="office-hf" role="tabpanel">
+              <div class="office-pane-head">
+                <h3 class="office-pane-title">高机能品营业部</h3>
+              </div>
+              <div class="office-pane-grid">
+                <div class="office-field is-full">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                  <div><div class="office-field-label">电话</div><div class="office-field-value">+86-512-57396600 / +86-512-57396671 / +86-512-57396672</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="9" y1="20" x2="12" y2="20"/></svg></div>
+                  <div><div class="office-field-label">传真</div><div class="office-field-value">+86-512-57396622</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                  <div><div class="office-field-label">邮箱</div><div class="office-field-value"><a href="mailto:gaojiyingye@starlite.cn">gaojiyingye@starlite.cn</a></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 精密化成品营业部 -->
+            <div class="office-pane" id="office-pm" role="tabpanel">
+              <div class="office-pane-head">
+                <h3 class="office-pane-title">精密化成品营业部</h3>
+              </div>
+              <div class="office-pane-grid">
+                <div class="office-field is-full">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                  <div><div class="office-field-label">电话</div><div class="office-field-value">+86-512-57644820 / +86-512-57645352 / +86-512-57644816</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="9" y1="20" x2="12" y2="20"/></svg></div>
+                  <div><div class="office-field-label">传真</div><div class="office-field-value">+86-512-57643666</div></div>
+                </div>
+                <div class="office-field">
+                  <div class="office-field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                  <div><div class="office-field-label">邮箱</div><div class="office-field-value"><a href="mailto:jinghuayingye@starlite.cn">jinghuayingye@starlite.cn</a></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 电子地图 -->
+    <section class="section map-section" id="contact-map">
+      <div class="section-inner">
+        <div class="section-header is-center">
+          <div class="section-title-wrap">
+            <span class="section-watermark" aria-hidden="true">MAP</span>
+            <h2 class="section-title">电子地图</h2>
+          </div>
+          <p class="section-desc">星光树脂制品（昆山）有限公司 · 江苏省昆山市周市镇陆杨迎宾西路2号</p>
+        </div>
+        <div class="panel-box">
+          <div class="map-panel-body">
+            <div class="map-scene">
+              <div class="map-controls" aria-hidden="true">
+                <div class="map-ctrl-pad">
+                  <span class="map-ctrl-btn"></span>
+                  <button class="map-ctrl-btn" type="button" tabindex="-1">▲</button>
+                  <span class="map-ctrl-btn"></span>
+                  <button class="map-ctrl-btn" type="button" tabindex="-1">◀</button>
+                  <span class="map-ctrl-btn is-center">●</span>
+                  <button class="map-ctrl-btn" type="button" tabindex="-1">▶</button>
+                  <span class="map-ctrl-btn"></span>
+                  <button class="map-ctrl-btn" type="button" tabindex="-1">▼</button>
+                  <span class="map-ctrl-btn"></span>
+                </div>
+                <div class="map-ctrl-zoom">
+                  <button class="map-ctrl-btn" type="button" tabindex="-1">+</button>
+                  <button class="map-ctrl-btn" type="button" tabindex="-1">−</button>
+                </div>
+              </div>
+              <div class="map-marker-wrap">
+                <div class="map-info-bubble">
+                  <h3 class="map-info-title">星光树脂制品（昆山）有限公司</h3>
+                  <ul class="map-info-list">
+                    <li><span class="map-info-label">地址：</span>江苏省昆山市周市镇陆杨迎宾西路2号</li>
+                    <li><span class="map-info-label">总机电话：</span>+86 512 57641220</li>
+                    <li><span class="map-info-label">传真号码：</span>+86 512 57641211</li>
+                    <li><span class="map-info-label">邮箱地址：</span><a href="mailto:xingguang@starlite.cn">xingguang@starlite.cn</a></li>
+                  </ul>
+                </div>
+                <div class="map-marker-pin" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 客户留言 -->
+    <section class="section form-section" id="contact-form">
+      <div class="section-inner">
+        <div class="section-header is-center">
+          <div class="section-title-wrap">
+            <span class="section-watermark" aria-hidden="true">MESSAGE</span>
+            <h2 class="section-title">客户留言</h2>
+          </div>
+          <p class="section-desc">填写以下信息，我们将尽快与您取得联系。</p>
+        </div>
+        <div class="form-wrap">
+          <div class="panel-box">
+            <div class="form-panel-body">
+              <form class="form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>姓名 <span>*</span></label>
+                    <input type="text" placeholder="请输入您的姓名" required>
+                  </div>
+                  <div class="form-group">
+                    <label>联系电话 <span>*</span></label>
+                    <input type="tel" placeholder="请输入联系电话" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>咨询类型</label>
+                    <select>
+                      <option value="">请选择</option>
+                      <option>产品咨询</option>
+                      <option>求职咨询</option>
+                      <option>其他咨询</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>邮箱</label>
+                    <input type="email" placeholder="请输入邮箱地址">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>留言内容 <span>*</span></label>
+                  <textarea rows="4" placeholder="请描述您的需求或问题..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">
+                  提交留言
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-body">
+        <div class="footer-contact">
+          <a href="index.html" class="footer-brand-head logo">
+            <img src="img/logo-白.png" alt="STARLITE" class="logo-img">
+            <div>
+              <div class="logo-text">星光树脂制品（昆山）有限公司</div>
+              <div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div>
+            </div>
+          </a>
+          <div class="footer-contact-col">
+            <ul class="footer-brand-list">
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>+86-512-57641220 · 传真 +86-512-57641211</span></li>
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
             </ul>
-            <div class="lang-switch"><button class="lang-btn active" type="button">中文</button><button class="lang-btn" type="button">EN</button></div>
+          </div>
+          <div class="footer-contact-col">
+            <strong class="footer-office-name">星光工业株式会社</strong>
+            <ul class="footer-brand-list">
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>电 话：+816-6956-2240 · 传 真：+816-6956-2715</span></li>
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>地 址：日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮 编：535-0002</span></li>
+              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span><span>网 址：<a href="https://starlite.co.jp/" class="footer-link-plain" target="_blank" rel="noopener">https://starlite.co.jp/</a></span></li>
+            </ul>
+          </div>
         </div>
-    </header>
-
-    <!-- 主内容区 -->
-    <main class="main-content">
-        <div class="page-header">
-            <div class="container">
-                <h1>联系我们</h1>
-                <p>期待与您的合作，共创美好未来</p>
-            </div>
+        <div class="footer-nav">
+        <div class="footer-col">
+          <h4>首页</h4>
+          <ul>
+            <li><a href="index.html#intro">企业简介</a></li>
+            <li><a href="index.html#history">发展历程</a></li>
+            <li><a href="index.html#logo">品牌标识解说</a></li>
+            <li><a href="index.html#vision">理念&愿景&使命</a></li>
+          </ul>
         </div>
-
-        <div class="section contact-content">
-            <div class="container">
-                <div class="contact-grid">
-                    <!-- 联系信息 -->
-                    <div class="contact-info">
-                        <h2 id="contact-info">联系方式</h2>
-
-                        <div class="info-group" style="margin-bottom: 24px;">
-                            <h3 style="font-size: 16px; color: var(--color-dark); margin-bottom: 12px; font-weight: bold;">星光树脂制品（昆山）有限公司</h3>
-                            <div class="info-list">
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                    <div class="info-text">
-                                        <span class="value">江苏省昆山市周市镇陆杨迎宾西路2号</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                    <div class="info-text">
-                                        <span class="value">+86-512-57641220</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
-                                    <div class="info-text">
-                                        <span class="value">+86-512-57641211</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                    <div class="info-text">
-                                        <span class="value"><a href="mailto:xingguang@starlite.cn" style="color: var(--color-dark); text-decoration: none;">xingguang@starlite.cn</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="info-group" style="margin-bottom: 24px;">
-                            <h3 style="font-size: 15px; color: var(--color-dark); margin-bottom: 12px; font-weight: bold;">人事招聘</h3>
-                            <div class="info-list">
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                    <div class="info-text">
-                                        <span class="value">+86-512-57644783</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                    <div class="info-text">
-                                        <span class="value"><a href="mailto:zhaopin@starlite.cn" style="color: var(--color-dark); text-decoration: none;">zhaopin@starlite.cn</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="info-group" style="margin-bottom: 24px;">
-                            <h3 style="font-size: 15px; color: var(--color-dark); margin-bottom: 12px; font-weight: bold;">广州事务所</h3>
-                            <div class="info-list">
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                    <div class="info-text">
-                                        <span class="value">广东省广州市天河区龙口西路金田北街15号</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                    <div class="info-text">
-                                        <span class="value">+86-20-85237812</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                    <div class="info-text">
-                                        <span class="value"><a href="mailto:gaojiyingye@starlite.cn" style="color: var(--color-dark); text-decoration: none;">gaojiyingye@starlite.cn</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="info-group" style="margin-bottom: 24px;">
-                            <h3 style="font-size: 15px; color: var(--color-dark); margin-bottom: 12px; font-weight: bold;">成都事务所</h3>
-                            <div class="info-list">
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                    <div class="info-text">
-                                        <span class="value">四川省成都市成华区双庆路16号</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                    <div class="info-text">
-                                        <span class="value">+86-28-62399989</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                    <div class="info-text">
-                                        <span class="value"><a href="mailto:gaojiyingye@starlite.cn" style="color: var(--color-dark); text-decoration: none;">gaojiyingye@starlite.cn</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="info-group" style="margin-bottom: 24px;">
-                            <h3 style="font-size: 15px; color: var(--color-dark); margin-bottom: 12px; font-weight: bold;">高机能品营业部</h3>
-                            <div class="info-list">
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                    <div class="info-text">
-                                        <span class="value">+86-512-57396600 / +86-512-57396671 / +86-512-57396672</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
-                                    <div class="info-text">
-                                        <span class="value">+86-512-57396622</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                    <div class="info-text">
-                                        <span class="value"><a href="mailto:gaojiyingye@starlite.cn" style="color: var(--color-dark); text-decoration: none;">gaojiyingye@starlite.cn</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="info-group" style="margin-bottom: 24px;">
-                            <h3 style="font-size: 15px; color: var(--color-dark); margin-bottom: 12px; font-weight: bold;">精密化成品营业部</h3>
-                            <div class="info-list">
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                    <div class="info-text">
-                                        <span class="value">+86-512-57644820 / +86-512-57645352 / +86-512-57644816</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
-                                    <div class="info-text">
-                                        <span class="value">+86-512-57643666</span>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <svg class="info-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-medium); flex-shrink: 0; margin-top: 2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                    <div class="info-text">
-                                        <span class="value"><a href="mailto:jinghuayingye@starlite.cn" style="color: var(--color-dark); text-decoration: none;">jinghuayingye@starlite.cn</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 电子地图占位 -->
-                        <div class="map-section">
-                            <h3>电子地图</h3>
-                            <div class="map-placeholder">
-                                <div class="cross-line1"></div>
-                                <div class="cross-line2"></div>
-                                <span class="map-label">地图区域</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 留言表单 -->
-                    <div class="contact-form">
-                        <h2 id="contact-form">客户留言</h2>
-                        <form class="form">
-                            <div class="form-group">
-                                <label>姓名</label>
-                                <input type="text" placeholder="请输入您的姓名">
-                            </div>
-                            <div class="form-group">
-                                <label>公司名称</label>
-                                <input type="text" placeholder="请输入公司名称">
-                            </div>
-                            <div class="form-group">
-                                <label>联系电话</label>
-                                <input type="tel" placeholder="请输入联系电话">
-                            </div>
-                            <div class="form-group">
-                                <label>邮箱</label>
-                                <input type="email" placeholder="请输入邮箱地址">
-                            </div>
-                            <div class="form-group">
-                                <label>留言内容</label>
-                                <textarea rows="5" placeholder="请输入留言内容"></textarea>
-                            </div>
-                            <button type="submit" class="btn-primary">提交留言</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-col">
+          <h4>创新中心</h4>
+          <ul>
+            <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+          </ul>
         </div>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <a href="index.html" class="footer-brand-head">
-                    <img src="img/logo.png" alt="STARLITE" class="footer-brand-logo">
-                    <div>
-                        <div class="footer-brand-cn">星光树脂</div>
-                        <div class="footer-brand-en">Starlite Plastic Products</div>
-                    </div>
-                </a>
-                <ul class="footer-brand-list">
-                    <li><span class="footer-brand-icon">📞</span><span><br>+86-512-57641220 · 传真 +86-512-57641211</span></li>
-                    <li><span class="footer-brand-icon">📍</span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
-                    <li class="footer-brand-divider"><span class="footer-brand-icon">📞</span><span><strong>星光工业株式会社</strong><br>+816-6956-2240 · <a href="https://starlite.co.jp/" target="_blank" rel="noopener">starlite.co.jp</a></span></li>
-                    <li><span class="footer-brand-icon">📍</span><span>日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002</span></li>
-                </ul>
-            </div>
-            <div class="footer-nav">
-                <div class="footer-col">
-                    <h4>首页</h4>
-                    <ul>
-                        <li><a href="index.html#intro">企业简介</a></li>
-                        <li><a href="index.html#history">发展历程</a></li>
-                        <li><a href="index.html#logo">品牌标识解说</a></li>
-                        <li><a href="index.html#vision">理念&愿景&使命</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>创新中心</h4>
-                    <ul>
-                        <li><a href="innovation.html#timeline">摩擦学技术开发轨迹</a></li>
-                        <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
-                        <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
-                        <li><a href="innovation.html#equipment">试验分析仪器&检测设备</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>产品核心</h4>
-                    <ul>
-                        <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
-                        <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
-                        <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
-                        <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-                        <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-                        <li><a href="products.html#clients">合作客户</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>关于我们</h4>
-                    <ul>
-                        <li><a href="about.html#honors">企业荣誉</a></li>
-                        <li><a href="about.html#cert">认证资质</a></li>
-                        <li><a href="about.html#sustain">可持续发展</a></li>
-                        <li><a href="about.html#news">企业动态</a></li>
-                        <li><a href="about.html#social">社会贡献</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>加入我们</h4>
-                    <ul>
-                        <li><a href="join.html#welfare">人文关怀</a></li>
-                        <li><a href="join.html#training">教育培训</a></li>
-                        <li><a href="join.html#activities">员工活动</a></li>
-                        <li><a href="join.html#careers">招贤纳士</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>联系我们</h4>
-                    <ul>
-                        <li><a href="contact.html#info">联系方式</a></li>
-                        <li><a href="contact.html#map">电子地图</a></li>
-                        <li><a href="contact.html#message">客户留言</a></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="footer-col">
+          <h4>产品核心</h4>
+          <ul>
+            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+            <li><a href="products.html#clients">合作客户</a></li>
+          </ul>
         </div>
-        <div class="footer-bottom">© 2026 星光树脂制品（昆山）有限公司 · 网站原型</div>
-    </footer>
+        <div class="footer-col">
+          <h4>关于我们</h4>
+          <ul>
+            <li><a href="about.html#honors">企业荣誉</a></li>
+            <li><a href="about.html#cert">认证资质</a></li>
+            <li><a href="about.html#sustain">可持续发展</a></li>
+            <li><a href="about.html#news">企业动态</a></li>
+            <li><a href="about.html#social">社会贡献</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>加入我们</h4>
+          <ul>
+            <li><a href="join.html#welfare">人文关怀</a></li>
+            <li><a href="join.html#training">教育培训</a></li>
+            <li><a href="join.html#activities">员工活动</a></li>
+            <li><a href="join.html#careers">招贤纳士</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系我们</h4>
+          <ul>
+            <li><a href="contact.html#contact-info">联系方式</a></li>
+            <li><a href="contact.html#contact-map">电子地图</a></li>
+            <li><a href="contact.html#contact-form">客户留言</a></li>
+          </ul>
+        </div>
+        </div>
+      </div>
+      <div class="footer-bottom">版权所有：星光树脂制品（昆山）有限公司 All Rights Reserved | 苏ICP备12003553号-1</div>
+    </div>
+  </footer>
 
-    <script>
-document.querySelectorAll('.lang-switch').forEach(function(s){s.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){s.querySelectorAll('.lang-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active')})})});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.querySelector('.form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('留言已提交（演示功能）');
+  <script>
+    document.querySelectorAll('.lang-switch').forEach(function(s) {
+      s.querySelectorAll('.lang-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          s.querySelectorAll('.lang-btn').forEach(function(x) { x.classList.remove('active'); });
+          b.classList.add('active');
         });
-    }
-});
-    </script>
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var contactForm = document.querySelector('.form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          alert('留言已提交（演示功能）');
+        });
+      }
+
+      document.querySelectorAll('.office-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          var targetId = tab.getAttribute('data-target');
+          document.querySelectorAll('.office-tab').forEach(function(t) {
+            t.classList.remove('is-active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          document.querySelectorAll('.office-pane').forEach(function(p) {
+            p.classList.remove('is-active');
+          });
+          tab.classList.add('is-active');
+          tab.setAttribute('aria-selected', 'true');
+          var pane = document.getElementById(targetId);
+          if (pane) pane.classList.add('is-active');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
