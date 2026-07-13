@@ -26,29 +26,76 @@
     [id] { scroll-margin-top: 88px; }
 
     /* Header */
-    .header { background: var(--white); box-shadow: 0 2px 12px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 1000; }
-    .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .header { background: var(--primary); box-shadow: none; position: sticky; top: 0; z-index: 1000; }
+
+    /* 二级菜单展开时整体下推 */
+    .header { transition: margin-bottom 0.25s ease; margin-bottom: 0; }
+    .header:has(.nav > li:hover),
+    .header:has(.nav > li:focus-within) { margin-bottom: 64px; }
+    .nav-dropdown { transform: none; }
+
+    .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: flex-start; gap: 12px; height: 72px; }
     .logo { display: flex; align-items: center; gap: 12px; }
     .logo-img { height: 48px; width: auto; object-fit: contain; display: block; }
-    .logo-text { font-size: 18px; line-height: 1.5; font-weight: 700; color: var(--primary); }
-    .logo-sub { font-size: 12px; line-height: 1.5; color: var(--text-muted); font-weight: 400; }
-    .nav { display: flex; gap: 4px; align-items: stretch; }
-    .nav > li { list-style: none; position: relative; }
-    .nav > li > a { display: flex; align-items: center; height: 72px; padding: 0 16px; font-size: 16px; color: var(--text); position: relative; transition: color 0.25s ease; white-space: nowrap; line-height: 1.6; }
-    .nav > li > a::after { content: ''; position: absolute; left: 16px; right: 16px; bottom: 0; height: 4px; background: var(--primary); transform: scaleX(0); transition: transform 0.25s ease; }
-    .nav > li > a:hover, .nav > li > a.active, .nav > li:hover > a { color: var(--primary); }
-    .nav > li > a:hover::after, .nav > li > a.active::after, .nav > li:hover > a::after { transform: scaleX(1); }
-    .nav-dropdown { position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%) translateY(12px); width: max-content; background: var(--white); border-radius: 12px; box-shadow: 0 20px 50px rgba(0,110,182,0.16), 0 8px 20px rgba(0,0,0,0.06); border: 1px solid rgba(0,110,182,0.1); padding: 6px 0; opacity: 0; visibility: hidden; transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s; z-index: 1001; list-style: none; }
-    .nav-dropdown::after { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
-    .nav > li:hover > .nav-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-    .nav-dropdown li { list-style: none; }
-    .nav-dropdown a { display: block; position: relative; padding: 11px 18px; font-size: 14px; color: var(--text); transition: color 0.2s ease, background 0.2s ease; white-space: nowrap; line-height: 1.6; }
-    .nav-dropdown a::before { content: ''; position: absolute; left: 8px; top: 50%; transform: translateY(-50%); width: 3px; height: 0; border-radius: 2px; background: var(--accent); transition: height 0.2s ease; }
-    .nav-dropdown a:hover { color: var(--primary); background: rgba(0,110,182,0.05); }
-    .nav-dropdown a:hover::before { height: 14px; }
-    .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; flex-shrink: 0; }
-    .lang-btn { padding: 5px 10px; font-size: 12px; border: none; background: transparent; color: var(--text-muted); cursor: pointer; font-family: inherit; transition: all 0.2s; width: 46px; }
-    .lang-btn.active { background: var(--primary); color: var(--white); }
+    .logo-text { font-size: 20px; line-height: 1.35; font-weight: 700; color: var(--white); letter-spacing: 0.01em; }
+    .logo-sub { display: none; }
+    .nav { display: flex; gap: 4px; align-items: stretch; margin-left: auto; }
+    .nav > li { list-style: none; position: static; }
+    .nav > li > a { display: flex; align-items: center; height: 72px; padding: 0 16px; font-size: 16px; color: rgba(255,255,255,0.88); position: relative; transition: color 0.25s ease; white-space: nowrap; line-height: 1.6; }
+    .nav > li > a:hover, .nav > li > a.active, .nav > li:hover > a { color: var(--white); font-weight: 600; }
+    .nav-dropdown {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px 36px;
+      margin: 0;
+      padding: 18px 40px;
+      background: var(--white);
+      border-top: 1px solid rgba(0,110,182,0.08);
+      box-shadow: 0 16px 40px rgba(0,110,182,0.1);
+      border-radius: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: none;
+      transition: opacity 0.25s ease, visibility 0.25s;
+      z-index: 1001;
+      list-style: none;
+      box-sizing: border-box;
+    }
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -10px;
+      height: 10px;
+    }
+    .nav > li:hover > .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav-dropdown li { list-style: none; flex: 0 0 auto; }
+    .nav-dropdown a {
+      display: block;
+      position: relative;
+      padding: 6px 2px;
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+      white-space: nowrap;
+      line-height: 1.5;
+    }
+    .nav-dropdown a:hover { color: var(--primary); }
+    .lang-switch { display: flex; align-items: center; flex-shrink: 0; }
+    .lang-btn { padding: 0 4px; font-size: 13px; border: none; background: transparent; color: rgba(255,255,255,0.88); cursor: pointer; font-family: inherit; transition: color 0.2s; line-height: 1.4; }
+    .lang-btn:hover { color: var(--white); }
     .prototype-badge { position: fixed; bottom: 16px; right: 16px; background: var(--accent); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; z-index: 9999; }
 
     /* Hero Banner */
@@ -168,34 +215,111 @@
     .office-field-value a:hover { color: var(--primary-light); }
 
     /* Footer */
-    .footer { background: linear-gradient(180deg, #006EB6 0%, #005e9b 100%); color: rgba(255,255,255,0.78); padding: 56px 24px 0; }
-    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
-    .footer-brand-head { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-    .footer-brand-head:hover { opacity: 0.92; }
-    .footer-contact .logo-text { color: var(--white); }
-    .footer-contact .logo-sub { color: rgba(255,255,255,0.55); }
-    .footer-body { display: grid; grid-template-columns: minmax(300px, 360px) 1fr; gap: 40px 48px; align-items: start; padding-bottom: 40px; }
-    .footer-contact { display: flex; flex-direction: column; gap: 0; min-width: 0; }
-    .footer-contact-col { min-width: 0; }
-    .footer-contact-col + .footer-contact-col { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.14); }
-    .footer-brand-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-brand-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.65; color: rgba(255,255,255); }
-    .footer-brand-icon { width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; opacity: 0.9; margin-top: 2px; color: var(--accent-light); }
-    .footer-brand-icon svg { width: 16px; height: 16px; display: block; stroke-width: 1.6; }
-    .footer-brand-list strong { color: var(--white); font-weight: 600; }
-    .footer-brand-list a { color: var(--accent-light); }
-    .footer-brand-list a.footer-link-plain { color: rgba(255,255,255,0.82); text-decoration: none; }
-    .footer-brand-list a.footer-link-plain:hover { color: var(--white); }
-    .footer-office-name { display: block; color: var(--white); font-weight: 600; margin-bottom: 12px; font-size: 13px; }
-    .footer-nav { display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: space-between; gap: 16px 20px; min-width: 0; width: 100%; }
-    .footer-col { flex: 0 0 auto; width: max-content; max-width: max-content; }
-    .footer-col h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 5px; padding-bottom: 3px; letter-spacing: 0.02em; white-space: nowrap; display: inline-block; border-bottom: 2px solid var(--accent); }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul li:last-child { margin-bottom: 0; }
-    .footer-col ul a { font-size: 12px; line-height: 1.55; color: rgba(255,255,255,0.72); transition: color 0.2s; display: inline-block; white-space: nowrap; }
-    .footer-col ul a:hover { color: var(--accent-light); }
-    .footer-bottom { padding: 24px 0 28px; border-top: 1px solid rgba(255,255,255,0.12); text-align: center; font-size: 12px; color: rgba(255,255,255,0.45); }
+    .footer { background: #555960; color: rgba(255,255,255,0.78); }
+    .footer-main { padding: 40px 24px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 28px 24px;
+    }
+    .footer-col { min-width: 0; }
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 18px;
+      letter-spacing: 0.04em;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.72);
+      transition: color 0.2s;
+      display: block;
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-contact { margin-top: 30px; }
+    .footer-contact-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-phone {
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+    }
+    .footer-phone:hover { color: var(--accent-light); }
+    .footer-fax {
+      font-size: 15px;
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 0.02em;
+    }
+    .footer-address {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+      line-height: 1.55;
+      transition: color 0.2s;
+    }
+    .footer-address:hover { color: var(--white); }
+    .footer-address-text { min-width: 0; }
+    .footer-address-label {
+      display: block;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 4px;
+    }
+    .footer-address-meta {
+      display: block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.62);
+    }
+    .footer-address-arrow {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: rgba(255,255,255,0.7);
+    }
+    .footer-bar { background: var(--primary); }
+    .footer-bar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px 24px;
+      flex-wrap: wrap;
+    }
+    .footer-bar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      min-width: 0;
+    }
+    .footer-bar-brand img { height: 36px; width: auto; display: block; }
+    .footer-bar-brand-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; line-height: 1.25; }
+    .footer-bar-brand-zh { font-size: 14px; font-weight: 700; letter-spacing: 0.02em; color: var(--white); white-space: nowrap; }
+    .footer-bar-brand-en { font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: #9EC9E8; white-space: nowrap; }
+    .footer-bar-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.5;
+      text-align: right;
+    }
 
     /* Responsive */
     @media (max-width: 1100px) {
@@ -207,8 +331,7 @@
       .office-nav { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid var(--border); padding: 10px; }
       .office-tab { flex: 1 1 calc(33.33% - 8px); min-width: 120px; padding: 10px 12px; }
       .office-pane-grid { grid-template-columns: 1fr; }
-      .footer-body { grid-template-columns: minmax(260px, 320px) 1fr; gap: 28px 32px; }
-      .footer-nav { flex-wrap: wrap; justify-content: flex-start; gap: 24px 28px; }
+      .footer-links { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 20px; }
     }
     @media (max-width: 768px) {
       .nav { display: none; }
@@ -231,9 +354,1320 @@
       .map-marker-wrap { margin-left: 0; align-items: center; }
       .map-marker-pin { margin-left: 24px; }
       .map-info-bubble { max-width: calc(100vw - 80px); padding: 12px 14px 14px; }
-      .footer-inner { gap: 0; }
-      .footer-body { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
-      .footer-nav { flex-wrap: wrap; justify-content: flex-start; gap: 24px 16px; }
+      .footer-main { padding: 40px 20px 0; }
+      .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
+      .footer-contact { margin-top: 32px; }
+      .footer-contact-row { padding: 18px 0; gap: 10px; }
+      .footer-phone { font-size: 22px; }
+      .footer-fax { font-size: 13px; }
+      .footer-address { padding: 16px 0; font-size: 13px; }
+      .footer-bar-inner { padding: 14px 20px; }
+      .footer-bar-copy { text-align: left; font-size: 11px; }
+    }
+
+    /* 2026 联系页视觉重构 */
+    :root {
+      --primary: #07579b;
+      --primary-light: #0b7fc1;
+      --accent: #f5b700;
+      --accent-light: #ffd667;
+      --text: #10243e;
+      --text-muted: #64748b;
+      --bg: #f3f7fb;
+      --white: #ffffff;
+      --border: #dce6ef;
+      --shadow: 0 16px 50px rgba(15, 43, 70, 0.08);
+      --shadow-lg: 0 28px 70px rgba(4, 43, 76, 0.15);
+      --radius: 20px;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* 顶部导航：蓝底白字 */
+    .header {
+      background: var(--primary);
+      box-shadow: none;
+      border-bottom: 0;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    .header-inner { height: 72px; }
+    .logo-img { height: 48px; }
+    .logo-text {
+      font-size: 20px;
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      color: var(--white);
+      max-width: 420px;
+    }
+    .logo-sub { display: none; }
+    .nav { gap: 4px; }
+    .nav > li > a {
+      height: 72px;
+      padding: 0 16px;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.88);
+    }
+    .nav > li > a::after { display: none; }
+    .nav > li > a:hover,
+    .nav > li > a.active,
+    .nav > li:hover > a {
+      color: var(--white);
+      font-weight: 600;
+    }
+    .lang-switch {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+    .lang-btn {
+      padding: 0 4px;
+      border-radius: 0;
+      width: auto;
+      color: rgba(255,255,255,0.88);
+    }
+    .lang-btn:hover { color: var(--white); }
+
+    /* 首屏 */
+    .page-hero {
+      min-height: 500px;
+      background: #072f51;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      right: -7%;
+      bottom: -42%;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 50%;
+      box-shadow: 0 0 0 56px rgba(255,255,255,0.025), 0 0 0 112px rgba(255,255,255,0.02);
+      pointer-events: none;
+    }
+    .page-hero-img {
+      height: 500px;
+      min-height: 500px;
+      opacity: 0.72;
+      filter: saturate(0.78) contrast(1.05);
+      object-position: center;
+    }
+    .page-hero-overlay {
+      background: linear-gradient(90deg, rgba(3, 30, 53, 0.96) 0%, rgba(4, 48, 82, 0.78) 42%, rgba(4, 48, 82, 0.18) 76%, rgba(4, 48, 82, 0.1) 100%);
+    }
+    .page-hero-inner { padding: 0 36px; }
+    .page-hero-inner::before {
+      content: 'CONTACT  /  STARLITE';
+      display: block;
+      margin-bottom: 22px;
+      color: var(--accent-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+    }
+    .page-hero h1 {
+      color: var(--white);
+      font-size: clamp(44px, 5vw, 68px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .page-hero-title-line {
+      width: 72px;
+      height: 3px;
+      margin: 24px 0 20px;
+      background: var(--accent);
+    }
+    .page-hero-desc {
+      max-width: 520px;
+      color: rgba(255,255,255,0.78);
+      font-size: 17px;
+      letter-spacing: 0.02em;
+    }
+
+    /* 通用区块 */
+    .section { padding: 104px 32px; }
+    .section-inner { max-width: 1200px; }
+    .section-header,
+    .section-header.is-center {
+      position: relative;
+      margin-bottom: 0;
+      text-align: left;
+      padding-left: 24px;
+    }
+    .section-header::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 4px;
+      height: 52px;
+      border-radius: 4px;
+      background: var(--accent);
+    }
+    .section-title-wrap { margin-bottom: 8px; }
+    .section-watermark {
+      left: 0;
+      top: auto;
+      bottom: calc(100% + 5px);
+      transform: none;
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      opacity: 0.72;
+    }
+    .section-title {
+      color: var(--text);
+      font-size: 34px;
+      letter-spacing: 0.04em;
+    }
+    .section-desc,
+    .section-header.is-center .section-desc {
+      max-width: 760px;
+      margin: 6px 0 0;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* 联系方式 */
+    .contact-section {
+      position: relative;
+      padding-top: 104px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(11,127,193,0.08), transparent 26%),
+        var(--white);
+    }
+    .contact-hub {
+      grid-template-columns: 285px minmax(0, 1fr);
+      min-height: 440px;
+      border: 0;
+      border-radius: 24px;
+      background: var(--white);
+      box-shadow: var(--shadow-lg);
+    }
+    .office-nav {
+      position: relative;
+      padding: 26px 18px;
+      gap: 8px;
+      border: 0;
+      background: linear-gradient(155deg, #063d69 0%, #075b98 100%);
+    }
+    .office-nav::before {
+      content: '选择联络部门';
+      padding: 0 14px 16px;
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+    }
+    .office-tab {
+      position: relative;
+      min-height: 54px;
+      padding: 10px 14px;
+      color: rgba(255,255,255,0.68);
+      border-radius: 12px;
+    }
+    .office-tab::after {
+      content: '→';
+      margin-left: auto;
+      opacity: 0;
+      transform: translateX(-5px);
+      transition: 0.2s ease;
+    }
+    .office-tab:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.08);
+    }
+    .office-tab.is-active {
+      color: var(--white);
+      background: rgba(255,255,255,0.14);
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+    .office-tab.is-active::after { opacity: 1; transform: none; }
+    .office-tab-badge {
+      width: 34px;
+      height: 34px;
+      color: var(--accent-light);
+      background: rgba(255,255,255,0.1);
+    }
+    .office-tab.is-active .office-tab-badge {
+      color: #063d69;
+      background: var(--accent);
+    }
+    .office-tab-text { font-size: 14px; }
+    .office-detail {
+      display: flex;
+      align-items: center;
+      padding: 48px 52px;
+      background:
+        linear-gradient(rgba(7,87,155,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(7,87,155,0.025) 1px, transparent 1px),
+        #fff;
+      background-size: 32px 32px;
+    }
+    .office-pane { width: 100%; }
+    .office-pane-head {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .office-pane-title { font-size: 25px; }
+    .office-pane-tag {
+      color: #664900;
+      background: rgba(245,183,0,0.22);
+    }
+    .office-pane-grid { gap: 14px; }
+    .office-field {
+      min-width: 0;
+      padding: 17px 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(15,43,70,0.035);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .office-field:hover {
+      transform: translateY(-2px);
+      border-color: rgba(7,87,155,0.24);
+      box-shadow: 0 12px 28px rgba(15,43,70,0.08);
+    }
+    .office-field-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: var(--primary);
+      background: #edf6fc;
+    }
+    .office-field-label {
+      margin-bottom: 2px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+    .office-field-value { overflow-wrap: anywhere; }
+
+    /* 地图 */
+    .map-section {
+      position: relative;
+      background: #f1f6fa;
+    }
+    .map-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.36;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(7,87,155,0.16) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .map-section .section-inner { position: relative; }
+    .panel-box {
+      border: 8px solid var(--white);
+      border-radius: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+    .map-panel-body {
+      min-height: 500px;
+      background:
+        linear-gradient(26deg, transparent 47%, rgba(255,255,255,0.55) 48%, rgba(255,255,255,0.55) 52%, transparent 53%),
+        linear-gradient(-18deg, transparent 43%, rgba(255,255,255,0.55) 44%, rgba(255,255,255,0.55) 48%, transparent 49%),
+        #d9e4e8;
+    }
+    .map-panel-body::before {
+      background:
+        radial-gradient(circle at 30% 30%, rgba(7,87,155,0.12) 0 4px, transparent 5px),
+        repeating-linear-gradient(0deg, transparent 0 47px, rgba(255,255,255,0.28) 48px),
+        repeating-linear-gradient(90deg, transparent 0 47px, rgba(255,255,255,0.28) 48px);
+    }
+    .map-scene { min-height: 500px; }
+    .map-info-bubble {
+      max-width: 440px;
+      margin-bottom: 16px;
+      padding: 22px 24px;
+      border: 0;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 22px 50px rgba(15,43,70,0.2);
+    }
+    .map-info-bubble::before {
+      bottom: -8px;
+      border: 0;
+      background: var(--white);
+    }
+    .map-info-bubble::after { display: none; }
+    .map-info-title { color: var(--primary); font-size: 17px; }
+    .map-info-list { gap: 6px; }
+    .map-info-list li { color: #405267; }
+    .map-marker-pin::before,
+    .map-marker-pin::after { filter: drop-shadow(0 5px 5px rgba(15,43,70,0.22)); }
+    .map-marker-pin::before { background: var(--primary); border-radius: 50% 50% 45% 45%; }
+    .map-marker-pin::after { border-top-color: var(--primary); }
+    .map-controls {
+      left: 24px;
+      border: 0;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(15,43,70,0.15);
+    }
+
+    /* 留言表单 */
+    .form-section {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(115deg, #052f51 0%, #064b7d 100%);
+    }
+    .form-section::before {
+      content: '';
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -180px;
+      top: -230px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      box-shadow: 0 0 0 70px rgba(255,255,255,0.025), 0 0 0 140px rgba(255,255,255,0.018);
+    }
+    .form-section .section-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.7fr) minmax(540px, 1.3fr);
+      gap: 80px;
+      align-items: center;
+    }
+    .form-section .section-header { margin-bottom: 0; }
+    .form-section .section-header::before { background: var(--accent); }
+    .form-section .section-watermark { color: var(--accent-light); }
+    .form-section .section-title { color: var(--white); font-size: 40px; }
+    .form-section .section-desc { color: rgba(255,255,255,0.62); }
+    .form-wrap { width: 100%; }
+    .form-section .panel-box {
+      border: 0;
+      border-radius: 22px;
+      background: var(--white);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.22);
+    }
+    .form-panel-body { padding: 36px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { margin-bottom: 8px; font-size: 13px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 13px 15px;
+      border-color: #dce6ef;
+      border-radius: 10px;
+      background: #f6f9fb;
+    }
+    .form-group textarea { min-height: 116px; }
+    .btn-submit {
+      width: auto;
+      min-width: 180px;
+      margin-top: 6px;
+      padding: 13px 28px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #17324d;
+      font-weight: 700;
+    }
+    .btn-submit:hover {
+      box-shadow: 0 10px 28px rgba(245,183,0,0.3);
+    }
+
+    /* 页脚：与首页保持一致，取消本页覆盖 */
+    .footer {
+      padding-top: 0;
+      background: #555960;
+    }
+    .footer-col h4 { border-bottom: 0; }
+
+    @media (max-width: 1100px) {
+      .contact-hub { grid-template-columns: 1fr; }
+      .office-nav {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 14px;
+      }
+      .office-nav::before { display: none; }
+      .office-tab {
+        flex: 0 0 auto;
+        min-width: 150px;
+      }
+      .office-detail { padding: 42px; }
+      .form-section .section-inner {
+        grid-template-columns: 1fr 1.4fr;
+        gap: 44px;
+      }
+      .footer-links { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 20px; }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero,
+      .page-hero-img { height: 420px; min-height: 420px; }
+      .page-hero-overlay {
+        align-items: center;
+        background: linear-gradient(90deg, rgba(3,30,53,0.92), rgba(4,48,82,0.4));
+      }
+      .page-hero-inner { padding: 40px 22px 0; }
+      .page-hero-inner::before { margin-bottom: 16px; }
+      .page-hero h1 { font-size: 38px; }
+      .page-hero-desc { font-size: 14px; }
+      .section { padding: 72px 18px; }
+      .section-header,
+      .section-header.is-center { margin-bottom: 34px; }
+      .section-title { font-size: 28px; }
+      .contact-section { padding-top: 72px; }
+      .contact-hub { border-radius: 18px; }
+      .office-nav { border: 0; }
+      .office-tab { min-width: 132px; padding: 8px 10px; }
+      .office-tab::after { display: none; }
+      .office-detail { padding: 30px 20px; }
+      .office-pane-head { margin-bottom: 20px; }
+      .office-pane-grid { grid-template-columns: 1fr; }
+      .office-field.is-full { grid-column: auto; }
+      .panel-box { border-width: 5px; border-radius: 18px; }
+      .map-panel-body,
+      .map-scene { min-height: 440px; }
+      .map-controls { left: 10px; }
+      .map-info-bubble { max-width: calc(100vw - 72px); padding: 18px; }
+      .form-section .section-inner {
+        display: block;
+      }
+      .form-section .section-header { margin-bottom: 34px; }
+      .form-section .section-title { font-size: 32px; }
+      .form-panel-body { padding: 24px 18px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .btn-submit { width: 100%; }
+      .footer-main { padding: 40px 20px 0; }
+      .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
+      .footer-contact { margin-top: 32px; }
+      .footer-bar-inner { padding: 14px 20px; }
+      .footer-bar-copy { text-align: left; font-size: 11px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* 简约商务版：参考图的分栏、留白与细线风格 */
+    body { background: #fff; }
+    main { display: flex; flex-direction: column; }
+    .page-hero { order: 0; }
+    .form-section { order: 1; }
+    .contact-section { order: 2; }
+    .map-section { order: 3; }
+
+    .header {
+      background: var(--primary);
+      border-bottom: 0;
+      box-shadow: none;
+    }
+    .nav > li > a::after { display: none; }
+    .logo-text { color: var(--white); }
+    .nav > li > a,
+    .lang-btn { color: rgba(255,255,255,0.88); }
+    .nav > li > a:hover,
+    .nav > li > a.active,
+    .nav > li:hover > a,
+    .lang-btn:hover { color: var(--white); }
+
+    /* 克制的内页标题 */
+    .page-hero,
+    .page-hero-img {
+      height: 300px;
+      min-height: 300px;
+    }
+    .page-hero { background: #1d2b36; }
+    .page-hero-img {
+      opacity: 0.58;
+      filter: grayscale(0.25) saturate(0.7);
+    }
+    .page-hero::after { display: none; }
+    .page-hero-overlay {
+      align-items: center;
+      background: linear-gradient(90deg, rgba(17,29,38,0.88), rgba(17,29,38,0.38) 65%, rgba(17,29,38,0.12));
+    }
+    .page-hero-inner { padding: 0 6vw; }
+    .page-hero-inner::before {
+      display: none;
+    }
+    .page-hero h1 {
+      font-size: clamp(34px, 4vw, 50px);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+    .page-hero-title-line {
+      width: 42px;
+      height: 2px;
+      margin: 16px 0 14px;
+      background: #1595d3;
+    }
+    .page-hero-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.72);
+    }
+
+    /* 上半部分：左图右表单 */
+    .form-section {
+      padding: 0;
+      background: #fff;
+      color: #20262b;
+    }
+    .form-section::before {
+      width: 44%;
+      height: 100%;
+      inset: 0 auto 0 0;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      background:
+        linear-gradient(rgba(21,38,48,0.12), rgba(21,38,48,0.12)),
+        url('img/banner/26.png') center / cover no-repeat;
+    }
+    .form-section::after {
+      content: '';
+      position: absolute;
+      left: 44%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #ebebeb;
+    }
+    .form-section .section-inner {
+      display: grid;
+      grid-template-columns: 44% 56%;
+      grid-template-rows: auto auto;
+      gap: 0;
+      width: 100%;
+      max-width: none;
+      min-height: 620px;
+      align-content: center;
+      align-items: start;
+    }
+    .form-section .section-header {
+      grid-column: 2;
+      margin: 0;
+      padding: 64px clamp(42px, 7vw, 110px) 20px;
+    }
+    .form-section .section-header::before { display: none; }
+    .form-section .section-title-wrap { margin: 0 0 8px; }
+    .form-section .section-watermark {
+      display: none;
+    }
+    .form-section .section-title {
+      color: #24282b;
+      font-size: clamp(32px, 3.2vw, 46px);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+    .form-section .section-desc {
+      color: #6f777d;
+      font-size: 13px;
+    }
+    .form-wrap {
+      grid-column: 2;
+      width: 100%;
+      padding: 0 clamp(42px, 7vw, 110px) 64px;
+    }
+    .form-section .panel-box {
+      overflow: visible;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .form-panel-body { padding: 0; }
+    .form-row { gap: 28px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      margin: 0 0 5px;
+      color: #777f85;
+      font-size: 11px;
+      font-weight: 400;
+    }
+    .form-group label span { color: #1595d3; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 9px 2px 11px;
+      border: 0;
+      border-bottom: 1px solid #d9dde0;
+      border-radius: 0;
+      color: #252a2e;
+      background: transparent;
+      font-size: 13px;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #b2b7bb; }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #1595d3;
+      background: transparent;
+      box-shadow: none;
+    }
+    .form-group textarea {
+      min-height: 72px;
+      resize: none;
+    }
+    .btn-submit {
+      width: auto;
+      min-width: 106px;
+      margin-top: 8px;
+      padding: 10px 20px;
+      border-radius: 22px;
+      color: #fff;
+      background: #168fca;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .btn-submit svg { width: 15px; height: 15px; }
+    .btn-submit:hover {
+      transform: translateY(-1px);
+      background: #087ab5;
+      box-shadow: 0 8px 18px rgba(22,143,202,0.2);
+    }
+
+    /* 下半部分：左标题右联系方式 */
+    .contact-section {
+      padding: 92px 6vw;
+      background: #f2f3f3;
+    }
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      left: 5%;
+      bottom: 7%;
+      width: 330px;
+      height: 150px;
+      opacity: 0.035;
+      border: 35px solid #152a36;
+      border-top: 0;
+      border-radius: 0 0 180px 180px;
+      transform: rotate(-12deg);
+      pointer-events: none;
+    }
+    .contact-section .section-inner {
+      display: grid;
+      grid-template-columns: 30% minmax(0, 70%);
+      gap: 7%;
+      max-width: 1200px;
+    }
+    .contact-section .section-header,
+    .contact-section .section-header.is-center {
+      margin: 0;
+      padding: 6px 0 0;
+    }
+    .contact-section .section-header::before { display: none; }
+    .contact-section .section-watermark {
+      display: none;
+    }
+    .contact-section .section-title {
+      color: #24282b;
+      font-size: clamp(30px, 3vw, 42px);
+      font-weight: 400;
+    }
+    .contact-section .section-desc {
+      max-width: 250px;
+      color: #7a8186;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .contact-hub {
+      display: block;
+      min-height: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .office-nav {
+      display: flex;
+      flex-flow: row wrap;
+      gap: 0;
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid #d7dadc;
+      background: transparent;
+    }
+    .office-nav::before { display: none; }
+    .office-tab {
+      flex: 0 0 auto;
+      width: auto;
+      min-height: 44px;
+      padding: 8px 15px;
+      border-radius: 0;
+      color: #7a8186;
+    }
+    .office-tab:first-child { padding-left: 0; }
+    .office-tab::after { display: none; }
+    .office-tab:hover {
+      color: #168bc6;
+      background: transparent;
+    }
+    .office-tab.is-active {
+      color: #168bc6;
+      background: transparent;
+      box-shadow: inset 0 -2px 0 #168bc6;
+      font-weight: 500;
+    }
+    .office-tab-badge {
+      display: none;
+    }
+    .office-tab-text { font-size: 12px; }
+    .office-detail {
+      display: block;
+      min-height: 278px;
+      padding: 30px 0 0;
+      background: transparent;
+    }
+    .office-pane-head {
+      margin: 0 0 8px;
+      padding: 0 0 15px;
+      border-bottom: 1px solid #d7dadc;
+    }
+    .office-pane-title {
+      color: #2b3034;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .office-pane-tag {
+      color: #168bc6;
+      background: transparent;
+      padding: 0;
+    }
+    .office-pane-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .office-field,
+    .office-field.is-full {
+      grid-column: auto;
+      align-items: center;
+      min-height: 58px;
+      padding: 12px 0;
+      border: 0;
+      border-bottom: 1px solid #d7dadc;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .office-field:hover {
+      transform: none;
+      border-color: #c7cccf;
+      box-shadow: none;
+    }
+    .office-field-icon {
+      width: 28px;
+      height: 28px;
+      margin-right: 8px;
+      border-radius: 0;
+      color: #6f777d;
+      background: transparent;
+    }
+    .office-field-icon svg { width: 15px; height: 15px; stroke-width: 1.5; }
+    .office-field > div:last-child {
+      display: grid;
+      grid-template-columns: 60px minmax(0, 1fr);
+      align-items: center;
+      width: 100%;
+    }
+    .office-field-label { margin: 0; color: #92989c; }
+    .office-field-value {
+      color: #30363a;
+      font-size: 13px;
+      font-weight: 400;
+      text-align: left;
+    }
+    .office-field-value a { color: #30363a; }
+
+    /* 地图保持轻量、扁平 */
+    .map-section {
+      padding: 92px 6vw;
+      background: #fff;
+    }
+    .map-section::before { display: none; }
+    .map-section .section-header,
+    .map-section .section-header,
+    .map-section .section-header.is-center {
+      padding-left: 6vw;
+      text-align: left;
+    }
+    .map-section .section-header::before { display: none; }
+    .map-section .section-watermark {
+      display: none;
+    }
+    .map-section .section-title {
+      color: #24282b;
+      font-size: 36px;
+      font-weight: 400;
+    }
+    .map-section .section-desc { margin: 5px 0 0; }
+    .map-section .panel-box {
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .map-panel-body,
+    .map-scene { min-height: 430px; }
+    .map-info-bubble {
+      border-radius: 2px;
+      box-shadow: 0 12px 32px rgba(20,35,45,0.14);
+    }
+
+    @media (max-width: 900px) {
+      .form-section::before {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 320px;
+      }
+      .form-section::after { display: none; }
+      .form-section .section-inner {
+        display: block;
+        min-height: 0;
+      }
+      .form-section .section-header {
+        padding: 58px 7vw 18px;
+      }
+      .form-wrap { padding: 0 7vw 60px; }
+      .contact-section .section-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .contact-section .section-desc { max-width: 520px; }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero,
+      .page-hero-img { height: 260px; min-height: 260px; }
+      .page-hero-inner { padding: 30px 22px 0; }
+      .page-hero h1 { font-size: 32px; }
+      .form-section::before { height: 240px; }
+      .form-section .section-header { padding: 44px 22px 16px; }
+      .form-section .section-title { font-size: 32px; }
+      .form-wrap { padding: 0 22px 48px; }
+      .form-row { display: block; }
+      .contact-section,
+      .map-section { padding: 68px 22px; }
+      .office-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+      .office-tab { white-space: nowrap; }
+      .office-field > div:last-child {
+        display: block;
+      }
+      .office-field-label { margin-bottom: 2px; }
+      .office-field-value { text-align: left; }
+      .map-section .section-title { font-size: 30px; }
+    }
+
+    /* 与全站品牌主题色统一 */
+    :root {
+      --primary: #006eb6;
+      --primary-light: #0088d4;
+      --accent: #ffb511;
+      --accent-light: #ffcb4d;
+    }
+    .nav > li > a::after { display: none; }
+    .form-group label span { color: var(--primary); }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--primary); }
+    .btn-submit { background: var(--primary); }
+    .btn-submit:hover {
+      background: var(--primary-light);
+      box-shadow: 0 8px 18px rgba(0,110,182,0.2);
+    }
+    .office-tab:hover,
+    .office-tab.is-active { color: var(--primary); }
+    .office-tab.is-active { box-shadow: none; }
+    .office-pane-tag { color: var(--primary); }
+    .office-field-value a:hover { color: var(--primary); }
+    .map-info-title,
+    .map-info-list a:hover { color: var(--primary); }
+
+    /* 地图横向通铺 */
+    .map-section { padding: 0; }
+    .map-section .section-inner {
+      width: 100%;
+      max-width: none;
+    }
+    .map-section .section-header {
+      padding-left: 6vw;
+      padding-right: 6vw;
+    }
+    .map-section .panel-box,
+    .map-panel-body {
+      width: 100%;
+    }
+
+    /* 调换联系方式与客户留言，左侧图片保持原位 */
+    .contact-section { order: 1; }
+    .map-section { order: 2; }
+    .form-section { order: 3; }
+
+    .contact-section {
+      padding: 0;
+      background: #fff;
+    }
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 44%;
+      height: 100%;
+      opacity: 1;
+      border: 0;
+      border-radius: 0;
+      transform: none;
+      background:
+        linear-gradient(rgba(21,38,48,0.12), rgba(21,38,48,0.12)),
+        url('img/banner/26.png') center / cover no-repeat;
+    }
+    .contact-section::after {
+      content: '';
+      position: absolute;
+      left: 44%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #ebebeb;
+    }
+    .contact-section .section-inner {
+      display: grid;
+      grid-template-columns: 44% minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      gap: 0;
+      width: 100%;
+      max-width: none;
+      min-height: 600px;
+      align-content: center;
+      box-sizing: border-box;
+      padding-right: 0;
+    }
+    .contact-section .section-header,
+    .contact-section .section-header.is-center {
+      grid-column: 2;
+      margin: 0;
+      padding: 0 max(24px, calc((100vw - 1280px) / 2 + 24px)) 24px 56px;
+    }
+    .contact-section .section-desc { max-width: 560px; }
+    .contact-hub {
+      grid-column: 2;
+      padding: 0 max(24px, calc((100vw - 1280px) / 2 + 24px)) 0 56px;
+      min-width: 0;
+    }
+    .office-detail { min-height: 220px; }
+    .office-pane-head { display: none; }
+    .office-nav {
+      border-bottom: 0;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 28px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .office-nav::-webkit-scrollbar { display: none; }
+    .office-tab {
+      flex: 0 0 auto;
+      justify-content: flex-start;
+      min-width: 0;
+      min-height: 52px;
+      padding: 10px 0;
+      white-space: nowrap;
+      text-align: left;
+    }
+    .office-tab:first-child { padding-left: 0; }
+    .office-tab:last-child { padding-right: 0; }
+    .office-tab-text {
+      font-size: 15px;
+      white-space: nowrap;
+    }
+    .office-field,
+    .office-field.is-full {
+      min-height: 58px;
+      border-top: 1px solid #d7dadc;
+      border-bottom: 0;
+    }
+
+    .form-section {
+      padding: 92px 6vw;
+      background: #fff;
+    }
+    .form-section::before {
+      display: none;
+    }
+    .form-section::after { display: none; }
+    .form-section .section-inner {
+      display: grid;
+      grid-template-columns: 30% minmax(0, 70%);
+      grid-template-rows: auto;
+      gap: 7%;
+      max-width: 1200px;
+      min-height: 0;
+      align-items: start;
+      align-content: normal;
+    }
+    .form-section .section-header {
+      grid-column: 1;
+      margin: 0;
+      padding: 6px 0 0;
+    }
+    .form-section .section-desc { max-width: 250px; }
+    .form-section .section-desc { font-size: 16px; }
+    .form-section .form-group label,
+    .form-section .form-group input,
+    .form-section .form-group textarea,
+    .form-section .form-group select,
+    .form-section .btn-submit {
+      font-size: 16px;
+    }
+    .form-wrap {
+      grid-column: 2;
+      width: 100%;
+      padding: 0;
+    }
+    .form-panel-body { padding: 0; }
+
+    @media (max-width: 900px) {
+      .contact-section::before {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 320px;
+      }
+      .contact-section::after { display: none; }
+      .contact-section .section-inner {
+        display: block;
+        min-height: 0;
+        padding-right: 0;
+      }
+      .contact-section .section-header,
+      .contact-section .section-header.is-center {
+        padding: 54px 24px 22px;
+      }
+      .contact-hub { padding: 0 24px; }
+      .form-section .section-inner {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+      .form-section .section-header,
+      .form-wrap { grid-column: 1; }
+      .form-section .section-desc { max-width: 520px; }
+    }
+
+    @media (max-width: 768px) {
+      .contact-section::before { height: 240px; }
+      .contact-section .section-header,
+      .contact-section .section-header.is-center {
+        padding: 44px 22px 20px;
+      }
+      .contact-hub { padding: 0 22px; }
+      .form-section { padding: 68px 22px; }
+      .map-section { padding: 0; }
+    }
+
+    /* —— 页面动效 —— */
+    .nav > li > a::after {
+      display: block;
+      content: "";
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .3s cubic-bezier(.22,.61,.36,1);
+    }
+    .nav > li > a:hover::after,
+    .nav > li > a.active::after,
+    .nav > li:hover > a::after { transform: scaleX(1); }
+
+    .contact-section::before {
+      transition: opacity 1.1s ease, filter 1.2s ease;
+      opacity: 0;
+      filter: saturate(.8);
+    }
+    .contact-section.is-ready::before { opacity: 1; filter: none; }
+    .contact-section .section-header {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1) .08s, transform .7s cubic-bezier(.16,1,.3,1) .08s;
+    }
+    .contact-section.is-ready .section-header { opacity: 1; transform: none; }
+    .contact-section .section-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    .contact-section .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 36px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform .7s cubic-bezier(.16,1,.3,1) .28s;
+    }
+    .contact-section.is-ready .section-title::after { transform: scaleX(1); }
+    .contact-hub {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s cubic-bezier(.16,1,.3,1) .16s, transform .8s cubic-bezier(.16,1,.3,1) .16s;
+    }
+    .contact-section.is-ready .contact-hub { opacity: 1; transform: none; }
+    .office-tab {
+      transition: color .25s ease, background .25s ease, box-shadow .3s cubic-bezier(.22,.61,.36,1), opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1);
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    .contact-section.is-ready .office-tab { opacity: 1; transform: none; }
+    .contact-section.is-ready .office-tab:nth-child(1) { transition-delay: .22s; }
+    .contact-section.is-ready .office-tab:nth-child(2) { transition-delay: .28s; }
+    .contact-section.is-ready .office-tab:nth-child(3) { transition-delay: .34s; }
+    .contact-section.is-ready .office-tab:nth-child(4) { transition-delay: .4s; }
+    .contact-section.is-ready .office-tab:nth-child(5) { transition-delay: .46s; }
+    .contact-section.is-ready .office-tab:nth-child(6) { transition-delay: .52s; }
+    .office-pane.is-active { animation: officePaneIn .5s cubic-bezier(.16,1,.3,1); }
+    @keyframes officePaneIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+    .office-pane.is-active .office-field {
+      opacity: 0;
+      animation: officeFieldIn .45s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    .office-pane.is-active .office-field:nth-child(1) { animation-delay: .06s; }
+    .office-pane.is-active .office-field:nth-child(2) { animation-delay: .12s; }
+    .office-pane.is-active .office-field:nth-child(3) { animation-delay: .18s; }
+    .office-pane.is-active .office-field:nth-child(4) { animation-delay: .24s; }
+    .office-pane.is-active .office-field:nth-child(n+5) { animation-delay: .3s; }
+    @keyframes officeFieldIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .map-section .panel-box {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);
+    }
+    .map-section.is-inview .panel-box { opacity: 1; transform: none; }
+    .map-info-bubble {
+      opacity: 0;
+      transform: translateY(12px) scale(.97);
+      transition: opacity .55s cubic-bezier(.16,1,.3,1) .22s, transform .55s cubic-bezier(.16,1,.3,1) .22s, box-shadow .3s ease;
+    }
+    .map-section.is-inview .map-info-bubble { opacity: 1; transform: none; }
+    .map-marker-pin {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity .45s cubic-bezier(.16,1,.3,1) .38s, transform .55s cubic-bezier(.16,1,.3,1) .38s;
+    }
+    .map-section.is-inview .map-marker-pin { opacity: 1; transform: none; }
+    .map-controls {
+      opacity: 0;
+      transition: opacity .5s ease .45s;
+    }
+    .map-section.is-inview .map-controls { opacity: 1; }
+
+    .form-section .section-header {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .form-section.is-inview .section-header { opacity: 1; transform: none; }
+    .form-section .section-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    .form-section .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 36px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform .7s cubic-bezier(.16,1,.3,1) .24s;
+    }
+    .form-section.is-inview .section-title::after { transform: scaleX(1); }
+    .form-wrap {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .75s cubic-bezier(.16,1,.3,1) .12s, transform .75s cubic-bezier(.16,1,.3,1) .12s;
+    }
+    .form-section.is-inview .form-wrap { opacity: 1; transform: none; }
+    .form-section.is-inview .form-group {
+      opacity: 0;
+      animation: formGroupIn .5s cubic-bezier(.16,1,.3,1) forwards;
+      animation-delay: .2s;
+    }
+    .form-section.is-inview .form-row:nth-of-type(1) .form-group:nth-child(1) { animation-delay: .16s; }
+    .form-section.is-inview .form-row:nth-of-type(1) .form-group:nth-child(2) { animation-delay: .22s; }
+    .form-section.is-inview .form-row:nth-of-type(2) .form-group:nth-child(1) { animation-delay: .28s; }
+    .form-section.is-inview .form-row:nth-of-type(2) .form-group:nth-child(2) { animation-delay: .34s; }
+    .form-section.is-inview form > .form-group { animation-delay: .4s; }
+    @keyframes formGroupIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+    .form-section.is-inview .btn-submit {
+      opacity: 0;
+      animation: formGroupIn .5s cubic-bezier(.16,1,.3,1) .48s forwards;
+    }
+    .btn-submit {
+      transition: transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s ease, background .25s ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .contact-section::before,
+      .contact-section .section-header,
+      .contact-section .section-title::after,
+      .contact-hub,
+      .office-tab,
+      .map-section .panel-box,
+      .map-info-bubble,
+      .map-marker-pin,
+      .map-controls,
+      .form-section .section-header,
+      .form-section .section-title::after,
+      .form-wrap,
+      .form-section.is-inview .form-group,
+      .form-section.is-inview .btn-submit {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+        animation: none !important;
+      }
+      .office-pane.is-active,
+      .office-pane.is-active .office-field {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
   </style>
 </head>
@@ -242,10 +1676,9 @@
   <header class="header">
     <div class="header-inner">
       <a href="index.html" class="logo">
-        <img src="img/logo.png" alt="STARLITE" class="logo-img">
+        <img src="img/brand/logo-白.png" alt="STARLITE" class="logo-img">
         <div>
-          <div class="logo-text">星光树脂制品（昆山）有限公司</div>
-          <div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div>
+          <div class="logo-text">STARLITE</div>
         </div>
       </a>
       <ul class="nav">
@@ -264,10 +1697,10 @@
             <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
             <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
             <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
-            <li><a href="innovation.html#equipment">试验分析仪器 & 摩擦学检测设备</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
           </ul>
         </li>
-        <li>
+        <li class="nav-has-mega">
           <a href="products.html">产品核心</a>
           <ul class="nav-dropdown">
             <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
@@ -306,26 +1739,11 @@
           </ul>
         </li>
       </ul>
-      <div class="lang-switch">
-        <button class="lang-btn active" type="button">中文</button>
-        <button class="lang-btn" type="button">EN</button>
-      </div>
+      <div class="lang-switch"><button class="lang-btn" type="button" data-lang="zh" aria-label="切换语言">EN</button></div>
     </div>
   </header>
 
   <main>
-    <!-- Banner -->
-    <section class="page-hero">
-      <img class="page-hero-img" src="img/banner/26.png" alt="联系我们">
-      <div class="page-hero-overlay">
-        <div class="page-hero-inner">
-          <h1>联系我们</h1>
-          <div class="page-hero-title-line"></div>
-          <p class="page-hero-desc">期待与您的合作，共创美好未来。欢迎通过以下方式与我们取得联系。</p>
-        </div>
-      </div>
-    </section>
-
     <!-- 联系方式 -->
     <section class="section contact-section" id="contact-info">
       <div class="section-inner">
@@ -492,11 +1910,6 @@
     <section class="section map-section" id="contact-map">
       <div class="section-inner">
         <div class="section-header is-center">
-          <div class="section-title-wrap">
-            <span class="section-watermark" aria-hidden="true">MAP</span>
-            <h2 class="section-title">电子地图</h2>
-          </div>
-          <p class="section-desc">星光树脂制品（昆山）有限公司 · 江苏省昆山市周市镇陆杨迎宾西路2号</p>
         </div>
         <div class="panel-box">
           <div class="map-panel-body">
@@ -592,101 +2005,113 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-body">
+    <div class="footer-main">
+      <div class="footer-inner">
+        <nav class="footer-links" aria-label="页脚导航">
+          <div class="footer-col">
+            <h4>首页</h4>
+            <ul>
+              <li><a href="index.html#intro">企业简介</a></li>
+              <li><a href="index.html#history">发展历程</a></li>
+              <li><a href="index.html#logo">品牌标识解说</a></li>
+              <li><a href="index.html#vision">理念&愿景&使命</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>创新中心</h4>
+            <ul>
+              <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+              <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+              <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+              <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>产品核心</h4>
+            <ul>
+              <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+              <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+              <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+              <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+              <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+              <li><a href="products.html#clients">合作客户</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>关于我们</h4>
+            <ul>
+              <li><a href="about.html#honors">企业荣誉</a></li>
+              <li><a href="about.html#cert">认证资质</a></li>
+              <li><a href="about.html#sustain">可持续发展</a></li>
+              <li><a href="about.html#news">企业动态</a></li>
+              <li><a href="about.html#social">社会贡献</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>加入我们</h4>
+            <ul>
+              <li><a href="join.html#welfare">人文关怀</a></li>
+              <li><a href="join.html#training">教育培训</a></li>
+              <li><a href="join.html#activities">员工活动</a></li>
+              <li><a href="join.html#careers">招贤纳士</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>联系我们</h4>
+            <ul>
+              <li><a href="contact.html#contact-info">联系方式</a></li>
+              <li><a href="contact.html#contact-map">电子地图</a></li>
+              <li><a href="contact.html#contact-form">客户留言</a></li>
+            </ul>
+          </div>
+        </nav>
+
         <div class="footer-contact">
-          <a href="index.html" class="footer-brand-head logo">
-            <img src="img/logo-白.png" alt="STARLITE" class="logo-img">
-            <div>
-              <div class="logo-text">星光树脂制品（昆山）有限公司</div>
-              <div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div>
-            </div>
+          <div class="footer-contact-row">
+            <a class="footer-phone" href="tel:+8651257641220">+86-512-57641220</a>
+            <span class="footer-fax">传真 +86-512-57641211</span>
+          </div>
+          <a class="footer-address" href="contact.html#contact-map">
+            <span class="footer-address-text">
+              <span class="footer-address-label">星光树脂制品（昆山）有限公司</span>
+              江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313
+            </span>
+            <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </a>
-          <div class="footer-contact-col">
-            <ul class="footer-brand-list">
-              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>+86-512-57641220 · 传真 +86-512-57641211</span></li>
-              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
-            </ul>
-          </div>
-          <div class="footer-contact-col">
-            <strong class="footer-office-name">星光工业株式会社</strong>
-            <ul class="footer-brand-list">
-              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>电 话：+816-6956-2240 · 传 真：+816-6956-2715</span></li>
-              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>地 址：日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮 编：535-0002</span></li>
-              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span><span>网 址：<a href="https://starlite.co.jp/" class="footer-link-plain" target="_blank" rel="noopener">https://starlite.co.jp/</a></span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-nav">
-        <div class="footer-col">
-          <h4>首页</h4>
-          <ul>
-            <li><a href="index.html#intro">企业简介</a></li>
-            <li><a href="index.html#history">发展历程</a></li>
-            <li><a href="index.html#logo">品牌标识解说</a></li>
-            <li><a href="index.html#vision">理念&愿景&使命</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>创新中心</h4>
-          <ul>
-            <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
-            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
-            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>产品核心</h4>
-          <ul>
-            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
-            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
-            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
-            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-            <li><a href="products.html#clients">合作客户</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>关于我们</h4>
-          <ul>
-            <li><a href="about.html#honors">企业荣誉</a></li>
-            <li><a href="about.html#cert">认证资质</a></li>
-            <li><a href="about.html#sustain">可持续发展</a></li>
-            <li><a href="about.html#news">企业动态</a></li>
-            <li><a href="about.html#social">社会贡献</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>加入我们</h4>
-          <ul>
-            <li><a href="join.html#welfare">人文关怀</a></li>
-            <li><a href="join.html#training">教育培训</a></li>
-            <li><a href="join.html#activities">员工活动</a></li>
-            <li><a href="join.html#careers">招贤纳士</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>联系我们</h4>
-          <ul>
-            <li><a href="contact.html#contact-info">联系方式</a></li>
-            <li><a href="contact.html#contact-map">电子地图</a></li>
-            <li><a href="contact.html#contact-form">客户留言</a></li>
-          </ul>
-        </div>
+          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener" style="border-top: 1px solid rgba(255,255,255,0.28);">
+            <span class="footer-address-text">
+              <span class="footer-address-label">星光工业株式会社</span>
+              日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002
+              <span class="footer-address-meta">电话 +81-6-6956-2240 · 传真 +81-6-6956-2715 · starlite.co.jp</span>
+            </span>
+            <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
         </div>
       </div>
-      <div class="footer-bottom">版权所有：星光树脂制品（昆山）有限公司 All Rights Reserved | 苏ICP备12003553号-1</div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-bar-inner">
+        <a href="index.html" class="footer-bar-brand">
+          <img src="img/brand/logo-白.png" alt="星光树脂制品（昆山）有限公司">
+          <span class="footer-bar-brand-text">
+            <span class="footer-bar-brand-zh">星光树脂制品（昆山）有限公司</span>
+            <span class="footer-bar-brand-en">Starlite Plastic Products (Kunshan) Co.,Ltd.</span>
+          </span>
+        </a>
+        <div class="footer-bar-copy">版权所有 © 星光树脂制品（昆山）有限公司 All Rights Reserved　苏ICP备12003553号-1</div>
+      </div>
     </div>
   </footer>
 
   <script>
-    document.querySelectorAll('.lang-switch').forEach(function(s) {
-      s.querySelectorAll('.lang-btn').forEach(function(b) {
-        b.addEventListener('click', function() {
-          s.querySelectorAll('.lang-btn').forEach(function(x) { x.classList.remove('active'); });
-          b.classList.add('active');
-        });
+    document.querySelectorAll('.lang-switch').forEach(function(s){
+      var btn = s.querySelector('.lang-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function(){
+        var lang = btn.getAttribute('data-lang') === 'zh' ? 'en' : 'zh';
+        btn.setAttribute('data-lang', lang);
+        btn.textContent = lang === 'zh' ? 'EN' : '中文';
       });
     });
 
@@ -712,9 +2137,42 @@
           tab.classList.add('is-active');
           tab.setAttribute('aria-selected', 'true');
           var pane = document.getElementById(targetId);
-          if (pane) pane.classList.add('is-active');
+          if (pane) {
+            void pane.offsetWidth;
+            pane.classList.add('is-active');
+          }
         });
       });
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var contactSection = document.querySelector('.contact-section');
+      var mapSection = document.querySelector('.map-section');
+      var formSection = document.querySelector('.form-section');
+
+      function markReady(el){ if(el) el.classList.add('is-ready'); }
+      function mark(el){ if(el) el.classList.add('is-inview'); }
+
+      if(reducedMotion || !('IntersectionObserver' in window)){
+        markReady(contactSection);
+        mark(mapSection);
+        mark(formSection);
+        return;
+      }
+
+      requestAnimationFrame(function(){
+        setTimeout(function(){ markReady(contactSection); }, 60);
+      });
+
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(!entry.isIntersecting) return;
+          mark(entry.target);
+          observer.unobserve(entry.target);
+        });
+      }, {threshold: 0.14, rootMargin: '0px 0px -8% 0px'});
+
+      if(mapSection) observer.observe(mapSection);
+      if(formSection) observer.observe(formSection);
     });
   </script>
 </body>

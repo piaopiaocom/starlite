@@ -7,24 +7,39 @@
   <style>
     :root{--primary:#006EB6;--primary-light:#0088D4;--accent:#FFB511;--accent-light:#FFCB4D;--text:#1A1A2E;--text-muted:#5A6270;--bg:#F5F7FA;--white:#FFF;--shadow:0 4px 24px rgba(0,110,182,0.08);--radius:8px}
     *{margin:0;padding:0;box-sizing:border-box}body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--white);line-height:1.7}
-    a{text-decoration:none;color:inherit}.header{background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.06);position:sticky;top:0;z-index:1000}
-    .header-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+    a{text-decoration:none;color:inherit}.header{background:var(--primary);box-shadow:none;position:sticky;top:0;z-index:1000}
+/*二级菜单展开下推*/.header{transition:margin-bottom .25s ease;margin-bottom:0}.header:has(.nav>li:hover),.header:has(.nav>li:focus-within){margin-bottom:64px}.nav-dropdown{transform:none!important}
+    .header-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:flex-start;gap:12px;height:72px}
     .logo{display:flex;align-items:center;gap:12px}.logo-img{height:48px;width:auto;object-fit:contain;display:block}
-    .logo-text{font-size:18px;line-height:1.3;font-weight:700;color:var(--primary)}.logo-sub{font-size:12px;line-height:1.3;color:var(--text-muted)}
+    .logo-text{font-size:20px;line-height:1.35;font-weight:700;color:var(--white);letter-spacing:0.01em}.logo-sub{display:none}
     [id]{scroll-margin-top:88px}
-    .nav{display:flex;gap:4px;align-items:stretch}.nav>li{list-style:none;position:relative}.nav>li>a{display:flex;align-items:center;height:72px;padding:0 16px;font-size:16px;color:var(--text);position:relative;transition:color .25s ease;white-space:nowrap;line-height:1}.nav>li>a::after{content:'';position:absolute;left:16px;right:16px;bottom:0;height:3px;background:var(--primary);border-radius:1px 1px 0 0;transform:scaleX(0);transition:transform .25s ease}.nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:var(--primary)}.nav>li>a:hover::after,.nav>li>a.active::after,.nav>li:hover>a::after{transform:scaleX(1)}.nav-dropdown{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%) translateY(12px);width:max-content;background:var(--white);border-radius:12px;box-shadow:0 20px 50px rgba(0,110,182,0.16),0 8px 20px rgba(0,0,0,0.06);border:1px solid rgba(0,110,182,0.1);padding:6px 0;opacity:0;visibility:hidden;transition:opacity .28s ease,transform .28s ease,visibility .28s;z-index:1001;list-style:none}.nav-dropdown::after{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}.nav>li:hover>.nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}.nav-dropdown li{list-style:none}.nav-dropdown a{display:block;position:relative;padding:11px 18px;font-size:14px;color:var(--text);transition:color .2s ease,background .2s ease;white-space:nowrap;line-height:1.6}.nav-dropdown a::before{content:'';position:absolute;left:8px;top:50%;transform:translateY(-50%);width:3px;height:0;border-radius:2px;background:var(--accent);transition:height .2s ease}    .nav-dropdown a:hover{color:var(--primary);background:rgba(0,110,182,0.05)}.nav-dropdown a:hover::before{height:14px}.nav-has-mega>.nav-dropdown{min-width:268px;max-width:320px}
-    .lang-switch{display:flex;border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;flex-shrink:0}.lang-btn{padding:6px 14px;font-size:13px;border:none;background:transparent;color:#5A6270;cursor:pointer;font-family:inherit;transition:all .2s}.lang-btn.active{background:#006EB6;color:#FFF}
-    .page-hero{position:relative;background:var(--bg);overflow:hidden;line-height:0}
-    .page-hero-img{width:100%;height:min(44vw,460px);min-height:320px;display:block;object-fit:cover;object-position:center right}
-    .page-hero-overlay{position:absolute;inset:0;display:flex;align-items:center;line-height:1.7;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.55) 38%,rgba(255,255,255,.15) 58%,transparent 72%)}
-    .page-hero-inner{pointer-events:auto;max-width:1280px;width:100%;margin:0 auto;padding:0 24px}
-    .page-hero h1{font-size:46px;font-weight:700;line-height:1.15;color:var(--text);letter-spacing:.02em;margin:0}
-    .page-hero-title-line{width:56px;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-light));border-radius:2px;margin:16px 0 14px}
-    .page-hero-desc{font-size:16px;color:var(--text-muted);line-height:1.75;margin:0;max-width:640px}
+    .nav{display:flex;gap:4px;align-items:stretch;margin-left:auto}.nav>li{list-style:none;position:static}.nav>li>a{display:flex;align-items:center;height:72px;padding:0 16px;font-size:16px;color:rgba(255,255,255,0.88);position:relative;transition:color .25s ease;white-space:nowrap;line-height:1.6}.nav>li>a::after{content:"";position:absolute;left:16px;right:16px;bottom:18px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:center;transition:transform .3s cubic-bezier(.22,.61,.36,1)}.nav>li>a:hover::after,.nav>li>a.active::after,.nav>li:hover>a::after{transform:scaleX(1)}.nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:var(--white);font-weight:600}.nav-dropdown{position:absolute;left:0;right:0;top:100%;width:100%;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 36px;margin:0;padding:18px 40px;background:var(--white);border-top:1px solid rgba(0,110,182,0.08);box-shadow:0 16px 40px rgba(0,110,182,0.1);border-radius:0;opacity:0;visibility:hidden;transform:none;transition:opacity .25s ease,visibility .25s;z-index:1001;list-style:none;box-sizing:border-box}.nav-dropdown::before{content:'';position:absolute;left:0;right:0;top:-10px;height:10px}.nav>li:hover>.nav-dropdown{opacity:1;visibility:visible;transform:translateY(0)}.nav-dropdown li{list-style:none;flex:0 0 auto}.nav-dropdown a{display:block;position:relative;padding:6px 2px;font-size:14px;color:var(--text-muted);transition:color .2s ease;white-space:nowrap;line-height:1.5}.nav-dropdown a:hover{color:var(--primary)}
+    .lang-switch{display:flex;align-items:center;flex-shrink:0}.lang-btn{padding:0 4px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.88);cursor:pointer;font-family:inherit;transition:color .2s;line-height:1.4}.lang-btn:hover{color:var(--white)}
+    .about-intro{padding:72px 24px 64px;background:var(--white)}
+    .about-intro-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(280px,.92fr) minmax(0,1.08fr);gap:64px 72px;align-items:center}
+    .about-intro-media{border-radius:20px;overflow:hidden;box-shadow:0 20px 48px rgba(15,55,100,.1);background:linear-gradient(145deg,#E8EDF3,var(--bg));aspect-ratio:4/3;opacity:0;transform:translateY(18px) scale(.98);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+    .about-intro.is-ready .about-intro-media{opacity:1;transform:none}
+    .about-intro-media img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.06);transition:transform 6.5s cubic-bezier(.16,1,.3,1)}
+    .about-intro.is-ready .about-intro-media img{transform:scale(1)}
+    .about-intro-content{min-width:0}
+    .about-intro-title{display:inline-block;position:relative;font-size:clamp(28px,3.2vw,40px);font-weight:700;line-height:1.25;color:var(--text);margin:0 0 20px;letter-spacing:.02em;padding-bottom:12px;opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .12s,transform .7s cubic-bezier(.16,1,.3,1) .12s}
+    .about-intro.is-ready .about-intro-title{opacity:1;transform:none}
+    .about-intro-title::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px;transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.16,1,.3,1) .42s}
+    .about-intro.is-ready .about-intro-title::after{transform:scaleX(1)}
+    .about-intro-desc{font-size:16px;color:var(--text-muted);line-height:1.85;margin:0 0 36px;max-width:560px;opacity:0;transform:translateY(14px);transition:opacity .65s cubic-bezier(.16,1,.3,1) .24s,transform .65s cubic-bezier(.16,1,.3,1) .24s}
+    .about-intro.is-ready .about-intro-desc{opacity:1;transform:none}
+    .about-intro-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 24px}
+    .about-stat{padding:0;text-align:left;opacity:0;transform:translateY(12px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+    .about-intro.is-ready .about-stat{opacity:1;transform:none}
+    .about-intro.is-ready .about-stat:nth-child(1){transition-delay:.36s}
+    .about-intro.is-ready .about-stat:nth-child(2){transition-delay:.44s}
+    .about-intro.is-ready .about-stat:nth-child(3){transition-delay:.52s}
+    .about-intro.is-ready .about-stat:nth-child(4){transition-delay:.6s}
+    .about-stat-num{font-size:clamp(26px,2.4vw,34px);font-weight:700;color:var(--primary);line-height:1.15;margin:0 0 8px;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+    .about-stat-label{font-size:13px;color:var(--text-muted);margin:0;line-height:1.4}
     .section{padding:40px 24px 0}.section-inner{max-width:960px;margin:0 auto}
     .section-inner--wide{max-width:1280px}
     .section-inner--feed{max-width:1080px}
-    #sustain.section{padding:40px 24px 48px}
     .panel-card{background:var(--white);border-radius:16px;padding:36px;box-shadow:var(--shadow);margin-bottom:24px}
     .panel-card h3{font-size:22px;color:var(--primary);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--accent)}
     .panel-card p{font-size:15px;color:var(--text-muted);margin-bottom:12px}
@@ -32,10 +47,16 @@
     .award-item{background:var(--bg);border-radius:8px;padding:16px;font-size:14px;color:var(--text-muted);display:flex;gap:12px;align-items:flex-start}
     .award-icon{font-size:24px;flex-shrink:0}
     .article-feed{display:flex;flex-direction:column}
-    .news-module-head{margin-bottom:32px}
-    .news-module-title{font-size:32px;font-weight:700;color:var(--primary);margin:0 0 8px;line-height:1.2}
-    .news-module-sub{font-size:14px;color:var(--text-muted);margin:0;line-height:1.7}
-    #news .article-date,#news .article-excerpt,#social .article-date,#social .article-excerpt{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .news-module-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    #news.is-inview .news-module-head,#social.is-inview .news-module-head{opacity:1;transform:none}
+    .news-module-copy{min-width:0;flex:1}
+    .news-module-title{display:inline-block;position:relative;font-size:clamp(30px,3.2vw,42px);font-weight:500;color:#2A2A2A;margin:0 0 12px;line-height:1.3;letter-spacing:.02em;padding-bottom:12px}
+    .news-module-title::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px;transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.16,1,.3,1) .28s}
+    #news.is-inview .news-module-title::after,#social.is-inview .news-module-title::after{transform:scaleX(1)}
+    .news-module-sub{font-size:15px;color:var(--text-muted);margin:0;line-height:1.7;max-width:680px}
+    .news-module-more{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;margin-bottom:4px;color:var(--text-muted);font-size:20px;font-weight:300;line-height:1;transition:gap .25s cubic-bezier(.22,.61,.36,1),opacity .2s,color .2s}
+    .news-module-more:hover{gap:9px;opacity:.85;color:var(--primary)}
+    .news-module-more svg{width:14px;height:14px;display:block}
     .article-item{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid #EEF1F5;align-items:start}
     .article-item:last-child{border-bottom:none}
     .article-thumb{width:200px;height:140px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,var(--bg),#E8EDF3);flex-shrink:0}
@@ -65,44 +86,87 @@
     .article-modal-content p{margin-bottom:12px}
     .article-modal-content p:last-child{margin-bottom:0}
     .article-intro{font-size:14px;color:var(--text-muted);margin-bottom:8px;line-height:1.8}
-    .honor-module{background:linear-gradient(180deg,#EEF4FA 0%,#F8FAFD 55%,var(--white) 100%);border-radius:16px;padding:44px 40px 36px;box-shadow:var(--shadow)}
-    .honor-module-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px}
-    .honor-module-title{font-size:32px;font-weight:700;color:var(--primary);margin:0 0 6px;line-height:1.2}
-    .honor-module-sub{font-size:14px;color:var(--text-muted);margin:0}
+    #honors.section{position:relative;padding:80px 24px 88px;overflow:hidden;background:#F5F7FA}
+    #cert.section{position:relative;padding:64px 24px 72px;overflow:hidden;background:linear-gradient(165deg,#E7F1F9 0%,#F3F7FB 42%,#F8FAFC 100%)}
+    #cert.section::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 70%);top:-120px;right:8%;pointer-events:none}
+    #cert.section::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.7) 0%,rgba(255,255,255,0) 72%);bottom:-80px;left:4%;pointer-events:none}
+    #honors .section-inner,#cert .section-inner{position:relative;z-index:1}
+    .honor-showcase-head{text-align:center;margin-bottom:48px;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    #honors.is-inview .honor-showcase-head{opacity:1;transform:none}
+    .honor-showcase-title{display:inline-block;position:relative;font-size:clamp(30px,3.4vw,42px);font-weight:500;color:#2A2A2A;margin:0 0 18px;line-height:1.3;letter-spacing:.02em;padding-bottom:12px}
+    .honor-showcase-title::after{content:"";position:absolute;left:50%;bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px;transform:translateX(-50%) scaleX(0);transform-origin:center;transition:transform .7s cubic-bezier(.16,1,.3,1) .22s}
+    #honors.is-inview .honor-showcase-title::after{transform:translateX(-50%) scaleX(1)}
+    .honor-showcase-lead{font-size:15px;color:var(--text-muted);margin:0 auto;max-width:640px;line-height:1.75}
+    .honor-showcase-body{display:grid;grid-template-columns:minmax(260px,440px) minmax(280px,480px);gap:36px 40px;justify-content:center;align-items:start;max-width:1000px;margin:0 auto}
+    .honor-showcase-list-wrap{position:relative;padding-left:28px;max-height:420px;opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .12s,transform .7s cubic-bezier(.16,1,.3,1) .12s}
+    #honors.is-inview .honor-showcase-list-wrap{opacity:1;transform:none}
+    .honor-showcase-list-wrap::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:#cccccc;border-radius:1px;z-index:1;pointer-events:none}
+    .honor-showcase-list-wrap::after{content:"";position:absolute;left:0;top:0;width:2px;height:0;background:var(--primary);border-radius:1px;z-index:2;pointer-events:none;transition:height .55s cubic-bezier(.16,1,.3,1)}
+    #honors.is-inview .honor-showcase-list-wrap::after{height:var(--honor-rail,12%)}
+    .honor-showcase-list{display:flex;flex-direction:column;gap:32px;max-height:420px;overflow-y:auto;padding:4px 4px 4px 0;scrollbar-width:none;-ms-overflow-style:none}
+    .honor-showcase-list::-webkit-scrollbar{display:none;width:0;height:0}
+    .honor-showcase-item{display:block;width:100%;border:none;background:transparent;padding:0;text-align:left;cursor:pointer;font-family:inherit;position:relative;opacity:0;transform:translateX(12px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1)}
+    #honors.is-inview .honor-showcase-item{opacity:1;transform:none}
+    #honors.is-inview .honor-showcase-item:nth-child(1){transition-delay:.16s}
+    #honors.is-inview .honor-showcase-item:nth-child(2){transition-delay:.22s}
+    #honors.is-inview .honor-showcase-item:nth-child(3){transition-delay:.28s}
+    #honors.is-inview .honor-showcase-item:nth-child(4){transition-delay:.34s}
+    #honors.is-inview .honor-showcase-item:nth-child(5){transition-delay:.4s}
+    #honors.is-inview .honor-showcase-item:nth-child(6){transition-delay:.46s}
+    #honors.is-inview .honor-showcase-item:nth-child(n+7){transition-delay:.5s}
+    .honor-showcase-item::before{content:"";position:absolute;left:-28px;top:.55em;width:10px;height:10px;margin-left:-4px;border-radius:50%;background:var(--white);border:2px solid #C5CCD6;box-sizing:border-box;z-index:3;transition:border-color .25s ease,background .25s ease,transform .25s cubic-bezier(.22,.61,.36,1)}
+    .honor-showcase-item.is-active::before,.honor-showcase-item:hover::before{border-color:var(--primary);background:var(--primary);transform:scale(1.15)}
+    .honor-showcase-item-title{font-size:18px;font-weight:700;color:var(--text);line-height:1.45;margin:0;transition:color .25s ease}
+    .honor-showcase-item.is-active .honor-showcase-item-title,.honor-showcase-item:hover .honor-showcase-item-title{color:var(--primary)}
+    .honor-showcase-item-desc{font-size:14px;color:var(--text-muted);line-height:1.65;margin:0;max-height:0;opacity:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1),opacity .3s ease,margin .3s ease}
+    .honor-showcase-item.is-active .honor-showcase-item-desc{max-height:80px;opacity:1;margin-top:6px}
+    .honor-showcase-media{min-height:360px;display:flex;align-items:center;justify-content:center;position:sticky;top:96px;opacity:0;transform:translateY(18px) scale(.98);transition:opacity .8s cubic-bezier(.16,1,.3,1) .08s,transform .8s cubic-bezier(.16,1,.3,1) .08s}
+    #honors.is-inview .honor-showcase-media{opacity:1;transform:none}
+    .honor-showcase-frame{width:100%;border:none;background:transparent;padding:0;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center}
+    .honor-showcase-frame img{max-width:100%;max-height:420px;width:auto;height:auto;object-fit:contain;display:block;transition:opacity .4s cubic-bezier(.22,.61,.36,1),transform .4s cubic-bezier(.22,.61,.36,1);filter:drop-shadow(0 12px 28px rgba(15,55,100,.12))}
+    .honor-showcase-frame.is-switching img{opacity:0;transform:scale(.97) translateY(6px)}
+    .honor-module{background:transparent;border-radius:0;padding:0;box-shadow:none}
+    .honor-module-head{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:36px;opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    #cert.is-inview .honor-module-head{opacity:1;transform:none}
+    .honor-module-title{display:inline-block;position:relative;font-size:clamp(30px,3.2vw,42px);font-weight:500;color:#2A2A2A;margin:0 0 12px;line-height:1.3;letter-spacing:.02em;padding-bottom:12px}
+    .honor-module-title::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px;transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.16,1,.3,1) .28s}
+    #cert.is-inview .honor-module-title::after{transform:scaleX(1)}
+    .honor-module-sub{font-size:15px;color:var(--text-muted);margin:0;line-height:1.7}
     .honor-module-nav{display:flex;align-items:center;gap:14px;flex-shrink:0}
-    .honor-nav-btn{width:40px;height:40px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s,opacity .2s,transform .2s;flex-shrink:0}
-    .honor-nav-btn svg{width:14px;height:14px;display:block}
-    .honor-nav-prev{background:var(--white);border:1.5px solid rgba(0,110,182,.35);color:var(--primary)}
-    .honor-nav-prev:hover:not(:disabled){border-color:var(--primary);background:rgba(0,110,182,.04)}
-    .honor-nav-next{background:var(--primary);color:var(--white);box-shadow:0 4px 14px rgba(0,110,182,.28)}
-    .honor-nav-next:hover:not(:disabled){background:var(--primary-light);transform:translateY(-1px)}
-    .honor-nav-btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
-    .honor-nav-counter{display:flex;align-items:baseline;gap:2px;min-width:72px;justify-content:center;line-height:1}
-    .honor-nav-current{font-size:28px;font-weight:700;color:var(--primary);letter-spacing:.02em}
-    .honor-nav-sep{font-size:15px;color:#B8C0CC;font-weight:400}
-    .honor-nav-total{font-size:15px;color:#B8C0CC;font-weight:400}
-    .honor-carousel-viewport{overflow:hidden;margin:0 -4px}
-    .honor-carousel-track{display:flex;gap:20px;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform}
-    .honor-slide{flex:0 0 calc((100% - 60px)/4);min-width:0}
-    .honor-slide-btn{width:100%;border:none;background:none;padding:0;cursor:pointer;font-family:inherit;text-align:center}
-    .honor-slide-media{position:relative;background:var(--white);border-radius:12px;box-shadow:0 4px 20px rgba(0,110,182,.08);padding:24px 18px 18px;display:flex;align-items:center;justify-content:center;min-height:240px;transition:box-shadow .25s,transform .25s}
-    .honor-slide-media img{max-width:100%;max-height:200px;width:auto;height:auto;object-fit:contain;display:block}
-    .honor-slide-btn:hover .honor-slide-media{box-shadow:0 10px 32px rgba(0,110,182,.14);transform:translateY(-3px)}
-    .honor-zoom-icon{position:absolute;right:12px;bottom:12px;width:32px;height:32px;border-radius:50%;background:rgba(0,110,182,.88);color:var(--white);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.9);transition:opacity .2s,transform .2s;pointer-events:none}
+    .honor-nav-btn{width:40px;height:40px;border:1px solid #D8DCE3;border-radius:50%;background:var(--white);color:#4A5058;font-size:18px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;transition:background .25s ease,border-color .25s ease,color .25s ease,transform .25s cubic-bezier(.22,.61,.36,1);flex-shrink:0;box-shadow:none;padding:0}
+    .honor-nav-btn:hover:not(:disabled){border-color:#AEB4BD;color:#1A1A1A;background:#FAFBFC;transform:scale(1.06)}
+    .honor-nav-btn:disabled{opacity:.35;cursor:not-allowed}
+    .honor-carousel-viewport{overflow:hidden;opacity:0;transform:translateY(18px);transition:opacity .75s cubic-bezier(.16,1,.3,1) .12s,transform .75s cubic-bezier(.16,1,.3,1) .12s}
+    #cert.is-inview .honor-carousel-viewport{opacity:1;transform:none}
+    .honor-carousel-track{display:flex;gap:20px;transition:transform .55s cubic-bezier(.16,1,.3,1);will-change:transform}
+    .honor-slide{flex:0 0 calc((100% - 40px) / 3.28);min-width:0;opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+    #cert.is-inview .honor-slide{opacity:1;transform:none}
+    #cert.is-inview .honor-slide:nth-child(1){transition-delay:.18s}
+    #cert.is-inview .honor-slide:nth-child(2){transition-delay:.26s}
+    #cert.is-inview .honor-slide:nth-child(3){transition-delay:.34s}
+    #cert.is-inview .honor-slide:nth-child(4){transition-delay:.42s}
+    #cert.is-inview .honor-slide:nth-child(n+5){transition-delay:.48s}
+    .honor-slide-btn{width:100%;border:none;background:var(--white);padding:22px 18px 18px;cursor:pointer;font-family:inherit;text-align:center;border-radius:14px;box-shadow:0 8px 28px rgba(15,55,100,.08);transition:box-shadow .35s cubic-bezier(.22,.61,.36,1),transform .35s cubic-bezier(.22,.61,.36,1)}
+    .honor-slide-btn:hover{box-shadow:0 14px 36px rgba(15,55,100,.14);transform:translateY(-4px)}
+    .honor-slide-media{position:relative;background:transparent;border-radius:0;box-shadow:none;padding:0;display:flex;align-items:center;justify-content:center;min-height:220px}
+    .honor-slide-media img{max-width:100%;max-height:210px;width:auto;height:auto;object-fit:contain;display:block;transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+    .honor-slide-btn:hover .honor-slide-media img{transform:scale(1.03)}
+    .honor-zoom-icon{position:absolute;right:4px;bottom:4px;width:32px;height:32px;border-radius:50%;background:rgba(0,110,182,.88);color:var(--white);display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.9);transition:opacity .25s ease,transform .25s cubic-bezier(.22,.61,.36,1);pointer-events:none}
     .honor-slide-btn:hover .honor-zoom-icon{opacity:1;transform:scale(1)}
-    .honor-slide-title{font-size:14px;color:var(--primary);line-height:1.55;margin:14px 0 0;font-weight:500;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .honor-dots{display:flex;justify-content:center;gap:8px;margin-top:28px}
-    .honor-dot{width:8px;height:8px;border-radius:50%;border:none;background:#D5DCE6;padding:0;cursor:pointer;transition:background .2s,transform .2s}
-    .honor-dot.active{background:var(--primary);transform:scale(1.15)}
+    .honor-slide-title{font-size:14px;color:#3D4A5C;line-height:1.55;margin:16px 0 0;font-weight:500;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .honor-dots{display:flex;justify-content:center;gap:8px;margin-top:28px;opacity:0;transition:opacity .5s ease .3s}
+    #cert.is-inview .honor-dots{opacity:1}
+    .honor-dot{width:8px;height:8px;border-radius:50%;border:none;background:#D5DCE6;padding:0;cursor:pointer;transition:background .25s ease,transform .25s cubic-bezier(.22,.61,.36,1)}
+    .honor-dot.active{background:var(--primary);transform:scale(1.2)}
     .honor-lightbox{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s}
     .honor-lightbox.is-open{opacity:1;visibility:visible}
     .honor-lightbox-backdrop{position:absolute;inset:0;background:rgba(26,26,46,.58);backdrop-filter:blur(2px)}
-    .honor-lightbox-panel{position:relative;width:min(560px,100%);max-height:min(88vh,760px);background:var(--white);border-radius:16px;box-shadow:0 24px 64px rgba(0,110,182,.2);overflow:hidden;display:flex;flex-direction:column;transform:translateY(16px);transition:transform .25s ease}
+    .honor-lightbox-panel{position:relative;width:min(480px,100%);max-height:min(92vh,900px);background:var(--white);border-radius:16px;box-shadow:0 24px 64px rgba(0,110,182,.2);overflow:hidden;display:flex;flex-direction:column;transform:translateY(16px);transition:transform .25s ease}
     .honor-lightbox.is-open .honor-lightbox-panel{transform:translateY(0)}
     .honor-lightbox-close{position:absolute;top:12px;right:12px;z-index:2;width:36px;height:36px;border:none;border-radius:50%;background:rgba(255,255,255,.92);color:var(--text-muted);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:background .2s,color .2s}
     .honor-lightbox-close:hover{background:var(--white);color:var(--primary)}
-    .honor-lightbox-img-wrap{padding:28px 28px 16px;background:linear-gradient(180deg,var(--bg),var(--white));display:flex;align-items:center;justify-content:center;min-height:280px;max-height:min(62vh,520px);overflow:auto}
-    .honor-lightbox-img-wrap img{max-width:100%;max-height:min(58vh,480px);object-fit:contain;display:block}
+    .honor-lightbox-img-wrap{padding:20px 20px 12px;background:linear-gradient(180deg,var(--bg),var(--white));display:flex;align-items:center;justify-content:center;min-height:280px;max-height:min(78vh,720px);overflow:auto}
+    .honor-lightbox-img-wrap img{max-width:100%;max-height:min(74vh,680px);width:auto;height:auto;object-fit:contain;display:block}
     .honor-lightbox-info{padding:16px 28px 24px;text-align:center;border-top:1px solid #EEF1F5}
     .honor-lightbox-title{font-size:17px;color:var(--primary);font-weight:600;line-height:1.5;margin:0 0 6px}
     .honor-lightbox-source{font-size:13px;color:var(--text-muted);margin:0}
@@ -111,56 +175,70 @@
     .page-btn:hover,.page-btn.active{background:var(--primary);color:var(--white);border-color:var(--primary)}
     .pagination.is-static .page-btn{cursor:default;pointer-events:none}
     .pagination.is-static .page-btn:not(.active):hover{background:var(--white);color:var(--text-muted);border-color:#E2E8F0}
-    #sustain.section{padding:64px 24px}
-    .sustain-module{background:linear-gradient(180deg,#E8F4EE 0%,#F4FAF7 55%,var(--white) 100%);border-radius:16px;padding:44px 40px 40px;box-shadow:var(--shadow)}
-    .sustain-module-head{text-align:center;margin-bottom:36px}
-    .sustain-module-title{font-size:32px;font-weight:700;color:var(--primary);margin:0 0 8px;line-height:1.2}
-    .sustain-module-sub{font-size:14px;color:var(--text-muted);margin:0}
-    .sustain-module-line{width:56px;height:4px;background:linear-gradient(90deg,#2EAD6B,var(--primary));border-radius:2px;margin:14px auto 0}
-    .sustain-pillars{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-bottom:36px}
-    .sustain-pillar{background:var(--white);border-radius:14px;padding:28px 28px 24px;box-shadow:0 4px 20px rgba(0,110,182,.06);border:1px solid rgba(0,110,182,.06);display:flex;flex-direction:column}
-    .sustain-pillar--env{border-top:4px solid #2EAD6B}
-    .sustain-pillar--safety{border-top:4px solid var(--accent)}
-    .sustain-pillar-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-    .sustain-pillar-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .sustain-pillar-icon svg{width:22px;height:22px;display:block}
-    .sustain-pillar--env .sustain-pillar-icon{background:rgba(46,173,107,.12);color:#2EAD6B}
-    .sustain-pillar--safety .sustain-pillar-icon{background:rgba(255,181,17,.14);color:var(--accent)}
-    .sustain-pillar-head h4{font-size:18px;font-weight:700;color:var(--text);margin:0;line-height:1.3}
-    .sustain-steps{display:flex;flex-direction:column;gap:14px;flex:1}
-    .sustain-step{display:flex;gap:12px;align-items:flex-start}
-    .sustain-step-num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:var(--white);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-    .sustain-step-body{font-size:13px;color:var(--text-muted);line-height:1.6}
-    .sustain-step-body strong{display:block;color:var(--text);font-size:14px;font-weight:600;margin-bottom:2px}
-    .sustain-pdf{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:10px 16px;background:rgba(46,173,107,.08);color:#1F8A52;border-radius:10px;font-size:13px;font-weight:600;transition:background .2s,transform .2s;width:fit-content}
-    .sustain-pdf:hover{background:rgba(46,173,107,.14);transform:translateY(-1px)}
-    .sustain-pdf svg{width:16px;height:16px;flex-shrink:0}
-    .sustain-policy{background:linear-gradient(135deg,rgba(255,181,17,.08),rgba(255,181,17,.03));border-radius:10px;padding:16px 18px;margin-bottom:18px;border-left:3px solid var(--accent)}
-    .sustain-policy p{font-size:14px;color:var(--text);margin:0;font-weight:500;line-height:1.65}
-    .sustain-goals-label{font-size:13px;color:var(--primary);font-weight:600;margin-bottom:12px}
-    .sustain-goals{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .sustain-goal{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--text-muted);line-height:1.5;background:var(--bg);border-radius:8px;padding:10px 12px}
-    .sustain-goal-check{width:18px;height:18px;border-radius:50%;background:rgba(46,173,107,.12);color:#2EAD6B;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-    .sustain-goal-check svg{width:10px;height:10px}
-    .sustain-reports{padding-top:32px;border-top:1px solid rgba(0,110,182,.08)}
-    .sustain-reports-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
-    .sustain-reports-title{font-size:20px;font-weight:700;color:var(--primary);margin:0}
-    .sustain-reports-desc{font-size:13px;color:var(--text-muted);margin:0}
-    .sustain-report-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .sustain-report-btn{width:100%;border:none;background:none;padding:0;cursor:pointer;font-family:inherit;text-align:center}
-    .sustain-report-media{position:relative;background:var(--white);border-radius:12px;box-shadow:0 4px 20px rgba(0,110,182,.08);padding:20px 16px 16px;display:flex;align-items:center;justify-content:center;min-height:220px;transition:box-shadow .25s,transform .25s;overflow:hidden}
-    .sustain-report-media img{max-width:100%;max-height:180px;width:auto;height:auto;object-fit:contain;display:block}
-    .sustain-report-btn:hover .sustain-report-media{box-shadow:0 10px 32px rgba(0,110,182,.14);transform:translateY(-3px)}
-    .sustain-report-btn:hover .honor-zoom-icon{opacity:1;transform:scale(1)}
-    .sustain-report-title{font-size:14px;color:var(--text);line-height:1.55;margin:14px 0 6px;font-weight:500;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .sustain-report-date{font-size:12px;color:var(--text-muted);font-weight:600}
-    .sustain-goal--full{grid-column:1/-1}
+    #sustain.section{padding:72px 24px 80px;background:var(--white)}
+    .sustain-module{background:transparent;border-radius:0;padding:0;box-shadow:none}
+    .sustain-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.7fr);grid-template-areas:"head report" "main report";gap:28px 64px;align-items:start}
+    .sustain-main{grid-area:main;min-width:0;opacity:0;transform:translateY(18px);transition:opacity .75s cubic-bezier(.16,1,.3,1) .1s,transform .75s cubic-bezier(.16,1,.3,1) .1s}
+    #sustain.is-inview .sustain-main{opacity:1;transform:none}
+    .sustain-head{grid-area:head;margin:0;padding:0 0 20px;border-bottom:1px solid #D8DEE6;opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    #sustain.is-inview .sustain-head{opacity:1;transform:none}
+    .sustain-head::after{display:none}
+    .sustain-module-title{display:inline-block;position:relative;font-size:clamp(32px,3.6vw,44px);font-weight:700;color:#1A1A2E;margin:0 0 10px;line-height:1.25;letter-spacing:.02em;padding-bottom:12px}
+    .sustain-module-title::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px;transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.16,1,.3,1) .24s}
+    #sustain.is-inview .sustain-module-title::after{transform:scaleX(1)}
+    .sustain-module-sub{font-size:15px;color:#6B7280;margin:0;line-height:1.6}
+    .sustain-text-cols{display:grid;grid-template-columns:1.05fr 1fr;gap:40px 48px;align-items:start}
+    .sustain-col-title{font-size:22px;font-weight:700;color:#1A1A2E;margin:0 0 24px;line-height:1.3}
+    .sustain-env-list{display:flex;flex-direction:column;gap:22px}
+    .sustain-env-item{opacity:0;transform:translateY(12px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+    #sustain.is-inview .sustain-env-item{opacity:1;transform:none}
+    #sustain.is-inview .sustain-env-item:nth-child(1){transition-delay:.18s}
+    #sustain.is-inview .sustain-env-item:nth-child(2){transition-delay:.26s}
+    #sustain.is-inview .sustain-env-item:nth-child(3){transition-delay:.34s}
+    .sustain-env-item h5{font-size:15px;font-weight:700;color:#1A1A2E;margin:0 0 8px;line-height:1.4}
+    .sustain-env-item p{font-size:13px;color:#6B7280;line-height:1.75;margin:0}
+    .sustain-safety-lead{font-size:13px;color:#6B7280;line-height:1.75;margin:0 0 20px}
+    .sustain-goal-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+    .sustain-goal-list li{font-size:14px;font-weight:700;color:#1A1A2E;line-height:1.45;padding-left:14px;position:relative;opacity:0;transform:translateX(10px);transition:opacity .4s cubic-bezier(.16,1,.3,1),transform .4s cubic-bezier(.16,1,.3,1)}
+    #sustain.is-inview .sustain-goal-list li{opacity:1;transform:none}
+    #sustain.is-inview .sustain-goal-list li:nth-child(1){transition-delay:.2s}
+    #sustain.is-inview .sustain-goal-list li:nth-child(2){transition-delay:.26s}
+    #sustain.is-inview .sustain-goal-list li:nth-child(3){transition-delay:.32s}
+    #sustain.is-inview .sustain-goal-list li:nth-child(4){transition-delay:.38s}
+    #sustain.is-inview .sustain-goal-list li:nth-child(5){transition-delay:.44s}
+    #sustain.is-inview .sustain-goal-list li:nth-child(6){transition-delay:.5s}
+    #sustain.is-inview .sustain-goal-list li:nth-child(7){transition-delay:.56s}
+    .sustain-goal-list li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--primary)}
+    .sustain-report{grid-area:report;display:flex;flex-direction:column;gap:18px;align-items:center;opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.16,1,.3,1) .14s,transform .8s cubic-bezier(.16,1,.3,1) .14s}
+    #sustain.is-inview .sustain-report{opacity:1;transform:none}
+    .sustain-report-cover{position:relative;width:min(100%,310px);aspect-ratio:210/297;padding:32px 28px;overflow:hidden;background:linear-gradient(155deg,#006EB6 0%,#008C91 58%,#59A866 100%);color:var(--white);box-shadow:0 18px 42px rgba(0,110,182,.22);transition:transform .45s cubic-bezier(.22,.61,.36,1),box-shadow .4s ease}
+    .sustain-report-cover:hover{transform:translateY(-4px);box-shadow:0 22px 48px rgba(0,110,182,.28)}
+    .sustain-report-cover::before{content:"";position:absolute;width:290px;height:290px;border:1px solid rgba(255,255,255,.2);border-radius:50%;right:-160px;bottom:-65px;box-shadow:0 0 0 38px rgba(255,255,255,.06),0 0 0 76px rgba(255,255,255,.04)}
+    .sustain-report-cover::after{content:"";position:absolute;left:28px;right:28px;bottom:28px;height:1px;background:rgba(255,255,255,.45)}
+    .sustain-report-brand{position:relative;z-index:1;font-size:13px;font-weight:700;letter-spacing:.16em}
+    .sustain-report-year{position:relative;z-index:1;margin-top:70px;font-size:64px;font-weight:300;line-height:1;letter-spacing:-.04em}
+    .sustain-report-cover h4{position:relative;z-index:1;margin:14px 0 6px;font-size:25px;font-weight:600;line-height:1.35;letter-spacing:.08em}
+    .sustain-report-cover p{position:relative;z-index:1;margin:0;font-size:10px;letter-spacing:.18em;opacity:.78}
+    .sustain-report-company{position:absolute;z-index:1;left:28px;bottom:40px;font-size:11px;opacity:.9}
+    .sustain-report-actions{display:flex;flex-direction:column;gap:10px;width:min(100%,310px)}
+    .sustain-report-primary,.sustain-report-secondary{display:flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:10px 16px;border-radius:6px;font-size:13px;font-weight:600;line-height:1.45;text-align:center;transition:transform .25s cubic-bezier(.22,.61,.36,1),background .2s,border-color .2s,box-shadow .25s ease}
+    .sustain-report-primary{background:var(--primary);color:var(--white);box-shadow:0 6px 18px rgba(0,110,182,.2)}
+    .sustain-report-primary:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,110,182,.26)}
+    .sustain-report-secondary{border:1px solid #DDE3EA;color:#596577;background:var(--white)}
+    .sustain-report-secondary:hover{border-color:rgba(0,110,182,.35);color:var(--primary);transform:translateY(-1px)}
+    .sustain-report-actions svg{width:16px;height:16px;flex-shrink:0}
     .placeholder-note{background:rgba(255,181,17,.1);border-radius:8px;padding:16px;font-size:13px;color:var(--text-muted);margin-top:16px;text-align:center}
     .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px}
-    .card-grid .article-item{display:flex;flex-direction:column;padding:0;border-bottom:none;gap:0;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.06);cursor:pointer;transition:box-shadow .25s,transform .25s}
-    .card-grid .article-item:hover{box-shadow:0 8px 28px rgba(0,110,182,.12);transform:translateY(-3px)}
+    .card-grid .article-item{display:flex;flex-direction:column;padding:0;border-bottom:none;gap:0;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.06);cursor:pointer;opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),box-shadow .3s ease}
+    #news.is-inview .card-grid .article-item,#social.is-inview .card-grid .article-item{opacity:1;transform:none}
+    #news.is-inview .card-grid .article-item:nth-child(1),#social.is-inview .card-grid .article-item:nth-child(1){transition-delay:.12s}
+    #news.is-inview .card-grid .article-item:nth-child(2),#social.is-inview .card-grid .article-item:nth-child(2){transition-delay:.2s}
+    #news.is-inview .card-grid .article-item:nth-child(3),#social.is-inview .card-grid .article-item:nth-child(3){transition-delay:.28s}
+    #news.is-inview .card-grid .article-item:nth-child(n+4),#social.is-inview .card-grid .article-item:nth-child(n+4){transition-delay:.34s}
+    .card-grid .article-item:hover{box-shadow:0 8px 28px rgba(0,110,182,.12);transform:translateY(-4px)}
+    #news.is-inview .card-grid .article-item:hover,#social.is-inview .card-grid .article-item:hover{transform:translateY(-4px)}
     .card-grid .article-thumb{width:100%;height:auto;aspect-ratio:16/10;border-radius:0;overflow:hidden;background:linear-gradient(135deg,var(--bg),#E8EDF3);flex-shrink:0}
-    .card-grid .article-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+    .card-grid .article-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
     .card-grid .article-item:hover .article-thumb img{transform:scale(1.04)}
     .card-grid .social-card-body{padding:16px 18px 20px;flex:1;display:flex;flex-direction:column}
     .card-grid .article-title{font-size:15px;color:var(--text);font-weight:700;line-height:1.55;margin:0;transition:color .2s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -168,196 +246,337 @@
     .card-grid .social-card-sub{font-size:13px;color:var(--text-muted);line-height:1.6;margin:8px 0 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .card-grid .article-more{display:none}
     #news.section,#social.section{padding-bottom:48px}
-    .footer { background: linear-gradient(180deg, #006EB6 0%, #005e9b 100%); color: rgba(255,255,255,0.78); padding: 56px 24px 0; }
-    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
-    .footer-brand-head { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-    .footer-brand-head:hover { opacity: 0.92; }
-    .footer-contact .logo-text { color: var(--white); }
-    .footer-contact .logo-sub { color: rgba(255,255,255,0.55); }
-    .footer-body { display: grid; grid-template-columns: minmax(300px, 360px) 1fr; gap: 40px 48px; align-items: start; padding-bottom: 40px; }
-    .footer-contact { display: flex; flex-direction: column; gap: 0; min-width: 0; }
-    .footer-contact-col { min-width: 0; }
-    .footer-contact-col + .footer-contact-col { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.14); }
-    .footer-brand-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-brand-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.65; color: rgba(255,255,255); }
-    .footer-brand-icon { width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; opacity: 0.9; margin-top: 2px; color: var(--accent-light); }
-    .footer-brand-icon svg { width: 16px; height: 16px; display: block; stroke-width: 1.6; }
-    .footer-brand-list strong { color: var(--white); font-weight: 600; }
-    .footer-brand-list a { color: var(--accent-light); }
-    .footer-brand-list a.footer-link-plain { color: rgba(255,255,255,0.82); text-decoration: none; }
-    .footer-brand-list a.footer-link-plain:hover { color: var(--white); }
-    .footer-office-name { display: block; color: var(--white); font-weight: 600; margin-bottom: 12px; font-size: 13px; }
-    .footer-nav { display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: space-between; gap: 16px 20px; min-width: 0; width: 100%; }
-    .footer-col { flex: 0 0 auto; width: max-content; max-width: max-content; }
-    .footer-col h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 5px; padding-bottom: 3px; letter-spacing: 0.02em; white-space: nowrap; display: inline-block; border-bottom: 2px solid var(--accent); }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul li:last-child { margin-bottom: 0; }
-    .footer-col ul a { font-size: 12px; line-height: 1.55; color: rgba(255,255,255,0.72); transition: color 0.2s; display: inline-block; white-space: nowrap; }
-    .footer-col ul a:hover { color: var(--accent-light); }
-    .footer-bottom { padding: 24px 0 28px; border-top: 1px solid rgba(255,255,255,0.12); text-align: center; font-size: 12px; color: rgba(255,255,255,0.45); }
+    /* 企业动态 — 简洁三列卡片 */
+    #news.section{background:var(--white);padding-top:64px;padding-bottom:64px}
+    #news .news-module-head{margin-bottom:30px}
+    #news .card-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+    #news .card-grid .article-item{position:relative;border-radius:0;box-shadow:none;min-height:0;background:var(--white);overflow:hidden;border-bottom:1px solid #DDE3EA}
+    #news .card-grid .article-item:nth-child(n+4){display:none}
+    #news .card-grid .article-item:hover{box-shadow:0 10px 26px rgba(15,55,100,.12);transform:translateY(-4px);border-color:#D9E2EC}
+    #news .card-grid .article-thumb{aspect-ratio:16/10;border-radius:0}
+    #news .card-grid .article-item:hover .article-thumb img{transform:none}
+    #news .news-card-body{display:flex;flex-direction:column;flex:1;padding:16px 18px 18px;background:var(--white);min-height:118px;}
+    #news .news-date-row{display:flex;align-items:center;justify-content:flex-start;gap:6px;margin:14px 0 0}
+    #news .news-date-row svg{width:16px;height:16px;flex-shrink:0;color:#B0B7C1}
+    #news .card-grid .article-title{font-size:18px;color:var(--text);font-weight:400;line-height:1.55;margin:0;-webkit-line-clamp:2;flex:1}
+    #news .card-grid .article-item:hover .article-title{color:var(--primary)}
+    #news .article-date{position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:nowrap;border:0;display:inline;font-size:16px;font-weight:400;color:#B0B7C1;letter-spacing:.02em}
+    #news .news-card-overlay{display:none}
+    /* 社会贡献 — 参考新闻卡片，一行 4 个 */
+    #social.section{background:var(--white);padding-top:64px;padding-bottom:64px}
+    #social .news-module-head{margin-bottom:30px}
+    #social .card-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+    #social .card-grid .article-item{position:relative;border-radius:0;box-shadow:none;min-height:0;background:var(--white);overflow:hidden}
+    #social .card-grid .article-item:nth-child(n+5){display:none}
+    #social .card-grid .article-item:hover{box-shadow:0 10px 26px rgba(15,55,100,.12);transform:translateY(-4px);border-color:#D9E2EC}
+    #social .card-grid .article-thumb{aspect-ratio:16/10;border-radius:0}
+    #social .card-grid .article-item:hover .article-thumb img{transform:none}
+    #social .news-card-body{display:flex;flex-direction:column;flex:1;padding:16px 18px 18px;background:var(--white);min-height:118px;border-bottom:1px solid #DDE3EA}
+    #social .news-date-row{display:flex;align-items:center;justify-content:flex-start;gap:6px;margin-top:auto;padding-top:14px}
+    #social .news-date-row svg{width:16px;height:16px;flex-shrink:0;color:#B0B7C1}
+    #social .card-grid .article-title{font-size:16px;color:var(--text);font-weight:400;line-height:1.55;margin:0;-webkit-line-clamp:2}
+    #social .card-grid .article-item:hover .article-title{color:var(--primary)}
+    #social .news-card-body .article-excerpt{position:static;width:auto;height:auto;margin:8px 0 0;padding:0;overflow:hidden;clip:auto;white-space:normal;font-size:13px;line-height:1.65;color:#8A93A0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;flex:1}
+    #social .article-date{position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:nowrap;border:0;display:inline;font-size:14px;font-weight:400;color:#B0B7C1;letter-spacing:.02em}
+    .footer { background: #555960}
+    .footer-main { padding: 40px 24px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 28px 24px;
+    }
+    .footer-col { min-width: 0; }
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 18px;
+      letter-spacing: 0.04em;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.72);
+      transition: color 0.2s;
+      display: block;
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-contact {
+      margin-top: 30px;
+    }
+    .footer-contact-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-phone {
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+    }
+    .footer-phone:hover { color: var(--accent-light); }
+    .footer-fax {
+      font-size: 15px;
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 0.02em;
+    }
+    .footer-address {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      color: rgba(255,255,255,0.88);
+      font-size: 14px;
+      line-height: 1.55;
+      transition: color 0.2s;
+    }
+    .footer-address:hover { color: var(--white); }
+    .footer-address-text { min-width: 0; }
+    .footer-address-label {
+      display: block;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 4px;
+    }
+    .footer-address-meta {
+      display: block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.62);
+    }
+    .footer-address-arrow {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: rgba(255,255,255,0.7);
+    }
+    .footer-bar { background: var(--primary); }
+    .footer-bar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px 24px;
+      flex-wrap: wrap;
+    }
+    .footer-bar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      min-width: 0;
+    }
+    .footer-bar-brand img { height: 36px; width: auto; display: block; }
+    .footer-bar-brand-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; line-height: 1.25; }
+    .footer-bar-brand-zh { font-size: 14px; font-weight: 700; letter-spacing: 0.02em; color: var(--white); white-space: nowrap; }
+    .footer-bar-brand-en { font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: #9EC9E8; white-space: nowrap; }
+    .footer-bar-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.5;
+      text-align: right;
+    }
 
     
+    @media (prefers-reduced-motion:reduce){
+      .about-intro-media,.about-intro-media img,.about-intro-title,.about-intro-title::after,.about-intro-desc,.about-stat,
+      .honor-showcase-head,.honor-showcase-title::after,.honor-showcase-list-wrap,.honor-showcase-list-wrap::after,.honor-showcase-item,.honor-showcase-media,
+      .honor-module-head,.honor-module-title::after,.honor-carousel-viewport,.honor-slide,.honor-dots,
+      .sustain-head,.sustain-module-title::after,.sustain-main,.sustain-env-item,.sustain-goal-list li,.sustain-report,
+      .news-module-head,.news-module-title::after,.card-grid .article-item{
+        opacity:1!important;transform:none!important;transition:none!important;animation:none!important
+      }
+      .about-intro.is-ready .about-intro-media img{transform:none!important}
+      .honor-showcase-title::after,#honors.is-inview .honor-showcase-title::after{transform:translateX(-50%)!important}
+      .honor-showcase-list-wrap::after,#honors.is-inview .honor-showcase-list-wrap::after{height:var(--honor-rail,12%)!important}
+    }
     .prototype-badge{position:fixed;bottom:16px;right:16px;background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;z-index:9999}
-    @media(max-width:768px){.nav{display:none}.footer-inner{gap:0}.footer-body{grid-template-columns:1fr;gap:32px;padding-bottom:32px}.footer-nav{flex-wrap:wrap;justify-content:flex-start;grid-template-columns:repeat(2,1fr);gap:24px 16px}.award-grid,.article-item{grid-template-columns:1fr;gap:16px}.card-grid{grid-template-columns:1fr;gap:24px}.news-module-title{font-size:26px}.article-thumb{width:100%;height:180px}.article-modal-head{padding:20px 20px 0}.article-modal-body{padding:16px 20px 24px}.article-modal-title{font-size:19px}.page-hero-img{min-height:280px;height:min(55vw,380px)}.page-hero-overlay{align-items:flex-end;background:linear-gradient(180deg,transparent 30%,rgba(255,255,255,.92) 100%)}.page-hero-inner{padding:0 20px 28px}.page-hero h1{font-size:30px}.page-hero-desc{font-size:14px;max-width:none}.section{padding:48px 20px}#sustain.section{padding:48px 20px}.honor-module,.sustain-module{padding:28px 20px 24px}.sustain-module-title{font-size:26px}.sustain-pillars{grid-template-columns:1fr;gap:20px}.sustain-goals{grid-template-columns:1fr}.sustain-report-grid{grid-template-columns:1fr}.sustain-reports-head{flex-direction:column;align-items:flex-start;gap:6px}.honor-module-head{flex-direction:column;align-items:flex-start;gap:20px;margin-bottom:24px}.honor-module-title{font-size:26px}.honor-module-nav{align-self:flex-end}.honor-slide{flex:0 0 calc((100% - 20px)/2)}.honor-slide-media{min-height:200px;padding:18px 14px 14px}.honor-slide-media img{max-height:160px}.honor-nav-current{font-size:24px}}
-    @media(max-width:1100px){.honor-slide{flex:0 0 calc((100% - 40px)/3)}.card-grid{grid-template-columns:repeat(3,1fr);gap:24px 20px}.footer-body{grid-template-columns:minmax(260px,320px) 1fr;gap:28px 32px}.footer-nav{flex-wrap:wrap;justify-content:flex-start;gap:24px 28px}}
-    @media(max-width:1024px){.sustain-report-grid{grid-template-columns:repeat(2,1fr)}.card-grid{grid-template-columns:repeat(2,1fr);gap:24px 20px}}
-    @media(max-width:640px){.honor-slide{flex:0 0 100%}.honor-module-nav{align-self:stretch;justify-content:center}}
+    @media(max-width:768px){.nav{display:none}.footer-main{padding:40px 20px 0}.footer-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.footer-contact{margin-top:32px}.footer-contact-row{padding:18px 0;gap:10px}.footer-phone{font-size:22px}.footer-fax{font-size:13px}.footer-address{padding:16px 0;font-size:13px}.footer-bar-inner{padding:14px 20px}.footer-bar-copy{text-align:left;font-size:11px}.award-grid,.article-item{grid-template-columns:1fr;gap:16px}.card-grid{grid-template-columns:1fr;gap:24px}.news-module-title{font-size:26px}.article-thumb{width:100%;height:180px}.article-modal-head{padding:20px 20px 0}.article-modal-body{padding:16px 20px 24px}.article-modal-title{font-size:19px}.about-intro{padding:48px 20px 40px}.about-intro-inner{grid-template-columns:1fr;gap:28px}.about-intro-media{aspect-ratio:16/10;border-radius:16px}.about-intro-title{font-size:28px;margin-bottom:14px}.about-intro-desc{font-size:14px;margin-bottom:24px;max-width:none}.about-intro-stats{grid-template-columns:repeat(2,1fr);gap:20px 12px}.about-stat-num{font-size:26px}.section{padding:48px 20px}#sustain.section{padding:48px 20px}.sustain-module{padding:0}.sustain-head{padding-bottom:20px}.sustain-module-title{font-size:28px}.sustain-module-sub{font-size:14px}.sustain-layout{grid-template-columns:1fr;gap:28px}.sustain-text-cols{grid-template-columns:1fr;gap:28px}.sustain-downloads{grid-template-columns:1fr;margin-top:24px}.sustain-col-title{font-size:20px;margin-bottom:18px}.sustain-doc{margin-top:0}.sustain-doc-stage{width:min(100%,260px)}#honors.section{padding:56px 20px 48px}#cert.section{padding:48px 20px 56px}.honor-showcase-head{margin-bottom:32px}.honor-showcase-title{font-size:28px}.honor-showcase-lead{font-size:14px}.honor-showcase-body{grid-template-columns:1fr;gap:28px}.honor-showcase-list{gap:22px;max-height:none}.honor-showcase-list-wrap{max-height:none}.honor-showcase-item-title{font-size:16px}.honor-showcase-media{min-height:260px}.honor-showcase-frame img{max-height:280px}.honor-module-head{flex-direction:column;align-items:flex-start;gap:20px;margin-bottom:24px}.honor-module-title{font-size:28px}.honor-module-nav{align-self:flex-end}.honor-slide{flex:0 0 calc((100% - 20px)/2.15)}.honor-slide-btn{padding:18px 14px 14px}.honor-slide-media{min-height:180px}.honor-slide-media img{max-height:160px}.honor-nav-current{font-size:24px}}
+    @media(max-width:1024px){.honor-showcase-body{grid-template-columns:1fr;gap:28px;max-width:560px}.honor-showcase-media{min-height:300px}.about-intro-inner{grid-template-columns:1fr;gap:32px}.about-intro-media{max-width:640px}.sustain-layout{grid-template-columns:1fr;gap:32px}.sustain-text-cols{grid-template-columns:1fr 1fr;gap:28px}.sustain-downloads{grid-template-columns:1fr 1fr}.sustain-doc{margin-top:0;width:100%;max-width:360px;margin-left:auto;margin-right:auto}.card-grid{grid-template-columns:repeat(2,1fr);gap:24px 20px}}
+    @media(max-width:1100px){.about-intro-inner{gap:40px 48px}.about-intro-stats{gap:12px}.honor-showcase-body{gap:40px}.honor-slide{flex:0 0 calc((100% - 20px)/2.35)}.card-grid{grid-template-columns:repeat(3,1fr);gap:24px 20px}.footer-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}}
+    @media(max-width:640px){.honor-slide{flex:0 0 100%}.honor-slide-btn{padding:20px 16px 16px}.honor-module-nav{align-self:stretch;justify-content:center}}
+    /* 认证资质均为竖版证书，按 A4 比例展示 */
+    #cert .honor-carousel-viewport{margin:0 -8px;padding:8px 8px 20px}
+    #cert .honor-carousel-track{gap:24px}
+    #cert .honor-slide{flex:0 0 calc((100% - 72px)/4)}
+    #cert .honor-slide-btn{padding:12px 12px 18px;border-radius:8px;box-shadow:0 6px 20px rgba(15,55,100,.07)}
+    #cert .honor-slide-btn:hover{box-shadow:0 12px 30px rgba(15,55,100,.13)}
+    #cert .honor-slide-media{aspect-ratio:210/297;overflow:hidden}
+    #cert .honor-slide-media img{width:100%;height:100%;max-width:none;max-height:none;object-fit:contain}
+    #cert .honor-slide-title{min-height:44px;margin-top:16px;display:flex;align-items:center;justify-content:center}
+    #cert .honor-zoom-icon{right:10px;bottom:10px}
+    @media(max-width:1100px){#cert .honor-slide{flex-basis:calc((100% - 48px)/3)}}
+    @media(max-width:768px){#cert .honor-slide{flex-basis:calc((100% - 24px)/2)}}
+    @media(max-width:640px){#cert .honor-slide{flex-basis:100%;max-width:320px}#cert .honor-carousel-track{gap:20px}}
+    @media(max-width:1024px){.sustain-layout{grid-template-columns:minmax(0,1.4fr) minmax(260px,.7fr);gap:28px 36px}.sustain-text-cols{grid-template-columns:1fr;gap:32px}}
+    @media(max-width:768px){.sustain-layout{grid-template-columns:1fr;grid-template-areas:"head" "report" "main";gap:28px}.sustain-report{margin-bottom:8px}.sustain-report-cover{width:min(100%,280px)}.sustain-report-actions{width:min(100%,280px)}}
+    @media(max-width:1100px){#social .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:900px){#news .card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:640px){#news.section,#social.section{padding-top:52px;padding-bottom:52px}#news .news-module-head,#social .news-module-head{margin-bottom:26px;align-items:flex-start}#news .card-grid,#social .card-grid{grid-template-columns:1fr;gap:26px}#news .card-grid .article-thumb,#social .card-grid .article-thumb{aspect-ratio:16/9}.news-module-head{flex-wrap:wrap}}
   </style>
 </head>
 <body>
-  <header class="header"><div class="header-inner">
-    <a href="index.html" class="logo"><img src="img/logo.png" alt="STARLITE" class="logo-img"><div><div class="logo-text">星光树脂制品（昆山）有限公司</div><div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div></div></a>
-    <ul class="nav">
-      <li>
-        <a href="index.html">首页</a>
-        <ul class="nav-dropdown">
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/brand/logo-白.png" alt="STARLITE" class="logo-img">
+        <div>
+          <div class="logo-text">STARLITE</div>
+        </div>
+      </a>
+      <ul class="nav">
+        <li>
+          <a href="index.html">首页</a>
+          <ul class="nav-dropdown">
             <li><a href="index.html#intro">企业简介</a></li>
-          <li><a href="index.html#history">发展历程</a></li>
-          <li><a href="index.html#logo">品牌标识解说</a></li>
-          <li><a href="index.html#vision">理念 & 愿景 & 使命</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="innovation.html">创新中心</a>
-        <ul class="nav-dropdown">
+            <li><a href="index.html#history">发展历程</a></li>
+            <li><a href="index.html#logo">品牌标识解说</a></li>
+            <li><a href="index.html#vision">理念 & 愿景 & 使命</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="innovation.html">创新中心</a>
+          <ul class="nav-dropdown">
             <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-          <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
-          <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
-          <li><a href="innovation.html#equipment">试验分析仪器 & 摩擦学检测设备</a></li>
-        </ul>
-      </li>
-      <li class="nav-has-mega">
+            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-mega">
           <a href="products.html">产品核心</a>
-        <ul class="nav-dropdown">
+          <ul class="nav-dropdown">
             <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
-          <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
-          <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
-          <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-          <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-          <li><a href="products.html#clients">合作客户</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="about.html" class="active">关于我们</a>
-        <ul class="nav-dropdown">
+            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+            <li><a href="products.html#clients">合作客户</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html" class="active">关于我们</a>
+          <ul class="nav-dropdown">
             <li><a href="about.html#honors">企业荣誉</a></li>
-          <li><a href="about.html#cert">认证资质</a></li>
-          <li><a href="about.html#sustain">可持续发展</a></li>
-          <li><a href="about.html#news">企业动态</a></li>
-          <li><a href="about.html#social">社会贡献</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="join.html">加入我们</a>
-        <ul class="nav-dropdown">
+            <li><a href="about.html#cert">认证资质</a></li>
+            <li><a href="about.html#sustain">可持续发展</a></li>
+            <li><a href="about.html#news">企业动态</a></li>
+            <li><a href="about.html#social">社会贡献</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="join.html">加入我们</a>
+          <ul class="nav-dropdown">
             <li><a href="join.html#welfare">人文关怀</a></li>
-          <li><a href="join.html#training">教育培训</a></li>
-          <li><a href="join.html#activities">员工活动</a></li>
-          <li><a href="join.html#careers">招贤纳士</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="contact.html">联系我们</a>
-        <ul class="nav-dropdown">
+            <li><a href="join.html#training">教育培训</a></li>
+            <li><a href="join.html#activities">员工活动</a></li>
+            <li><a href="join.html#careers">招贤纳士</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="contact.html">联系我们</a>
+          <ul class="nav-dropdown">
             <li><a href="contact.html#contact-info">联系方式</a></li>
-          <li><a href="contact.html#contact-form">客户留言</a></li>
-        </ul>
-      </li>
-    </ul>
-    <div class="lang-switch"><button class="lang-btn active" type="button">中文</button><button class="lang-btn" type="button">EN</button></div>
-  </div></header>
-  <section class="page-hero">
-    <img class="page-hero-img" src="img/banner/关于我们.png" alt="关于我们">
-    <div class="page-hero-overlay">
-      <div class="page-hero-inner">
-        <h1>关于我们</h1>
-        <div class="page-hero-title-line"></div>
-        <p class="page-hero-desc">企业荣誉 · 认证资质 · 可持续发展 · 企业动态 · 社会贡献</p>
+            <li><a href="contact.html#contact-map">电子地图</a></li>
+            <li><a href="contact.html#contact-form">客户留言</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="lang-switch"><button class="lang-btn" type="button" data-lang="zh" aria-label="切换语言">EN</button></div>
+    </div>
+  </header>
+  <section class="about-intro" id="intro" aria-labelledby="about-intro-title">
+    <div class="about-intro-inner">
+      <div class="about-intro-media">
+        <img src="img/banner/image-53.png" alt="星光树脂厂房与生产环境">
+      </div>
+      <div class="about-intro-content">
+        <h1 class="about-intro-title" id="about-intro-title">以独创技术创造感动世界的企业</h1>
+        <p class="about-intro-desc">公司以热固性酚醛树脂、特种工程塑料为基础，研发高性能改性树脂材料，覆盖滑动、传动、制动、密封等应用领域。</p>
+        <div class="about-intro-stats">
+          <div class="about-stat">
+            <p class="about-stat-num" data-count="90" data-suffix="+">90+</p>
+            <p class="about-stat-label">年技术积累</p>
+          </div>
+          <div class="about-stat">
+            <p class="about-stat-num" data-count="30" data-suffix="+">30+</p>
+            <p class="about-stat-label">荣誉资质</p>
+          </div>
+          <div class="about-stat">
+            <p class="about-stat-num" data-count="20" data-suffix="+">20+</p>
+            <p class="about-stat-label">服务行业</p>
+          </div>
+          <div class="about-stat">
+            <p class="about-stat-num" data-count="10" data-suffix="+">10+</p>
+            <p class="about-stat-label">认证体系</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section" id="honors"><div class="section-inner section-inner--wide">
-      <div class="honor-module">
-        <div class="honor-module-head">
-          <div>
-            <h3 class="honor-module-title">企业荣誉</h3>
-            <p class="honor-module-sub">荣誉是实力的见证，是团队的旗帜和灵魂，更是产品品质保障的标志。</p>
-          </div>
-          <div class="honor-module-nav">
-            <button class="honor-nav-btn honor-nav-prev" type="button" aria-label="上一组">
-              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="honor-showcase" id="honorShowcase">
+        <div class="honor-showcase-head">
+          <h3 class="honor-showcase-title">企业荣誉</h3>
+          <p class="honor-showcase-lead">荣誉是实力的见证，是团队的旗帜和灵魂，更是产品品质保障的标志。</p>
+        </div>
+        <div class="honor-showcase-body">
+          <div class="honor-showcase-media">
+            <button type="button" class="honor-showcase-frame" id="honorShowcaseFrame" aria-label="查看荣誉证书大图" data-src="https://www.starlite.cn/Upload/Images/2026-03-18/69ba01ffc63f5.jpg" data-title="品质优秀奖" data-source="夏普办公设备（常熟）有限公司">
+              <img src="https://www.starlite.cn/Upload/Images/2026-03-18/69ba01ffc63f5.jpg" alt="品质优秀奖" id="honorShowcaseImg">
             </button>
-            <div class="honor-nav-counter" aria-live="polite">
-              <span class="honor-nav-current">01</span>
-              <span class="honor-nav-sep"> / </span>
-              <span class="honor-nav-total">01</span>
+          </div>
+          <div class="honor-showcase-list-wrap">
+            <div class="honor-showcase-list" role="tablist" aria-label="企业荣誉列表">
+            <button type="button" class="honor-showcase-item is-active" role="tab" aria-selected="true" data-src="https://www.starlite.cn/Upload/Images/2026-03-18/69ba01ffc63f5.jpg" data-title="品质优秀奖" data-source="夏普办公设备（常熟）有限公司">
+              <p class="honor-showcase-item-title">2026 品质优秀奖</p>
+              <p class="honor-showcase-item-desc">荣获夏普办公设备（常熟）有限公司【品质优秀奖】表彰</p>
+            </button>
+            <button type="button" class="honor-showcase-item" role="tab" aria-selected="false" data-src="https://www.starlite.cn/Upload/Images/2026-02-03/698144650c60b.jpg" data-title="供应协力奖" data-source="海德世爱科特中国 BU">
+              <p class="honor-showcase-item-title">2026 供应协力奖</p>
+              <p class="honor-showcase-item-desc">荣获海德世爱科特中国 BU【供应协力奖】表彰</p>
+            </button>
+            <button type="button" class="honor-showcase-item" role="tab" aria-selected="false" data-src="https://www.starlite.cn/Upload/Images/2026-01-28/69796b7a9a828.jpg" data-title="2025 年突出贡献会员单位" data-source="昆山市慈善总会">
+              <p class="honor-showcase-item-title">2026 突出贡献会员单位</p>
+              <p class="honor-showcase-item-desc">荣获昆山市慈善总会【2025年突出贡献会员单位】表彰</p>
+            </button>
+            <button type="button" class="honor-showcase-item" role="tab" aria-selected="false" data-src="https://www.starlite.cn/Upload/Images/2025-11-20/691eab3e632fd.png" data-title="三十载同行 · 卓越伙伴奖" data-source="宁波爱发科真空技术有限公司">
+              <p class="honor-showcase-item-title">2025 三十载同行 · 卓越伙伴奖</p>
+              <p class="honor-showcase-item-desc">荣获宁波爱发科真空技术有限公司【三十载同行・卓越伙伴奖】表彰</p>
+            </button>
+            <button type="button" class="honor-showcase-item" role="tab" aria-selected="false" data-src="https://www.starlite.cn/Upload/Images/2026-02-03/698143b6557c1.jpg" data-title="优质合作供应商" data-source="施耐德电气">
+              <p class="honor-showcase-item-title">2025 优质合作供应商</p>
+              <p class="honor-showcase-item-desc">荣获施耐德电气【优质合作供应商】表彰</p>
+            </button>
+            <button type="button" class="honor-showcase-item" role="tab" aria-selected="false" data-src="https://www.starlite.cn/Upload/Images/2026-02-03/698143f147880.jpg" data-title="长青合作贡献奖" data-source="芦森科技（无锡）有限公司">
+              <p class="honor-showcase-item-title">2025 长青合作贡献奖</p>
+              <p class="honor-showcase-item-desc">荣获芦森科技（无锡）有限公司【长青合作贡献奖】表彰</p>
+            </button>
+            <button type="button" class="honor-showcase-item" role="tab" aria-selected="false" data-src="https://www.starlite.cn/Upload/Images/2026-02-03/6981436d1dd89.jpg" data-title="纳期优秀奖" data-source="嘉兴村上汽车配件有限公司">
+              <p class="honor-showcase-item-title">2025 纳期优秀奖</p>
+              <p class="honor-showcase-item-desc">荣获嘉兴村上汽车配件有限公司【纳期优秀奖】表彰</p>
+            </button>
+            <button type="button" class="honor-showcase-item" role="tab" aria-selected="false" data-src="https://www.starlite.cn/Upload/Images/2024-08-29/66d015453d27e.png" data-title="协作之星" data-source="周市镇">
+              <p class="honor-showcase-item-title">2024 协作之星</p>
+              <p class="honor-showcase-item-desc">荣获周市镇【协作之星】称号</p>
+            </button>
+            <button type="button" class="honor-showcase-item" role="tab" aria-selected="false" data-src="https://www.starlite.cn/Upload/Images/2024-07-16/6695ed6cbd6db.jpg" data-title="科技创新奖" data-source="周市镇">
+              <p class="honor-showcase-item-title">2024 科技创新奖</p>
+              <p class="honor-showcase-item-desc">荣获周市镇【科技创新奖】的表彰</p>
+            </button>
             </div>
-            <button class="honor-nav-btn honor-nav-next" type="button" aria-label="下一组">
-              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
           </div>
         </div>
-        <div class="honor-carousel-viewport">
-          <div class="honor-carousel-track">
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2026-03-18/69ba01ffc63f5.jpg" data-title="品质优秀奖" data-source="夏普办公设备（常熟）有限公司">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/Images/2026-03-18/69ba01ffc63f5.jpg" alt="品质优秀奖" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">品质优秀奖</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2026-02-03/698144650c60b.jpg" data-title="供应协力奖" data-source="海德世爱科特中国 BU">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/Images/2026-02-03/698144650c60b.jpg" alt="供应协力奖" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">供应协力奖</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2026-01-28/69796b7a9a828.jpg" data-title="2025 年突出贡献会员单位" data-source="昆山市慈善总会">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/Images/2026-01-28/69796b7a9a828.jpg" alt="2025 年突出贡献会员单位" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">2025 年突出贡献会员单位</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2025-11-20/691eab3e632fd.png" data-title="三十载同行 · 卓越伙伴奖" data-source="宁波爱发科真空技术有限公司">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/Images/2025-11-20/691eab3e632fd.png" alt="三十载同行 · 卓越伙伴奖" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">三十载同行 · 卓越伙伴奖</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2026-02-03/698143b6557c1.jpg" data-title="优质合作供应商" data-source="施耐德电气">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/Images/2026-02-03/698143b6557c1.jpg" alt="优质合作供应商" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">优质合作供应商</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2026-02-03/698143f147880.jpg" data-title="长青合作贡献奖" data-source="芦森科技（无锡）有限公司">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/Images/2026-02-03/698143f147880.jpg" alt="长青合作贡献奖" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">长青合作贡献奖</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2026-02-03/6981436d1dd89.jpg" data-title="纳期优秀奖" data-source="嘉兴村上汽车配件有限公司">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/Images/2026-02-03/6981436d1dd89.jpg" alt="纳期优秀奖" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">纳期优秀奖</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2024-08-29/66d015453d27e.png" data-title="协作之星" data-source="周市镇">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/Images/2024-08-29/66d015453d27e.png" alt="协作之星" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">协作之星</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2024-07-16/6695ed6cbd6db.jpg" data-title="科技创新奖" data-source="周市镇">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/Images/2024-07-16/6695ed6cbd6db.jpg" alt="科技创新奖" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">科技创新奖</p>
-              </button>
-            </article>
-          </div>
-        </div>
-        <div class="honor-dots" role="tablist" aria-label="荣誉轮播分页"></div>
       </div>
   </div></section>
 
@@ -369,21 +588,24 @@
             <p class="honor-module-sub">严格遵守质量标准，杜绝生产不良产品</p>
           </div>
           <div class="honor-module-nav">
-            <button class="honor-nav-btn honor-nav-prev" type="button" aria-label="上一组">
-              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="honor-nav-counter" aria-live="polite">
-              <span class="honor-nav-current">01</span>
-              <span class="honor-nav-sep"> / </span>
-              <span class="honor-nav-total">01</span>
-            </div>
-            <button class="honor-nav-btn honor-nav-next" type="button" aria-label="下一组">
-              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+            <button class="honor-nav-btn honor-nav-prev" type="button" aria-label="上一组">←</button>
+            <button class="honor-nav-btn honor-nav-next" type="button" aria-label="下一组">→</button>
           </div>
         </div>
         <div class="honor-carousel-viewport">
           <div class="honor-carousel-track">
+            <article class="honor-slide">
+              <button type="button" class="honor-slide-btn" data-src="img/sustain/iso14067.png" data-title="ISO 14067 产品碳足迹认证" data-source="公司于 2025 年 9 月取得">
+                <div class="honor-slide-media"><img src="img/sustain/iso14067.png" alt="ISO 14067 产品碳足迹认证证书" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
+                <p class="honor-slide-title">ISO 14067 产品碳足迹认证</p>
+              </button>
+            </article>
+            <article class="honor-slide">
+              <button type="button" class="honor-slide-btn" data-src="img/sustain/iso14064.png" data-title="ISO 14064 温室气体排放核查声明" data-source="公司于 2025 年 9 月取得">
+                <div class="honor-slide-media"><img src="img/sustain/iso14064.png" alt="ISO 14064 温室气体排放核查声明" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
+                <p class="honor-slide-title">ISO 14064 温室气体排放核查声明</p>
+              </button>
+            </article>
             <article class="honor-slide">
               <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20260130/20260130093849_83883.jpg" data-title="ISO50001 能源管理体系认证" data-source="公司于 2025 年 12 月取得">
                 <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20260130/20260130093849_83883.jpg" alt="ISO50001 能源管理体系认证证书" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
@@ -392,61 +614,31 @@
             </article>
             <article class="honor-slide">
               <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20240829/20240829102357_52994.png" data-title="ISO45001 职业健康安全管理体系认证" data-source="公司于 2024 年 8 月取得">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20240829/20240829102357_52994.png" alt="ISO45001 职业健康安全管理体系认证证书（一）" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">ISO45001 职业健康安全管理体系认证</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20240829/20240829102543_91664.png" data-title="ISO45001 职业健康安全管理体系认证" data-source="公司于 2024 年 8 月取得">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20240829/20240829102543_91664.png" alt="ISO45001 职业健康安全管理体系认证证书（二）" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
+                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20240829/20240829102357_52994.png" alt="ISO45001 职业健康安全管理体系认证证书" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
                 <p class="honor-slide-title">ISO45001 职业健康安全管理体系认证</p>
               </button>
             </article>
             <article class="honor-slide">
               <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20200226/20200226171756_83995.jpg" data-title="IATF16949 汽车行业质量管理体系认证" data-source="公司于 2018 年 2 月取得">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226171756_83995.jpg" alt="IATF16949 汽车行业质量管理体系认证证书（一）" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">IATF16949 汽车行业质量管理体系认证</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20200226/20200226171804_74912.jpg" data-title="IATF16949 汽车行业质量管理体系认证" data-source="公司于 2018 年 2 月取得">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226171804_74912.jpg" alt="IATF16949 汽车行业质量管理体系认证证书（二）" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
+                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226171756_83995.jpg" alt="IATF16949 汽车行业质量管理体系认证证书" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
                 <p class="honor-slide-title">IATF16949 汽车行业质量管理体系认证</p>
               </button>
             </article>
             <article class="honor-slide">
               <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20200226/20200226171948_58537.jpg" data-title="TS16949 汽车行业质量管理体系认证" data-source="公司于 2007 年 2 月取得">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226171948_58537.jpg" alt="TS16949 汽车行业质量管理体系认证证书（一）" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">TS16949 汽车行业质量管理体系认证</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20200226/20200226171955_94965.jpg" data-title="TS16949 汽车行业质量管理体系认证" data-source="公司于 2007 年 2 月取得">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226171955_94965.jpg" alt="TS16949 汽车行业质量管理体系认证证书（二）" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
+                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226171948_58537.jpg" alt="TS16949 汽车行业质量管理体系认证证书" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
                 <p class="honor-slide-title">TS16949 汽车行业质量管理体系认证</p>
               </button>
             </article>
             <article class="honor-slide">
               <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20200226/20200226172039_70224.jpg" data-title="ISO14001 环境管理体系认证" data-source="公司于 2002 年 1 月取得">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226172039_70224.jpg" alt="ISO14001 环境管理体系认证证书（一）" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">ISO14001 环境管理体系认证</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20200226/20200226172047_30338.jpg" data-title="ISO14001 环境管理体系认证" data-source="公司于 2002 年 1 月取得">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226172047_30338.jpg" alt="ISO14001 环境管理体系认证证书（二）" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
+                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226172039_70224.jpg" alt="ISO14001 环境管理体系认证证书" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
                 <p class="honor-slide-title">ISO14001 环境管理体系认证</p>
               </button>
             </article>
             <article class="honor-slide">
               <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20200226/20200226172147_28764.jpg" data-title="ISO9002 质量管理体系认证" data-source="公司于 1999 年 2 月取得">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226172147_28764.jpg" alt="ISO9002 质量管理体系认证证书（一）" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="honor-slide-title">ISO9002 质量管理体系认证</p>
-              </button>
-            </article>
-            <article class="honor-slide">
-              <button type="button" class="honor-slide-btn" data-src="https://www.starlite.cn/Upload/image/20200226/20200226172154_32906.jpg" data-title="ISO9002 质量管理体系认证" data-source="公司于 1999 年 2 月取得">
-                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226172154_32906.jpg" alt="ISO9002 质量管理体系认证证书（二）" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
+                <div class="honor-slide-media"><img src="https://www.starlite.cn/Upload/image/20200226/20200226172147_28764.jpg" alt="ISO9002 质量管理体系认证证书" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
                 <p class="honor-slide-title">ISO9002 质量管理体系认证</p>
               </button>
             </article>
@@ -458,82 +650,66 @@
 
   <section class="section" id="sustain"><div class="section-inner section-inner--wide">
       <div class="sustain-module">
-        <div class="sustain-module-head">
-          <h3 class="sustain-module-title">可持续发展</h3>
-          <p class="sustain-module-sub">绿色生产 · 安全运营 · 持续担当</p>
-          <div class="sustain-module-line" aria-hidden="true"></div>
-        </div>
-
-        <div class="sustain-pillars">
-          <article class="sustain-pillar sustain-pillar--env">
-            <div class="sustain-pillar-head">
-              <span class="sustain-pillar-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-              </span>
-              <h4>环境保护</h4>
-            </div>
-            <div class="sustain-steps">
-              <div class="sustain-step"><span class="sustain-step-num">1</span><div class="sustain-step-body"><strong>实施危害预防</strong>定期识别环境因素及危险源，修订管理方案，实行监督，做到环境危害事前预防。</div></div>
-              <div class="sustain-step"><span class="sustain-step-num">2</span><div class="sustain-step-body"><strong>采用新型技术</strong>使用环保材料、探索新型生产技术及环保方法，减少生产过程中产生废弃物及污染物，实现企业绿色生产。</div></div>
-              <div class="sustain-step"><span class="sustain-step-num">3</span><div class="sustain-step-body"><strong>资源有效利用</strong>合理使用能源、减少浪费，以降耗、节约能源，执行分类、回收与循环利用活动，以保护环境为导向，促进企业绿色发展。</div></div>
-              <div class="sustain-step"><span class="sustain-step-num">4</span><div class="sustain-step-body"><strong>落实环境安全训练</strong>强化环境安全教育及训练，提高环境安全意识。</div></div>
-              <div class="sustain-step"><span class="sustain-step-num">5</span><div class="sustain-step-body"><strong>合规与持续改善</strong>遵守国家、地方及行业相关法律法规，持续改善环境污染与健康危害，提升环境安全绩效。</div></div>
-            </div>
-            <a href="https://www.starlite.cn/Upload/file/20230228/20230228163831_37375.pdf" target="_blank" rel="noopener" class="sustain-pdf">
-              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M9 1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6L9 1Z" stroke="currentColor" stroke-width="1.2"/><path d="M9 1v5h5M5 9h6M5 11.5h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-              2023 年度重点清洁生产审核企业信息公开表
-            </a>
-          </article>
-
-          <article class="sustain-pillar sustain-pillar--safety">
-            <div class="sustain-pillar-head">
-              <span class="sustain-pillar-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
-              </span>
-              <h4>安全方针</h4>
-            </div>
-            <div class="sustain-policy"><p>通过提升员工的安全意识，作业前彻底实施安全确认，改善安全生产环境，防止事故的发生。</p></div>
-            <div class="sustain-goals-label">安全目标</div>
-            <div class="sustain-goals">
-              <div class="sustain-goal"><span class="sustain-goal-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.2 4.1 7.3 8 3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>无重大安全事故</span></div>
-              <div class="sustain-goal"><span class="sustain-goal-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.2 4.1 7.3 8 3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>轻伤事故为 0</span></div>
-              <div class="sustain-goal"><span class="sustain-goal-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.2 4.1 7.3 8 3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>三级安全教育培训率 100%</span></div>
-              <div class="sustain-goal"><span class="sustain-goal-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.2 4.1 7.3 8 3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>隐患排查限期整改率每月 95% 以上</span></div>
-              <div class="sustain-goal"><span class="sustain-goal-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.2 4.1 7.3 8 3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>特种设备定期检测率 100%</span></div>
-              <div class="sustain-goal"><span class="sustain-goal-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.2 4.1 7.3 8 3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>职业病危害因素检测率 100%</span></div>
-              <div class="sustain-goal sustain-goal--full"><span class="sustain-goal-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.2 4.1 7.3 8 3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>无"违章指挥、违规作业、违反劳动纪律"行为</span></div>
-            </div>
-          </article>
-        </div>
-
-        <div class="sustain-reports">
-          <div class="sustain-reports-head">
-            <h4 class="sustain-reports-title">可持续发展报告</h4>
-            <p class="sustain-reports-desc">碳足迹认证 · 温室气体核查 · 年度可持续发展报告</p>
+        <div class="sustain-layout">
+          <div class="sustain-head">
+            <h3 class="sustain-module-title">可持续发展</h3>
+            <p class="sustain-module-sub">绿色生产 · 安全运营 · 持续担当</p>
           </div>
-          <div class="sustain-report-grid">
-            <article class="sustain-report-item">
-              <button type="button" class="sustain-report-btn honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2025-09-10/68c0d6d001cd1.png" data-title="ISO 14064 温室气体排放核查声明" data-source="2025-09-10">
-                <div class="sustain-report-media"><img src="https://www.starlite.cn/Upload/Images/2025-09-10/68c0d6d001cd1.png" alt="ISO 14064 温室气体排放核查声明" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="sustain-report-title">荣获 ISO 14064 温室气体排放核查声明</p>
-                <span class="sustain-report-date">2025-09-10</span>
-              </button>
-            </article>
-            <article class="sustain-report-item">
-              <button type="button" class="sustain-report-btn honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2025-09-10/68c0d57e65819.png" data-title="ISO 14067 产品碳足迹认证证书" data-source="2025-09-10">
-                <div class="sustain-report-media"><img src="https://www.starlite.cn/Upload/Images/2025-09-10/68c0d57e65819.png" alt="ISO 14067 产品碳足迹认证证书" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="sustain-report-title">荣获 ISO 14067 产品碳足迹认证证书</p>
-                <span class="sustain-report-date">2025-09-10</span>
-              </button>
-            </article>
-            <article class="sustain-report-item">
-              <button type="button" class="sustain-report-btn honor-slide-btn" data-src="https://www.starlite.cn/Upload/Images/2025-08-12/689a96f95a0a4.jpg" data-title="2024 年度可持续发展报告" data-source="2025-08-12">
-                <div class="sustain-report-media"><img src="https://www.starlite.cn/Upload/Images/2025-08-12/689a96f95a0a4.jpg" alt="2024 年度可持续发展报告" loading="lazy"><span class="honor-zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span></div>
-                <p class="sustain-report-title">2024 年度可持续发展报告</p>
-                <span class="sustain-report-date">2025-08-12</span>
-              </button>
-            </article>
+          <div class="sustain-main">
+            <div class="sustain-text-cols">
+              <div class="sustain-col">
+                <h4 class="sustain-col-title">环境保护</h4>
+                <div class="sustain-env-list">
+                  <article class="sustain-env-item">
+                    <h5>实施危害预防</h5>
+                    <p>定期识别环境因素及危险源，修订管理方案，实行监督，做到环境危害事前预防。</p>
+                  </article>
+                  <article class="sustain-env-item">
+                    <h5>采用新型技术</h5>
+                    <p>使用环保材料、探索新型生产技术及环保方法，减少生产过程中产生废弃物及污染物，实现企业绿色生产。</p>
+                  </article>
+                  <article class="sustain-env-item">
+                    <h5>资源有效利用</h5>
+                    <p>合理使用能源、减少浪费，以降耗、节约能源，执行分类、回收与循环利用活动，以保护环境为导向，促进企业绿色发展。</p>
+                  </article>
+                </div>
+              </div>
+
+              <div class="sustain-col">
+                <h4 class="sustain-col-title">安全方针</h4>
+                <p class="sustain-safety-lead">通过提升员工的安全意识，作业前彻底实施安全确认，改善安全生产环境，防止事故的发生。</p>
+                <ul class="sustain-goal-list">
+                  <li>无重大安全事故</li>
+                  <li>轻伤事故为 0</li>
+                  <li>三级安全教育培训率 100%</li>
+                  <li>隐患排查限期整改率每月 95% 以上</li>
+                  <li>特种设备定期检测率 100%</li>
+                  <li>职业病危害因素检测率 100%</li>
+                  <li>无“违章指挥、违规作业、违反劳动纪律”行为</li>
+                </ul>
+              </div>
+            </div>
           </div>
+
+          <aside class="sustain-report" aria-label="可持续发展报告">
+            <div class="sustain-report-cover">
+              <div class="sustain-report-brand">STARLITE</div>
+              <div class="sustain-report-year">2024</div>
+              <h4>可持续发展报告</h4>
+              <p>SUSTAINABILITY REPORT</p>
+              <span class="sustain-report-company">星光树脂制品（昆山）有限公司</span>
+            </div>
+            <div class="sustain-report-actions">
+              <a class="sustain-report-primary" href="https://www.starlite.cn/Upload/file/20250813/20250813141540_79562.pdf" target="_blank" rel="noopener">
+                <span>查看 2024 年度报告</span>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9m-3.5-3.5L12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a class="sustain-report-secondary" href="https://www.starlite.cn/Upload/file/20230228/20230228163831_37375.pdf" target="_blank" rel="noopener">
+                <span>清洁生产信息公开表</span>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9m-3.5-3.5L12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </aside>
         </div>
       </div>
   </div></section>
@@ -541,72 +717,78 @@
   <section class="section" id="news"><div class="section-inner section-inner--wide">
       <div class="news-module">
         <div class="news-module-head">
-          <h3 class="news-module-title">企业动态</h3>
-          <p class="news-module-sub">记录星光树脂参加国内外行业展会、展览出展及现场交流情况</p>
+          <div class="news-module-copy">
+            <h3 class="news-module-title">企业动态</h3>
+            <p class="news-module-sub">记录星光树脂参加国内外行业展会、展览出展及现场交流情况</p>
+          </div>
+          <a class="news-module-more" href="news.html?cat=news">更多 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9m-3.5-3.5L12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
         <div class="card-grid article-feed">
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/image/20250417/20250417094305_19797.jpg" alt="2025 ITES 深圳国际机器人及自动化设备展" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">2025 ITES 深圳国际机器人及自动化设备展</h4>
-              <p class="social-card-sub">2025年3月26日—29日期间，我司参加了在深圳召开的 ITES 深圳国际机器人及自动化设备展会。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2025-04-17</span>
+              </div>
             </div>
-            <span class="article-date">2025-04-17</span>
-            <p class="article-excerpt">2025年3月26日—29日期间，我司参加了在深圳召开的 ITES 深圳国际机器人及自动化设备展会。本次展会涉及电子制造、新能源及汽车、医疗器械、精密制造、智能制造等行业，我们展示了 STARLITE 自主品牌减速机、S-Bear 耐久齿轮、摩擦片等高端材料应用领域产品。</p>
+            <div class="news-card-overlay">
+              <p class="article-excerpt">2025年3月26日—29日期间，我司参加了在深圳召开的 ITES 深圳国际机器人及自动化设备展会。本次展会涉及电子制造、新能源及汽车、医疗器械、精密制造、智能制造等行业，我们展示了 STARLITE 自主品牌减速机、S-Bear 耐久齿轮、摩擦片等高端材料应用领域产品。</p>
+            </div>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/image/20241203/20241203161804_56282.jpg" alt="广州国际汽车展览会出展报道" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">广州国际汽车展览会出展报道</h4>
-              <p class="social-card-sub">2024年11月15日至18日，第二十二届广州国际汽车展览会在广交会展馆隆重举行。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2024-12-03</span>
+              </div>
             </div>
-            <span class="article-date">2024-12-03</span>
-            <p class="article-excerpt">2024年11月15日至18日，第二十二届广州国际汽车展览会在广交会展馆隆重举行。针对新能源汽车爆发式发展，我们详细展示了新材料成果及在新能源汽车行业的应用，如温控阀、执行器等高端部品，共接待了21家企业交流洽谈。</p>
+            <div class="news-card-overlay">
+              <p class="article-excerpt">2024年11月15日至18日，第二十二届广州国际汽车展览会在广交会展馆隆重举行。针对新能源汽车爆发式发展，我们详细展示了新材料成果及在新能源汽车行业的应用，如温控阀、执行器等高端部品，共接待了21家企业交流洽谈。</p>
+            </div>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/image/20241104/20241104083746_94528.jpg" alt="2024上海国际车用空调及热管理技术展览会报道" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">2024上海国际车用空调及热管理技术展览会报道</h4>
-              <p class="social-card-sub">10月21日—23日期间，我们在上海国际博览中心 N5 馆出展，三天共交流了33多家企业。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2024-11-04</span>
+              </div>
             </div>
-            <span class="article-date">2024-11-04</span>
-            <p class="article-excerpt">10月21日—23日期间，我们在上海国际博览中心 N5 馆出展。作为压缩机领域密封圈的市场占有率领先企业，三天展会共交流了33多家企业，其中11家左右有对口合作意愿，将成为后续新客户开发的重点对象。</p>
+            <div class="news-card-overlay">
+              <p class="article-excerpt">10月21日—23日期间，我们在上海国际博览中心 N5 馆出展。作为压缩机领域密封圈的市场占有率领先企业，三天展会共交流了33多家企业，其中11家左右有对口合作意愿，将成为后续新客户开发的重点对象。</p>
+            </div>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/image/20240821/20240821082028_53761.jpg" alt="2024年上海国际工业自动化及工业机器人展出展报道" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">2024年上海国际工业自动化及工业机器人展出展报道</h4>
-              <p class="social-card-sub">7月24日至26日，我们参加了 SIA 上海国际工业自动化及机器人展览会。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2024-08-21</span>
+              </div>
             </div>
-            <span class="article-date">2024-08-21</span>
-            <p class="article-excerpt">7月24日至26日，我们参加了在国家会展中心举办的 SIA 上海国际工业自动化及机器人展览会。本次展会上升级了展示风格，从灯光海报到实物展示均精心筹备，与30多家厂商进行了交流，其中12家为重点开发客户。</p>
+            <div class="news-card-overlay">
+              <p class="article-excerpt">7月24日至26日，我们参加了在国家会展中心举办的 SIA 上海国际工业自动化及机器人展览会。本次展会上升级了展示风格，从灯光海报到实物展示均精心筹备，与30多家厂商进行了交流，其中12家为重点开发客户。</p>
+            </div>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/image/20240820/20240820103918_24153.jpg" alt="WBE2024世界电池及储能产业博览会出展报道" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">WBE2024世界电池及储能产业博览会暨第9届亚太电池展出展报道</h4>
-              <p class="social-card-sub">8月8日—10日，我们出展 WBE2024 世界电池及储能产业博览会，重点展示高性能电池用氟素部品。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2024-08-20</span>
+              </div>
             </div>
-            <span class="article-date">2024-08-20</span>
-            <p class="article-excerpt">8月8日—10日，我们出展了在广州举办的 WBE2024 世界电池及储能产业博览会暨第9届亚太电池展，重点展示了高性能电池用氟素部品、储能系统关键部件等星光自主品牌树脂制品，吸引了30多家企业交流洽谈。</p>
-          </article>
-          <article class="article-item">
-            <div class="article-thumb"><img src="https://www.starlite.cn/Upload/image/20240820/20240820103918_24153.jpg" alt="WBE2024世界电池及储能产业博览会出展报道" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
-              <h4 class="article-title">WBE2024世界电池及储能产业博览会暨第9届亚太电池展出展报道</h4>
-              <p class="social-card-sub">8月8日—10日，我们出展 WBE2024 世界电池及储能产业博览会，重点展示高性能电池用氟素部品。</p>
+            <div class="news-card-overlay">
+              <p class="article-excerpt">8月8日—10日，我们出展了在广州举办的 WBE2024 世界电池及储能产业博览会暨第9届亚太电池展，重点展示了高性能电池用氟素部品、储能系统关键部件等星光自主品牌树脂制品，吸引了30多家企业交流洽谈。</p>
             </div>
-            <span class="article-date">2024-08-20</span>
-            <p class="article-excerpt">8月8日—10日，我们出展了在广州举办的 WBE2024 世界电池及储能产业博览会暨第9届亚太电池展，重点展示了高性能电池用氟素部品、储能系统关键部件等星光自主品牌树脂制品，吸引了30多家企业交流洽谈。</p>
           </article>
-        </div>
-        <div class="pagination is-static" aria-hidden="true">
-          <button class="page-btn" type="button" tabindex="-1">&lt;&lt;</button>
-          <button class="page-btn" type="button" tabindex="-1">&lt;</button>
-          <button class="page-btn active" type="button" tabindex="-1">1</button>
-          <button class="page-btn" type="button" tabindex="-1">2</button>
-          <button class="page-btn" type="button" tabindex="-1">&gt;</button>
-          <button class="page-btn" type="button" tabindex="-1">&gt;&gt;</button>
         </div>
       </div>
   </div></section>
@@ -614,90 +796,101 @@
   <section class="section" id="social"><div class="section-inner section-inner--wide">
       <div class="news-module">
         <div class="news-module-head">
-          <h3 class="news-module-title">社会贡献</h3>
-          <p class="news-module-sub">记录星光树脂参与福利院关爱、慈善捐赠等公益行动，践行「敬天爱人、回报社会」的经营理念</p>
+          <div class="news-module-copy">
+            <h3 class="news-module-title">社会贡献</h3>
+            <p class="news-module-sub">记录星光树脂参与福利院关爱、慈善捐赠等公益行动，践行「敬天爱人、回报社会」的经营理念</p>
+          </div>
+          <a class="news-module-more" href="news.html?cat=social">更多 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9m-3.5-3.5L12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
-        <div class="card-grid article-feed" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="card-grid article-feed">
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2025-09-30/68db4cdc2c84a.jpg" alt="第二十二次捐赠活动" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">第二十二次捐赠活动</h4>
-              <p class="social-card-sub">9月23日，秋阳轻柔地洒在周市中心小学，一场充满爱与希望的捐赠仪式在此温馨启幕。</p>
+              <p class="article-excerpt">9月23日，秋阳轻柔地洒在周市中心小学，一场充满爱与希望的捐赠仪式在此温馨启幕。星光树脂制品（昆山）有限公司带着对教育事业的关切，为学校送来急需物资，尽显企业的责任与担当。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2025-09-30</span>
+              </div>
             </div>
-            <span class="article-date">2025-09-30</span>
-            <p class="article-excerpt">9月23日，秋阳轻柔地洒在周市中心小学，一场充满爱与希望的捐赠仪式在此温馨启幕。星光树脂制品（昆山）有限公司带着对教育事业的关切，为学校送来急需物资，尽显企业的责任与担当。</p>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/image/20241226/20241226131944_36573.png" alt="星光公司第二十五次福利院活动" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">星光公司第二十五次福利院活动</h4>
-              <p class="social-card-sub">2024年12月21日，公司领导、工会及义工组成员前往昆山市福利院，开展第25回公益慈善活动。</p>
+              <p class="article-excerpt">2024年12月21日上午，星光树脂制品（昆山）有限公司的各位领导、工会成员及义工组成员一同前往昆山市福利院，开展了第25回公益慈善活动，为老年人送去冬至的关怀和温暖，共筑敬老爱老之风。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2024-12-26</span>
+              </div>
             </div>
-            <span class="article-date">2024-12-26</span>
-            <p class="article-excerpt">2024年12月21日上午，星光树脂制品（昆山）有限公司的各位领导、工会成员及义工组成员一同前往昆山市福利院，开展了第25回公益慈善活动，为老年人送去冬至的关怀和温暖，共筑敬老爱老之风。</p>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2023-12-26/658a28ec9414a.png" alt="情暖老人心——以爱为名，传递温暖" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">情暖老人心——以爱为名，传递温暖</h4>
-              <p class="social-card-sub">星光公司秉承「敬天爱人」理念，组织成员前往昆山市福利院，为老人送上关爱和温暖。</p>
+              <p class="article-excerpt">老吾者，以及人之老；幼吾幼，以及人之幼。星光公司秉承「敬天爱人」的理念，于2023年12月16日上午，组织公司与工会的成员们一同前往昆山市福利院，为年迈的老人送上来自星光的关爱和温暖。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2023-12-26</span>
+              </div>
             </div>
-            <span class="article-date">2023-12-26</span>
-            <p class="article-excerpt">老吾者，以及人之老；幼吾幼，以及人之幼。星光公司秉承「敬天爱人」的理念，于2023年12月16日上午，组织公司与工会的成员们一同前往昆山市福利院，为年迈的老人送上来自星光的关爱和温暖。</p>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2023-11-06/6548779e2e90a.jpg" alt="央广网刊登报道第二十次捐赠" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">央广网刊登报道「敬天爱人 慈善星光」第二十次捐赠</h4>
-              <p class="social-card-sub">风雨二十载，爱心不间断，第二十次捐赠仪式获社会广泛关注与认可。</p>
+              <p class="article-excerpt">风雨二十载，爱心不间断，2023年10月26日下午，星光树脂制品（昆山）有限公司在周市镇综合执法局举行了「敬天爱人 慈善星光」第二十次捐赠仪式。此次捐赠活动得到了社会的广泛关注与认可，并于2023年10月30日在央广网以专刊的形式进行了报道。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2023-11-06</span>
+              </div>
             </div>
-            <span class="article-date">2023-11-06</span>
-            <p class="article-excerpt">风雨二十载，爱心不间断，2023年10月26日下午，星光树脂制品（昆山）有限公司在周市镇综合执法局举行了「敬天爱人 慈善星光」第二十次捐赠仪式。此次捐赠活动得到了社会的广泛关注与认可，并于2023年10月30日在央广网以专刊的形式进行了报道。</p>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2023-06-05/647d42ed8e200.png" alt="第二十二次福利院献爱心活动" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">第二十二次福利院献爱心活动</h4>
-              <p class="social-card-sub">儿童节前夕，公司和工会成员前往昆山市福利院，为孩子们送上关爱和温暖。</p>
+              <p class="article-excerpt">初夏时节、阳光灿烂。星光公司秉承「敬天爱人」的理念，在6.1儿童节即将到来之际，于2023年5月28日上午，公司和工会的成员们一同前往昆山市福利院为孩子们送上来自星光的关爱和温暖，提前预祝孩子们拥有一个愉快的儿童节。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2023-06-03</span>
+              </div>
             </div>
-            <span class="article-date">2023-06-03</span>
-            <p class="article-excerpt">初夏时节、阳光灿烂。星光公司秉承「敬天爱人」的理念，在6.1儿童节即将到来之际，于2023年5月28日上午，公司和工会的成员们一同前往昆山市福利院为孩子们送上来自星光的关爱和温暖，提前预祝孩子们拥有一个愉快的儿童节。</p>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2022-11-07/6368a25fe732f.jpg" alt="第十九次捐赠活动" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">第十九次捐赠活动</h4>
-              <p class="social-card-sub">捐赠【微型消防车】，具备灭火、消防巡逻和消防宣传功能。</p>
+              <p class="article-excerpt">2022年10月28日下午，在周市镇综合执法局举行了「敬天爱人 慈善星光」第十九次捐赠仪式。本次捐赠的【微型消防车】不仅具备灭火的功能，还具有消防巡逻和消防宣传功能，可以有效唤起居民的消防意识。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2022-10-28</span>
+              </div>
             </div>
-            <span class="article-date">2022-10-28</span>
-            <p class="article-excerpt">2022年10月28日下午，在周市镇综合执法局举行了「敬天爱人 慈善星光」第十九次捐赠仪式。本次捐赠的【微型消防车】不仅具备灭火的功能，还具有消防巡逻和消防宣传功能，可以有效唤起居民的消防意识。</p>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2021-11-12/618e0fc1eed36.jpg" alt="第十八次捐赠活动" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">第十八次捐赠活动</h4>
-              <p class="social-card-sub">捐资建设【妇女儿童之家】，为儿童健康成长尽一份心、出一份力。</p>
+              <p class="article-excerpt">2021年10月22日下午，在周市镇梅心泾社区举行了「敬天爱人 慈善星光」第十八次捐赠仪式。本次捐资建设【妇女儿童之家】，为儿童的健康成长，构建和谐的亲子关系尽一份心、出一份力。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2021-11-12</span>
+              </div>
             </div>
-            <span class="article-date">2021-11-12</span>
-            <p class="article-excerpt">2021年10月22日下午，在周市镇梅心泾社区举行了「敬天爱人 慈善星光」第十八次捐赠仪式。本次捐资建设【妇女儿童之家】，为儿童的健康成长，构建和谐的亲子关系尽一份心、出一份力。</p>
           </article>
           <article class="article-item">
             <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2021-11-12/618e10daad4e1.jpg" alt="第十七次捐赠活动" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
-            <div class="social-card-body">
+            <div class="news-card-body">
               <h4 class="article-title">第十七次捐赠活动</h4>
-              <p class="social-card-sub">捐资建造三座环卫工人休息亭，为环卫工人送去更多关心和关爱。</p>
+              <p class="article-excerpt">2020年9月21日上午，在周市举行了「敬天爱人 慈善星光」第十七回捐赠仪式。本次捐资建造三座环卫工人休息亭，为环卫工人送去更多的关心和关爱。</p>
+              <div class="news-date-row">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="article-date">2020-09-21</span>
+              </div>
             </div>
-            <span class="article-date">2020-09-21</span>
-            <p class="article-excerpt">2020年9月21日上午，在周市举行了「敬天爱人 慈善星光」第十七回捐赠仪式。本次捐资建造三座环卫工人休息亭，为环卫工人送去更多的关心和关爱。</p>
           </article>
-        </div>
-        <div class="pagination is-static" aria-hidden="true">
-          <button class="page-btn" type="button" tabindex="-1">&lt;&lt;</button>
-          <button class="page-btn" type="button" tabindex="-1">&lt;</button>
-          <button class="page-btn active" type="button" tabindex="-1">1</button>
-          <button class="page-btn" type="button" tabindex="-1">2</button>
-          <button class="page-btn" type="button" tabindex="-1">&gt;</button>
-          <button class="page-btn" type="button" tabindex="-1">&gt;&gt;</button>
         </div>
        </div>
   </div></section>
@@ -720,91 +913,102 @@
   </div>
 
   <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-body">
+    <div class="footer-main">
+      <div class="footer-inner">
+        <nav class="footer-links" aria-label="页脚导航">
+          <div class="footer-col">
+            <h4>首页</h4>
+            <ul>
+              <li><a href="index.html#intro">企业简介</a></li>
+              <li><a href="index.html#history">发展历程</a></li>
+              <li><a href="index.html#logo">品牌标识解说</a></li>
+              <li><a href="index.html#vision">理念&愿景&使命</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>创新中心</h4>
+            <ul>
+              <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+              <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+              <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+              <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>产品核心</h4>
+            <ul>
+              <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+              <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+              <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+              <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+              <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+              <li><a href="products.html#clients">合作客户</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>关于我们</h4>
+            <ul>
+              <li><a href="about.html#honors">企业荣誉</a></li>
+              <li><a href="about.html#cert">认证资质</a></li>
+              <li><a href="about.html#sustain">可持续发展</a></li>
+              <li><a href="about.html#news">企业动态</a></li>
+              <li><a href="about.html#social">社会贡献</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>加入我们</h4>
+            <ul>
+              <li><a href="join.html#welfare">人文关怀</a></li>
+              <li><a href="join.html#training">教育培训</a></li>
+              <li><a href="join.html#activities">员工活动</a></li>
+              <li><a href="join.html#careers">招贤纳士</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>联系我们</h4>
+            <ul>
+              <li><a href="contact.html#contact-info">联系方式</a></li>
+              <li><a href="contact.html#contact-map">电子地图</a></li>
+              <li><a href="contact.html#contact-form">客户留言</a></li>
+            </ul>
+          </div>
+        </nav>
+
         <div class="footer-contact">
-          <a href="index.html" class="footer-brand-head logo">
-            <img src="img/logo-白.png" alt="STARLITE" class="logo-img">
-            <div>
-              <div class="logo-text">星光树脂制品（昆山）有限公司</div>
-              <div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div>
-            </div>
+          <div class="footer-contact-row">
+            <a class="footer-phone" href="tel:+8651257641220">+86-512-57641220</a>
+            <span class="footer-fax">传真 +86-512-57641211</span>
+          </div>
+          <a class="footer-address" href="contact.html#contact-map">
+            <span class="footer-address-text">
+              <span class="footer-address-label">星光树脂制品（昆山）有限公司</span>
+              江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313
+            </span>
+            <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </a>
-          <div class="footer-contact-col">
-            <ul class="footer-brand-list">
-              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>+86-512-57641220 · 传真 +86-512-57641211</span></li>
-              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
-            </ul>
-          </div>
-          <div class="footer-contact-col">
-            <strong class="footer-office-name">星光工业株式会社</strong>
-            <ul class="footer-brand-list">
-              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>电 话：+816-6956-2240 · 传 真：+816-6956-2715</span></li>
-              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>地 址：日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮 编：535-0002</span></li>
-              <li><span class="footer-brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span><span>网 址：<a href="https://starlite.co.jp/" class="footer-link-plain" target="_blank" rel="noopener">https://starlite.co.jp/</a></span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-nav">
-        <div class="footer-col">
-          <h4>首页</h4>
-          <ul>
-            <li><a href="index.html#intro">企业简介</a></li>
-            <li><a href="index.html#history">发展历程</a></li>
-            <li><a href="index.html#logo">品牌标识解说</a></li>
-            <li><a href="index.html#vision">理念&愿景&使命</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>创新中心</h4>
-          <ul>
-            <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
-            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
-            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>产品核心</h4>
-          <ul>
-            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
-            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
-            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
-            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-            <li><a href="products.html#clients">合作客户</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>关于我们</h4>
-          <ul>
-            <li><a href="about.html#honors">企业荣誉</a></li>
-            <li><a href="about.html#cert">认证资质</a></li>
-            <li><a href="about.html#sustain">可持续发展</a></li>
-            <li><a href="about.html#news">企业动态</a></li>
-            <li><a href="about.html#social">社会贡献</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>加入我们</h4>
-          <ul>
-            <li><a href="join.html#welfare">人文关怀</a></li>
-            <li><a href="join.html#training">教育培训</a></li>
-            <li><a href="join.html#activities">员工活动</a></li>
-            <li><a href="join.html#careers">招贤纳士</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>联系我们</h4>
-          <ul>
-            <li><a href="contact.html#contact-info">联系方式</a></li>
-            <li><a href="contact.html#contact-map">电子地图</a></li>
-            <li><a href="contact.html#contact-form">客户留言</a></li>
-          </ul>
-        </div>
+          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener" style="border-top: 1px solid rgba(255,255,255,0.28);">
+            <span class="footer-address-text">
+              <span class="footer-address-label">星光工业株式会社</span>
+              日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002
+              <span class="footer-address-meta">电话 +81-6-6956-2240 · 传真 +81-6-6956-2715 · starlite.co.jp</span>
+            </span>
+            <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
         </div>
       </div>
-      <div class="footer-bottom">版权所有：星光树脂制品（昆山）有限公司 All Rights Reserved | 苏ICP备12003553号-1</div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-bar-inner">
+        <a href="index.html" class="footer-bar-brand">
+          <img src="img/brand/logo-白.png" alt="星光树脂制品（昆山）有限公司">
+          <span class="footer-bar-brand-text">
+            <span class="footer-bar-brand-zh">星光树脂制品（昆山）有限公司</span>
+            <span class="footer-bar-brand-en">Starlite Plastic Products (Kunshan) Co.,Ltd.</span>
+          </span>
+        </a>
+        <div class="footer-bar-copy">版权所有 © 星光树脂制品（昆山）有限公司 All Rights Reserved　苏ICP备12003553号-1</div>
+      </div>
     </div>
   </footer>
 
@@ -864,7 +1068,7 @@
       var item = e.target.closest('.article-item');
       if (!item) return;
       var isCardGrid = feed.classList.contains('card-grid');
-      var trigger = e.target.closest('.article-more, .article-title, .article-thumb, .social-card-body');
+      var trigger = e.target.closest('.article-more, .article-title, .article-thumb, .news-card-body, .social-card-body');
       if (isCardGrid || trigger) openArticleDetail(item);
     });
   });
@@ -878,10 +1082,6 @@
   });
 })();
 (function () {
-  var gap = 20;
-
-  function pad(n) { return String(n).padStart(2, '0'); }
-
   function getVisible() {
     if (window.innerWidth <= 640) return 1;
     if (window.innerWidth <= 768) return 2;
@@ -894,9 +1094,8 @@
     var slides = module.querySelectorAll('.honor-slide');
     var prevBtn = module.querySelector('.honor-nav-prev');
     var nextBtn = module.querySelector('.honor-nav-next');
-    var currentEl = module.querySelector('.honor-nav-current');
-    var totalEl = module.querySelector('.honor-nav-total');
     var dotsWrap = module.querySelector('.honor-dots');
+    if (!track || !slides.length || !prevBtn || !nextBtn || !dotsWrap) return;
     var index = 0;
 
     function getMaxIndex() {
@@ -924,10 +1123,9 @@
       if (index > maxIdx) index = maxIdx;
       var slide = slides[0];
       if (slide) {
+        var gap = parseFloat(window.getComputedStyle(track).gap) || 0;
         track.style.transform = 'translateX(-' + (index * (slide.offsetWidth + gap)) + 'px)';
       }
-      currentEl.textContent = pad(index + 1);
-      totalEl.textContent = pad(maxIdx + 1);
       prevBtn.disabled = index === 0;
       nextBtn.disabled = index >= maxIdx;
       renderDots();
@@ -944,6 +1142,67 @@
   }
 
   document.querySelectorAll('.honor-module').forEach(initHonorModule);
+
+  function initHonorShowcase() {
+    var root = document.getElementById('honorShowcase');
+    if (!root) return;
+    var items = Array.prototype.slice.call(root.querySelectorAll('.honor-showcase-item'));
+    var frame = document.getElementById('honorShowcaseFrame');
+    var img = document.getElementById('honorShowcaseImg');
+    if (!items.length || !frame || !img) return;
+    var index = 0;
+    var timer = null;
+
+    function show(i, fromUser) {
+      if (i < 0 || i >= items.length) return;
+      index = i;
+      var item = items[index];
+      items.forEach(function (el, j) {
+        el.classList.toggle('is-active', j === index);
+        el.setAttribute('aria-selected', j === index ? 'true' : 'false');
+      });
+      var listWrap = root.querySelector('.honor-showcase-list-wrap');
+      if (listWrap) {
+        var progress = ((index + 1) / items.length) * 100;
+        listWrap.style.setProperty('--honor-rail', progress + '%');
+      }
+      frame.classList.add('is-switching');
+      window.setTimeout(function () {
+        img.src = item.getAttribute('data-src') || '';
+        img.alt = item.getAttribute('data-title') || '';
+        frame.setAttribute('data-src', item.getAttribute('data-src') || '');
+        frame.setAttribute('data-title', item.getAttribute('data-title') || '');
+        frame.setAttribute('data-source', item.getAttribute('data-source') || '');
+        frame.classList.remove('is-switching');
+      }, 180);
+      if (fromUser) restartAuto();
+    }
+
+    function next() {
+      show((index + 1) % items.length, false);
+    }
+
+    function restartAuto() {
+      if (timer) window.clearInterval(timer);
+      timer = window.setInterval(next, 4500);
+    }
+
+    items.forEach(function (item, i) {
+      item.addEventListener('click', function () { show(i, true); });
+    });
+
+    frame.addEventListener('click', function () {
+      var btn = {
+        getAttribute: function (name) { return frame.getAttribute(name) || ''; }
+      };
+      openHonorLightbox(btn);
+    });
+
+    show(0, false);
+    restartAuto();
+    root.addEventListener('mouseenter', function () { if (timer) window.clearInterval(timer); });
+    root.addEventListener('mouseleave', restartAuto);
+  }
 
   var lightbox = document.getElementById('honorLightbox');
   if (!lightbox) return;
@@ -967,6 +1226,8 @@
     document.body.style.overflow = '';
   }
 
+  initHonorShowcase();
+
   document.querySelectorAll('.honor-slide-btn').forEach(function (btn) {
     btn.addEventListener('click', function () { openHonorLightbox(btn); });
   });
@@ -978,6 +1239,63 @@
   });
 })();
 document.querySelectorAll('.lang-switch').forEach(function(s){s.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){s.querySelectorAll('.lang-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active')})})});
+
+(function(){
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var intro = document.querySelector('.about-intro');
+  var sections = document.querySelectorAll('#honors, #cert, #sustain, #news, #social');
+
+  function animateCount(el){
+    if(!el || el.dataset.counted === '1') return;
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if(isNaN(target)) return;
+    el.dataset.counted = '1';
+    var suffix = el.getAttribute('data-suffix') || '';
+    if(reducedMotion){
+      el.textContent = target + suffix;
+      return;
+    }
+    var start = 0;
+    var duration = 1100;
+    var startTime = null;
+    function step(ts){
+      if(!startTime) startTime = ts;
+      var p = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(start + (target - start) * eased) + suffix;
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function markIntro(){
+    if(!intro) return;
+    intro.classList.add('is-ready');
+    intro.querySelectorAll('.about-stat-num[data-count]').forEach(animateCount);
+  }
+
+  function mark(el){ el.classList.add('is-inview'); }
+
+  if(reducedMotion || !('IntersectionObserver' in window)){
+    markIntro();
+    sections.forEach(mark);
+    return;
+  }
+
+  requestAnimationFrame(function(){
+    setTimeout(markIntro, 60);
+  });
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      mark(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, {threshold: 0.14, rootMargin: '0px 0px -8% 0px'});
+
+  sections.forEach(function(section){ observer.observe(section); });
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻详情 - 星光树脂制品（昆山）有限公司</title>
+  <style>
+    :root{--primary:#006EB6;--primary-light:#0088D4;--accent:#FFB511;--accent-light:#FFCB4D;--text:#1A1A2E;--text-muted:#5A6270;--bg:#F5F7FA;--white:#FFF;--border:#E2E8F0;--shadow:0 4px 24px rgba(0,110,182,0.08);--radius:8px}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);line-height:1.7}
+    a{text-decoration:none;color:inherit}.header{background:var(--primary);box-shadow:none;position:sticky;top:0;z-index:1000}
+/*二级菜单展开下推*/.header{transition:margin-bottom .25s ease;margin-bottom:0}.header:has(.nav>li:hover),.header:has(.nav>li:focus-within){margin-bottom:64px}.nav-dropdown{transform:none!important}
+    .header-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:flex-start;gap:12px;height:72px}
+    .logo{display:flex;align-items:center;gap:12px}.logo-img{height:48px;width:auto;object-fit:contain;display:block}
+    .logo-text{font-size:20px;line-height:1.35;font-weight:700;color:var(--white);letter-spacing:0.01em}.logo-sub{display:none}
+    [id]{scroll-margin-top:88px}
+    .nav{display:flex;gap:4px;align-items:stretch;margin-left:auto}.nav>li{list-style:none;position:static}.nav>li>a{display:flex;align-items:center;height:72px;padding:0 16px;font-size:16px;color:rgba(255,255,255,0.88);position:relative;transition:color .25s ease;white-space:nowrap;line-height:1.6}.nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:var(--white);font-weight:600}.nav-dropdown{position:absolute;left:0;right:0;top:100%;width:100%;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 36px;margin:0;padding:18px 40px;background:var(--white);border-top:1px solid rgba(0,110,182,0.08);box-shadow:0 16px 40px rgba(0,110,182,0.1);border-radius:0;opacity:0;visibility:hidden;transform:none;transition:opacity .25s ease,visibility .25s;z-index:1001;list-style:none;box-sizing:border-box}.nav-dropdown::before{content:'';position:absolute;left:0;right:0;top:-10px;height:10px}.nav>li:hover>.nav-dropdown{opacity:1;visibility:visible;transform:translateY(0)}.nav-dropdown li{list-style:none;flex:0 0 auto}.nav-dropdown a{display:block;position:relative;padding:6px 2px;font-size:14px;color:var(--text-muted);transition:color .2s ease;white-space:nowrap;line-height:1.5}.nav-dropdown a:hover{color:var(--primary)}
+    .lang-switch{display:flex;align-items:center;flex-shrink:0}.lang-btn{padding:0 4px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.88);cursor:pointer;font-family:inherit;transition:color .2s;line-height:1.4}.lang-btn:hover{color:var(--white)}
+
+    .breadcrumb{background:var(--white);border-bottom:1px solid var(--border)}
+    .breadcrumb-inner{max-width:860px;margin:0 auto;padding:14px 24px;font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .breadcrumb a{color:var(--text-muted);transition:color .2s}.breadcrumb a:hover{color:var(--primary)}
+    .breadcrumb-sep{opacity:.45}.breadcrumb-current{color:var(--primary);font-weight:600;max-width:360px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+    .section{padding:0 24px 72px;background:var(--white)}.section-inner{max-width:860px;margin:0 auto;}
+    .article-panel{padding:40px 44px 48px}
+    .article-cat{display:inline-block;font-size:12px;font-weight:600;color:var(--primary);background:rgba(0,110,182,.08);padding:4px 12px;border-radius:999px;margin-bottom:16px}
+    .article-title{font-size:clamp(24px,3vw,32px);font-weight:700;color:var(--text);line-height:1.35;margin:0 0 16px}
+    .article-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;padding-bottom:24px;font-size:14px;color:var(--text-muted)}
+    .article-meta-date{color:#B0B7C1}
+    .article-meta-item{display:inline-flex;align-items:center;gap:6px}
+    .article-meta-label{color:#B0B7C1}
+    .article-cover{width:100%;border-radius:12px;overflow:hidden;margin-bottom:28px;background:linear-gradient(135deg,var(--bg),#E8EDF3);aspect-ratio:16/9}
+    .article-cover img{width:100%;height:100%;object-fit:cover;display:block}
+    .article-cover[hidden]{display:none}
+    .article-content{font-size:16px;color:var(--text-muted);line-height:1.9}
+    .article-content p{margin-bottom:16px}.article-content p:last-child{margin-bottom:0}
+    .article-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:36px;padding-top:24px;border-top:1px solid #EEF1F5;flex-wrap:wrap}
+    .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--primary);font-size:14px;font-weight:600;transition:gap .2s,opacity .2s}
+    .back-link:hover{gap:9px;opacity:.85}
+    .article-nav{display:flex;gap:12px;flex-wrap:wrap}
+    .article-nav a{font-size:13px;color:var(--text-muted);padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--white);transition:all .2s}
+    .article-nav a:hover{border-color:var(--primary);color:var(--primary)}
+    .article-nav a.is-disabled{opacity:.4;pointer-events:none}
+    .empty-state{text-align:center;padding:80px 24px;background:var(--white);border-radius:16px;box-shadow:var(--shadow)}
+    .empty-state h2{font-size:22px;color:var(--text);margin-bottom:12px}
+    .empty-state p{color:var(--text-muted);margin-bottom:24px}
+
+    .footer{background:#555960}
+    .footer-main{padding:40px 24px}
+    .footer-inner{max-width:1280px;margin:0 auto}
+    .footer-links{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 24px}
+    .footer-col{min-width:0}
+    .footer-col h4{color:var(--white);font-size:15px;font-weight:700;margin:0 0 18px;letter-spacing:.04em}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .footer-col ul a{font-size:13px;line-height:1.5;color:rgba(255,255,255,.72);transition:color .2s;display:block}
+    .footer-col ul a:hover{color:var(--white)}
+    .footer-contact{margin-top:30px}
+    .footer-contact-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .footer-phone{font-size:clamp(22px,2.4vw,30px);font-weight:500;color:var(--white);letter-spacing:.04em;line-height:1.2}
+    .footer-phone:hover{color:var(--accent-light)}
+    .footer-fax{font-size:15px;color:rgba(255,255,255,.78);letter-spacing:.02em}
+    .footer-address{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;color:rgba(255,255,255,.88);font-size:14px;line-height:1.55;transition:color .2s}
+    .footer-address:hover{color:var(--white)}
+    .footer-address-text{min-width:0}
+    .footer-address-label{display:block;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:4px}
+    .footer-address-meta{display:block;margin-top:6px;font-size:13px;color:rgba(255,255,255,.62)}
+    .footer-address-arrow{flex-shrink:0;width:18px;height:18px;color:rgba(255,255,255,.7)}
+    .footer-bar{background:var(--primary)}
+    .footer-bar-inner{max-width:1280px;margin:0 auto;padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap}
+    .footer-bar-brand{display:flex;align-items:center;gap:12px;color:var(--white);min-width:0}
+    .footer-bar-brand img{height:36px;width:auto;display:block}
+    .footer-bar-brand-text{display:flex;flex-direction:column;gap:2px;min-width:0;line-height:1.25}
+    .footer-bar-brand-zh{font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--white);white-space:nowrap}
+    .footer-bar-brand-en{font-size:11px;font-weight:400;letter-spacing:.02em;color:#9EC9E8;white-space:nowrap}
+    .footer-bar-copy{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5;text-align:right}
+    .prototype-badge{position:fixed;bottom:16px;right:16px;background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;z-index:9999}
+
+    @media(max-width:1100px){.footer-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}}
+    @media(max-width:768px){
+      .nav{display:none}
+      .section{padding:24px 16px 48px}
+      .article-panel{padding:28px 20px 32px}
+      .article-title{font-size:22px}
+      .article-actions{flex-direction:column;align-items:flex-start}
+      .footer-main{padding:40px 20px 0}
+      .footer-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+      .footer-contact{margin-top:32px}
+      .footer-contact-row{padding:18px 0;gap:10px}
+      .footer-phone{font-size:22px}
+      .footer-fax{font-size:13px}
+      .footer-address{padding:16px 0;font-size:13px}
+      .footer-bar-inner{padding:14px 20px}
+      .footer-bar-copy{text-align:left;font-size:11px}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/brand/logo-白.png" alt="STARLITE" class="logo-img">
+        <div>
+          <div class="logo-text">STARLITE</div>
+        </div>
+      </a>
+      <ul class="nav">
+        <li>
+          <a href="index.html">首页</a>
+          <ul class="nav-dropdown">
+            <li><a href="index.html#intro">企业简介</a></li>
+            <li><a href="index.html#history">发展历程</a></li>
+            <li><a href="index.html#logo">品牌标识解说</a></li>
+            <li><a href="index.html#vision">理念 & 愿景 & 使命</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="innovation.html">创新中心</a>
+          <ul class="nav-dropdown">
+            <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-mega">
+          <a href="products.html">产品核心</a>
+          <ul class="nav-dropdown">
+            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+            <li><a href="products.html#clients">合作客户</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html" id="navAbout">关于我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="about.html#honors">企业荣誉</a></li>
+            <li><a href="about.html#cert">认证资质</a></li>
+            <li><a href="about.html#sustain">可持续发展</a></li>
+            <li><a href="about.html#news">企业动态</a></li>
+            <li><a href="about.html#social">社会贡献</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="join.html" id="navJoin">加入我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="join.html#welfare">人文关怀</a></li>
+            <li><a href="join.html#training">教育培训</a></li>
+            <li><a href="join.html#activities">员工活动</a></li>
+            <li><a href="join.html#careers">招贤纳士</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="contact.html">联系我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="contact.html#contact-info">联系方式</a></li>
+            <li><a href="contact.html#contact-map">电子地图</a></li>
+            <li><a href="contact.html#contact-form">客户留言</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="lang-switch"><button class="lang-btn" type="button" data-lang="zh" aria-label="切换语言">EN</button></div>
+    </div>
+  </header>
+
+  <nav class="breadcrumb" aria-label="面包屑">
+    <div class="breadcrumb-inner">
+      <a href="index.html">首页</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="#" id="bcParent">关于我们</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="#" id="bcCat">企业动态</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current" id="bcTitle">详情</span>
+    </div>
+  </nav>
+
+  <section class="section"><div class="section-inner" id="detailRoot"></div></section>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="footer-inner">
+        <nav class="footer-links" aria-label="页脚导航">
+          <div class="footer-col">
+            <h4>首页</h4>
+            <ul>
+              <li><a href="index.html#intro">企业简介</a></li>
+              <li><a href="index.html#history">发展历程</a></li>
+              <li><a href="index.html#logo">品牌标识解说</a></li>
+              <li><a href="index.html#vision">理念&愿景&使命</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>创新中心</h4>
+            <ul>
+              <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+              <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+              <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+              <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>产品核心</h4>
+            <ul>
+              <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+              <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+              <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+              <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+              <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+              <li><a href="products.html#clients">合作客户</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>关于我们</h4>
+            <ul>
+              <li><a href="about.html#honors">企业荣誉</a></li>
+              <li><a href="about.html#cert">认证资质</a></li>
+              <li><a href="about.html#sustain">可持续发展</a></li>
+              <li><a href="about.html#news">企业动态</a></li>
+              <li><a href="about.html#social">社会贡献</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>加入我们</h4>
+            <ul>
+              <li><a href="join.html#welfare">人文关怀</a></li>
+              <li><a href="join.html#training">教育培训</a></li>
+              <li><a href="join.html#activities">员工活动</a></li>
+              <li><a href="join.html#careers">招贤纳士</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>联系我们</h4>
+            <ul>
+              <li><a href="contact.html#contact-info">联系方式</a></li>
+              <li><a href="contact.html#contact-map">电子地图</a></li>
+              <li><a href="contact.html#contact-form">客户留言</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="footer-contact">
+          <div class="footer-contact-row">
+            <a class="footer-phone" href="tel:+8651257641220">+86-512-57641220</a>
+            <span class="footer-fax">传真 +86-512-57641211</span>
+          </div>
+          <a class="footer-address" href="contact.html#contact-map">
+            <span class="footer-address-text">
+              <span class="footer-address-label">星光树脂制品（昆山）有限公司</span>
+              江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313
+            </span>
+            <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener" style="border-top: 1px solid rgba(255,255,255,0.28);">
+            <span class="footer-address-text">
+              <span class="footer-address-label">星光工业株式会社</span>
+              日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002
+              <span class="footer-address-meta">电话 +81-6-6956-2240 · 传真 +81-6-6956-2715 · starlite.co.jp</span>
+            </span>
+            <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-bar-inner">
+        <a href="index.html" class="footer-bar-brand">
+          <img src="img/brand/logo-白.png" alt="星光树脂制品（昆山）有限公司">
+          <span class="footer-bar-brand-text">
+            <span class="footer-bar-brand-zh">星光树脂制品（昆山）有限公司</span>
+            <span class="footer-bar-brand-en">Starlite Plastic Products (Kunshan) Co.,Ltd.</span>
+          </span>
+        </a>
+        <div class="footer-bar-copy">版权所有 © 星光树脂制品（昆山）有限公司 All Rights Reserved　苏ICP备12003553号-1</div>
+      </div>
+    </div>
+  </footer>
+
+    <script>
+/* 新闻列表 / 详情共用数据 */
+(function (global) {
+  var CATEGORIES = [
+    { key: 'news', label: '企业动态', parent: 'about.html', parentLabel: '关于我们' },
+    { key: 'social', label: '社会贡献', parent: 'about.html', parentLabel: '关于我们' },
+    { key: 'training', label: '教育培训', parent: 'join.html', parentLabel: '加入我们' },
+    { key: 'activities', label: '员工活动', parent: 'join.html', parentLabel: '加入我们' }
+  ];
+
+  var SEED = {
+    news: [
+      {
+        id: 'news-01',
+        title: '2025 ITES 深圳国际机器人及自动化设备展',
+        date: '2025-04-17',
+        image: 'https://www.starlite.cn/Upload/image/20250417/20250417094305_19797.jpg',
+        excerpt: '2025年3月26日—29日期间，我司参加了在深圳召开的 ITES 深圳国际机器人及自动化设备展会。本次展会涉及电子制造、新能源及汽车、医疗器械、精密制造、智能制造等行业，我们展示了 STARLITE 自主品牌减速机、S-Bear 耐久齿轮、摩擦片等高端材料应用领域产品。',
+        content: '<p>2025年3月26日—29日期间，我司参加了在深圳召开的 ITES 深圳国际机器人及自动化设备展会。</p><p>本次展会涉及电子制造、新能源及汽车、医疗器械、精密制造、智能制造等行业，我们展示了 STARLITE 自主品牌减速机、S-Bear 耐久齿轮、摩擦片等高端材料应用领域产品，与多家行业客户进行了深入交流。</p>'
+      },
+      {
+        id: 'news-02',
+        title: '广州国际汽车展览会出展报道',
+        date: '2024-12-03',
+        image: 'https://www.starlite.cn/Upload/image/20241203/20241203161804_56282.jpg',
+        excerpt: '2024年11月15日至18日，第二十二届广州国际汽车展览会在广交会展馆隆重举行。针对新能源汽车爆发式发展，我们详细展示了新材料成果及在新能源汽车行业的应用，如温控阀、执行器等高端部品，共接待了21家企业交流洽谈。',
+        content: '<p>2024年11月15日至18日，第二十二届广州国际汽车展览会在广交会展馆隆重举行。</p><p>针对新能源汽车爆发式发展，我们详细展示了新材料成果及在新能源汽车行业的应用，如温控阀、执行器等高端部品，共接待了21家企业交流洽谈。</p>'
+      },
+      {
+        id: 'news-03',
+        title: '2024上海国际车用空调及热管理技术展览会报道',
+        date: '2024-11-04',
+        image: 'https://www.starlite.cn/Upload/image/20241104/20241104083746_94528.jpg',
+        excerpt: '10月21日—23日期间，我们在上海国际博览中心 N5 馆出展。作为压缩机领域密封圈的市场占有率领先企业，三天展会共交流了33多家企业，其中11家左右有对口合作意愿，将成为后续新客户开发的重点对象。',
+        content: '<p>10月21日—23日期间，我们在上海国际博览中心 N5 馆出展。</p><p>作为压缩机领域密封圈的市场占有率领先企业，三天展会共交流了33多家企业，其中11家左右有对口合作意愿，将成为后续新客户开发的重点对象。</p>'
+      },
+      {
+        id: 'news-04',
+        title: '2024年上海国际工业自动化及工业机器人展出展报道',
+        date: '2024-08-21',
+        image: 'https://www.starlite.cn/Upload/image/20240821/20240821082028_53761.jpg',
+        excerpt: '7月24日至26日，我们参加了在国家会展中心举办的 SIA 上海国际工业自动化及机器人展览会。本次展会上升级了展示风格，从灯光海报到实物展示均精心筹备，与30多家厂商进行了交流，其中12家为重点开发客户。',
+        content: '<p>7月24日至26日，我们参加了在国家会展中心举办的 SIA 上海国际工业自动化及机器人展览会。</p><p>本次展会上升级了展示风格，从灯光海报到实物展示均精心筹备，与30多家厂商进行了交流，其中12家为重点开发客户。</p>'
+      },
+      {
+        id: 'news-05',
+        title: 'WBE2024世界电池及储能产业博览会暨第9届亚太电池展出展报道',
+        date: '2024-08-20',
+        image: 'https://www.starlite.cn/Upload/image/20240820/20240820103918_24153.jpg',
+        excerpt: '8月8日—10日，我们出展了在广州举办的 WBE2024 世界电池及储能产业博览会暨第9届亚太电池展，重点展示了高性能电池用氟素部品、储能系统关键部件等星光自主品牌树脂制品，吸引了30多家企业交流洽谈。',
+        content: '<p>8月8日—10日，我们出展了在广州举办的 WBE2024 世界电池及储能产业博览会暨第9届亚太电池展。</p><p>重点展示了高性能电池用氟素部品、储能系统关键部件等星光自主品牌树脂制品，吸引了30多家企业交流洽谈。</p>'
+      }
+    ],
+    social: [
+      {
+        id: 'social-01',
+        title: '第二十二次捐赠活动',
+        date: '2025-09-30',
+        image: 'https://www.starlite.cn/Upload/Images/2025-09-30/68db4cdc2c84a.jpg',
+        excerpt: '9月23日，秋阳轻柔地洒在周市中心小学，一场充满爱与希望的捐赠仪式在此温馨启幕。星光树脂制品（昆山）有限公司带着对教育事业的关切，为学校送来急需物资，尽显企业的责任与担当。',
+        content: '<p>9月23日，秋阳轻柔地洒在周市中心小学，一场充满爱与希望的捐赠仪式在此温馨启幕。</p><p>星光树脂制品（昆山）有限公司带着对教育事业的关切，为学校送来急需物资，尽显企业的责任与担当。</p>'
+      },
+      {
+        id: 'social-02',
+        title: '星光公司第二十五次福利院活动',
+        date: '2024-12-26',
+        image: 'https://www.starlite.cn/Upload/image/20241226/20241226131944_36573.png',
+        excerpt: '2024年12月21日上午，星光树脂制品（昆山）有限公司的各位领导、工会成员及义工组成员一同前往昆山市福利院，开展了第25回公益慈善活动，为老年人送去冬至的关怀和温暖，共筑敬老爱老之风。',
+        content: '<p>2024年12月21日上午，星光树脂制品（昆山）有限公司的各位领导、工会成员及义工组成员一同前往昆山市福利院，开展了第25回公益慈善活动。</p><p>为老年人送去冬至的关怀和温暖，共筑敬老爱老之风。</p>'
+      },
+      {
+        id: 'social-03',
+        title: '情暖老人心——以爱为名，传递温暖',
+        date: '2023-12-26',
+        image: 'https://www.starlite.cn/Upload/Images/2023-12-26/658a28ec9414a.png',
+        excerpt: '老吾者，以及人之老；幼吾幼，以及人之幼。星光公司秉承「敬天爱人」的理念，于2023年12月16日上午，组织公司与工会的成员们一同前往昆山市福利院，为年迈的老人送上来自星光的关爱和温暖。',
+        content: '<p>老吾者，以及人之老；幼吾幼，以及人之幼。</p><p>星光公司秉承「敬天爱人」的理念，于2023年12月16日上午，组织公司与工会的成员们一同前往昆山市福利院，为年迈的老人送上来自星光的关爱和温暖。</p>'
+      },
+      {
+        id: 'social-04',
+        title: '央广网刊登报道「敬天爱人 慈善星光」第二十次捐赠',
+        date: '2023-11-06',
+        image: 'https://www.starlite.cn/Upload/Images/2023-11-06/6548779e2e90a.jpg',
+        excerpt: '风雨二十载，爱心不间断，2023年10月26日下午，星光树脂制品（昆山）有限公司在周市镇综合执法局举行了「敬天爱人 慈善星光」第二十次捐赠仪式。此次捐赠活动得到了社会的广泛关注与认可，并于2023年10月30日在央广网以专刊的形式进行了报道。',
+        content: '<p>风雨二十载，爱心不间断，2023年10月26日下午，星光树脂制品（昆山）有限公司在周市镇综合执法局举行了「敬天爱人 慈善星光」第二十次捐赠仪式。</p><p>此次捐赠活动得到了社会的广泛关注与认可，并于2023年10月30日在央广网以专刊的形式进行了报道。</p>'
+      },
+      {
+        id: 'social-05',
+        title: '第二十二次福利院献爱心活动',
+        date: '2023-06-03',
+        image: 'https://www.starlite.cn/Upload/Images/2023-06-05/647d42ed8e200.png',
+        excerpt: '初夏时节、阳光灿烂。星光公司秉承「敬天爱人」的理念，在6.1儿童节即将到来之际，于2023年5月28日上午，公司和工会的成员们一同前往昆山市福利院为孩子们送上来自星光的关爱和温暖，提前预祝孩子们拥有一个愉快的儿童节。',
+        content: '<p>初夏时节、阳光灿烂。星光公司秉承「敬天爱人」的理念，在6.1儿童节即将到来之际，于2023年5月28日上午前往昆山市福利院，为孩子们送上来自星光的关爱和温暖。</p>'
+      },
+      {
+        id: 'social-06',
+        title: '第十九次捐赠活动',
+        date: '2022-10-28',
+        image: 'https://www.starlite.cn/Upload/Images/2022-11-07/6368a25fe732f.jpg',
+        excerpt: '2022年10月28日下午，在周市镇综合执法局举行了「敬天爱人 慈善星光」第十九次捐赠仪式。本次捐赠的【微型消防车】不仅具备灭火的功能，还具有消防巡逻和消防宣传功能，可以有效唤起居民的消防意识。',
+        content: '<p>2022年10月28日下午，在周市镇综合执法局举行了「敬天爱人 慈善星光」第十九次捐赠仪式。</p><p>本次捐赠的【微型消防车】不仅具备灭火的功能，还具有消防巡逻和消防宣传功能，可以有效唤起居民的消防意识。</p>'
+      },
+      {
+        id: 'social-07',
+        title: '第十八次捐赠活动',
+        date: '2021-11-12',
+        image: 'https://www.starlite.cn/Upload/Images/2021-11-12/618e0fc1eed36.jpg',
+        excerpt: '2021年10月22日下午，在周市镇梅心泾社区举行了「敬天爱人 慈善星光」第十八次捐赠仪式。本次捐资建设【妇女儿童之家】，为儿童的健康成长，构建和谐的亲子关系尽一份心、出一份力。',
+        content: '<p>2021年10月22日下午，在周市镇梅心泾社区举行了「敬天爱人 慈善星光」第十八次捐赠仪式。</p><p>本次捐资建设【妇女儿童之家】，为儿童的健康成长，构建和谐的亲子关系尽一份心、出一份力。</p>'
+      },
+      {
+        id: 'social-08',
+        title: '第十七次捐赠活动',
+        date: '2020-09-21',
+        image: 'https://www.starlite.cn/Upload/Images/2021-11-12/618e10daad4e1.jpg',
+        excerpt: '2020年9月21日上午，在周市举行了「敬天爱人 慈善星光」第十七回捐赠仪式。本次捐资建造三座环卫工人休息亭，为环卫工人送去更多的关心和关爱。',
+        content: '<p>2020年9月21日上午，在周市举行了「敬天爱人 慈善星光」第十七回捐赠仪式。</p><p>本次捐资建造三座环卫工人休息亭，为环卫工人送去更多的关心和关爱。</p>'
+      }
+    ],
+    training: [
+      {
+        id: 'training-01',
+        title: '2025年第二回次世代员工培训',
+        date: '2025-09-30',
+        image: 'https://www.starlite.cn/Upload/Images/2025-09-30/68db3a7f0f79a.jpg',
+        excerpt: '2025年9月26日至27日，2025年第二回次世代员工培训活动，在秋日的淀山湖畔如期举行，此次活动由各事业部推选的次世代育成对象，共27名员工参加。',
+        content: '<p>2025年9月26日至27日，2025年第二回次世代员工培训活动，在秋日的淀山湖畔如期举行。</p><p>此次活动由各事业部推选的次世代育成对象，共27名员工参加。</p>'
+      },
+      {
+        id: 'training-02',
+        title: '2025年次世代员工培训',
+        date: '2025-06-20',
+        image: 'https://www.starlite.cn/Upload/Images/2025-06-20/6854a8e68aa7b.png',
+        excerpt: '2025年6月7日（星期六）公司根据年度计划，举办了2025年次世代员工培训会，共21名员工参加。副总经理要求各位能确实掌握技能，并在工作中进行运用。',
+        content: '<p>2025年6月7日（星期六）公司根据年度计划，举办了2025年次世代员工培训会，共21名员工参加。</p><p>副总经理要求各位能确实掌握技能，并在工作中进行运用。</p>'
+      },
+      {
+        id: 'training-03',
+        title: '筑牢安全防线 赋能高质量发展',
+        date: '2025-11-13',
+        image: 'https://www.starlite.cn/Upload/Images/2025-11-13/6915858cc5bc0.JPG',
+        excerpt: '为深刻落实星光2025年安全方针，集团于2025年10月31日在中国星光举办第一回全社KY活动发表大会，中日星光共六组队伍参加，同步线上直播。',
+        content: '<p>为深刻落实星光2025年安全方针，集团于2025年10月31日在中国星光举办第一回全社KY活动发表大会。</p><p>中日星光共六组队伍参加，日本星光总社同步参加了线上直播大会。</p>'
+      }
+    ],
+    activities: [
+      {
+        id: 'activities-01',
+        title: '2025年员工忘年会圆满举行',
+        date: '2026-02-03',
+        image: 'https://www.starlite.cn/Upload/Images/2026-02-04/6982be12d7234.JPG',
+        excerpt: '2026年1月24日，星光树脂2025年员工忘年会在热情洋溢、团结向上的氛围中拉开帷幕，总经理致谢全体员工一年来的努力，共贺新春。',
+        content: '<p>2026年1月24日，星光树脂2025年员工忘年会在热情洋溢、团结向上的氛围中拉开帷幕。</p><p>总经理致谢全体员工一年来的努力，共贺新春。</p>'
+      },
+      {
+        id: 'activities-02',
+        title: '2025年第六届纳凉节活动',
+        date: '2025-09-19',
+        image: 'https://www.starlite.cn/Upload/Images/2025-09-19/68cca4ecdb201.jpg',
+        excerpt: '8月29日晚，星光树脂制品（昆山）有限公司灯火璀璨，一场洋溢着欢乐与温情的纳凉节盛大开启，员工们齐聚一堂，共享夏日狂欢。',
+        content: '<p>8月29日晚，星光树脂制品（昆山）有限公司灯火璀璨，一场洋溢着欢乐与温情的纳凉节盛大开启。</p><p>员工们齐聚一堂，共享夏日狂欢。</p>'
+      },
+      {
+        id: 'activities-03',
+        title: '2026年星光树脂新年祝贺式',
+        date: '2026-03-05',
+        image: 'https://www.starlite.cn/Upload/Images/2026-03-05/69a8d7b5050ff.jpg',
+        excerpt: '随着开工仪式的鞭炮声划破长空，2026年星光树脂新年祝贺式拉开大幕。全体员工齐声朗诵《星光之心》，为新一年奋斗征程启航。',
+        content: '<p>随着开工仪式的鞭炮声划破长空，2026年星光树脂新年祝贺式拉开大幕。</p><p>全体员工齐声朗诵《星光之心》，为新一年奋斗征程启航。</p>'
+      }
+    ]
+  };
+
+  var EXTRA_TITLES = {
+    social: [
+      '敬老院中秋慰问活动', '社区环保志愿行动', '爱心图书捐赠仪式',
+      '环卫工人夏日送清凉', '残疾人帮扶走访活动', '乡村小学物资捐赠',
+      '消防安全公益宣传日', '公益植树志愿服务', '爱心义卖慈善活动',
+      '重阳节敬老慰问', '儿童节关爱行动', '社区便民服务日',
+      '血液中心无偿献血', '慈善一日捐活动', '困难家庭帮扶走访',
+      '公益讲座进社区', '环保徒步公益行', '爱心早餐公益项目'
+    ],
+    training: [
+      '安全环保专项培训', '品质管理提升研修', '注塑成型技能培训',
+      '新员工入职培训', '班组长管理能力研修', '5S 现场改善培训',
+      '消防应急演练培训', '精益生产专题培训', '模具保全技能培训',
+      '客户服务礼仪培训', '英语商务沟通培训', '数字化办公技能培训',
+      '领导力进阶研修', '跨部门协作工作坊', 'TPM 保全基础培训',
+      '职业健康安全培训', '问题解决手法培训', '年度培训成果分享会'
+    ],
+    activities: [
+      '春季登山健步走', '篮球友谊赛', '羽毛球团体赛',
+      '中秋联欢晚会', '新春团拜会', '摄影兴趣小组活动',
+      '读书分享会', '职工趣味运动会', '夏季烧烤派对',
+      '瑜伽健身体验课', '团队拓展训练', '美食节分享会',
+      '书法兴趣交流', '徒步骑行活动', '员工生日会',
+      '桌游休闲日'
+    ]
+  };
+
+  function padCategory(key, seedList) {
+    var list = seedList.slice();
+    var extras = EXTRA_TITLES[key] || [];
+    var i = 0;
+    while (list.length < 25 && i < extras.length) {
+      var n = list.length + 1;
+      var year = 2018 - Math.floor(i / 6);
+      var month = String((i % 12) + 1).padStart(2, '0');
+      var day = String((i % 27) + 1).padStart(2, '0');
+      var base = seedList[i % seedList.length];
+      list.push({
+        id: key + '-extra-' + String(n).padStart(2, '0'),
+        title: extras[i],
+        date: year + '-' + month + '-' + day,
+        author: '星光树脂',
+        views: 180 + ((i * 137) % 2400),
+        image: base.image || '',
+        excerpt: extras[i] + '顺利举办，进一步丰富了 STARLITE 企业文化与组织活力，后续将持续开展相关活动。',
+        content: '<p>' + extras[i] + '顺利举办。</p><p>活动进一步丰富了 STARLITE 企业文化与组织活力，后续将持续开展相关活动，欢迎全体员工积极参与。</p>'
+      });
+      i++;
+    }
+    return list;
+  }
+
+  function withMetaDefaults(item, index) {
+    var viewsSeed = 0;
+    var id = item.id || '';
+    for (var i = 0; i < id.length; i++) viewsSeed += id.charCodeAt(i);
+    return Object.assign({}, item, {
+      author: item.author || '星光树脂',
+      views: item.views != null ? item.views : (320 + ((viewsSeed + index * 97) % 2680))
+    });
+  }
+
+  var NEWS_DATA = {};
+  Object.keys(SEED).forEach(function (key) {
+    NEWS_DATA[key] = padCategory(key, SEED[key]).map(withMetaDefaults);
+  });
+
+  function getCategory(key) {
+    for (var i = 0; i < CATEGORIES.length; i++) {
+      if (CATEGORIES[i].key === key) return CATEGORIES[i];
+    }
+    return CATEGORIES[0];
+  }
+
+  function getItems(catKey) {
+    return NEWS_DATA[catKey] || NEWS_DATA.news;
+  }
+
+  function getItemById(id) {
+    var keys = Object.keys(NEWS_DATA);
+    for (var i = 0; i < keys.length; i++) {
+      var list = NEWS_DATA[keys[i]];
+      for (var j = 0; j < list.length; j++) {
+        if (list[j].id === id) {
+          return { item: list[j], category: getCategory(keys[i]) };
+        }
+      }
+    }
+    return null;
+  }
+
+  global.NewsStore = {
+    CATEGORIES: CATEGORIES,
+    DATA: NEWS_DATA,
+    PAGE_SIZE: 20,
+    getCategory: getCategory,
+    getItems: getItems,
+    getItemById: getItemById
+  };
+})(window);
+
+  </script>
+  <script>
+(function () {
+  var store = window.NewsStore;
+  if (!store) return;
+  var root = document.getElementById('detailRoot');
+  var id = new URLSearchParams(window.location.search).get('id');
+  var found = id ? store.getItemById(id) : null;
+
+  function escapeHtml(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  if (!found) {
+    root.innerHTML =
+      '<div class="empty-state">' +
+        '<h2>未找到该内容</h2>' +
+        '<p>该新闻可能已下线或不存在，请返回列表查看。</p>' +
+        '<a class="back-link" href="news.html">← 返回新闻列表</a>' +
+      '</div>';
+    return;
+  }
+
+  var item = found.item;
+  var cat = found.category;
+  var list = store.getItems(cat.key);
+  var idx = -1;
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].id === item.id) { idx = i; break; }
+  }
+  var prev = idx > 0 ? list[idx - 1] : null;
+  var next = idx >= 0 && idx < list.length - 1 ? list[idx + 1] : null;
+
+  document.title = item.title + ' - 星光树脂制品（昆山）有限公司';
+  document.getElementById('bcParent').textContent = cat.parentLabel;
+  document.getElementById('bcParent').href = cat.parent;
+  document.getElementById('bcCat').textContent = cat.label;
+  document.getElementById('bcCat').href = 'news.html?cat=' + encodeURIComponent(cat.key);
+  document.getElementById('bcTitle').textContent = item.title;
+
+  if (cat.key === 'training' || cat.key === 'activities') {
+    document.getElementById('navJoin').classList.add('active');
+  } else {
+    document.getElementById('navAbout').classList.add('active');
+  }
+
+  var coverHtml = item.image
+    ? '<div class="article-cover"><img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '" onerror="this.parentElement.hidden=true"></div>'
+    : '<div class="article-cover" hidden></div>';
+
+  root.innerHTML =
+    '<article class="article-panel">' +
+      '<span class="article-cat">' + escapeHtml(cat.label) + '</span>' +
+      '<h1 class="article-title">' + escapeHtml(item.title) + '</h1>' +
+      '<div class="article-meta">' +
+        '<span class="article-meta-date">' + escapeHtml(item.date) + '</span>' +
+        '<span class="article-meta-item"><span class="article-meta-label">作者</span>' + escapeHtml(item.author || '星光树脂') + '</span>' +
+        '<span class="article-meta-item"><span class="article-meta-label">阅读量</span>' + escapeHtml(String(item.views != null ? item.views : 0)) + '</span>' +
+      '</div>' +
+      coverHtml +
+      '<div class="article-content">' + (item.content || '<p>' + escapeHtml(item.excerpt) + '</p>') + '</div>' +
+      '<div class="article-actions">' +
+        '<a class="back-link" href="news.html?cat=' + encodeURIComponent(cat.key) + '">← 返回' + escapeHtml(cat.label) + '列表</a>' +
+        '<div class="article-nav">' +
+          (prev
+            ? '<a href="news-detail.html?id=' + encodeURIComponent(prev.id) + '">上一篇</a>'
+            : '<a class="is-disabled" href="#">上一篇</a>') +
+          (next
+            ? '<a href="news-detail.html?id=' + encodeURIComponent(next.id) + '">下一篇</a>'
+            : '<a class="is-disabled" href="#">下一篇</a>') +
+        '</div>' +
+      '</div>' +
+    '</article>';
+
+  document.querySelectorAll('.lang-switch').forEach(function (s) {
+    s.querySelectorAll('.lang-btn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        s.querySelectorAll('.lang-btn').forEach(function (x) { x.classList.remove('active'); });
+        b.classList.add('active');
+      });
+    });
+  });
+})();
+  </script>
+</body>
+</html>
