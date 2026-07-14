@@ -167,19 +167,31 @@
       text-align:left;
     }
 
-    /* Timeline — 一年一模块，左右滑动，悬停出详情 */
+    /* Timeline — 悬停选中；悬停最左/最右可见图时滚动时间轴 */
     .timeline-section {
       overflow:visible;
       position:relative;
       background-color:#fff;
+      padding:0;
+    }
+    .era-pin-track {
+      position:relative;
+      width:100%;
+    }
+    .era-pin-sticky {
+      position:sticky;
+      top:var(--era-pin-top, 0px);
+      z-index:2;
+      box-sizing:border-box;
+      padding:70px 0 70px 20px;
+      padding-right:0;
+      background-color:#fff;
       background-image:url("img/banner/技术开发轨迹.png");
       background-repeat:no-repeat;
       background-position:center top;
-      background-size:cover;
-      padding:70px 0 70px 20px;
-      padding-right:0;
+      background-size:auto;
     }
-    .timeline-section::before {
+    .era-pin-sticky::before {
       content:"";
       position:absolute;
       inset:0;
@@ -193,8 +205,17 @@
       z-index:1;
     }
     .timeline-intro {
-      margin-bottom:60px;
+      margin-bottom:10px;
       max-width:720px;
+      padding-right:0;
+    }
+    .era-nav-row {
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      width:100%;
+      margin:0 0 8px;
+      padding:0;
     }
     .timeline-intro-line {
       width:36px;
@@ -228,24 +249,36 @@
     }
     .era-stage {
       display:grid;
-      grid-template-columns:minmax(260px, 26%) minmax(0, 74%);
-      gap:clamp(24px, 3.5vw, 48px);
-      align-items:stretch;
-      min-height:420px;
+      grid-template-columns:1fr;
+      grid-template-areas:
+        "track"
+        "panel";
+      gap:20px;
+      align-items:start;
+      justify-items:start;
+      min-height:0;
+      margin-top:0;
     }
     .era-panel {
+      grid-area:panel;
       display:flex;
       flex-direction:column;
       align-items:flex-start;
       justify-content:flex-start;
-      padding:10px 0 0 0;
+      gap:16px;
+      padding:4px 0 0;
       min-width:0;
+      width:100%;
+      max-width:100%;
+      box-sizing:border-box;
+      justify-self:stretch;
+      overflow:visible;
     }
     .era-panel-year {
       position:relative;
-      margin:0 0 28px;
+      margin:0;
       padding:0;
-      font-size:clamp(32px, 3.4vw, 44px);
+      font-size:clamp(28px, 3vw, 40px);
       font-weight:300;
       color:#1A2846;
       line-height:1.1;
@@ -261,9 +294,15 @@
       margin:0;
       padding:0;
       width:100%;
+      max-width:100%;
+      box-sizing:border-box;
       display:flex;
-      flex-direction:column;
+      flex-direction:row;
+      flex-wrap:nowrap;
+      align-items:stretch;
+      justify-content:flex-start;
       gap:0;
+      overflow:hidden;
     }
     .era-panel.is-switching .era-panel-year {
       opacity:0;
@@ -274,34 +313,38 @@
       display:flex;
       flex-direction:column;
       align-items:flex-start;
+      justify-content:flex-start;
       margin:0;
-      gap: 2px;
-      padding:12px 0;
-      border-bottom:1px solid rgba(26,40,70,.08);
+      gap:8px;
+      flex:1 1 0;
+      width:auto;
+      min-width:0;
+      max-width:240px;
+      box-sizing:border-box;
+      padding:0 16px 0 16px;
+      border:none;
+      border-left:1px solid rgba(26,40,70,.12);
       font-size:14px;
-      line-height:1.65;
+      line-height:1.55;
       color:#1A2846;
+      white-space:normal;
       opacity:0;
-      transform:translateY(18px);
+      transform:translateY(14px);
       filter:blur(2px);
       transition:
         opacity .55s cubic-bezier(.22,.61,.36,1),
         transform .55s cubic-bezier(.22,.61,.36,1),
-        filter .55s ease,
-        border-color .3s ease;
+        filter .55s ease;
       transition-delay:var(--era-li-delay, 0ms);
+    }
+    .era-panel-list li:first-child {
+      border-left:none;
+      padding-left:0;
     }
     .era-panel-list li.is-revealed {
       opacity:1;
       transform:none;
       filter:none;
-    }
-    .era-panel-list li:first-child {
-      padding-top:0;
-    }
-    .era-panel-list li:last-child {
-      border-bottom:none;
-      padding-bottom:0;
     }
     @media (prefers-reduced-motion: reduce) {
       .era-panel-list li,
@@ -314,15 +357,19 @@
     }
     .era-panel-list .era-card-text {
       display:block;
-      font-size:16px;
+      font-size:15px;
       font-weight:400;
-      line-height:1.65;
+      line-height:1.55;
       color:#1A2846;
       letter-spacing:.01em;
+      white-space:normal;
+      overflow-wrap:break-word;
+      word-break:break-word;
     }
     .era-panel-list .era-badge {
       display:inline-flex;
       align-items:center;
+      flex-shrink:0;
       margin:0;
       padding:4px 10px;
       border:none;
@@ -338,13 +385,31 @@
       vertical-align:baseline;
     }
     .era-track-wrap {
+      grid-area:track;
+      position:static;
       display:flex;
       flex-direction:column;
-      gap:16px;
+      gap:0;
       overflow:visible;
       min-width:0;
+      width:100%;
+      justify-self:stretch;
+      align-items:stretch;
     }
-    .era-track-btns { display:flex; align-items:center; justify-content:flex-start; gap:14px; }
+    .era-nav-row .era-track-btns {
+      position:relative;
+      top:auto;
+      right:auto;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:10px;
+      margin:0;
+      padding:0;
+      opacity:1;
+      transform:none;
+    }
     .era-track-btn {
       flex-shrink:0;
       width:40px;
@@ -383,20 +448,25 @@
       cursor:not-allowed;
     }
     .era-track {
-      width:calc(100% + max(0px, (100vw - 20px - 1280px) / 2));
+      width:calc(100% + 40px);
       max-width:none;
-      margin-left:0;
+      margin-left:-20px;
       box-sizing:border-box;
       overflow-x:auto;
-      overflow-y:visible;
+      overflow-y:hidden;
       -webkit-overflow-scrolling:touch;
-      scroll-snap-type:x mandatory;
-      scroll-padding-left:0;
-      scroll-padding-right:0;
+      scroll-snap-type:none;
       scrollbar-width:none; -ms-overflow-style:none;
-      padding:20px 0 30px;
-      margin-top:0;
-      margin-bottom:0;
+      /* 内边距给选中卡片阴影留空间，避免被滚动容器裁切 */
+      padding:20px 20px 36px;
+      margin-top:-12px;
+      margin-bottom:-8px;
+      cursor:default;
+      touch-action:pan-x;
+      user-select:none;
+    }
+    .era-track.is-edge-scrolling {
+      scroll-behavior:auto;
     }
     .era-track::-webkit-scrollbar { display:none; }
     .era-track-list {
@@ -455,6 +525,7 @@
       width:var(--era-w);
       height:calc(var(--era-card-h-active) + var(--era-axis) + 18px);
       z-index:1;
+      cursor:pointer;
       opacity:0;
       transform:translateY(28px) scale(.96);
       transition:
@@ -468,29 +539,14 @@
       opacity:1;
       transform:none;
     }
-    .era-track-btns {
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-      gap:14px;
-      opacity:0;
-      transform:translateY(12px);
-      transition:opacity .55s cubic-bezier(.16,1,.3,1) .4s, transform .55s cubic-bezier(.16,1,.3,1) .4s;
-    }
-    .era-track-wrap.is-inview .era-track-btns {
-      opacity:1;
-      transform:none;
-    }
     @media (prefers-reduced-motion: reduce) {
       .era-item,
-      .era-track-list::before,
-      .era-track-btns {
+      .era-track-list::before {
         opacity:1;
         transform:none;
         transition:flex-basis .4s cubic-bezier(.22,.7,.3,1), width .4s cubic-bezier(.22,.7,.3,1);
       }
-      .era-track-wrap.is-inview .era-item,
-      .era-track-wrap.is-inview .era-track-btns {
+      .era-track-wrap.is-inview .era-item {
         opacity:1;
         transform:none;
       }
@@ -604,7 +660,9 @@
     }
     .era-item.is-active .era-card {
       height:var(--era-card-h-active);
-      box-shadow:0 16px 36px rgba(255,181,17,.22);
+      box-shadow:
+        0 18px 40px rgba(255,181,17,.28),
+        0 8px 18px rgba(26,26,46,.1);
     }
     .era-card-media { position:absolute; inset:0; background:#fff; }
     .era-card-media img {
@@ -662,8 +720,8 @@
       height:clamp(420px, 58vh, 540px);
       min-height:420px;
       overflow:hidden;
-      background:#1a2430;
-      box-shadow:0 16px 48px rgba(18, 28, 40, .14);
+      background:#d4dde6;
+      box-shadow:0 16px 48px rgba(18, 28, 40, .12);
       opacity:0;
       transform:translateY(28px);
       transition:
@@ -713,26 +771,26 @@
       object-position:center;
       display:block;
       transform:scale(1.04);
-      filter:saturate(.55) contrast(1.05) brightness(.72);
+      filter:saturate(.72) contrast(1.04) brightness(.88);
       transition:transform .85s cubic-bezier(.22,.61,.36,1), filter .55s ease;
     }
     .tribology-panel-overlay {
       position:absolute;
       inset:0;
       z-index:1;
-      background:linear-gradient(180deg, rgba(18,28,40,.55) 0%, rgba(18,28,40,.42) 45%, rgba(12,20,30,.72) 100%);
+      background:linear-gradient(180deg, rgba(18,28,40,.4) 0%, rgba(18,28,40,.3) 45%, rgba(12,20,30,.58) 100%);
       transition:background .5s ease;
     }
     .tribology-accordion:not(:hover) .tribology-panel.is-active .tribology-panel-media img,
     .tribology-accordion:hover .tribology-panel:hover .tribology-panel-media img {
       transform:scale(1.1);
-      filter:saturate(.9) contrast(1.08) brightness(.92);
+      filter:saturate(.95) contrast(1.06) brightness(1);
     }
     .tribology-accordion:not(:hover) .tribology-panel.is-active .tribology-panel-overlay,
     .tribology-accordion:hover .tribology-panel:hover .tribology-panel-overlay {
       background:
-        linear-gradient(115deg, rgba(0,90,150,.78) 0%, rgba(0,110,182,.62) 42%, rgba(20,48,78,.48) 100%),
-        linear-gradient(180deg, rgba(255,255,255,.08) 0%, transparent 40%, rgba(8,20,36,.35) 100%);
+        linear-gradient(115deg, rgba(0,100,165,.62) 0%, rgba(0,120,190,.48) 42%, rgba(24,56,90,.36) 100%),
+        linear-gradient(180deg, rgba(255,255,255,.1) 0%, transparent 42%, rgba(8,20,36,.3) 100%);
     }
     .tribology-panel-inner {
       position:relative;
@@ -780,6 +838,7 @@
       line-height:1.45;
       letter-spacing:.04em;
       color:var(--white);
+      text-shadow:0 1px 10px rgba(8,24,40,.35);
     }
     .tribology-panel-expand {
       display:flex;
@@ -803,13 +862,15 @@
       opacity:0;
       transform:translateY(12px);
       transition:opacity .4s cubic-bezier(.22,.61,.36,1), transform .45s cubic-bezier(.22,.61,.36,1);
+      text-shadow:0 2px 14px rgba(8,24,40,.28);
     }
     .tribology-panel-desc {
       margin:0;
       max-width:34em;
       font-size:clamp(13px, 1.15vw, 15px);
       line-height:1.85;
-      color:rgba(255,255,255,.9);
+      color:rgba(255,255,255,.95);
+      text-shadow:0 1px 8px rgba(8,24,40,.28);
       opacity:0;
       transform:translateY(10px);
       transition:opacity .4s cubic-bezier(.22,.61,.36,1) .08s, transform .45s cubic-bezier(.22,.61,.36,1) .08s;
@@ -828,7 +889,8 @@
       padding-left:14px;
       font-size:clamp(13px, 1.1vw, 14px);
       line-height:1.7;
-      color:rgba(255,255,255,.9);
+      color:rgba(255,255,255,.95);
+      text-shadow:0 1px 8px rgba(8,24,40,.25);
       opacity:0;
       transform:translateX(-10px);
       transition:
@@ -885,12 +947,12 @@
       margin-bottom:0;
       display:flex;
       flex-direction:column;
-      align-items:flex-end;
+      align-items:flex-start;
       justify-content:center;
       gap:0;
       padding:12px 0 8px;
       min-width:0;
-      text-align:right;
+      text-align:left;
     }
     .partner-layout .section-title {
       margin:0 0 28px;
@@ -898,14 +960,14 @@
       line-height:1.25;
     }
     .partner-layout .section-title::after {
-      left:auto;
-      right:0;
-      transform-origin:right center;
+      left:0;
+      right:auto;
+      transform-origin:left center;
     }
     .partner-layout .section-desc {
       max-width:34em;
       margin:0;
-      margin-left:auto;
+      margin-right:auto;
       font-size:16px;
       line-height:1.9;
       letter-spacing:.02em;
@@ -995,7 +1057,40 @@
       pointer-events:none;
     }
     .partner-diagram--glow { z-index:1; }
-    .partner-diagram--tri { z-index:3; }
+    .partner-orange-bloom {
+      position:absolute;
+      left:50%;
+      top:55%;
+      z-index:3;
+      width:78%;
+      height:78%;
+      transform:translate(-50%, -50%);
+      pointer-events:none;
+      overflow:visible;
+    }
+    .partner-orange-bloom-pulse {
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      background:radial-gradient(
+        circle,
+        rgba(255,186,70,.7) 0%,
+        rgba(245,166,35,.42) 28%,
+        rgba(232,137,0,.18) 52%,
+        rgba(232,137,0,.06) 68%,
+        transparent 78%
+      );
+      opacity:0;
+      transform:scale(.2);
+      will-change:transform, opacity;
+    }
+    .partner-triad.is-inview .partner-orange-bloom-pulse {
+      animation:partner-orange-glow 2.4s cubic-bezier(.16,.84,.32,1) infinite;
+    }
+    .partner-triad.is-inview .partner-orange-bloom-pulse--delay {
+      animation-delay:1.2s;
+    }
+    .partner-diagram--tri { z-index:4; }
     .partner-node {
       --partner-ring: 19px;
       position:absolute;
@@ -1228,7 +1323,7 @@
     }
     .partner-core {
       position:absolute;
-      z-index:4;
+      z-index:5;
       left:50%;
       top:50%;
       width:30%;
@@ -1249,17 +1344,24 @@
       height:70px;
       filter:drop-shadow(0 2px 6px rgba(220,120,0,.22));
     }
-    .partner-triad.is-inview .partner-diagram--glow > circle:first-of-type {
-      animation:partner-ring-breathe 5.6s ease-in-out infinite;
-      transform-origin:300px 332px;
-    }
     @keyframes partner-core-float {
       0%, 100% { transform:translateY(0); }
       50% { transform:translateY(-5px); }
     }
-    @keyframes partner-ring-breathe {
-      0%, 100% { opacity:.45; }
-      50% { opacity:.72; }
+    /* 橙色外发光：从中心向外扩散并淡出 */
+    @keyframes partner-orange-glow {
+      0% {
+        opacity:.85;
+        transform:scale(.18);
+      }
+      45% {
+        opacity:.45;
+        transform:scale(.72);
+      }
+      100% {
+        opacity:0;
+        transform:scale(1.15);
+      }
     }
     .partner-core h4 {
       margin:0;
@@ -1482,14 +1584,18 @@
       border-radius:50%;
       border:none;
       padding:0;
+      margin:0;
       background:rgba(255,255,255,.45);
       cursor:pointer;
       pointer-events:auto;
-      transition:background .2s, transform .2s;
+      transition:background .2s, transform .2s, box-shadow .2s;
+      /* 扩大热区，便于悬停切换 */
+      box-shadow:0 0 0 6px transparent;
     }
+    .equip-dot:hover,
     .equip-dot.is-active {
       background:var(--white);
-      transform:scale(1.15);
+      transform:scale(1.2);
     }
     .equip-data { display:none; }
     .equip-lightbox { position:fixed; inset:0; z-index:10001; display:flex; align-items:center; justify-content:center; padding:24px; opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s ease; }
@@ -1662,20 +1768,28 @@
       .tribology-accordion:not(:hover) .tribology-panel.is-active .tribology-panel-media img,
       .tribology-panel.is-open .tribology-panel-media img {
         transform:scale(1.08);
-        filter:saturate(.85) contrast(1.08) brightness(.9);
+        filter:saturate(.95) contrast(1.06) brightness(1);
       }
       .tribology-accordion:not(:hover) .tribology-panel.is-active .tribology-panel-overlay,
       .tribology-panel.is-open .tribology-panel-overlay {
         background:
-          linear-gradient(115deg, rgba(0,90,150,.78) 0%, rgba(0,110,182,.62) 42%, rgba(20,48,78,.48) 100%),
-          linear-gradient(180deg, rgba(255,255,255,.08) 0%, transparent 40%, rgba(8,20,36,.35) 100%);
+          linear-gradient(115deg, rgba(0,100,165,.62) 0%, rgba(0,120,190,.48) 42%, rgba(24,56,90,.36) 100%),
+          linear-gradient(180deg, rgba(255,255,255,.1) 0%, transparent 42%, rgba(8,20,36,.3) 100%);
       }
     }
     @media (max-width:768px) {
       .nav { display:none; }
       [id] { scroll-margin-top:80px; }
-      .timeline-section { padding-top:36px; }
-      .timeline-intro { margin-bottom:28px; }
+      .timeline-section { padding-top:0; }
+      .era-pin-track { height:auto !important; }
+      .era-pin-sticky {
+        position:relative;
+        top:auto !important;
+        padding:36px 0 48px 20px;
+        padding-right:0;
+      }
+      .timeline-intro { margin-bottom:8px; max-width:100%; }
+      .era-nav-row { margin-bottom:6px; }
       .timeline-intro-line { width:40px; margin-bottom:12px; }
       .timeline-intro-label { font-size:13px; }
       .timeline-intro-title { font-size:26px; margin-bottom:10px; }
@@ -1766,16 +1880,26 @@
         transform-origin:center;
       }
       .era-stage {
-        grid-template-columns:1fr;
         gap:20px;
         min-height:0;
       }
       .era-panel {
         padding:0 0 8px;
+        max-width:100%;
+        gap:12px;
       }
-      .era-panel-year { font-size:28px; margin-bottom:20px; }
-      .era-panel-list li { padding:14px 0; }
-      .era-panel-list .era-card-text { font-size:14px; }
+      .era-panel-year { font-size:26px; }
+      .era-panel-list li {
+        max-width:200px;
+        padding:0 12px 0 12px;
+      }
+      .era-panel-list li:first-child { padding-left:0; }
+      .era-track {
+        width:calc(100% + 24px);
+        margin-left:-12px;
+        padding:16px 12px 28px;
+      }
+      .era-panel-list .era-card-text { font-size:13px; }
       .era-panel-list .era-badge { font-size:10px; padding:3px 8px; }
       .era-track-btn { width:40px; height:40px; }
       .era-track-list {
@@ -1959,7 +2083,7 @@
         transform:none;
       }
       .partner-triad.is-inview .partner-core .partner-node-icon,
-      .partner-triad.is-inview .partner-diagram--glow > circle:first-of-type {
+      .partner-triad.is-inview .partner-orange-bloom-pulse {
         animation:none !important;
       }
     }
@@ -2037,13 +2161,21 @@
   </header>
 
   <!-- 摩擦学技术开发轨迹（页头 + 时间轴） -->
-  <section class="section timeline-section">
+  <section class="section timeline-section" id="timelineSection">
+    <div class="era-pin-track" id="eraPinTrack">
+      <div class="era-pin-sticky" id="eraPinSticky">
     <div class="section-inner">
       <header class="timeline-intro">
         <h2 class="timeline-intro-title reveal" id="timeline">星光集团摩擦学技术开发轨迹</h2>
         <div class="timeline-intro-line reveal" style="--reveal-delay:90ms" aria-hidden="true"></div>
         <p class="timeline-intro-desc reveal" style="--reveal-delay:180ms">从1936年星光工业成立至今，近90年持续创新的完整技术发展历程</p>
       </header>
+      <div class="era-nav-row">
+        <div class="era-track-btns">
+          <button type="button" class="era-track-btn era-track-btn-prev" aria-label="上一段">←</button>
+          <button type="button" class="era-track-btn era-track-btn-next" aria-label="下一段">→</button>
+        </div>
+      </div>
       <div class="era-stage">
         <aside class="era-panel reveal-left" id="eraPanel" style="--reveal-delay:120ms">
           <h3 class="era-panel-year" id="eraPanelYear">1936年</h3>
@@ -2270,11 +2402,9 @@
             </div>
           </div>
         </div>
-        <div class="era-track-btns">
-          <button type="button" class="era-track-btn era-track-btn-prev" aria-label="上一段">←</button>
-          <button type="button" class="era-track-btn era-track-btn-next" aria-label="下一段">→</button>
-        </div>
       </div>
+      </div>
+    </div>
       </div>
     </div>
   </section>
@@ -2450,6 +2580,10 @@
             <circle cx="108" cy="462" r="128" fill="url(#partnerNodeGlow)"/>
             <circle cx="492" cy="462" r="128" fill="url(#partnerNodeGlow)"/>
           </svg>
+          <div class="partner-orange-bloom" aria-hidden="true">
+            <span class="partner-orange-bloom-pulse"></span>
+            <span class="partner-orange-bloom-pulse partner-orange-bloom-pulse--delay"></span>
+          </div>
           <svg class="partner-diagram partner-diagram--tri reveal-child-scale" style="--reveal-delay:160ms" viewBox="0 0 600 600" aria-hidden="true">
             <defs>
               <radialGradient id="partnerTriFill" cx="50%" cy="42%" r="68%">
@@ -2792,11 +2926,19 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
   var next = document.querySelector('.era-track-btn-next');
   var panelYear = document.getElementById('eraPanelYear');
   var panelList = document.getElementById('eraPanelList');
+  var headerEl = document.querySelector('.header');
   if (!scroll || !prev || !next) return;
 
   var items = Array.prototype.slice.call(scroll.querySelectorAll('.era-item'));
   var panel = document.getElementById('eraPanel');
   var switchTimer = null;
+  var activeIndex = 0;
+  var EDGE_SPEED = 16;
+  var MIN_VISIBLE_RATIO = 0.45;
+  var edgeRaf = 0;
+  var lockedDir = 0;
+  var pointerPos = null;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   items.forEach(function(el, i){
     el.style.setProperty('--era-enter-delay', (120 + i * 70) + 'ms');
@@ -2842,46 +2984,182 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
       });
     });
   }
-  function setActiveItem(item) {
-    if (!item || item.classList.contains('is-active')) return;
+  function updateHeaderOffset() {
+    var headerH = headerEl ? Math.round(headerEl.getBoundingClientRect().height) : 0;
+    document.documentElement.style.setProperty('--era-pin-top', headerH + 'px');
+  }
+  function centerItem(item, behavior) {
+    if (!item) return;
+    var left = item.offsetLeft - (scroll.clientWidth - item.offsetWidth) / 2;
+    scroll.scrollTo({ left: Math.max(0, left), behavior: behavior || 'smooth' });
+  }
+  function getMaxScroll() {
+    return Math.max(0, scroll.scrollWidth - scroll.clientWidth);
+  }
+
+  function setActiveItem(item, instant, center) {
+    if (!item) return;
+    var idx = items.indexOf(item);
+    if (idx < 0) return;
+    var same = item.classList.contains('is-active') && idx === activeIndex;
+    activeIndex = idx;
+    if (same) {
+      updateBtns();
+      if (center) centerItem(item, instant ? 'auto' : 'smooth');
+      return;
+    }
     if (switchTimer) clearTimeout(switchTimer);
-    if (panel) panel.classList.add('is-switching');
-    if (panelYear) panelYear.classList.add('is-year-out');
-    switchTimer = setTimeout(function(){
+
+    function applyActive() {
       items.forEach(function(el){ el.classList.toggle('is-active', el === item); });
       syncPanel(item);
       updateBtns();
-      var left = item.offsetLeft - (scroll.clientWidth - item.offsetWidth) / 2;
-      scroll.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
-      requestAnimationFrame(function(){
-        if (panel) panel.classList.remove('is-switching');
-        if (panelYear) panelYear.classList.remove('is-year-out');
-      });
-    }, 200);
+      if (center) centerItem(item, instant ? 'auto' : 'smooth');
+      if (panel) panel.classList.remove('is-switching');
+      if (panelYear) panelYear.classList.remove('is-year-out');
+    }
+
+    if (instant) {
+      applyActive();
+      return;
+    }
+
+    if (panel) panel.classList.add('is-switching');
+    if (panelYear) panelYear.classList.add('is-year-out');
+    switchTimer = setTimeout(applyActive, 160);
   }
   function moveActive(delta) {
     var nextIdx = getActiveIndex() + delta;
     if (nextIdx < 0 || nextIdx >= items.length) return;
-    setActiveItem(items[nextIdx]);
+    setActiveItem(items[nextIdx], false, true);
+  }
+
+  /* 只把“露出足够多”的卡片算作可见，避免右侧露一点的窄条抢最右位置 */
+  function getVisibleEdgeItems() {
+    var trackRect = scroll.getBoundingClientRect();
+    var leftItem = null;
+    var rightItem = null;
+    var leftMin = Infinity;
+    var rightMax = -Infinity;
+    items.forEach(function(item){
+      var r = item.getBoundingClientRect();
+      var visibleW = Math.min(r.right, trackRect.right) - Math.max(r.left, trackRect.left);
+      if (visibleW < Math.max(48, r.width * MIN_VISIBLE_RATIO)) return;
+      if (r.left < leftMin) {
+        leftMin = r.left;
+        leftItem = item;
+      }
+      if (r.right > rightMax) {
+        rightMax = r.right;
+        rightItem = item;
+      }
+    });
+    return { left: leftItem, right: rightItem };
+  }
+  function dirForItem(item) {
+    if (!item) return 0;
+    var max = getMaxScroll();
+    if (max <= 0) return 0;
+    var edges = getVisibleEdgeItems();
+    if (item === edges.left && scroll.scrollLeft > 0.5) return -1;
+    if (item === edges.right && scroll.scrollLeft < max - 0.5) return 1;
+    return 0;
+  }
+  function getItemUnderPointer() {
+    if (!pointerPos) return null;
+    var el = document.elementFromPoint(pointerPos.x, pointerPos.y);
+    var item = el && el.closest ? el.closest('.era-item') : null;
+    return item && scroll.contains(item) ? item : null;
+  }
+  function stopEdgeScroll() {
+    lockedDir = 0;
+    scroll.classList.remove('is-edge-scrolling');
+    if (edgeRaf) {
+      cancelAnimationFrame(edgeRaf);
+      edgeRaf = 0;
+    }
+  }
+  function edgeScrollTick() {
+    edgeRaf = 0;
+    if (!lockedDir) {
+      scroll.classList.remove('is-edge-scrolling');
+      return;
+    }
+    var max = getMaxScroll();
+    var next = scroll.scrollLeft + lockedDir * EDGE_SPEED;
+    scroll.scrollLeft = Math.max(0, Math.min(max, next));
+
+    /* 内容从指针下划过时不会触发 mouseenter，需主动同步选中 */
+    var under = getItemUnderPointer();
+    if (under) setActiveItem(under, true, false);
+
+    var atEnd =
+      (lockedDir < 0 && scroll.scrollLeft <= 0.5) ||
+      (lockedDir > 0 && scroll.scrollLeft >= max - 0.5);
+    if (atEnd) {
+      stopEdgeScroll();
+      return;
+    }
+    edgeRaf = requestAnimationFrame(edgeScrollTick);
+  }
+  function lockEdgeScroll(dir) {
+    if (!finePointer.matches) return;
+    if (!dir) {
+      stopEdgeScroll();
+      return;
+    }
+    lockedDir = dir;
+    scroll.classList.add('is-edge-scrolling');
+    if (!edgeRaf) edgeRaf = requestAnimationFrame(edgeScrollTick);
   }
 
   prev.addEventListener('click', function(){ moveActive(-1); });
   next.addEventListener('click', function(){ moveActive(1); });
-  window.addEventListener('resize', updateBtns);
+  window.addEventListener('resize', function(){
+    updateHeaderOffset();
+    updateBtns();
+  });
+
+  /*
+   * 悬停选中；
+   * 悬停到当前最左/最右（充分可见）的图片时锁定向左/向右滚动，
+   * 直到移到中间图片或离开轨道（避免滚一帧就被露边窄条打断）
+   */
+  items.forEach(function(item){
+    item.addEventListener('mouseenter', function(e){
+      if (!finePointer.matches) return;
+      pointerPos = { x: e.clientX, y: e.clientY };
+      setActiveItem(item, true, false);
+      lockEdgeScroll(dirForItem(item));
+    });
+    item.addEventListener('click', function(){
+      setActiveItem(item, false, true);
+    });
+  });
+
+  scroll.addEventListener('mousemove', function(e){
+    pointerPos = { x: e.clientX, y: e.clientY };
+    if (!finePointer.matches) return;
+    var item = e.target && e.target.closest ? e.target.closest('.era-item') : null;
+    if (!item || !scroll.contains(item)) return;
+    setActiveItem(item, true, false);
+    /* 未在自动滚时，移到边缘图才启动；滚动中改方向交给 mouseenter */
+    if (!lockedDir) lockEdgeScroll(dirForItem(item));
+  });
+  scroll.addEventListener('mouseleave', function(){
+    pointerPos = null;
+    stopEdgeScroll();
+  });
 
   if (items.length) {
     items.forEach(function(el){ el.classList.remove('is-active'); });
     items[0].classList.add('is-active');
+    activeIndex = 0;
     syncPanel(items[0]);
     scroll.scrollLeft = 0;
   }
   updateBtns();
-
-  items.forEach(function(item){
-    item.addEventListener('click', function(){
-      setActiveItem(item);
-    });
-  });
+  updateHeaderOffset();
 })();
 
 (function(){
@@ -2975,21 +3253,46 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
 
   function renderDots(count) {
     if (!dotsWrap) return;
+    var existing = dotsWrap.querySelectorAll('.equip-dot');
+    if (existing.length === count) {
+      Array.prototype.forEach.call(existing, function(btn, i){
+        btn.classList.toggle('is-active', i === index);
+      });
+      return;
+    }
     dotsWrap.innerHTML = '';
     for (var i = 0; i < count; i++) {
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'equip-dot' + (i === index ? ' is-active' : '');
       btn.setAttribute('aria-label', '第 ' + (i + 1) + ' 台设备');
-      (function(iCopy){
-        btn.addEventListener('click', function(e){
-          e.stopPropagation();
-          index = iCopy;
-          render(true);
-        });
-      })(i);
       dotsWrap.appendChild(btn);
     }
+  }
+
+  if (dotsWrap) {
+    /* 鼠标在轮播点上移动/悬停即可切图 */
+    dotsWrap.addEventListener('mouseover', function(e){
+      var btn = e.target.closest('.equip-dot');
+      if (!btn || !dotsWrap.contains(btn)) return;
+      var dots = dotsWrap.querySelectorAll('.equip-dot');
+      var i = Array.prototype.indexOf.call(dots, btn);
+      if (i < 0 || i === index) return;
+      e.stopPropagation();
+      stopAuto();
+      index = i;
+      render(false);
+    });
+    dotsWrap.addEventListener('click', function(e){
+      var btn = e.target.closest('.equip-dot');
+      if (!btn || !dotsWrap.contains(btn)) return;
+      e.stopPropagation();
+      var dots = dotsWrap.querySelectorAll('.equip-dot');
+      var i = Array.prototype.indexOf.call(dots, btn);
+      if (i < 0) return;
+      index = i;
+      render(true);
+    });
   }
 
   var fadeTimer = null;
@@ -3061,6 +3364,44 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
     });
     frame.addEventListener('mouseenter', stopAuto);
     frame.addEventListener('mouseleave', startAuto);
+  }
+
+  /* 鼠标在图片上左右滑动即可翻页（无需点击） */
+  var hoverNav = {
+    lastX: null,
+    accum: 0,
+    cooldown: false,
+    threshold: 56
+  };
+  var stage = section.querySelector('.equip-stage');
+  if (stage && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    stage.addEventListener('mouseenter', function(e){
+      hoverNav.lastX = e.clientX;
+      hoverNav.accum = 0;
+      stopAuto();
+    });
+    stage.addEventListener('mouseleave', function(){
+      hoverNav.lastX = null;
+      hoverNav.accum = 0;
+      startAuto();
+    });
+    stage.addEventListener('mousemove', function(e){
+      if (e.buttons) return;
+      if (hoverNav.lastX == null) {
+        hoverNav.lastX = e.clientX;
+        return;
+      }
+      var dx = e.clientX - hoverNav.lastX;
+      hoverNav.lastX = e.clientX;
+      if (hoverNav.cooldown || !dx) return;
+      hoverNav.accum += dx;
+      if (Math.abs(hoverNav.accum) < hoverNav.threshold) return;
+      var dir = hoverNav.accum > 0 ? -1 : 1; /* 右移上一张，左移下一张 */
+      hoverNav.accum = 0;
+      hoverNav.cooldown = true;
+      shiftStage(dir);
+      window.setTimeout(function(){ hoverNav.cooldown = false; }, 280);
+    });
   }
 
   if (stagePrev || stageNext) {
