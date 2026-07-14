@@ -170,11 +170,96 @@
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus { outline: none; border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 3px rgba(0,110,182,0.1); }
+    .form-select-wrap {
+      position: relative;
+    }
+    .form-select-wrap select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .form-select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-right: 1.5px solid #8a9298;
+      border-bottom: 1.5px solid #8a9298;
+      transform: translateY(-65%) rotate(45deg);
+      pointer-events: none;
+      transition: border-color 0.2s;
+    }
+    .form-select-wrap:focus-within::after {
+      border-color: var(--primary);
+    }
+    .form-group select option {
+      color: var(--text);
+      background: var(--white);
+    }
+    .form-group select:invalid {
+      color: #9aa3ab;
+    }
     .form-group textarea { resize: vertical; min-height: 88px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .btn-submit { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border: none; border-radius: 50px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: var(--white); font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; transition: transform 0.2s, box-shadow 0.2s; margin-top: 2px; }
     .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,110,182,0.3); }
     .btn-submit svg { width: 18px; height: 18px; }
+    .form-feedback {
+      display: none;
+      text-align: center;
+      padding: 36px 20px 20px;
+      animation: fadeIn 0.35s ease;
+    }
+    .form-feedback.is-visible { display: block; }
+    .form-feedback-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: rgba(0,110,182,0.1);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-feedback-icon svg { width: 28px; height: 28px; }
+    .form-feedback-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .form-feedback-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 360px;
+      margin: 0 auto 24px;
+    }
+    .form-feedback-again {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      border: 1px solid var(--primary);
+      border-radius: 50px;
+      background: transparent;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .form-feedback-again:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .form.is-hidden { display: none; }
 
     /* 快捷联络条 */
     .channel-bar { margin-top: 28px; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--bg); border-radius: 14px; border: 1px solid rgba(0,110,182,0.08); box-shadow: var(--shadow); overflow: hidden; }
@@ -1011,6 +1096,21 @@
       border-color: #1595d3;
       background: transparent;
       box-shadow: none;
+    }
+    .form-select-wrap select {
+      padding-right: 28px;
+    }
+    .form-select-wrap::after {
+      right: 4px;
+      border-right-color: #9aa3ab;
+      border-bottom-color: #9aa3ab;
+    }
+    .form-select-wrap:focus-within::after {
+      border-right-color: #1595d3;
+      border-bottom-color: #1595d3;
+    }
+    .form-group select:invalid {
+      color: #b2b7bb;
     }
     .form-group textarea {
       min-height: 72px;
@@ -1962,41 +2062,52 @@
         <div class="form-wrap">
           <div class="panel-box">
             <div class="form-panel-body">
-              <form class="form">
+              <form class="form" id="customer-message-form" novalidate>
                 <div class="form-row">
                   <div class="form-group">
-                    <label>姓名 <span>*</span></label>
-                    <input type="text" placeholder="请输入您的姓名" required>
+                    <label for="msg-name">姓名 <span>*</span></label>
+                    <input id="msg-name" name="name" type="text" placeholder="请输入您的姓名" required autocomplete="name">
                   </div>
                   <div class="form-group">
-                    <label>联系电话 <span>*</span></label>
-                    <input type="tel" placeholder="请输入联系电话" required>
+                    <label for="msg-phone">联系电话 <span>*</span></label>
+                    <input id="msg-phone" name="phone" type="tel" placeholder="请输入联系电话" required autocomplete="tel">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group">
-                    <label>咨询类型</label>
-                    <select>
-                      <option value="">请选择</option>
-                      <option>产品咨询</option>
-                      <option>求职咨询</option>
-                      <option>其他咨询</option>
-                    </select>
+                    <label for="msg-type">咨询类型 <span>*</span></label>
+                    <div class="form-select-wrap">
+                      <select id="msg-type" name="type" required>
+                        <option value="" disabled selected>请选择咨询类型</option>
+                        <option value="thermosetting">产品咨询-热固性树脂产品</option>
+                        <option value="thermoplastic">产品咨询-热塑性树脂产品</option>
+                        <option value="job">求职咨询</option>
+                        <option value="other">其他咨询</option>
+                      </select>
+                    </div>
                   </div>
                   <div class="form-group">
-                    <label>邮箱</label>
-                    <input type="email" placeholder="请输入邮箱地址">
+                    <label for="msg-email">邮箱</label>
+                    <input id="msg-email" name="email" type="email" placeholder="请输入邮箱地址" autocomplete="email">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>留言内容 <span>*</span></label>
-                  <textarea rows="4" placeholder="请描述您的需求或问题..." required></textarea>
+                  <label for="msg-content">留言内容 <span>*</span></label>
+                  <textarea id="msg-content" name="message" rows="4" placeholder="请描述您的需求或问题..." required></textarea>
                 </div>
                 <button type="submit" class="btn-submit">
                   提交留言
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </button>
               </form>
+              <div class="form-feedback" id="form-feedback" role="status" aria-live="polite" hidden>
+                <div class="form-feedback-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
+                <h3 class="form-feedback-title">留言提交成功</h3>
+                <p class="form-feedback-desc" id="form-feedback-desc">感谢您的留言，我们已收到您的咨询，销售经理将尽快与您联系。</p>
+                <button type="button" class="form-feedback-again" id="form-feedback-again">再留一条</button>
+              </div>
             </div>
           </div>
         </div>
@@ -2116,12 +2227,46 @@
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-      var contactForm = document.querySelector('.form');
-      if (contactForm) {
+      var TYPE_LABEL = {
+        thermosetting: '产品咨询-热固性树脂产品',
+        thermoplastic: '产品咨询-热塑性树脂产品',
+        job: '求职咨询',
+        other: '其他咨询'
+      };
+
+      var contactForm = document.getElementById('customer-message-form');
+      var formFeedback = document.getElementById('form-feedback');
+      var formFeedbackDesc = document.getElementById('form-feedback-desc');
+      var formFeedbackAgain = document.getElementById('form-feedback-again');
+
+      if (contactForm && formFeedback) {
         contactForm.addEventListener('submit', function(e) {
           e.preventDefault();
-          alert('留言已提交（演示功能）');
+          var name = (contactForm.querySelector('[name="name"]').value || '').trim();
+          var phone = (contactForm.querySelector('[name="phone"]').value || '').trim();
+          var type = contactForm.querySelector('[name="type"]').value;
+          var message = (contactForm.querySelector('[name="message"]').value || '').trim();
+
+          if (!name || !phone || !type || !message) {
+            alert('请完整填写必填项后再提交。');
+            return;
+          }
+
+          var typeLabel = TYPE_LABEL[type] || '咨询';
+          formFeedbackDesc.textContent = '感谢您的留言，我们已收到您关于「' + typeLabel + '」的咨询，相关负责人将尽快与您联系。';
+          contactForm.classList.add('is-hidden');
+          formFeedback.hidden = false;
+          formFeedback.classList.add('is-visible');
+          contactForm.reset();
         });
+
+        if (formFeedbackAgain) {
+          formFeedbackAgain.addEventListener('click', function() {
+            formFeedback.classList.remove('is-visible');
+            formFeedback.hidden = true;
+            contactForm.classList.remove('is-hidden');
+          });
+        }
       }
 
       document.querySelectorAll('.office-tab').forEach(function(tab) {
