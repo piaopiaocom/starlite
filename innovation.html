@@ -316,10 +316,10 @@
       justify-content:flex-start;
       margin:0;
       gap:8px;
-      flex:1 1 0;
+      flex:0 1 auto;
       width:auto;
       min-width:0;
-      max-width:240px;
+      max-width:none;
       box-sizing:border-box;
       padding:0 16px 0 16px;
       border:none;
@@ -357,6 +357,7 @@
     }
     .era-panel-list .era-card-text {
       display:block;
+      width:100%;
       font-size:15px;
       font-weight:400;
       line-height:1.55;
@@ -703,7 +704,7 @@
     }
 
     /* Tribology concept — 通栏蓝色左右分栏 */
-    /* 可持续发展理念 — 横向悬停手风琴 */
+    /* STARLITE 摩擦技术理念 — 横向悬停手风琴 */
     .tribology-section {
       position:relative;
       isolation:isolate;
@@ -832,10 +833,10 @@
     }
     .tribology-panel-compact h3 {
       margin:0;
-      max-width:7em;
+      max-width:none;
       font-size:clamp(15px, 1.35vw, 18px);
       font-weight:600;
-      line-height:1.45;
+      line-height:1.5;
       letter-spacing:.04em;
       color:var(--white);
       text-shadow:0 1px 10px rgba(8,24,40,.35);
@@ -867,7 +868,7 @@
     .tribology-panel-desc {
       margin:0;
       max-width:34em;
-      font-size:clamp(13px, 1.15vw, 15px);
+      font-size:clamp(15px, 1.4vw, 18px);
       line-height:1.85;
       color:rgba(255,255,255,.95);
       text-shadow:0 1px 8px rgba(8,24,40,.28);
@@ -887,8 +888,8 @@
     .tribology-panel-list li {
       position:relative;
       padding-left:14px;
-      font-size:clamp(13px, 1.1vw, 14px);
-      line-height:1.7;
+      font-size:clamp(15px, 1.4vw, 18px);
+      line-height:1.75;
       color:rgba(255,255,255,.95);
       text-shadow:0 1px 8px rgba(8,24,40,.25);
       opacity:0;
@@ -1057,6 +1058,18 @@
       pointer-events:none;
     }
     .partner-diagram--glow { z-index:1; }
+    .partner-diagram--glow .partner-orbit {
+      transform-box:view-box;
+      transform-origin:300px 332px;
+      will-change:transform;
+    }
+    .partner-triad.is-inview .partner-diagram--glow .partner-orbit {
+      animation:partner-orbit-spin 48s linear infinite;
+    }
+    @keyframes partner-orbit-spin {
+      from { transform:rotate(0deg); }
+      to { transform:rotate(360deg); }
+    }
     .partner-orange-bloom {
       position:absolute;
       left:50%;
@@ -1081,14 +1094,15 @@
         transparent 78%
       );
       opacity:0;
-      transform:scale(.2);
+      transform:translateZ(0) scale(.22);
+      backface-visibility:hidden;
       will-change:transform, opacity;
     }
     .partner-triad.is-inview .partner-orange-bloom-pulse {
-      animation:partner-orange-glow 2.4s cubic-bezier(.16,.84,.32,1) infinite;
+      animation:partner-orange-glow 3s linear infinite;
     }
     .partner-triad.is-inview .partner-orange-bloom-pulse--delay {
-      animation-delay:1.2s;
+      animation-delay:1.5s;
     }
     .partner-diagram--tri { z-index:4; }
     .partner-node {
@@ -1348,19 +1362,23 @@
       0%, 100% { transform:translateY(0); }
       50% { transform:translateY(-5px); }
     }
-    /* 橙色外发光：从中心向外扩散并淡出 */
+    /* 橙色外发光：从中心向外扩散并淡出；末段保持透明，避免循环跳变 */
     @keyframes partner-orange-glow {
       0% {
-        opacity:.85;
-        transform:scale(.18);
+        opacity:.55;
+        transform:translateZ(0) scale(.22);
       }
-      45% {
-        opacity:.45;
-        transform:scale(.72);
+      55% {
+        opacity:.22;
+        transform:translateZ(0) scale(.78);
+      }
+      82% {
+        opacity:0;
+        transform:translateZ(0) scale(1.08);
       }
       100% {
         opacity:0;
-        transform:scale(1.15);
+        transform:translateZ(0) scale(1.08);
       }
     }
     .partner-core h4 {
@@ -1550,6 +1568,8 @@
       pointer-events:none;
     }
     .equip-frame:hover .equip-frame-overlay { opacity:1; }
+    /* 悬停轮播点时不显示遮罩，避免切图淡出叠黑导致整屏发黑 */
+    .equip-frame:has(.equip-dots:hover) .equip-frame-overlay { opacity:0; }
     .equip-frame-name {
       margin:0;
       font-size:clamp(18px, 2vw, 24px);
@@ -1565,6 +1585,10 @@
     .equip-frame:hover .equip-frame-name {
       opacity:1;
       transform:none;
+    }
+    .equip-frame:has(.equip-dots:hover) .equip-frame-name {
+      opacity:0;
+      transform:translateY(8px);
     }
     .equip-dots {
       position:absolute;
@@ -1890,7 +1914,6 @@
       }
       .era-panel-year { font-size:26px; }
       .era-panel-list li {
-        max-width:200px;
         padding:0 12px 0 12px;
       }
       .era-panel-list li:first-child { padding-left:0; }
@@ -2083,7 +2106,8 @@
         transform:none;
       }
       .partner-triad.is-inview .partner-core .partner-node-icon,
-      .partner-triad.is-inview .partner-orange-bloom-pulse {
+      .partner-triad.is-inview .partner-orange-bloom-pulse,
+      .partner-triad.is-inview .partner-diagram--glow .partner-orbit {
         animation:none !important;
       }
     }
@@ -2112,7 +2136,7 @@
           <a href="innovation.html" class="active">创新中心</a>
           <ul class="nav-dropdown">
             <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-            <li><a href="innovation.html#tribology">可持续发展理念</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
             <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
             <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
           </ul>
@@ -2300,8 +2324,13 @@
                   <li><span class="era-card-text">船舶用树脂材质轴承盘的开发</span><span class="era-badge">日本国内首创</span></li>
                   <li><span class="era-card-text">拉幅机用滑动衬垫的开发</span></li>
                   <li><span class="era-card-text">真空泵用叶片的开发</span></li>
-                  <li><span class="era-card-text">桥梁用滑动板、铁路车辆用滑动板的开发</span></li>
-                  <li><span class="era-card-text">办公设备用定影剥离爪、定影滑动轴承的开发</span><span class="era-badge">行业首创</span></li>
+                  <li><span class="era-card-text">磁带用压光辊的开发</span></li>
+                  <li><span class="era-card-text">一般工业设备用无石棉摩擦材料的开发</span></li>
+                  <li><span class="era-card-text">U型密封圈的开发</span></li>
+                  <li><span class="era-card-text">桥梁用滑动板的开发</span></li>
+                  <li><span class="era-card-text">铁路车辆用滑动板的开发</span></li>
+                  <li><span class="era-card-text">办公设备用定影剥离爪的开发</span></li>
+                  <li><span class="era-card-text">办公设备用定影滑动轴承的开发</span><span class="era-badge">行业首创</span></li>
                   <li><span class="era-card-text">耐热齿轮的开发</span></li>
                 </ul>
               </div>
@@ -2366,9 +2395,11 @@
                 <div class="era-card-detail-year">2010年代</div>
                 <ul class="era-card-list">
                   <li><span class="era-card-text">纺车轮用PTFE材质刹车垫片的开发</span><span class="era-badge">国内首创</span></li>
+                  <li><span class="era-card-text">钢铁轧机用研磨板开发</span></li>
+                  <li><span class="era-card-text">通过配比控制实现无熔接痕轴承开发</span></li>
                   <li><span class="era-card-text">电子锁的薄型减速单元开发</span><span class="era-badge">业界首创</span></li>
                   <li><span class="era-card-text">滚筒驱动的行星式精密减速单元开发</span><span class="era-badge">业界首创</span></li>
-                  <li><span class="era-card-text">建筑用隔震/制震/耐震部件开发</span></li>
+                  <li><span class="era-card-text">建筑用隔震 / 制震 / 耐震部件开发</span></li>
                   <li><span class="era-card-text">特殊涂层材料的开发</span></li>
                 </ul>
               </div>
@@ -2409,24 +2440,21 @@
     </div>
   </section>
 
-  <!-- 可持续发展理念 -->
-  <section class="tribology-section" id="tribology" aria-label="可持续发展理念">
+  <!-- STARLITE 摩擦技术理念 -->
+  <section class="tribology-section" id="tribology" aria-label="STARLITE 摩擦技术理念">
     <div class="tribology-accordion" role="list">
-      <article class="tribology-panel is-active" role="listitem" tabindex="0" aria-label="可持续发展理念">
+      <article class="tribology-panel is-active" role="listitem" tabindex="0" aria-label="STARLITE 摩擦技术理念">
         <div class="tribology-panel-media" aria-hidden="true">
           <img src="img/可持续发展.png" alt="">
         </div>
         <div class="tribology-panel-overlay" aria-hidden="true"></div>
         <div class="tribology-panel-inner">
           <div class="tribology-panel-compact">
-            <span class="tribology-panel-compact-icon" aria-hidden="true">
-              <img src="https://api.iconify.design/lucide:recycle.svg?color=%23ffffff" width="36" height="36" alt="" loading="lazy">
-            </span>
-            <h3>可持续发展理念</h3>
+            <h3>STARLITE<br>摩擦学技术理念</h3>
           </div>
           <div class="tribology-panel-expand">
             <div>
-              <h2>可持续发展理念</h2>
+              <h2>STARLITE 摩擦技术理念</h2>
               <p class="tribology-panel-desc">STARLITE 始终以摩擦学为核心，在材料领域持续深耕。我们不局限于单一塑料材质，而是通过多元材料复合的「造物」理念，与兼顾可持续发展的「成事」理念，不断升级以「滑动、制动、防护、密封」为核心的技术与服务，为客户创造更环保、更高效、更安全的解决方案。</p>
             </div>
           </div>
@@ -2555,26 +2583,28 @@
                 <stop offset="100%" stop-color="#7EC4FF" stop-opacity="0"/>
               </radialGradient>
             </defs>
-            <!-- pale blue base ring behind the whole diagram -->
-            <circle
-              cx="300" cy="332" r="224"
-              fill="none"
-              stroke="#B4D4F0"
-              stroke-width="15"
-              opacity=".45"/>
-            <!-- thin connector arcs with end dots — outside the base ring (~30px) -->
-            <g fill="#B4D4F0" stroke="#B4D4F0" stroke-width="1.6" stroke-linecap="round" opacity=".9">
-              <path d="M450.8 127.6 A254 254 0 0 1 548.7 280.6" fill="none"/>
-              <circle cx="450.8" cy="127.6" r="3.4"/>
-              <circle cx="548.7" cy="280.6" r="3.4"/>
+            <!-- pale blue base ring + outer arcs — slow orbit -->
+            <g class="partner-orbit">
+              <circle
+                cx="300" cy="332" r="224"
+                fill="none"
+                stroke="#B4D4F0"
+                stroke-width="15"
+                opacity=".45"/>
+              <!-- thin connector arcs with end dots — outside the base ring (~30px) -->
+              <g fill="#B4D4F0" stroke="#B4D4F0" stroke-width="1.6" stroke-linecap="round" opacity=".9">
+                <path d="M450.8 127.6 A254 254 0 0 1 548.7 280.6" fill="none"/>
+                <circle cx="450.8" cy="127.6" r="3.4"/>
+                <circle cx="548.7" cy="280.6" r="3.4"/>
 
-              <path d="M422.6 554.5 A254 254 0 0 1 177.4 554.5" fill="none"/>
-              <circle cx="422.6" cy="554.5" r="3.4"/>
-              <circle cx="177.4" cy="554.5" r="3.4"/>
+                <path d="M422.6 554.5 A254 254 0 0 1 177.4 554.5" fill="none"/>
+                <circle cx="422.6" cy="554.5" r="3.4"/>
+                <circle cx="177.4" cy="554.5" r="3.4"/>
 
-              <path d="M51.3 280.6 A254 254 0 0 1 149.2 127.6" fill="none"/>
-              <circle cx="51.3" cy="280.6" r="3.4"/>
-              <circle cx="149.2" cy="127.6" r="3.4"/>
+                <path d="M51.3 280.6 A254 254 0 0 1 149.2 127.6" fill="none"/>
+                <circle cx="51.3" cy="280.6" r="3.4"/>
+                <circle cx="149.2" cy="127.6" r="3.4"/>
+              </g>
             </g>
             <circle cx="300" cy="105" r="128" fill="url(#partnerNodeGlow)"/>
             <circle cx="108" cy="462" r="128" fill="url(#partnerNodeGlow)"/>
@@ -2768,7 +2798,7 @@
             <h4>创新中心</h4>
             <ul>
               <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-              <li><a href="innovation.html#tribology">可持续发展理念</a></li>
+              <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
               <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
               <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
             </ul>
@@ -3271,7 +3301,7 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
   }
 
   if (dotsWrap) {
-    /* 鼠标在轮播点上移动/悬停即可切图 */
+    /* 鼠标在轮播点上移动/悬停即可切图（瞬时切换，避免淡出露黑底） */
     dotsWrap.addEventListener('mouseover', function(e){
       var btn = e.target.closest('.equip-dot');
       if (!btn || !dotsWrap.contains(btn)) return;
@@ -3281,7 +3311,7 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
       e.stopPropagation();
       stopAuto();
       index = i;
-      render(false);
+      render(false, true);
     });
     dotsWrap.addEventListener('click', function(e){
       var btn = e.target.closest('.equip-dot');
@@ -3291,14 +3321,50 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
       var i = Array.prototype.indexOf.call(dots, btn);
       if (i < 0) return;
       index = i;
-      render(true);
+      render(true, true);
     });
   }
 
   var fadeTimer = null;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function render(restartAuto) {
+  function showStageImage(nextSrc, name, instant) {
+    if (!stageImg) return;
+    if (fadeTimer) {
+      clearTimeout(fadeTimer);
+      fadeTimer = null;
+    }
+    stageImg.onload = null;
+    var reveal = function() {
+      requestAnimationFrame(function(){
+        stageImg.classList.remove('is-fading');
+      });
+    };
+    if (instant || stageImg.getAttribute('src') === nextSrc || reducedMotion) {
+      stageImg.src = nextSrc;
+      stageImg.alt = name;
+      stageImg.classList.remove('is-fading');
+      return;
+    }
+    stageImg.classList.add('is-fading');
+    fadeTimer = setTimeout(function(){
+      fadeTimer = null;
+      var apply = function() {
+        stageImg.onload = null;
+        reveal();
+      };
+      stageImg.alt = name;
+      if (stageImg.getAttribute('src') === nextSrc && stageImg.complete) {
+        apply();
+        return;
+      }
+      stageImg.onload = apply;
+      stageImg.src = nextSrc;
+      if (stageImg.complete) apply();
+    }, 200);
+  }
+
+  function render(restartAuto, instant) {
     var list = itemsForCat(activeCat);
     if (!list.length) return;
     if (index >= list.length) index = 0;
@@ -3306,22 +3372,7 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
     var img = fig.querySelector('img');
     var name = fig.getAttribute('data-name') || (img ? img.alt : '');
     if (stageImg && img) {
-      var nextSrc = img.getAttribute('src');
-      if (stageImg.getAttribute('src') === nextSrc || reducedMotion) {
-        stageImg.src = nextSrc;
-        stageImg.alt = name;
-        stageImg.classList.remove('is-fading');
-      } else {
-        if (fadeTimer) clearTimeout(fadeTimer);
-        stageImg.classList.add('is-fading');
-        fadeTimer = setTimeout(function(){
-          stageImg.src = nextSrc;
-          stageImg.alt = name;
-          requestAnimationFrame(function(){
-            stageImg.classList.remove('is-fading');
-          });
-        }, 200);
-      }
+      showStageImage(img.getAttribute('src'), name, !!instant);
     }
     if (caption) caption.textContent = name;
     if (frameName) frameName.textContent = name;
