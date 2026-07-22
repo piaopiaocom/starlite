@@ -22,6 +22,7 @@
       --shadow: 0 4px 24px rgba(255, 181, 17, 0.1);
       --shadow-lg: 0 16px 48px rgba(255, 181, 17, 0.14);
       --radius: 12px;
+      --module-h: 680px;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
@@ -177,14 +178,21 @@
     .era-pin-track {
       position:relative;
       width:100%;
+      height:var(--module-h);
     }
     .era-pin-sticky {
       position:sticky;
       top:var(--era-pin-top, 0px);
       z-index:2;
       box-sizing:border-box;
-      padding:70px 0 70px 20px;
+      height:var(--module-h);
+      min-height:var(--module-h);
+      max-height:var(--module-h);
+      padding:50px 0 28px 0;
       padding-right:0;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
       background-color:#fff;
       background-image:url("img/banner/技术开发轨迹.png");
       background-repeat:no-repeat;
@@ -195,34 +203,49 @@
       content:"";
       position:absolute;
       inset:0;
-      background:rgba(255,255,255,.72);
+      background:rgba(255,255,255,.38);
       pointer-events:none;
       z-index:0;
     }
     .timeline-section .section-inner {
-      overflow:visible;
+      max-width:1280px;
+      width:100%;
+      margin:0 auto;
+      overflow:hidden;
       position:relative;
       z-index:1;
+      flex:1;
+      min-height:0;
+      display:flex;
+      flex-direction:column;
     }
     .timeline-intro {
-      margin-bottom:10px;
+      margin-bottom:28px;
       max-width:720px;
       padding-right:0;
+      flex-shrink:0;
     }
-    .era-nav-row {
+    .era-track-btns {
+      position:relative;
+      top:auto;
+      right:auto;
+      z-index:2;
       display:flex;
       align-items:center;
       justify-content:flex-end;
-      width:100%;
-      margin:0 0 8px;
+      gap:10px;
+      margin:0;
       padding:0;
+      flex-shrink:0;
+      opacity:1;
+      transform:none;
     }
     .timeline-intro-line {
       width:36px;
       height:3px;
       background:var(--primary);
       border-radius:2px;
-      margin:0 0 10px;
+      margin:0 0 8px;
     }
     .timeline-intro-label {
       margin:0 0 20px;
@@ -233,8 +256,8 @@
       line-height:1.4;
     }
     .timeline-intro-title {
-      margin:0 0 12px;
-      font-size:clamp(28px, 3.6vw, 42px);
+      margin:0 0 8px;
+      font-size:clamp(26px, 3.2vw, 36px);
       font-weight:700;
       color:#1A2846;
       line-height:1.25;
@@ -242,22 +265,26 @@
     }
     .timeline-intro-desc {
       margin:0;
-      font-size:16px;
-      line-height:1.9;
+      font-size:15px;
+      line-height:1.7;
       color:var(--text-muted);
       max-width:560px;
     }
     .era-stage {
       display:grid;
       grid-template-columns:1fr;
+      grid-template-rows:auto auto;
       grid-template-areas:
         "track"
         "panel";
-      gap:20px;
-      align-items:start;
+      gap:14px;
+      align-items:stretch;
+      align-content:start;
       justify-items:start;
+      flex:1;
       min-height:0;
       margin-top:0;
+      overflow:hidden;
     }
     .era-panel {
       grid-area:panel;
@@ -265,20 +292,31 @@
       flex-direction:column;
       align-items:flex-start;
       justify-content:flex-start;
-      gap:16px;
-      padding:4px 0 0;
+      gap:12px;
+      padding:0;
       min-width:0;
+      min-height:0;
       width:100%;
       max-width:100%;
       box-sizing:border-box;
       justify-self:stretch;
-      overflow:visible;
+      overflow:hidden;
+    }
+    .era-panel-head {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      width:100%;
+      flex-shrink:0;
     }
     .era-panel-year {
       position:relative;
       margin:0;
       padding:0;
-      font-size:clamp(28px, 3vw, 40px);
+      flex:1;
+      min-width:0;
+      font-size:clamp(24px, 2.6vw, 34px);
       font-weight:300;
       color:#1A2846;
       line-height:1.1;
@@ -302,7 +340,11 @@
       align-items:stretch;
       justify-content:flex-start;
       gap:0;
-      overflow:hidden;
+      overflow-x:auto;
+      overflow-y:hidden;
+      min-height:0;
+      flex:0 0 auto;
+      scrollbar-width:thin;
     }
     .era-panel.is-switching .era-panel-year {
       opacity:0;
@@ -387,29 +429,33 @@
     }
     .era-track-wrap {
       grid-area:track;
-      position:static;
+      position:relative;
       display:flex;
       flex-direction:column;
+      justify-content:flex-start;
       gap:0;
-      overflow:visible;
+      overflow:hidden;
       min-width:0;
-      width:100%;
+      min-height:0;
+      height:auto;
+      width:calc(100% + 40px);
+      margin-left:-20px;
       justify-self:stretch;
       align-items:stretch;
-    }
-    .era-nav-row .era-track-btns {
-      position:relative;
-      top:auto;
-      right:auto;
-      z-index:2;
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap:10px;
-      margin:0;
-      padding:0;
-      opacity:1;
-      transform:none;
+      -webkit-mask-image:linear-gradient(
+        90deg,
+        transparent 0,
+        #000 72px,
+        #000 calc(100% - 72px),
+        transparent 100%
+      );
+      mask-image:linear-gradient(
+        90deg,
+        transparent 0,
+        #000 72px,
+        #000 calc(100% - 72px),
+        transparent 100%
+      );
     }
     .era-track-btn {
       flex-shrink:0;
@@ -449,22 +495,24 @@
       cursor:not-allowed;
     }
     .era-track {
-      width:calc(100% + 40px);
+      width:100%;
       max-width:none;
-      margin-left:-20px;
+      margin-left:0;
       box-sizing:border-box;
       overflow-x:auto;
       overflow-y:hidden;
       -webkit-overflow-scrolling:touch;
       scroll-snap-type:none;
       scrollbar-width:none; -ms-overflow-style:none;
-      /* 内边距给选中卡片阴影留空间，避免被滚动容器裁切 */
-      padding:20px 20px 36px;
-      margin-top:-12px;
-      margin-bottom:-8px;
+      /* 左右留白配合渐隐，避免卡片硬切 */
+      padding:8px 72px 8px;
+      margin-top:0;
+      margin-bottom:0;
       cursor:default;
       touch-action:pan-x;
       user-select:none;
+      flex:0 0 auto;
+      min-height:0;
     }
     .era-track.is-edge-scrolling {
       scroll-behavior:auto;
@@ -472,11 +520,11 @@
     .era-track::-webkit-scrollbar { display:none; }
     .era-track-list {
       --era-gap:20px;
-      --era-w:160px;
-      --era-w-active:220px;
-      --era-card-h:240px;
-      --era-card-h-active:300px;
-      --era-axis:36px;
+      --era-w:150px;
+      --era-w-active:200px;
+      --era-card-h:210px;
+      --era-card-h-active:260px;
+      --era-axis:32px;
       --era-line-h:1.5px;
       --era-node-r:12px;
       position:relative;
@@ -703,23 +751,27 @@
       vertical-align:baseline;
     }
 
-    /* Tribology concept — 通栏蓝色左右分栏 */
-    /* STARLITE 摩擦技术理念 — 横向悬停手风琴 */
+    /* STARLITE 摩擦技术理念 — 横向悬停手风琴（整模块 680px） */
     .tribology-section {
       position:relative;
       isolation:isolate;
-      padding:0 20px;
-      overflow:visible;
+      padding:0;
+      overflow:hidden;
       color:var(--white);
       background:var(--white);
+      box-sizing:border-box;
+      height:var(--module-h);
+      min-height:var(--module-h);
+      max-height:var(--module-h);
     }
     .tribology-accordion {
       display:flex;
       width:100%;
-      max-width:1280px;
-      margin:0 auto;
-      height:clamp(420px, 58vh, 540px);
-      min-height:420px;
+      max-width:none;
+      margin:0;
+      height:100%;
+      min-height:var(--module-h);
+      max-height:var(--module-h);
       overflow:hidden;
       background:#d4dde6;
       box-shadow:0 16px 48px rgba(18, 28, 40, .12);
@@ -938,11 +990,48 @@
     }
 
     /* Partner triad — match reference: orange triangle core + 3 blue nodes */
-    .partner-section { background:var(--white); }
+    .partner-section {
+      position:relative;
+      isolation:isolate;
+      background-color:var(--white);
+      background-image:url("img/banner/bg.png");
+      background-repeat:no-repeat;
+      background-position:center center;
+      background-size:cover;
+      box-sizing:border-box;
+      height:var(--module-h);
+      min-height:var(--module-h);
+      max-height:var(--module-h);
+      padding:40px 24px;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+    }
+    .partner-section::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background:rgba(255,255,255,.3);
+      pointer-events:none;
+    }
+    .partner-section .section-inner {
+      position:relative;
+      z-index:1;
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      min-height:0;
+    }
     .partner-layout {
       display:grid;
-      grid-template-columns:minmax(280px, .95fr) minmax(300px, 1.05fr);
+      grid-template-columns:minmax(280px, .88fr) minmax(340px, 1.12fr);
       align-items:center;
+      gap:24px 36px;
+      width:100%;
+      height:100%;
+      min-height:0;
     }
     .partner-layout .section-header {
       margin-bottom:0;
@@ -951,13 +1040,13 @@
       align-items:flex-start;
       justify-content:center;
       gap:0;
-      padding:12px 0 8px;
+      padding:0;
       min-width:0;
       text-align:left;
     }
     .partner-layout .section-title {
-      margin:0 0 28px;
-      font-size:clamp(32px, 3.2vw, 42px);
+      margin:0 0 50px;
+      font-size:clamp(28px, 3vw, 38px);
       line-height:1.25;
     }
     .partner-layout .section-title::after {
@@ -966,23 +1055,23 @@
       transform-origin:left center;
     }
     .partner-layout .section-desc {
-      max-width:34em;
+      max-width:32em;
       margin:0;
       margin-right:auto;
-      font-size:16px;
-      line-height:1.9;
+      font-size:15px;
+      line-height:1.75;
       letter-spacing:.02em;
       color:var(--text-muted);
       text-wrap:pretty;
     }
     .partner-layout .section-desc--lead {
       font-size:17px;
-      line-height:1.85;
+      line-height:1.75;
       color:var(--text);
     }
     .partner-layout .section-desc + .section-desc {
       margin-top:18px;
-      padding-top:18px;
+      padding-top:16px;
       border-top:1px solid rgba(0,110,182,.1);
     }
     .partner-layout .section-desc .brand-em {
@@ -994,8 +1083,8 @@
       display:grid;
       grid-template-columns:repeat(4, minmax(0, 1fr));
       width:100%;
-      margin-top:36px;
-      padding:22px 8px;
+      margin-top:24px;
+      padding:18px 8px;
       box-sizing:border-box;
       background:#F4F7FB;
       border-radius:10px;
@@ -1043,8 +1132,9 @@
     }
     .partner-triad {
       position:relative;
-      width:100%;
-      max-width:460px;
+      width:min(500px, 100%);
+      max-width:100%;
+      max-height:min(560px, calc(var(--module-h) - 80px));
       margin:0 auto;
       aspect-ratio:1;
       overflow:visible;
@@ -1394,9 +1484,15 @@
     /* Equipment — dark showcase */
     .equip-section {
       background:#F0F1F3;
-      padding:72px 20px;
+      box-sizing:border-box;
+      height:var(--module-h);
+      min-height:var(--module-h);
+      max-height:var(--module-h);
+      padding:40px 24px;
       position:relative;
       overflow:hidden;
+      display:flex;
+      align-items:center;
     }
     .equip-section::before,
     .equip-section::after {
@@ -1418,24 +1514,32 @@
       z-index:1;
       display:grid;
       grid-template-columns:minmax(240px, .9fr) minmax(0, 1.35fr);
-      gap:clamp(28px, 4vw, 56px);
+      gap:clamp(28px, 4vw, 48px);
       align-items:stretch;
-      min-height:480px;
+      width:100%;
+      height:100%;
+      min-height:0;
     }
     .equip-copy {
       display:flex;
       flex-direction:column;
       align-items:flex-start;
-      min-height:100%;
+      justify-content:center;
+      min-height:0;
+      height:100%;
       color:#2A2A2A;
     }
-    .equip-copy .section-title { margin-bottom:0; }
+    .equip-copy .section-title {
+      margin:0 0 0;
+      font-size:clamp(28px, 3vw, 38px);
+      line-height:1.25;
+    }
     .equip-nav {
       display:flex;
       flex-direction:column;
       align-items:flex-start;
-      gap:14px;
-      margin-top:36px;
+      gap:10px;
+      margin-top:28px;
     }
     .equip-nav-btn {
       position:relative;
@@ -1443,14 +1547,14 @@
       background:transparent;
       padding:0 0 6px;
       font-family:inherit;
-      font-size:32px;
+      font-size:clamp(22px, 2.4vw, 30px);
       font-weight:300;
       color:#6B7280;
       cursor:pointer;
-      line-height:1.4;
+      line-height:1.35;
       transition:color .28s ease;
       white-space:nowrap;
-      margin-bottom: 15px;
+      margin-bottom:8px;
     }
     .equip-nav-btn::after {
       content:"";
@@ -1476,7 +1580,7 @@
     }
     .equip-caption {
       margin-top:auto;
-      padding-top:40px;
+      padding-top:28px;
       font-size:14px;
       line-height:1.6;
       color:#6B7280;
@@ -1485,6 +1589,8 @@
     .equip-stage {
       position:relative;
       min-width:0;
+      min-height:0;
+      height:100%;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -1535,7 +1641,12 @@
     .equip-frame {
       position:relative;
       overflow:hidden;
-      aspect-ratio:16 / 12;
+      flex:1 1 auto;
+      width:100%;
+      min-height:0;
+      height:100%;
+      max-height:100%;
+      aspect-ratio:auto;
       background:#1A1A1A;
       cursor:pointer;
     }
@@ -1636,128 +1747,140 @@
     .equip-lightbox-next { right:-56px; }
     .equip-lightbox-nav.is-hidden { display:none; }
 
-    /* Footer — 与首页保持一致 */
-    .footer { background:#555960; }
-    .footer-main { padding:40px 24px; }
-    .footer-inner { max-width:1280px; margin:0 auto; }
+    /* Footer — 与首页保持一致（品牌蓝，不用本页黄色 --primary） */
+    .footer { background: #E8F2F8; }
+    .footer-main { padding: 40px 24px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
     .footer-links {
-      display:grid;
-      grid-template-columns:repeat(6, minmax(0, 1fr));
-      gap:28px 24px;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 28px 24px;
     }
-    .footer-col { min-width:0; }
+    .footer-col { min-width: 0; }
     .footer-col h4 {
-      color:var(--white);
-      font-size:15px;
-      font-weight:700;
-      margin:0 0 18px;
-      letter-spacing:.04em;
+      color: var(--brand);
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 18px;
+      letter-spacing: 0.04em;
     }
-    .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:12px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .footer-col ul a {
-      font-size:13px;
-      line-height:1.5;
-      color:rgba(255,255,255,.72);
-      transition:color .2s;
-      display:block;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      transition: color 0.2s;
+      display: block;
     }
-    .footer-col ul a:hover { color:var(--white); }
-    .footer-contact { margin-top:30px; }
+    .footer-col ul a:hover { color: var(--brand); }
+    .footer-contact {
+      margin-top: 30px;
+      padding-top: 8px;
+    }
     .footer-contact-row {
-      display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:24px;
-      flex-wrap:wrap;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding: 12px 0 4px;
     }
     .footer-phone {
-      font-size:clamp(22px, 2.4vw, 30px);
-      font-weight:500;
-      color:var(--white);
-      letter-spacing:.04em;
-      line-height:1.2;
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 500;
+      color: var(--brand);
+      letter-spacing: 0.04em;
+      line-height: 1.2;
     }
-    .footer-phone:hover { color:var(--primary-light); }
+    .footer-phone:hover { color: var(--brand-light); }
     .footer-fax {
-      font-size:15px;
-      color:rgba(255,255,255,.78);
-      letter-spacing:.02em;
+      font-size: 15px;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
     }
     .footer-address {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      padding:18px 0;
-      color:rgba(255,255,255,.88);
-      font-size:14px;
-      line-height:1.55;
-      transition:color .2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.55;
+      transition: color 0.2s;
+      border-top: 1px solid rgba(0, 110, 182, 0.12);
     }
-    .footer-address:hover { color:var(--white); }
-    .footer-address-text { min-width:0; }
+    .footer-address:hover { color: var(--brand); }
+    .footer-address-text { min-width: 0; }
     .footer-address-label {
-      display:block;
-      font-size:12px;
-      color:rgba(255,255,255,.45);
-      margin-bottom:4px;
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
     }
     .footer-address-meta {
-      display:block;
-      margin-top:6px;
-      font-size:13px;
-      color:rgba(255,255,255,.62);
+      display: block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
     }
     .footer-address-arrow {
-      flex-shrink:0;
-      width:18px;
-      height:18px;
-      color:rgba(255,255,255,.7);
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--brand);
+      opacity: 0.7;
     }
-    .footer-bar { background:var(--brand); }
+    .footer-bar { background: var(--brand); }
     .footer-bar-inner {
-      max-width:1280px;
-      margin:0 auto;
-      padding:16px 0;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px 24px;
-      flex-wrap:wrap;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px 24px;
+      flex-wrap: wrap;
     }
     .footer-bar-brand {
-      display:flex;
-      align-items:center;
-      gap:12px;
-      color:var(--white);
-      min-width:0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      min-width: 0;
     }
-    .footer-bar-brand img { height:36px; width:auto; display:block; }
-    .footer-bar-brand-text { display:flex; flex-direction:column; gap:2px; min-width:0; line-height:1.25; }
-    .footer-bar-brand-zh { font-size:14px; font-weight:700; letter-spacing:.02em; color:var(--white); white-space:nowrap; }
-    .footer-bar-brand-en { font-size:11px; font-weight:400; letter-spacing:.02em; color:#9EC9E8; white-space:nowrap; }
+    .footer-bar-brand img { height: 36px; width: auto; display: block; }
+    .footer-bar-brand-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; line-height: 1.25; }
+    .footer-bar-brand-zh { font-size: 14px; font-weight: 700; letter-spacing: 0.02em; color: var(--white); white-space: nowrap; }
+    .footer-bar-brand-en { font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: #9EC9E8; white-space: nowrap; }
     .footer-bar-copy {
-      font-size:12px;
-      color:rgba(255,255,255,.82);
-      line-height:1.5;
-      text-align:right;
+      font-size: 12px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.5;
+      text-align: right;
     }
     .prototype-badge { position:fixed; bottom:16px; right:16px; background:var(--primary); color:var(--white); padding:6px 14px; border-radius:20px; font-size:11px; font-weight:700; z-index:9999; box-shadow:0 4px 16px rgba(255,181,17,.4); }
 
     @media (max-width:1100px) {
       .footer-links { grid-template-columns:repeat(3, minmax(0, 1fr)); gap:28px 20px; }
-      .equip-showcase { grid-template-columns:minmax(200px, .85fr) minmax(0, 1.25fr); gap:28px; min-height:420px; }
+      .equip-showcase { grid-template-columns:minmax(200px, .85fr) minmax(0, 1.25fr); gap:24px; }
       .equip-frame { border-radius:22px; }
-      .partner-layout { grid-template-columns:minmax(240px, .9fr) minmax(280px, 1.1fr); gap:28px; }
+      .partner-layout { grid-template-columns:minmax(240px, .9fr) minmax(280px, 1.1fr); gap:20px 24px; }
+      .partner-triad { max-width:min(440px, 100%); }
     }
     @media (max-width:900px) {
       .tribology-section {
+        height:auto;
+        min-height:0;
+        max-height:none;
         padding:36px 16px;
+        overflow:visible;
       }
       .tribology-accordion {
         flex-direction:column;
         height:auto;
         min-height:0;
+        max-height:none;
         border-radius:18px;
       }
       .tribology-panel {
@@ -1809,21 +1932,54 @@
       .era-pin-sticky {
         position:relative;
         top:auto !important;
+        height:auto;
+        min-height:0;
+        max-height:none;
         padding:36px 0 48px 20px;
         padding-right:0;
+        overflow:visible;
+      }
+      .timeline-section .section-inner {
+        overflow:visible;
+        display:block;
+        flex:none;
+        min-height:0;
+      }
+      .era-stage {
+        flex:none;
+        overflow:visible;
+        gap:20px;
+      }
+      .era-track-wrap,
+      .era-panel,
+      .era-track {
+        flex:none;
+        overflow:visible;
+        min-height:0;
+      }
+      .era-panel-list {
+        flex:none;
+        overflow:hidden;
       }
       .timeline-intro { margin-bottom:8px; max-width:100%; }
-      .era-nav-row { margin-bottom:6px; }
       .timeline-intro-line { width:40px; margin-bottom:12px; }
       .timeline-intro-label { font-size:13px; }
       .timeline-intro-title { font-size:26px; margin-bottom:10px; }
       .timeline-intro-desc { font-size:14px; line-height:1.8; }
-      .equip-showcase { grid-template-columns:1fr; gap:28px; min-height:0; }
-      .equip-copy { min-height:0; }
+      .equip-showcase { grid-template-columns:1fr; gap:24px; height:auto; min-height:0; }
+      .equip-copy { min-height:0; height:auto; }
       .equip-caption { margin-top:28px; padding-top:0; }
       .equip-nav { margin-top:24px; flex-direction:row; flex-wrap:wrap; gap:16px 20px; }
-      .equip-nav-btn { font-size:14px; }
-      .equip-frame { border-radius:18px; aspect-ratio:4/3; }
+      .equip-nav-btn { font-size:14px; margin-bottom:0; }
+      .equip-stage { height:auto; }
+      .equip-frame { border-radius:18px; aspect-ratio:4/3; height:auto; flex:none; }
+      .equip-section {
+        height:auto;
+        min-height:0;
+        max-height:none;
+        padding:48px 20px;
+        overflow:visible;
+      }
       .equip-stage-nav { width:40px; height:40px; }
       .equip-stage-prev { left:8px; }
       .equip-stage-next { right:8px; }
@@ -1832,7 +1988,22 @@
       .equip-lightbox-prev { left:8px; }
       .equip-lightbox-next { right:8px; }
       .equip-lightbox-nav { background:var(--white); }
-      .partner-layout { grid-template-columns:1fr; gap:24px; }
+      .partner-section {
+        height:auto;
+        min-height:0;
+        max-height:none;
+        padding:48px 20px;
+        overflow:visible;
+      }
+      .partner-section .section-inner {
+        height:auto;
+        display:block;
+      }
+      .partner-layout {
+        grid-template-columns:1fr;
+        gap:24px;
+        height:auto;
+      }
       .partner-layout .section-header {
         padding:0;
         align-items:flex-start;
@@ -1843,7 +2014,7 @@
       .partner-layout .section-desc,
       .partner-layout .section-desc--lead { font-size:15px; line-height:1.85; max-width:none; margin-left:0; }
       .partner-layout .section-desc + .section-desc { margin-top:14px; padding-top:14px; }
-      .partner-triad { max-width:360px; }
+      .partner-triad { max-width:360px; max-height:none; }
       .partner-features {
         margin-top:28px;
         padding:18px 6px;
@@ -1917,10 +2088,28 @@
         padding:0 12px 0 12px;
       }
       .era-panel-list li:first-child { padding-left:0; }
-      .era-track {
+      .era-track-wrap {
         width:calc(100% + 24px);
         margin-left:-12px;
-        padding:16px 12px 28px;
+        -webkit-mask-image:linear-gradient(
+          90deg,
+          transparent 0,
+          #000 36px,
+          #000 calc(100% - 36px),
+          transparent 100%
+        );
+        mask-image:linear-gradient(
+          90deg,
+          transparent 0,
+          #000 36px,
+          #000 calc(100% - 36px),
+          transparent 100%
+        );
+      }
+      .era-track {
+        width:100%;
+        margin-left:0;
+        padding:16px 36px 28px;
       }
       .era-panel-list .era-card-text { font-size:13px; }
       .era-panel-list .era-badge { font-size:10px; padding:3px 8px; }
@@ -2188,27 +2377,27 @@
   <section class="section timeline-section" id="timelineSection">
     <div class="era-pin-track" id="eraPinTrack">
       <div class="era-pin-sticky" id="eraPinSticky">
-    <div class="section-inner">
-      <header class="timeline-intro">
-        <h2 class="timeline-intro-title reveal" id="timeline">星光集团摩擦学技术开发轨迹</h2>
-        <div class="timeline-intro-line reveal" style="--reveal-delay:90ms" aria-hidden="true"></div>
-        <p class="timeline-intro-desc reveal" style="--reveal-delay:180ms">从1936年星光工业成立至今，近90年持续创新的完整技术发展历程</p>
-      </header>
-      <div class="era-nav-row">
-        <div class="era-track-btns">
-          <button type="button" class="era-track-btn era-track-btn-prev" aria-label="上一段">←</button>
-          <button type="button" class="era-track-btn era-track-btn-next" aria-label="下一段">→</button>
-        </div>
-      </div>
-      <div class="era-stage">
-        <aside class="era-panel reveal-left" id="eraPanel" style="--reveal-delay:120ms">
-          <h3 class="era-panel-year" id="eraPanelYear">1936年</h3>
-          <ul class="era-panel-list" id="eraPanelList"></ul>
-        </aside>
-        <div class="era-track-wrap reveal" style="--reveal-delay:200ms">
-        <div class="era-track" id="eraTrack" tabindex="0">
-          <div class="era-track-list">
-            <div class="era-track-spacer" aria-hidden="true"></div>
+        <div class="section-inner">
+          <header class="timeline-intro">
+            <h2 class="timeline-intro-title reveal" id="timeline">星光集团摩擦学技术开发轨迹</h2>
+            <div class="timeline-intro-line reveal" style="--reveal-delay:90ms" aria-hidden="true"></div>
+            <p class="timeline-intro-desc reveal" style="--reveal-delay:180ms">从1936年星光工业成立至今，近90年持续创新的完整技术发展历程</p>
+          </header>
+          <div class="era-stage">
+            <aside class="era-panel reveal-left" id="eraPanel" style="--reveal-delay:120ms">
+              <div class="era-panel-head">
+                <h3 class="era-panel-year" id="eraPanelYear">1936年</h3>
+                <div class="era-track-btns">
+                  <button type="button" class="era-track-btn era-track-btn-prev" aria-label="上一段">←</button>
+                  <button type="button" class="era-track-btn era-track-btn-next" aria-label="下一段">→</button>
+                </div>
+              </div>
+              <ul class="era-panel-list" id="eraPanelList"></ul>
+            </aside>
+            <div class="era-track-wrap reveal" style="--reveal-delay:200ms">
+              <div class="era-track" id="eraTrack" tabindex="0">
+                <div class="era-track-list">
+                  <div class="era-track-spacer" aria-hidden="true"></div>
             <div class="era-item is-active">
               <article class="era-card" tabindex="0">
               <div class="era-card-media">
@@ -2427,15 +2616,15 @@
                   <li><span class="era-card-text">非食用生物质基摩擦材料的开发</span></li>
                 </ul>
               </div>
-                          </article>
+              </article>
               <span class="era-item-stem" aria-hidden="true"></span>
               <span class="era-item-node" aria-hidden="true"></span>
             </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      </div>
-    </div>
       </div>
     </div>
   </section>
@@ -2566,7 +2755,7 @@
   </section>
 
   <!-- 技术开发型商务伙伴 -->
-  <section class="section section-alt partner-section" style="padding:60px 20px">
+  <section class="section section-alt partner-section">
     <div class="section-inner">
       <div class="partner-layout">
         <div class="section-header reveal-group">
@@ -2855,7 +3044,7 @@
             </span>
             <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </a>
-          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener" style="border-top: 1px solid rgba(255,255,255,0.28);">
+          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener" >
             <span class="footer-address-text">
               <span class="footer-address-label">星光工业株式会社</span>
               日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002

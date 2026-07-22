@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>加入我们 - 星光树脂制品（昆山）有限公司</title>
   <style>
-    :root{--primary:#006EB6;--primary-light:#0088D4;--accent:#FFB511;--accent-light:#FFCB4D;--text:#1A1A2E;--text-muted:#5A6270;--bg:#F5F7FA;--white:#FFF;--shadow:0 4px 24px rgba(0,110,182,0.08);--radius:8px}
-    *{margin:0;padding:0;box-sizing:border-box}body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);line-height:1.7}
+    :root{--primary:#006EB6;--primary-light:#0088D4;--accent:#FFB511;--accent-light:#FFCB4D;--text:#1A1A2E;--text-muted:#5A6270;--bg:#F5F7FA;--white:#FFF;--shadow:0 4px 24px rgba(0,110,182,0.08);--radius:8px;--module-h:680px}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden}
     a{text-decoration:none;color:inherit}
     .header{background:var(--primary);box-shadow:none;position:sticky;top:0;z-index:1000}
 /*二级菜单展开下推*/.header{transition:margin-bottom .25s ease;margin-bottom:0}.header:has(.nav>li:hover),.header:has(.nav>li:focus-within){margin-bottom:64px}.nav-dropdown{transform:none!important}
@@ -31,53 +31,68 @@
     .lang-switch{display:flex;align-items:center;flex-shrink:0}
     .lang-btn{padding:0 4px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.88);cursor:pointer;font-family:inherit;transition:color .2s;line-height:1.4}
     .lang-btn:hover{color:var(--white)}
-        /* 人文关怀（左媒右文 + 白底三卡） */
-    .welfare-section{width:100vw;max-width:100vw;margin:-64px calc(50% - 50vw) 48px;padding:0 0 48px;background:var(--white);border-radius:0;position:relative;z-index:1;left:0;box-sizing:border-box;overflow:hidden}
-    .welfare-section::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:
-      radial-gradient(ellipse 70% 55% at 92% 8%,rgba(0,110,182,.07),transparent 58%),
-      radial-gradient(ellipse 50% 40% at 78% 28%,rgba(0,136,212,.05),transparent 55%),
-      linear-gradient(115deg,transparent 52%,rgba(0,110,182,.03) 72%,transparent 88%);opacity:0;transition:opacity 1.1s ease}
-    .welfare-section.is-ready::before{opacity:1}
-    .welfare-band{position:relative;z-index:2;padding:56px 0 0}
-    .welfare-band-inner{width:min(1280px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:minmax(0,1.85fr) minmax(0,.55fr);align-items:end;gap:clamp(28px,4vw,48px)}
-    .welfare-media{width:100%;border-radius:0;overflow:hidden;background:#1A1A1A;line-height:0;box-shadow:0 12px 36px rgba(0,110,182,.1);opacity:0;transform:translateY(18px) scale(.985);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-    .welfare-section.is-ready .welfare-media{opacity:1;transform:none}
-    .welfare-media video{width:100%;height:auto;display:block;vertical-align:top;aspect-ratio:21/9;object-fit:cover;transform:scale(1.04);transition:transform 6.5s cubic-bezier(.16,1,.3,1)}
-    .welfare-section.is-ready .welfare-media video{transform:scale(1)}
-    .welfare-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;text-align:left;min-width:0;max-width:260px;padding:0}
-    .welfare-copy h1{font-size:clamp(36px,4.2vw,52px);font-weight:700;line-height:1.2;color:#0B2A4A;letter-spacing:.08em;margin:0;white-space:nowrap;opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .12s,transform .7s cubic-bezier(.16,1,.3,1) .12s}
-    .welfare-section.is-ready .welfare-copy h1{opacity:1;transform:none}
-    .welfare-copy-line{display:block;width:56px;height:2px;margin:18px 0 22px;background:rgba(0,110,182,.35);border-radius:1px;transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.16,1,.3,1) .28s}
-    .welfare-section.is-ready .welfare-copy-line{transform:scaleX(1)}
-    .welfare-copy-sub{margin:0;font-size:clamp(14px,1.35vw,16px);font-weight:400;line-height:2;color:var(--text-muted);opacity:0;transform:translateY(12px);transition:opacity .65s cubic-bezier(.16,1,.3,1) .36s,transform .65s cubic-bezier(.16,1,.3,1) .36s}
-    .welfare-section.is-ready .welfare-copy-sub{opacity:1;transform:none}
-    .welfare-copy-sub span{display:block}
-    .welfare-showcase{position:relative;z-index:1;width:min(1280px,calc(100% - 48px));margin:48px auto 0;padding:0;box-sizing:border-box;min-width:0;opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.16,1,.3,1) .2s,transform .8s cubic-bezier(.16,1,.3,1) .2s}
-    .welfare-section.is-ready .welfare-showcase{opacity:1;transform:none}
-    .welfare-slider-viewport{overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;width:100%}
+    /* 顶部视频 — 对齐首页滚动缩放交互 */
+    .join-hero-pin{position:relative;height:var(--join-hero-pin-h,calc(100vh - 72px));height:var(--join-hero-pin-h,calc(100dvh - 72px));background:var(--white)}
+    .join-hero{position:relative;width:100%;background:var(--primary);overflow:hidden;line-height:0;height:var(--join-hero-h,calc(100vh - 72px));height:var(--join-hero-h,calc(100dvh - 72px));min-height:0;z-index:1}
+    .join-hero.is-pinned{position:fixed;left:0;right:0;top:72px}
+    .join-hero.is-released{position:absolute;left:0;right:0}
+    .join-hero-video{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;object-fit:cover;object-position:center;transform:scale(1.1);filter:saturate(.92) brightness(.96);transition:opacity 1.6s cubic-bezier(.22,.61,.36,1),transform 8s cubic-bezier(.16,1,.3,1),filter 1.8s cubic-bezier(.22,.61,.36,1);will-change:transform,opacity}
+    .join-hero.is-ready .join-hero-video{opacity:.72;transform:scale(1);filter:saturate(1) brightness(1)}
+    .join-hero-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;line-height:1.7;background:linear-gradient(90deg,rgba(0,110,182,.85) 0%,rgba(0,110,182,.45) 35%,transparent 50%);transition:opacity .55s cubic-bezier(.22,.61,.36,1),background .55s cubic-bezier(.22,.61,.36,1)}
+    .join-hero.is-compact .join-hero-overlay{background:linear-gradient(90deg,rgba(0,110,182,.55) 0%,rgba(0,110,182,.22) 40%,transparent 62%)}
+    .join-hero-content{max-width:1280px;width:100%;margin:0 auto;padding:0 24px;color:var(--white);text-align:left;transition:opacity .5s cubic-bezier(.22,.61,.36,1),transform .55s cubic-bezier(.16,1,.3,1),filter .45s cubic-bezier(.22,.61,.36,1);will-change:opacity,transform}
+    .join-hero.is-compact .join-hero-content{opacity:0;transform:translateY(18px) scale(.97);filter:blur(3px);pointer-events:none}
+    .join-hero-content > *{opacity:0;transform:translateY(28px);filter:blur(6px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1),filter .85s cubic-bezier(.22,.61,.36,1)}
+    .join-hero-content > *:nth-child(1){transition-delay:220ms}
+    .join-hero-content > *:nth-child(2){transition-delay:380ms}
+    .join-hero.is-ready .join-hero-content > *{opacity:1;transform:none;filter:none}
+    .join-hero-content h1{font-size:clamp(32px,4.2vw,48px);font-weight:400;line-height:1.3;margin:0 0 16px;letter-spacing:.01em}
+    .join-hero-content p{margin:0;font-size:clamp(15px,1.4vw,18px);opacity:.92;line-height:1.7;max-width:520px}
+    @media(max-width:768px){.join-hero-content{padding:0 20px}.join-hero-content h1{font-size:28px}}
+
+    /* 人文关怀 — 文案 + 照片，整模块 680，置于视频下方 */
+    .welfare-section{width:100%;height:var(--module-h);min-height:var(--module-h);max-height:var(--module-h);margin:0;padding:48px 0 40px;background:var(--white);position:relative;z-index:1;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column}
+    .welfare-section::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url("img/banner/bg2.png") center / cover no-repeat;opacity:.5}
+    .welfare-section > .section-inner{position:relative;z-index:1;flex:1;min-height:0;display:flex;flex-direction:column;max-width:1280px}
+    .welfare-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-shrink:0;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    .welfare-section.is-inview .welfare-head{opacity:1;transform:none}
+    .welfare-copy{min-width:0;flex:1}
+    .welfare-copy h2{display:inline-block;position:relative;font-size:clamp(30px,3.2vw,42px);font-weight:500;color:#2A2A2A;margin:0 0 12px;line-height:1.3;letter-spacing:.02em;padding-bottom:12px}
+    .welfare-copy h2::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px;transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.16,1,.3,1) .28s}
+    .welfare-section.is-inview .welfare-copy h2::after{transform:scaleX(1)}
+    .welfare-copy-sub{margin:0;font-size:15px;color:var(--text-muted);line-height:1.7;max-width:680px}
+    .welfare-showcase{position:relative;z-index:2;flex:1;min-height:0;width:100%;display:flex;flex-direction:column;opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.16,1,.3,1) .15s,transform .8s cubic-bezier(.16,1,.3,1) .15s}
+    .welfare-section.is-inview .welfare-showcase{opacity:1;transform:none}
+    .welfare-slider-viewport{overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;width:100%;flex:1;min-height:0}
     .welfare-slider-viewport.is-dragging{cursor:grabbing}
-    .welfare-slider-track{display:flex;gap:18px;transition:transform .5s cubic-bezier(.16,1,.3,1);will-change:transform}
+    .welfare-slider-track{display:flex;gap:18px;height:100%;transition:transform .5s cubic-bezier(.16,1,.3,1);will-change:transform}
     .welfare-slider-viewport.is-dragging .welfare-slider-track{transition:none}
-    .welfare-slide{flex:0 0 calc((100% - 36px) / 3);width:calc((100% - 36px) / 3);min-width:0;box-sizing:border-box;opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
-    .welfare-section.is-ready .welfare-slide{opacity:1;transform:none}
-    .welfare-section.is-ready .welfare-slide:nth-child(1){transition-delay:.28s}
-    .welfare-section.is-ready .welfare-slide:nth-child(2){transition-delay:.36s}
-    .welfare-section.is-ready .welfare-slide:nth-child(3){transition-delay:.44s}
-    .welfare-section.is-ready .welfare-slide:nth-child(4){transition-delay:.5s}
-    .welfare-section.is-ready .welfare-slide:nth-child(n+5){transition-delay:.54s}
-    .welfare-slide-media{position:relative;border-radius:0;overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,#EEF1F5,#E4E9F0);cursor:pointer}
+    .welfare-slide{flex:0 0 calc((100% - 36px) / 3);width:calc((100% - 36px) / 3);min-width:0;height:100%;box-sizing:border-box;opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+    .welfare-section.is-inview .welfare-slide{opacity:1;transform:none}
+    .welfare-section.is-inview .welfare-slide:nth-child(1){transition-delay:.2s}
+    .welfare-section.is-inview .welfare-slide:nth-child(2){transition-delay:.28s}
+    .welfare-section.is-inview .welfare-slide:nth-child(3){transition-delay:.36s}
+    .welfare-section.is-inview .welfare-slide:nth-child(4){transition-delay:.42s}
+    .welfare-section.is-inview .welfare-slide:nth-child(n+5){transition-delay:.46s}
+    .welfare-slide-media{position:relative;border-radius:0;overflow:hidden;height:100%;aspect-ratio:auto;background:linear-gradient(135deg,#EEF1F5,#E4E9F0);cursor:pointer}
     .welfare-slide-media img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
     .welfare-slide-media:hover img{transform:scale(1.05)}
-    .welfare-slide-cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:16px 20px;background:rgba(255,255,255,.55);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .3s ease,visibility .3s,transform .3s cubic-bezier(.22,.61,.36,1)}
+    .welfare-slide-cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:14px 18px;background:rgba(255,255,255,.55);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .3s ease,visibility .3s,transform .3s cubic-bezier(.22,.61,.36,1)}
     .welfare-slide-media:hover .welfare-slide-cap{opacity:1;visibility:visible;transform:translateY(0)}
     .welfare-slide-cap strong{display:block;font-size:14px;color:#1A1A1A;font-weight:500;line-height:1.4}
-    .welfare-slider-nav{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:24px;opacity:0;transform:translateY(8px);transition:opacity .5s cubic-bezier(.16,1,.3,1) .45s,transform .5s cubic-bezier(.16,1,.3,1) .45s}
-    .welfare-section.is-ready .welfare-slider-nav{opacity:1;transform:none}
+    .welfare-slider-nav{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:14px;flex-shrink:0;opacity:0;transform:translateY(8px);transition:opacity .5s cubic-bezier(.16,1,.3,1) .4s,transform .5s cubic-bezier(.16,1,.3,1) .4s}
+    .welfare-section.is-inview .welfare-slider-nav{opacity:1;transform:none}
     .welfare-slider-btn{width:40px;height:40px;border:1px solid #D8DCE3;border-radius:50%;background:var(--white);color:#4A5058;font-size:18px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;transition:background .25s ease,border-color .25s ease,color .25s ease,transform .25s cubic-bezier(.22,.61,.36,1)}
     .welfare-slider-btn:hover:not(:disabled){border-color:#AEB4BD;color:#1A1A1A;background:#FAFBFC;transform:scale(1.06)}
     .welfare-slider-btn:disabled{opacity:.35;cursor:not-allowed}
-    @media(max-width:991px){.welfare-band-inner{grid-template-columns:1fr;gap:24px}.welfare-copy{order:-1;max-width:none}.welfare-slide{flex:0 0 calc((100% - 18px) / 2);width:calc((100% - 18px) / 2)}}
-    @media(max-width:768px){.welfare-section{margin-bottom:40px;padding-bottom:36px}.welfare-band{padding:36px 0 0}.welfare-band-inner,.welfare-showcase{width:min(1280px,calc(100% - 40px))}.welfare-media video{aspect-ratio:16/9}.welfare-copy h1{font-size:32px}.welfare-copy-line{margin:14px 0 16px}.welfare-copy-sub{font-size:14px;line-height:1.9}.welfare-showcase{margin-top:36px}.welfare-slide{flex:0 0 100%;width:100%}.welfare-slide-media{aspect-ratio:16/10}}
+    @media(max-width:991px){.welfare-slide{flex:0 0 calc((100% - 18px) / 2);width:calc((100% - 18px) / 2)}}
+    @media(max-width:768px){
+      .welfare-section{height:auto;min-height:0;max-height:none;padding:40px 0 36px}
+      .welfare-head{flex-wrap:wrap;align-items:flex-start;margin-bottom:22px}
+      .welfare-copy h2{font-size:26px}
+      .welfare-slider-viewport{height:200px;flex:none}
+      .welfare-slide{flex:0 0 100%;width:100%}
+    }
     .welfare-lightbox{position:fixed;inset:0;z-index:10001;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s}
     .welfare-lightbox.is-open{opacity:1;visibility:visible}
     .welfare-lightbox-backdrop{position:absolute;inset:0;background:rgba(26,26,46,.58);backdrop-filter:blur(2px)}
@@ -90,18 +105,7 @@
     .welfare-lightbox-info{padding:16px 28px 24px;text-align:center;border-top:1px solid #EEF1F5}
     .welfare-lightbox-title{font-size:17px;color:var(--primary);font-weight:600;line-height:1.5;margin:0 0 6px}
     .welfare-lightbox-desc{font-size:13px;color:var(--text-muted);margin:0}
-    .section{padding:64px 24px}.section-inner{max-width:1280px;margin:0 auto}.section-inner--wide{max-width:1280px}
-    .join-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
-    .join-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-    .join-card-img{height:200px;background:#000;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:14px;flex-direction:column;gap:8px}
-    .join-video{width:100%;height:auto;display:block;background:#000;vertical-align:top}
-    .join-card-body{padding:28px}.join-card-body h3{font-size:20px;color:var(--primary);margin-bottom:12px}.join-card-body p{font-size:14px;color:var(--text-muted)}
-    /* 模块标题（对齐首页） */
-    .section-header{text-align:center;margin-bottom:40px}
-    .intro-title-wrap{position:relative;display:inline-block}
-    .intro-watermark{position:absolute;left:50%;top:50%;transform:translate(-50%,-58%);font-size:clamp(32px,4.5vw,52px);font-weight:700;color:rgba(0,110,182,.06);letter-spacing:.12em;white-space:nowrap;pointer-events:none;user-select:none;line-height:1}
-    .section-title{position:relative;z-index:1;color:var(--primary);margin:0;font-size:30px;font-weight:700;line-height:1.2}
-    .section-header .section-desc{max-width:920px;font-size:15px;line-height:2;color:var(--text-muted);margin:22px auto 0}
+    .section-inner{max-width:1280px;margin:0 auto;width:100%;padding:0 24px;box-sizing:border-box}
     /* 招贤纳士横条入口 */
     .careers-bar{background:var(--white);border-top:1px solid rgba(0,110,182,.08);box-shadow:0 -4px 24px rgba(0,110,182,.06);padding:36px 24px}
     .careers-bar-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
@@ -110,28 +114,28 @@
     .careers-bar-text h3{font-size:22px;font-weight:700;color:var(--primary);margin:0 0 8px;line-height:1.3}
     .careers-bar-text p{font-size:14px;color:var(--text-muted);margin:0;line-height:1.75;max-width:640px}
     .careers-bar-btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 36px;background:var(--primary);color:var(--white);border-radius:var(--radius);font-weight:600;font-size:15px;white-space:nowrap;flex-shrink:0;transition:background .25s ease,transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease}
-    .careers-bar-btn:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 22px rgba(255,181,17,.36)}
+    .careers-bar-btn:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,110,182,.28)}
     @media(max-width:768px){.careers-bar{padding:28px 20px}.careers-bar-inner{flex-direction:column;text-align:center;gap:20px}.careers-bar-text p{max-width:none}.careers-bar-btn{width:100%;max-width:300px}}
-    .footer{background:#555960}
+    .footer{background:#E8F2F8}
     .footer-main{padding:40px 24px}
     .footer-inner{max-width:1280px;margin:0 auto}
     .footer-links{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 24px}
     .footer-col{min-width:0}
-    .footer-col h4{color:var(--white);font-size:15px;font-weight:700;margin:0 0 18px;letter-spacing:.04em}
+    .footer-col h4{color:var(--primary);font-size:15px;font-weight:700;margin:0 0 18px;letter-spacing:.04em}
     .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
-    .footer-col ul a{font-size:13px;line-height:1.5;color:rgba(255,255,255,.72);transition:color .2s;display:block}
-    .footer-col ul a:hover{color:var(--white)}
-    .footer-contact{margin-top:30px}
+    .footer-col ul a{font-size:13px;line-height:1.5;color:var(--text-muted);transition:color .2s;display:block}
+    .footer-col ul a:hover{color:var(--primary)}
+    .footer-contact{margin-top:30px;border-top:1px solid rgba(0,110,182,.12);padding-top:8px}
     .footer-contact-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap}
-    .footer-phone{font-size:clamp(22px,2.4vw,30px);font-weight:500;color:var(--white);letter-spacing:.04em;line-height:1.2}
-    .footer-phone:hover{color:var(--accent-light)}
-    .footer-fax{font-size:15px;color:rgba(255,255,255,.78);letter-spacing:.02em}
-    .footer-address{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;color:rgba(255,255,255,.88);font-size:14px;line-height:1.55;transition:color .2s}
-    .footer-address:hover{color:var(--white)}
+    .footer-phone{font-size:clamp(22px,2.4vw,30px);font-weight:500;color:var(--primary);letter-spacing:.04em;line-height:1.2}
+    .footer-phone:hover{color:var(--primary-light)}
+    .footer-fax{font-size:15px;color:var(--text-muted);letter-spacing:.02em}
+    .footer-address{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;color:var(--text);font-size:14px;line-height:1.55;transition:color .2s;border-top:1px solid rgba(0,110,182,.12)}
+    .footer-address:hover{color:var(--primary)}
     .footer-address-text{min-width:0}
-    .footer-address-label{display:block;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:4px}
-    .footer-address-meta{display:block;margin-top:6px;font-size:13px;color:rgba(255,255,255,.62)}
-    .footer-address-arrow{flex-shrink:0;width:18px;height:18px;color:rgba(255,255,255,.7)}
+    .footer-address-label{display:block;font-size:12px;color:var(--text-muted);margin-bottom:4px}
+    .footer-address-meta{display:block;margin-top:6px;font-size:13px;color:var(--text-muted)}
+    .footer-address-arrow{flex-shrink:0;width:18px;height:18px;color:var(--primary);opacity:.7}
     .footer-bar{background:var(--primary)}
     .footer-bar-inner{max-width:1280px;margin:0 auto;padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap}
     .footer-bar-brand{display:flex;align-items:center;gap:12px;color:var(--white);min-width:0}
@@ -142,11 +146,14 @@
     .footer-bar-copy{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5;text-align:right}
     .prototype-badge{position:fixed;bottom:16px;right:16px;background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;z-index:9999}
     @media(max-width:1100px){.footer-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}}
-    @media(max-width:768px){.nav{display:none}.footer-main{padding:40px 20px 0}.footer-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.footer-contact{margin-top:32px}.footer-contact-row{padding:18px 0;gap:10px}.footer-phone{font-size:22px}.footer-fax{font-size:13px}.footer-address{padding:16px 0;font-size:13px}.footer-bar-inner{padding:14px 20px}.footer-bar-copy{text-align:left;font-size:11px}.join-grid{grid-template-columns:1fr}}
+    @media(max-width:768px){.nav{display:none}.footer-main{padding:40px 20px 0}.footer-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.footer-contact{margin-top:32px}.footer-contact-row{padding:18px 0;gap:10px}.footer-phone{font-size:22px}.footer-fax{font-size:13px}.footer-address{padding:16px 0;font-size:13px}.footer-bar-inner{padding:14px 20px}.footer-bar-copy{text-align:left;font-size:11px}}
 
-        /* 教育培训 / 员工活动（同步企业动态新闻卡片） */
-    .news-module{margin-top:56px}
-    .news-module-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    /* 教育培训 / 员工活动 — 整模块 680，背景色区分 */
+    .news-module{height:var(--module-h);min-height:var(--module-h);max-height:var(--module-h);margin:0;padding:48px 0;box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden}
+    .news-module#training{background:#EEF4F9}
+    .news-module#activities{background:var(--white)}
+    .news-module > .section-inner{flex:1;min-height:0;display:flex;flex-direction:column;max-width:1280px}
+    .news-module-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-shrink:0;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
     .news-module.is-inview .news-module-head{opacity:1;transform:none}
     .news-module-copy{min-width:0;flex:1}
     .news-module-title{display:inline-block;position:relative;font-size:clamp(30px,3.2vw,42px);font-weight:500;color:#2A2A2A;margin:0 0 12px;line-height:1.3;letter-spacing:.02em;padding-bottom:12px}
@@ -156,51 +163,46 @@
     .news-module-more{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;margin-bottom:4px;color:var(--text-muted);font-size:20px;font-weight:300;line-height:1;transition:gap .25s cubic-bezier(.22,.61,.36,1),opacity .2s,color .2s}
     .news-module-more:hover{gap:9px;opacity:.85;color:var(--primary)}
     .news-module-more svg{width:14px;height:14px;display:block}
-    .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-    .card-grid .article-item{display:flex;flex-direction:column;position:relative;padding:0;border-bottom:1px solid #DDE3EA;gap:0;background:var(--white);border-radius:0;overflow:hidden;box-shadow:none;cursor:pointer;min-height:0;opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),box-shadow .3s ease,border-color .25s}
+    .card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:1fr;gap:24px;flex:1;min-height:0;align-content:stretch}
+    .card-grid .article-item{display:flex;flex-direction:column;position:relative;padding:0;border-bottom:1px solid #DDE3EA;gap:0;background:var(--white);border-radius:0;overflow:hidden;box-shadow:none;cursor:pointer;min-height:0;height:100%;opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),box-shadow .3s ease,border-color .25s}
+    .news-module#activities .card-grid .article-item{background:#F5F7FA}
     .news-module.is-inview .card-grid .article-item{opacity:1;transform:none}
     .news-module.is-inview .card-grid .article-item:nth-child(1){transition-delay:.12s}
     .news-module.is-inview .card-grid .article-item:nth-child(2){transition-delay:.2s}
     .news-module.is-inview .card-grid .article-item:nth-child(3){transition-delay:.28s}
     .news-module.is-inview .card-grid .article-item:nth-child(n+4){transition-delay:.34s}
     .card-grid .article-item:hover,.news-module.is-inview .card-grid .article-item:hover{box-shadow:0 10px 26px rgba(15,55,100,.12);transform:translateY(-4px);border-color:#D9E2EC}
-    .card-grid .article-thumb{width:100%;height:auto;aspect-ratio:16/10;border-radius:0;overflow:hidden;background:linear-gradient(135deg,var(--bg),#E8EDF3);flex-shrink:0}
+    .card-grid .article-thumb{width:100%;flex:1 1 auto;min-height:0;aspect-ratio:auto;border-radius:0;overflow:hidden;background:linear-gradient(135deg,var(--bg),#E8EDF3)}
     .card-grid .article-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
     .card-grid .article-item:hover .article-thumb img{transform:scale(1.04)}
-    .news-card-body{display:flex;flex-direction:column;flex:1;padding:16px 18px 18px;background:var(--white);min-height:118px}
-    .card-grid .article-title{font-size:18px;color:var(--text);font-weight:400;line-height:1.55;margin:0;transition:color .2s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+    .news-card-body{display:flex;flex-direction:column;flex:0 0 auto;padding:16px 18px 18px;background:inherit;min-height:0}
+    .card-grid .article-title{font-size:18px;color:var(--text);font-weight:400;line-height:1.55;margin:0;transition:color .2s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .card-grid .article-item:hover .article-title{color:var(--primary)}
     .news-date-row{display:flex;align-items:center;justify-content:flex-start;gap:6px;margin:14px 0 0}
     .news-date-row svg{width:16px;height:16px;flex-shrink:0;color:#B0B7C1}
     .card-grid .article-date{display:inline;font-size:16px;font-weight:400;color:#B0B7C1;letter-spacing:.02em;margin:0}
     .card-grid .article-excerpt{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     .article-thumb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted);text-align:center;padding:12px}
-    .article-modal{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s}
-    .article-modal.is-open{opacity:1;visibility:visible}
-    .article-modal-backdrop{position:absolute;inset:0;background:rgba(26,26,46,.55);backdrop-filter:blur(2px)}
-    .article-modal-panel{position:relative;width:min(720px,100%);max-height:min(86vh,820px);background:var(--white);border-radius:16px;box-shadow:0 24px 64px rgba(0,110,182,.18);overflow:hidden;display:flex;flex-direction:column;transform:translateY(16px);transition:transform .25s ease}
-    .article-modal.is-open .article-modal-panel{transform:translateY(0)}
-    .article-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 24px 0;flex-shrink:0}
-    .article-modal-date{display:inline-block;font-size:13px;color:var(--accent);font-weight:600;margin-bottom:8px}
-    .article-modal-title{font-size:22px;color:var(--primary);font-weight:600;line-height:1.45;padding-right:8px}
-    .article-modal-close{width:36px;height:36px;border:none;border-radius:50%;background:var(--bg);color:var(--text-muted);font-size:22px;line-height:1;cursor:pointer;flex-shrink:0;transition:background .2s,color .2s}
-    .article-modal-close:hover{background:rgba(0,110,182,.1);color:var(--primary)}
-    .article-modal-body{padding:20px 24px 28px;overflow-y:auto}
-    .article-modal-thumb{width:100%;max-height:320px;border-radius:10px;overflow:hidden;margin-bottom:20px;background:linear-gradient(135deg,var(--bg),#E8EDF3)}
-    .article-modal-thumb img{width:100%;height:100%;max-height:320px;object-fit:cover;display:block}
-    .article-modal-content{font-size:15px;color:var(--text-muted);line-height:1.85}
-    .article-modal-content p{margin-bottom:12px}
-    .article-modal-content p:last-child{margin-bottom:0}
-    @media(max-width:1024px){.card-grid{grid-template-columns:repeat(2,1fr);gap:24px 20px}}
-    @media(max-width:768px){.news-module-head{flex-wrap:wrap;align-items:flex-start}.card-grid{grid-template-columns:1fr;gap:24px}.card-grid .article-thumb{width:100%;height:180px;aspect-ratio:auto}.card-grid .article-title{font-size:16px}.article-modal-head{padding:20px 20px 0}.article-modal-body{padding:16px 20px 24px}.article-modal-title{font-size:19px}}
+    @media(max-width:1024px){.card-grid{grid-template-columns:repeat(2,1fr);gap:24px 20px}.card-grid .article-item:nth-child(3){display:none}}
+    @media(max-width:768px){
+      .news-module{height:auto;min-height:0;max-height:none;padding:48px 0}
+      .news-module-head{flex-wrap:wrap;align-items:flex-start;margin-bottom:24px}
+      .card-grid{grid-template-columns:1fr;gap:24px;flex:none}
+      .card-grid .article-item{height:auto}
+      .card-grid .article-item:nth-child(3){display:flex}
+      .card-grid .article-thumb{flex:none;height:180px}
+      .card-grid .article-title{font-size:16px}
+    }
     @media (prefers-reduced-motion:reduce){
-      .welfare-section::before,.welfare-media,.welfare-media video,.welfare-copy h1,.welfare-copy-line,.welfare-copy-sub,
-      .welfare-showcase,.welfare-slide,.welfare-slider-nav,.news-module-head,.news-module-title::after,
-      .card-grid .article-item,.careers-bar-inner{
+      .join-hero-video{opacity:.72!important;transform:none!important;filter:none!important;transition:none!important}
+      .join-hero-content,.join-hero-content > *,.join-hero.is-compact .join-hero-content{
+        opacity:1!important;transform:none!important;filter:none!important;transition:none!important;pointer-events:auto!important
+      }
+      .welfare-head,.welfare-showcase,.welfare-slide,.welfare-slider-nav,.welfare-copy h2::after,
+      .news-module-head,.news-module-title::after,.card-grid .article-item,.careers-bar-inner{
         opacity:1!important;transform:none!important;transition:none!important;animation:none!important
       }
-      .welfare-section.is-ready .welfare-media video{transform:none!important}
-      .welfare-copy-line,.welfare-section.is-ready .welfare-copy-line{transform:none!important}
+      .welfare-copy h2::after,.welfare-section.is-inview .welfare-copy h2::after,
       .news-module-title::after,.news-module.is-inview .news-module-title::after{transform:none!important}
     }
   </style>
@@ -228,7 +230,7 @@
           <a href="innovation.html">创新中心</a>
           <ul class="nav-dropdown">
             <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
             <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
             <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
           </ul>
@@ -276,20 +278,26 @@
     </div>
   </header>
 
-  <section class="section"><div class="section-inner section-inner--wide">
+  <!-- 顶部视频（首页同款滚动缩放） -->
+  <div class="join-hero-pin">
+    <section class="join-hero" aria-label="加入我们主视觉">
+      <video class="join-hero-video" src="https://media.5gsy.com/zp.mp4" autoplay muted loop playsinline preload="auto" aria-label="公司环境视频"></video>
+      <div class="join-hero-overlay">
+        <div class="join-hero-content">
+          <h1>与星光同行</h1>
+          <p>在这里，每份努力都被看见，每一位伙伴都能发光</p>
+        </div>
+      </div>
+    </section>
+  </div>
 
-    <!-- 人文关怀 -->
-    <div class="welfare-section" id="welfare">
-      <div class="welfare-band">
-        <div class="welfare-band-inner">
-          <div class="welfare-media">
-            <video src="img/media/vcr.mp4" poster="img/media/vcr.png" autoplay muted loop playsinline preload="metadata" aria-label="公司环境视频"></video>
-          </div>
-          <div class="welfare-copy">
-            <h1>人文关怀</h1>
-            <span class="welfare-copy-line" aria-hidden="true"></span>
-            <p class="welfare-copy-sub"><span>关注员工成长，营造温馨环境</span><span>让关怀融入每一处细节</span></p>
-          </div>
+  <!-- 人文关怀：文案 + 照片 -->
+  <section class="welfare-section" id="welfare" aria-label="人文关怀">
+    <div class="section-inner">
+      <div class="welfare-head">
+        <div class="welfare-copy">
+          <h2>人文关怀</h2>
+          <p class="welfare-copy-sub">关注员工成长，营造温馨环境，让关怀融入每一处细节。</p>
         </div>
       </div>
       <div class="welfare-showcase">
@@ -375,8 +383,10 @@
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="news-module" id="training">
+  <section class="news-module" id="training" aria-label="教育培训">
+    <div class="section-inner">
       <div class="news-module-head">
         <div class="news-module-copy">
           <h2 class="news-module-title">教育培训</h2>
@@ -385,7 +395,7 @@
         <a class="news-module-more" href="news.html?cat=training">更多 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9m-3.5-3.5L12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
       <div class="card-grid article-feed" id="training-grid">
-        <article class="article-item">
+        <a class="article-item" href="news-detail.html?id=training-01">
           <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2025-09-30/68db3a7f0f79a.jpg" alt="2025年第二回次世代员工培训" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
           <div class="news-card-body">
             <h4 class="article-title">2025年第二回次世代员工培训</h4>
@@ -395,8 +405,8 @@
             </div>
           </div>
           <p class="article-excerpt">2025年9月26日至27日，2025年第二回次世代员工培训活动，在秋日的淀山湖畔如期举行，此次活动由各事业部推选的次世代育成对象，共27名员工参加。</p>
-        </article>
-        <article class="article-item">
+        </a>
+        <a class="article-item" href="news-detail.html?id=training-02">
           <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2025-06-20/6854a8e68aa7b.png" alt="2025年次世代员工培训" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
           <div class="news-card-body">
             <h4 class="article-title">2025年次世代员工培训</h4>
@@ -406,8 +416,8 @@
             </div>
           </div>
           <p class="article-excerpt">2025年6月7日（星期六）公司根据年度计划，举办了2025年次世代员工培训会，共21名员工参加。副总经理要求各位能确实掌握技能，并在工作中进行运用。</p>
-        </article>
-        <article class="article-item">
+        </a>
+        <a class="article-item" href="news-detail.html?id=training-03">
           <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2025-11-13/6915858cc5bc0.JPG" alt="筑牢安全防线 赋能高质量发展" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
           <div class="news-card-body">
             <h4 class="article-title">筑牢安全防线 赋能高质量发展</h4>
@@ -417,11 +427,13 @@
             </div>
           </div>
           <p class="article-excerpt">为深刻落实星光2025年安全方针，集团于2025年10月31日在中国星光举办第一回全社KY活动发表大会，中日星光共六组队伍参加，同步线上直播。</p>
-        </article>
+        </a>
       </div>
     </div>
+  </section>
 
-    <div class="news-module" id="activities">
+  <section class="news-module" id="activities" aria-label="员工活动">
+    <div class="section-inner">
       <div class="news-module-head">
         <div class="news-module-copy">
           <h2 class="news-module-title">员工活动</h2>
@@ -430,7 +442,7 @@
         <a class="news-module-more" href="news.html?cat=activities">更多 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9m-3.5-3.5L12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
       <div class="card-grid article-feed" id="activities-grid">
-        <article class="article-item">
+        <a class="article-item" href="news-detail.html?id=activities-01">
           <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2026-02-04/6982be12d7234.JPG" alt="2025年员工忘年会圆满举行" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
           <div class="news-card-body">
             <h4 class="article-title">2025年员工忘年会圆满举行</h4>
@@ -440,8 +452,8 @@
             </div>
           </div>
           <p class="article-excerpt">2026年1月24日，星光树脂2025年员工忘年会在热情洋溢、团结向上的氛围中拉开帷幕，总经理致谢全体员工一年来的努力，共贺新春。</p>
-        </article>
-        <article class="article-item">
+        </a>
+        <a class="article-item" href="news-detail.html?id=activities-02">
           <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2025-09-19/68cca4ecdb201.jpg" alt="2025年第六届纳凉节活动" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
           <div class="news-card-body">
             <h4 class="article-title">2025年第六届纳凉节活动</h4>
@@ -451,8 +463,8 @@
             </div>
           </div>
           <p class="article-excerpt">8月29日晚，星光树脂制品（昆山）有限公司灯火璀璨，一场洋溢着欢乐与温情的纳凉节盛大开启，员工们齐聚一堂，共享夏日狂欢。</p>
-        </article>
-        <article class="article-item">
+        </a>
+        <a class="article-item" href="news-detail.html?id=activities-03">
           <div class="article-thumb"><img src="https://www.starlite.cn/Upload/Images/2026-03-05/69a8d7b5050ff.jpg" alt="2026年星光树脂新年祝贺式" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'article-thumb-placeholder\'>配图占位</div>'"></div>
           <div class="news-card-body">
             <h4 class="article-title">2026年星光树脂新年祝贺式</h4>
@@ -462,46 +474,28 @@
             </div>
           </div>
           <p class="article-excerpt">随着开工仪式的鞭炮声划破长空，2026年星光树脂新年祝贺式拉开大幕。全体员工齐声朗诵《星光之心》，为新一年奋斗征程启航。</p>
-        </article>
+        </a>
       </div>
     </div>
-
-  </div></section>
+  </section>
 
   <section class="careers-bar" id="careers" aria-label="招贤纳士">
     <div class="careers-bar-inner">
       <div class="careers-bar-text">
         <h3>招贤纳士</h3>
-        <p>星光树脂诚邀优秀人才加入，我们提供具有竞争力的薪酬福利和广阔的发展空间。</p>
+        <p>星光树脂诚邀优秀人才加入，我们提供具有竞争力的薪酬福利和广阔的发展空间，与你共同成长。</p>
       </div>
       <a href="https://www.51job.com" target="_blank" rel="noopener" class="careers-bar-btn">查看招聘职位</a>
     </div>
   </section>
 
-  <div class="article-modal" id="articleModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="articleModalTitle">
-    <div class="article-modal-backdrop" data-close></div>
-    <div class="article-modal-panel">
-      <div class="article-modal-head">
-        <div>
-          <span class="article-modal-date" id="articleModalDate"></span>
-          <h3 class="article-modal-title" id="articleModalTitle"></h3>
-        </div>
-        <button type="button" class="article-modal-close" data-close aria-label="关闭">&times;</button>
-      </div>
-      <div class="article-modal-body">
-        <div class="article-modal-thumb" id="articleModalThumb" hidden></div>
-        <div class="article-modal-content" id="articleModalContent"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="welfare-lightbox" id="welfareLightbox" aria-hidden="true">
+  <div class="welfare-lightbox" id="welfareLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="welfareLightboxTitle">
     <div class="welfare-lightbox-backdrop" data-welfare-close></div>
-    <div class="welfare-lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="welfareLightboxTitle">
-      <button class="welfare-lightbox-close" type="button" data-welfare-close aria-label="关闭">&times;</button>
+    <div class="welfare-lightbox-panel">
+      <button type="button" class="welfare-lightbox-close" data-welfare-close aria-label="关闭">×</button>
       <div class="welfare-lightbox-img-wrap"><img src="" alt=""></div>
       <div class="welfare-lightbox-info">
-        <h4 class="welfare-lightbox-title" id="welfareLightboxTitle"></h4>
+        <h3 class="welfare-lightbox-title" id="welfareLightboxTitle"></h3>
         <p class="welfare-lightbox-desc" id="welfareLightboxDesc"></p>
       </div>
     </div>
@@ -524,7 +518,7 @@
             <h4>创新中心</h4>
             <ul>
               <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-              <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+              <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
               <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
               <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
             </ul>
@@ -581,7 +575,7 @@
             </span>
             <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </a>
-          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener" style="border-top: 1px solid rgba(255,255,255,0.28);">
+          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener" >
             <span class="footer-address-text">
               <span class="footer-address-label">星光工业株式会社</span>
               日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002
@@ -616,64 +610,6 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
     btn.textContent = lang === 'zh' ? 'EN' : '中文';
   });
 });
-
-// 卡片列表分页（参照关于我们页面）
-(function () {
-  var modal = document.getElementById('articleModal');
-  if (!modal) return;
-  var modalDate = document.getElementById('articleModalDate');
-  var modalTitle = document.getElementById('articleModalTitle');
-  var modalThumb = document.getElementById('articleModalThumb');
-  var modalContent = document.getElementById('articleModalContent');
-
-  function openArticleDetail(item) {
-    var dateEl = item.querySelector('.article-date');
-    var titleEl = item.querySelector('.article-title');
-    var excerptEl = item.querySelector('.article-excerpt');
-    var imgEl = item.querySelector('.article-thumb img');
-    var detailTpl = item.querySelector('template.article-detail');
-
-    modalDate.textContent = dateEl ? dateEl.textContent.trim() : '';
-    modalTitle.textContent = titleEl ? titleEl.textContent.trim() : '';
-    modalContent.innerHTML = detailTpl ? detailTpl.innerHTML : (excerptEl ? '<p>' + excerptEl.textContent.trim() + '</p>' : '');
-
-    if (imgEl && imgEl.getAttribute('src') && imgEl.style.display !== 'none') {
-      modalThumb.hidden = false;
-      modalThumb.innerHTML = '<img src="' + imgEl.getAttribute('src') + '" alt="' + (imgEl.getAttribute('alt') || '') + '">';
-    } else {
-      modalThumb.hidden = true;
-      modalThumb.innerHTML = '';
-    }
-
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeArticleDetail() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  document.querySelectorAll('.article-feed').forEach(function (feed) {
-    feed.addEventListener('click', function (e) {
-      var item = e.target.closest('.article-item');
-      if (!item) return;
-      var isCardGrid = feed.classList.contains('card-grid');
-      var trigger = e.target.closest('.article-title, .article-thumb, .news-card-body, .social-card-body');
-      if (isCardGrid || trigger) openArticleDetail(item);
-    });
-  });
-
-  modal.querySelectorAll('[data-close]').forEach(function (el) {
-    el.addEventListener('click', closeArticleDetail);
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeArticleDetail();
-  });
-})();
 
 (function () {
   var gap = 18;
@@ -730,6 +666,10 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
 
   var index = 0;
   var dragState = null;
+  var autoplayTimer = null;
+  var hoverPaused = false;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var AUTOPLAY_MS = 1500;
 
   function getMaxIndex() {
     return Math.max(0, slides.length - getVisibleCount());
@@ -744,18 +684,50 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
     var maxIdx = getMaxIndex();
     if (index > maxIdx) index = maxIdx;
     track.style.transform = 'translateX(-' + (index * getStep()) + 'px)';
-    if (prevBtn) prevBtn.disabled = index === 0;
-    if (nextBtn) nextBtn.disabled = index >= maxIdx;
+    if (prevBtn) prevBtn.disabled = false;
+    if (nextBtn) nextBtn.disabled = false;
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', function () {
-    if (index > 0) { index--; update(); }
-  });
-  if (nextBtn) nextBtn.addEventListener('click', function () {
-    if (index < getMaxIndex()) { index++; update(); }
-  });
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    if (reducedMotion || hoverPaused || document.hidden || getMaxIndex() < 1) return;
+    autoplayTimer = setInterval(function () {
+      if (hoverPaused || dragState || document.hidden) return;
+      var maxIdx = getMaxIndex();
+      if (maxIdx < 1) return;
+      index = index >= maxIdx ? 0 : index + 1;
+      update();
+    }, AUTOPLAY_MS);
+  }
+
+  function goPrev() {
+    var maxIdx = getMaxIndex();
+    if (maxIdx < 1) return;
+    index = index <= 0 ? maxIdx : index - 1;
+    update();
+    startAutoplay();
+  }
+
+  function goNext() {
+    var maxIdx = getMaxIndex();
+    if (maxIdx < 1) return;
+    index = index >= maxIdx ? 0 : index + 1;
+    update();
+    startAutoplay();
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', goPrev);
+  if (nextBtn) nextBtn.addEventListener('click', goNext);
 
   function onPointerDown(clientX, target) {
+    stopAutoplay();
     dragState = {
       startX: clientX,
       startIndex: index,
@@ -784,11 +756,13 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
     if (!dragState.moved && dragState.slide && Math.abs(delta) < 8) {
       openWelfareLightbox(dragState.slide);
     } else if (Math.abs(delta) > step * 0.18) {
-      if (delta < 0 && index < getMaxIndex()) index++;
-      else if (delta > 0 && index > 0) index--;
+      var maxIdx = getMaxIndex();
+      if (delta < 0) index = index >= maxIdx ? 0 : index + 1;
+      else if (delta > 0) index = index <= 0 ? maxIdx : index - 1;
     }
     dragState = null;
     update();
+    startAutoplay();
   }
 
   viewport.addEventListener('mousedown', function (e) {
@@ -814,40 +788,165 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
     onPointerUp(touch ? touch.clientX : dragState.startX);
   });
 
-  window.addEventListener('resize', update);
+  showcase.addEventListener('mouseenter', function () {
+    hoverPaused = true;
+    stopAutoplay();
+  });
+  showcase.addEventListener('mouseleave', function () {
+    hoverPaused = false;
+    startAutoplay();
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stopAutoplay();
+    else startAutoplay();
+  });
+
+  window.addEventListener('resize', function () {
+    update();
+    startAutoplay();
+  });
   update();
+  startAutoplay();
 })();
 
 (function(){
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hero = document.querySelector('.join-hero');
   var welfare = document.querySelector('.welfare-section');
   var modules = document.querySelectorAll('.news-module');
   var careers = document.querySelector('.careers-bar');
 
   function mark(el){ if(el) el.classList.add('is-inview'); }
-  function markReady(el){ if(el) el.classList.add('is-ready'); }
 
-  if(reducedMotion || !('IntersectionObserver' in window)){
-    markReady(welfare);
-    modules.forEach(mark);
-    mark(careers);
-    return;
+  if (hero) {
+    requestAnimationFrame(function(){ hero.classList.add('is-ready'); });
+
+    (function setupJoinHeroScrollShrink() {
+      var pin = hero.closest('.join-hero-pin') || hero.parentElement;
+      var video = hero.querySelector('.join-hero-video');
+      if (!pin || !video) return;
+      var headerH = 72;
+      var extraRange = 220;
+      var holdRange = 280;
+      var ticking = false;
+
+      function getFullH() {
+        var vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        return Math.max(420, Math.round(vh - headerH));
+      }
+
+      function getNaturalH() {
+        var w = pin.clientWidth || window.innerWidth;
+        var vw = video.videoWidth || 16;
+        var vh = video.videoHeight || 9;
+        if (!vw || !vh) return getFullH();
+        return Math.round(w * vh / vw);
+      }
+
+      function clearPinnedStyles() {
+        hero.style.top = '';
+        hero.style.left = '';
+        hero.style.right = '';
+        hero.style.width = '';
+      }
+
+      function applyPinned(h) {
+        hero.classList.add('is-pinned');
+        hero.classList.remove('is-released');
+        hero.style.top = headerH + 'px';
+        hero.style.left = '0';
+        hero.style.right = '0';
+        hero.style.width = '100%';
+        hero.style.setProperty('--join-hero-h', h + 'px');
+      }
+
+      function updateHeroPin() {
+        var full = getFullH();
+        var natural = Math.min(getNaturalH(), full);
+        var range = Math.max(extraRange, full - natural + extraRange);
+        var totalRange = range + holdRange;
+        var scrollY = window.scrollY || window.pageYOffset || 0;
+
+        if (reducedMotion) {
+          pin.style.setProperty('--join-hero-pin-h', full + 'px');
+          hero.style.setProperty('--join-hero-h', full + 'px');
+          hero.classList.remove('is-pinned', 'is-released', 'is-compact');
+          clearPinnedStyles();
+          return;
+        }
+
+        if (scrollY <= 0) {
+          hero.classList.remove('is-pinned', 'is-released', 'is-compact');
+          clearPinnedStyles();
+          hero.style.setProperty('--join-hero-h', full + 'px');
+          pin.style.setProperty('--join-hero-pin-h', full + 'px');
+          return;
+        }
+
+        if (scrollY < range) {
+          var p = Math.min(1, scrollY / range);
+          var eased = p * p * (3 - 2 * p);
+          var h = Math.round(full + (natural - full) * eased);
+          applyPinned(h);
+          hero.classList.toggle('is-compact', eased >= 0.995);
+          pin.style.setProperty('--join-hero-pin-h', (scrollY + h) + 'px');
+          return;
+        }
+
+        if (scrollY < totalRange) {
+          applyPinned(natural);
+          hero.classList.add('is-compact');
+          pin.style.setProperty('--join-hero-pin-h', (scrollY + natural) + 'px');
+          return;
+        }
+
+        hero.classList.remove('is-pinned');
+        hero.classList.add('is-released', 'is-compact');
+        hero.style.top = totalRange + 'px';
+        hero.style.left = '0';
+        hero.style.right = '0';
+        hero.style.width = '100%';
+        hero.style.setProperty('--join-hero-h', natural + 'px');
+        pin.style.setProperty('--join-hero-pin-h', (totalRange + natural) + 'px');
+      }
+
+      function onScrollOrResize() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function(){
+          ticking = false;
+          updateHeroPin();
+        });
+      }
+
+      updateHeroPin();
+      window.addEventListener('scroll', onScrollOrResize, { passive: true });
+      window.addEventListener('resize', onScrollOrResize);
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', onScrollOrResize);
+      }
+      video.addEventListener('loadedmetadata', updateHeroPin);
+      if (video.readyState >= 1) updateHeroPin();
+    })();
   }
 
-  requestAnimationFrame(function(){
-    setTimeout(function(){ markReady(welfare); }, 60);
-  });
+  if(reducedMotion || !('IntersectionObserver' in window)){
+    mark(welfare);
+    modules.forEach(mark);
+    mark(careers);
+  } else {
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        mark(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, {threshold: 0.14, rootMargin: '0px 0px -8% 0px'});
 
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(!entry.isIntersecting) return;
-      mark(entry.target);
-      observer.unobserve(entry.target);
-    });
-  }, {threshold: 0.14, rootMargin: '0px 0px -8% 0px'});
-
-  modules.forEach(function(module){ observer.observe(module); });
-  if(careers) observer.observe(careers);
+    if(welfare) observer.observe(welfare);
+    modules.forEach(function(module){ observer.observe(module); });
+    if(careers) observer.observe(careers);
+  }
 })();
 
 </script>

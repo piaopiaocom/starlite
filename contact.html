@@ -18,6 +18,7 @@
       --shadow: 0 4px 24px rgba(0,110,182,0.08);
       --shadow-lg: 0 12px 40px rgba(0,110,182,0.12);
       --radius: 12px;
+      --module-h: 680px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -300,7 +301,7 @@
     .office-field-value a:hover { color: var(--primary-light); }
 
     /* Footer */
-    .footer { background: #555960; color: rgba(255,255,255,0.78); }
+    .footer { background: #E8F2F8; color: var(--text-muted); }
     .footer-main { padding: 40px 24px; }
     .footer-inner { max-width: 1280px; margin: 0 auto; }
     .footer-links {
@@ -310,7 +311,7 @@
     }
     .footer-col { min-width: 0; }
     .footer-col h4 {
-      color: var(--white);
+      color: var(--primary);
       font-size: 15px;
       font-weight: 700;
       margin: 0 0 18px;
@@ -320,11 +321,11 @@
     .footer-col ul a {
       font-size: 13px;
       line-height: 1.5;
-      color: rgba(255,255,255,0.72);
+      color: var(--text-muted);
       transition: color 0.2s;
       display: block;
     }
-    .footer-col ul a:hover { color: var(--white); }
+    .footer-col ul a:hover { color: var(--primary); }
     .footer-contact { margin-top: 30px; }
     .footer-contact-row {
       display: flex;
@@ -336,14 +337,14 @@
     .footer-phone {
       font-size: clamp(22px, 2.4vw, 30px);
       font-weight: 500;
-      color: var(--white);
+      color: var(--primary);
       letter-spacing: 0.04em;
       line-height: 1.2;
     }
-    .footer-phone:hover { color: var(--accent-light); }
+    .footer-phone:hover { color: var(--primary-light); }
     .footer-fax {
       font-size: 15px;
-      color: rgba(255,255,255,0.78);
+      color: var(--text-muted);
       letter-spacing: 0.02em;
     }
     .footer-address {
@@ -352,30 +353,32 @@
       justify-content: space-between;
       gap: 20px;
       padding: 18px 0;
-      color: rgba(255,255,255,0.88);
+      color: var(--text);
       font-size: 14px;
       line-height: 1.55;
       transition: color 0.2s;
+      border-top: 1px solid rgba(0, 110, 182, 0.12);
     }
-    .footer-address:hover { color: var(--white); }
+    .footer-address:hover { color: var(--primary); }
     .footer-address-text { min-width: 0; }
     .footer-address-label {
       display: block;
       font-size: 12px;
-      color: rgba(255,255,255,0.45);
+      color: var(--text-muted);
       margin-bottom: 4px;
     }
     .footer-address-meta {
       display: block;
       margin-top: 6px;
       font-size: 13px;
-      color: rgba(255,255,255,0.62);
+      color: var(--text-muted);
     }
     .footer-address-arrow {
       flex-shrink: 0;
       width: 18px;
       height: 18px;
-      color: rgba(255,255,255,0.7);
+      color: var(--primary);
+      opacity: 0.7;
     }
     .footer-bar { background: var(--primary); }
     .footer-bar-inner {
@@ -826,7 +829,7 @@
     .form-section .section-header::before { background: var(--accent); }
     .form-section .section-watermark { color: var(--accent-light); }
     .form-section .section-title { color: var(--white); font-size: 40px; }
-    .form-section .section-desc { color: rgba(255,255,255,0.62); }
+    .form-section .section-desc { color: var(--text-muted); }
     .form-wrap { width: 100%; }
     .form-section .panel-box {
       border: 0;
@@ -863,7 +866,7 @@
     /* 页脚：与首页保持一致，取消本页覆盖 */
     .footer {
       padding-top: 0;
-      background: #555960;
+      background: #E8F2F8;
     }
     .footer-col h4 { border-bottom: 0; }
 
@@ -944,9 +947,9 @@
     body { background: #fff; }
     main { display: flex; flex-direction: column; }
     .page-hero { order: 0; }
-    .form-section { order: 1; }
-    .contact-section { order: 2; }
-    .map-section { order: 3; }
+    .contact-section { order: 1; }
+    .map-section { order: 2; }
+    .form-section { order: 3; }
 
     .header {
       background: var(--primary);
@@ -1031,7 +1034,7 @@
       gap: 0;
       width: 100%;
       max-width: none;
-      min-height: 620px;
+      min-height: var(--module-h);
       align-content: center;
       align-items: start;
     }
@@ -1193,7 +1196,7 @@
       gap: 0;
       padding: 0;
       border: 0;
-      border-bottom: 1px solid #d7dadc;
+      border-bottom: 0;
       background: transparent;
     }
     .office-nav::before { display: none; }
@@ -1214,7 +1217,7 @@
     .office-tab.is-active {
       color: #168bc6;
       background: transparent;
-      box-shadow: inset 0 -2px 0 #168bc6;
+      box-shadow: none;
       font-weight: 500;
     }
     .office-tab-badge {
@@ -1316,7 +1319,7 @@
       box-shadow: none;
     }
     .map-panel-body,
-    .map-scene { min-height: 430px; }
+    .map-scene { min-height: var(--module-h); }
     .map-info-bubble {
       border-radius: 2px;
       box-shadow: 0 12px 32px rgba(20,35,45,0.14);
@@ -1370,12 +1373,13 @@
       .map-section .section-title { font-size: 30px; }
     }
 
-    /* 与全站品牌主题色统一 */
+    /* 与全站品牌主题色统一 + 模块统一高度 */
     :root {
       --primary: #006eb6;
       --primary-light: #0088d4;
       --accent: #ffb511;
       --accent-light: #ffcb4d;
+      --module-h: 680px;
     }
     .nav > li > a::after { display: none; }
     .form-group label span { color: var(--primary); }
@@ -1395,29 +1399,26 @@
     .map-info-title,
     .map-info-list a:hover { color: var(--primary); }
 
-    /* 地图横向通铺 */
-    .map-section { padding: 0; }
-    .map-section .section-inner {
-      width: 100%;
-      max-width: none;
-    }
-    .map-section .section-header {
-      padding-left: 6vw;
-      padding-right: 6vw;
-    }
-    .map-section .panel-box,
-    .map-panel-body {
-      width: 100%;
-    }
-
-    /* 调换联系方式与客户留言，左侧图片保持原位 */
+    /* 模块顺序：联系方式 → 地图 → 留言 */
     .contact-section { order: 1; }
     .map-section { order: 2; }
     .form-section { order: 3; }
 
+    /* —— 联系方式：左图右文，整块 680 —— */
     .contact-section {
+      position: relative;
+      height: var(--module-h);
+      min-height: var(--module-h);
+      max-height: var(--module-h);
       padding: 0;
-      background: #fff;
+      background:
+        radial-gradient(circle at 1px 1px, rgba(0,110,182,0.045) 1px, transparent 0),
+        radial-gradient(ellipse 70% 55% at 82% 12%, rgba(0,136,212,0.06), transparent 62%),
+        radial-gradient(ellipse 55% 50% at 94% 90%, rgba(0,110,182,0.04), transparent 55%),
+        linear-gradient(155deg, #ffffff 0%, #f6fafd 42%, #eef5fb 100%);
+      background-size: 22px 22px, auto, auto, auto;
+      box-sizing: border-box;
+      overflow: hidden;
     }
     .contact-section::before {
       content: '';
@@ -1429,6 +1430,7 @@
       border: 0;
       border-radius: 0;
       transform: none;
+      z-index: 0;
       background:
         linear-gradient(rgba(21,38,48,0.12), rgba(21,38,48,0.12)),
         url('img/banner/26.png') center / cover no-repeat;
@@ -1440,126 +1442,250 @@
       top: 0;
       bottom: 0;
       width: 1px;
-      background: #ebebeb;
+      z-index: 1;
+      background: linear-gradient(180deg, transparent 8%, rgba(0,110,182,0.08) 30%, rgba(0,110,182,0.08) 70%, transparent 92%);
     }
     .contact-section .section-inner {
+      position: relative;
+      z-index: 2;
       display: grid;
       grid-template-columns: 44% minmax(0, 1fr);
-      grid-template-rows: auto auto;
+      grid-template-rows: auto 1fr;
       gap: 0;
       width: 100%;
       max-width: none;
-      min-height: 600px;
+      height: 100%;
+      min-height: 0;
       align-content: center;
+      align-items: stretch;
       box-sizing: border-box;
-      padding-right: 0;
+      padding: 56px 0;
     }
     .contact-section .section-header,
     .contact-section .section-header.is-center {
       grid-column: 2;
       margin: 0;
-      padding: 0 max(24px, calc((100vw - 1280px) / 2 + 24px)) 24px 56px;
+      padding: 0 max(24px, calc((100vw - 1280px) / 2 + 24px)) 80px 56px;
+      align-self: end;
     }
-    .contact-section .section-desc { max-width: 560px; }
+    .contact-section .section-desc { max-width: 520px; }
     .contact-hub {
       grid-column: 2;
+      display: flex;
+      flex-direction: column;
       padding: 0 max(24px, calc((100vw - 1280px) / 2 + 24px)) 0 56px;
       min-width: 0;
+      min-height: 0;
     }
-    .office-detail { min-height: 220px; }
+    .office-detail {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 8px;
+    }
     .office-pane-head { display: none; }
     .office-nav {
+      flex-shrink: 0;
       border-bottom: 0;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       justify-content: flex-start;
-      gap: 28px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
+      align-items: stretch;
+      gap: 0 18px;
+      overflow: visible;
+      padding-bottom: 4px;
     }
-    .office-nav::-webkit-scrollbar { display: none; }
     .office-tab {
       flex: 0 0 auto;
       justify-content: flex-start;
       min-width: 0;
-      min-height: 52px;
-      padding: 10px 0;
+      min-height: 40px;
+      padding: 8px 0;
       white-space: nowrap;
       text-align: left;
     }
     .office-tab:first-child { padding-left: 0; }
     .office-tab:last-child { padding-right: 0; }
+    .office-tab.is-active {
+      box-shadow: none;
+      background: transparent;
+      color: var(--primary);
+      font-weight: 500;
+    }
     .office-tab-text {
-      font-size: 15px;
+      font-size: 14px;
+      line-height: 1.35;
       white-space: nowrap;
+    }
+    .office-field-label {
+      font-size: 14px;
+      color: #92989c;
+    }
+    .office-field-value {
+      font-size: 16px;
+      color: #30363a;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+    .contact-section .office-field > div:last-child {
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 8px;
     }
     .office-field,
     .office-field.is-full {
-      min-height: 58px;
-      border-top: 1px solid #d7dadc;
-      border-bottom: 0;
+      min-height: 56px;
+      border-bottom: 1px solid #d7dadc;
+      border-top: 0;
     }
 
-    .form-section {
-      padding: 92px 6vw;
+    /* —— 电子地图：通铺 680 —— */
+    .map-section {
+      position: relative;
+      height: var(--module-h);
+      min-height: var(--module-h);
+      max-height: var(--module-h);
+      padding: 0;
       background: #fff;
+      box-sizing: border-box;
+      overflow: hidden;
     }
-    .form-section::before {
-      display: none;
+    .map-section .section-inner {
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
+    .map-section .section-header { display: none; }
+    .map-section .panel-box {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .map-panel-body,
+    .map-scene {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+    }
+    .map-panel-body { position: relative; overflow: hidden; }
+
+    /* —— 客户留言：标题左 + 表单右，整块 680 —— */
+    .form-section {
+      position: relative;
+      height: var(--module-h);
+      min-height: var(--module-h);
+      max-height: var(--module-h);
+      padding: 0 6vw;
+      background:
+        linear-gradient(rgba(255,255,255,0.58), rgba(255,255,255,0.58)),
+        url('img/banner/bg0.png') center / cover no-repeat;
+      box-sizing: border-box;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .form-section::before,
     .form-section::after { display: none; }
     .form-section .section-inner {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: 30% minmax(0, 70%);
+      grid-template-columns: minmax(220px, 28%) minmax(0, 1fr);
       grid-template-rows: auto;
-      gap: 7%;
+      gap: 6%;
+      width: 100%;
       max-width: 1200px;
+      margin: 0 auto;
+      height: auto;
       min-height: 0;
       align-items: start;
-      align-content: normal;
+      align-content: center;
     }
     .form-section .section-header {
       grid-column: 1;
       margin: 0;
-      padding: 6px 0 0;
+      padding: 0;
+      align-self: start;
     }
-    .form-section .section-desc { max-width: 250px; }
-    .form-section .section-desc { font-size: 16px; }
+    .form-section .section-desc {
+      max-width: 260px;
+      font-size: 15px;
+      line-height: 1.75;
+    }
     .form-section .form-group label,
     .form-section .form-group input,
     .form-section .form-group textarea,
     .form-section .form-group select,
     .form-section .btn-submit {
-      font-size: 16px;
+      font-size: 15px;
     }
+    .form-group { margin-bottom: 18px; }
+    .form-group textarea { min-height: 100px; }
     .form-wrap {
       grid-column: 2;
       width: 100%;
       padding: 0;
     }
+    .form-section .panel-box {
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      background: transparent;
+    }
     .form-panel-body { padding: 0; }
 
     @media (max-width: 900px) {
+      .contact-section,
+      .map-section,
+      .form-section {
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        overflow: visible;
+      }
       .contact-section::before {
         position: relative;
         display: block;
         width: 100%;
-        height: 320px;
+        height: 280px;
       }
       .contact-section::after { display: none; }
       .contact-section .section-inner {
         display: block;
-        min-height: 0;
-        padding-right: 0;
+        height: auto;
+        padding: 0 0 48px;
       }
       .contact-section .section-header,
       .contact-section .section-header.is-center {
-        padding: 54px 24px 22px;
+        padding: 40px 24px 18px;
       }
-      .contact-hub { padding: 0 24px; }
+      .contact-hub {
+        display: block;
+        padding: 0 24px 8px;
+      }
+      .office-detail {
+        display: block;
+        padding-top: 12px;
+      }
+      .map-section { height: 480px; min-height: 480px; max-height: 480px; }
+      .map-panel-body,
+      .map-scene { min-height: 480px; }
+      .form-section {
+        padding: 56px 24px;
+        display: block;
+      }
       .form-section .section-inner {
         grid-template-columns: 1fr;
-        gap: 38px;
+        gap: 28px;
       }
       .form-section .section-header,
       .form-wrap { grid-column: 1; }
@@ -1567,14 +1693,23 @@
     }
 
     @media (max-width: 768px) {
-      .contact-section::before { height: 240px; }
+      .contact-section::before { height: 220px; }
       .contact-section .section-header,
       .contact-section .section-header.is-center {
-        padding: 44px 22px 20px;
+        padding: 32px 20px 16px;
       }
-      .contact-hub { padding: 0 22px; }
-      .form-section { padding: 68px 22px; }
-      .map-section { padding: 0; }
+      .contact-hub { padding: 0 20px 8px; }
+      .office-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 0 14px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .form-section { padding: 48px 20px; }
+      .form-row { display: block; }
+      .map-section { height: 420px; min-height: 420px; max-height: 420px; }
+      .map-panel-body,
+      .map-scene { min-height: 420px; }
     }
 
     /* —— 页面动效 —— */
@@ -1861,8 +1996,8 @@
             <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-hr"><span class="office-tab-badge">聘</span><span class="office-tab-text">人事招聘</span></button>
             <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-gz"><span class="office-tab-badge">广</span><span class="office-tab-text">广州事务所</span></button>
             <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-cd"><span class="office-tab-badge">蓉</span><span class="office-tab-text">成都事务所</span></button>
-            <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-hf"><span class="office-tab-badge">高</span><span class="office-tab-text">高机能品营业部</span></button>
-            <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-pm"><span class="office-tab-badge">精</span><span class="office-tab-text">精密化成品营业部</span></button>
+            <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-hf"><span class="office-tab-badge">固</span><span class="office-tab-text">热固性树脂产品销售部</span></button>
+            <button class="office-tab" type="button" role="tab" aria-selected="false" data-target="office-pm"><span class="office-tab-badge">塑</span><span class="office-tab-text">热塑性树脂产品销售部</span></button>
           </nav>
 
           <div class="office-detail">
@@ -1959,10 +2094,10 @@
               </div>
             </div>
 
-            <!-- 高机能品营业部 -->
+            <!-- 热固性树脂产品销售部 -->
             <div class="office-pane" id="office-hf" role="tabpanel">
               <div class="office-pane-head">
-                <h3 class="office-pane-title">高机能品营业部</h3>
+                <h3 class="office-pane-title">热固性树脂产品销售部</h3>
               </div>
               <div class="office-pane-grid">
                 <div class="office-field is-full">
@@ -1980,10 +2115,10 @@
               </div>
             </div>
 
-            <!-- 精密化成品营业部 -->
+            <!-- 热塑性树脂产品销售部 -->
             <div class="office-pane" id="office-pm" role="tabpanel">
               <div class="office-pane-head">
-                <h3 class="office-pane-title">精密化成品营业部</h3>
+                <h3 class="office-pane-title">热塑性树脂产品销售部</h3>
               </div>
               <div class="office-pane-grid">
                 <div class="office-field is-full">
@@ -2007,10 +2142,8 @@
     </section>
 
     <!-- 电子地图 -->
-    <section class="section map-section" id="contact-map">
+    <section class="section map-section" id="contact-map" aria-label="电子地图">
       <div class="section-inner">
-        <div class="section-header is-center">
-        </div>
         <div class="panel-box">
           <div class="map-panel-body">
             <div class="map-scene">
@@ -2189,7 +2322,7 @@
             </span>
             <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </a>
-          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener" style="border-top: 1px solid rgba(255,255,255,0.28);">
+          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener" >
             <span class="footer-address-text">
               <span class="footer-address-label">星光工业株式会社</span>
               日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002
