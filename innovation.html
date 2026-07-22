@@ -3146,6 +3146,8 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
   var panelYear = document.getElementById('eraPanelYear');
   var panelList = document.getElementById('eraPanelList');
   var headerEl = document.querySelector('.header');
+  var eraPinTrack = document.getElementById('eraPinTrack');
+  var timelineSection = document.getElementById('timelineSection');
   if (!scroll || !prev || !next) return;
 
   var items = Array.prototype.slice.call(scroll.querySelectorAll('.era-item'));
@@ -3158,6 +3160,11 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
   var lockedDir = 0;
   var pointerPos = null;
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  var AUTOPLAY_MS = 1500;
+  var autoplayTimer = null;
+  var hoverPaused = false;
+  var sectionInView = false;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   items.forEach(function(el, i){
     el.style.setProperty('--era-enter-delay', (120 + i * 70) + 'ms');
@@ -3253,6 +3260,32 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
     setActiveItem(items[nextIdx], false, true);
   }
 
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      window.clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function canAutoplay() {
+    if (reducedMotion || hoverPaused || document.hidden || !sectionInView) return false;
+    if (items.length < 2) return false;
+    if (lockedDir) return false;
+    return true;
+  }
+
+  function autoplayStep() {
+    if (!canAutoplay()) return;
+    var next = activeIndex >= items.length - 1 ? 0 : activeIndex + 1;
+    setActiveItem(items[next], false, true);
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    if (!canAutoplay()) return;
+    autoplayTimer = window.setInterval(autoplayStep, AUTOPLAY_MS);
+  }
+
   /* 只把“露出足够多”的卡片算作可见，避免右侧露一点的窄条抢最右位置 */
   function getVisibleEdgeItems() {
     var trackRect = scroll.getBoundingClientRect();
@@ -3297,6 +3330,7 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
       cancelAnimationFrame(edgeRaf);
       edgeRaf = 0;
     }
+    startAutoplay();
   }
   function edgeScrollTick() {
     edgeRaf = 0;
@@ -3328,12 +3362,13 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
       return;
     }
     lockedDir = dir;
+    stopAutoplay();
     scroll.classList.add('is-edge-scrolling');
     if (!edgeRaf) edgeRaf = requestAnimationFrame(edgeScrollTick);
   }
 
-  prev.addEventListener('click', function(){ moveActive(-1); });
-  next.addEventListener('click', function(){ moveActive(1); });
+  prev.addEventListener('click', function(){ moveActive(-1); startAutoplay(); });
+  next.addEventListener('click', function(){ moveActive(1); startAutoplay(); });
   window.addEventListener('resize', function(){
     updateHeaderOffset();
     updateBtns();
@@ -3353,6 +3388,7 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
     });
     item.addEventListener('click', function(){
       setActiveItem(item, false, true);
+      startAutoplay();
     });
   });
 
@@ -3367,8 +3403,52 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
   });
   scroll.addEventListener('mouseleave', function(){
     pointerPos = null;
+    hoverPaused = false;
     stopEdgeScroll();
   });
+
+  /* 自动播放：仅悬停到卡片图片区域时暂停，移出后继续（左侧文案/轨道空白不暂停） */
+  function imageAreaFromEventTarget(el) {
+    if (!el || !el.closest) return null;
+    var area = el.closest('.era-card-media, .era-card');
+    return area && scroll.contains(area) ? area : null;
+  }
+  scroll.addEventListener('mouseover', function(e) {
+    var area = imageAreaFromEventTarget(e.target);
+    if (!area) return;
+    var related = e.relatedTarget;
+    if (related && area.contains(related)) return;
+    hoverPaused = true;
+    stopAutoplay();
+  });
+  scroll.addEventListener('mouseout', function(e) {
+    var area = imageAreaFromEventTarget(e.target);
+    if (!area) return;
+    var related = e.relatedTarget;
+    if (related && area.contains(related)) return;
+    /* 仍在同一张卡片图片区域内则不算离开 */
+    if (related && imageAreaFromEventTarget(related)) return;
+    hoverPaused = false;
+    startAutoplay();
+  });
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) stopAutoplay();
+    else startAutoplay();
+  });
+
+  if ('IntersectionObserver' in window && (eraPinTrack || timelineSection)) {
+    var eraAutoplayObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        sectionInView = entry.isIntersecting && entry.intersectionRatio > 0.2;
+        if (sectionInView) startAutoplay();
+        else stopAutoplay();
+      });
+    }, { threshold: [0, 0.2, 0.4] });
+    eraAutoplayObserver.observe(eraPinTrack || timelineSection);
+  } else {
+    sectionInView = true;
+  }
 
   if (items.length) {
     items.forEach(function(el){ el.classList.remove('is-active'); });
@@ -3379,6 +3459,7 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
   }
   updateBtns();
   updateHeaderOffset();
+  startAutoplay();
 })();
 
 (function(){

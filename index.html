@@ -4298,17 +4298,32 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
     });
   }
 
-  var historyHoverRoot = historyPinSticky || historyModule || panelEl;
-  if (historyHoverRoot) {
-    historyHoverRoot.addEventListener('mouseenter', function() {
-      hoverPaused = true;
-      stopAutoplay();
-    });
-    historyHoverRoot.addEventListener('mouseleave', function() {
-      hoverPaused = false;
-      startAutoplay();
-    });
+  /*
+   * 自动播放：仅悬停到历程图片时暂停，移出后继续
+   */
+  function galleryFromEventTarget(el) {
+    if (!el || !el.closest) return null;
+    var gallery = el.closest('.history-gallery');
+    return gallery && panelEl.contains(gallery) ? gallery : null;
   }
+
+  panelEl.addEventListener('mouseover', function(e) {
+    var gallery = galleryFromEventTarget(e.target);
+    if (!gallery) return;
+    var related = e.relatedTarget;
+    if (related && gallery.contains(related)) return;
+    hoverPaused = true;
+    stopAutoplay();
+  });
+
+  panelEl.addEventListener('mouseout', function(e) {
+    var gallery = galleryFromEventTarget(e.target);
+    if (!gallery) return;
+    var related = e.relatedTarget;
+    if (related && gallery.contains(related)) return;
+    hoverPaused = false;
+    startAutoplay();
+  });
 
   document.addEventListener('visibilitychange', function() {
     if (document.hidden) stopAutoplay();
