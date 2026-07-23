@@ -751,8 +751,10 @@
       vertical-align:baseline;
     }
 
-    /* STARLITE 摩擦技术理念 — 横向悬停手风琴（整模块 680px） */
+    /* STARLITE 摩擦技术理念 — 横向悬停手风琴（按视口高度适配，最高 680px） */
     .tribology-section {
+      --tribology-h: min(680px, 100vh);
+      --tribology-h: min(680px, 100dvh);
       position:relative;
       isolation:isolate;
       padding:0;
@@ -760,9 +762,9 @@
       color:var(--white);
       background:var(--white);
       box-sizing:border-box;
-      height:var(--module-h);
-      min-height:var(--module-h);
-      max-height:var(--module-h);
+      height:var(--tribology-h);
+      min-height:var(--tribology-h);
+      max-height:var(--tribology-h);
     }
     .tribology-accordion {
       display:flex;
@@ -770,8 +772,8 @@
       max-width:none;
       margin:0;
       height:100%;
-      min-height:var(--module-h);
-      max-height:var(--module-h);
+      min-height:0;
+      max-height:100%;
       overflow:hidden;
       background:#d4dde6;
       box-shadow:0 16px 48px rgba(18, 28, 40, .12);
@@ -1641,11 +1643,13 @@
     .equip-frame {
       position:relative;
       overflow:hidden;
-      flex:1 1 auto;
-      width:100%;
+      flex:0 0 auto;
+      width:86%;
+      max-width:100%;
+      margin-left:auto;
       min-height:0;
-      height:100%;
-      max-height:100%;
+      height:76%;
+      max-height:76%;
       aspect-ratio:auto;
       background:#1A1A1A;
       cursor:pointer;
@@ -1752,11 +1756,17 @@
     .footer-main { padding: 40px 24px; }
     .footer-inner { max-width: 1280px; margin: 0 auto; }
     .footer-links {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 28px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      gap: 28px 20px;
     }
-    .footer-col { min-width: 0; }
+    .footer-col {
+      flex: 0 1 auto;
+      min-width: 0;
+      max-width: 200px;
+    }
     .footer-col h4 {
       color: var(--brand);
       font-size: 15px;
@@ -1771,6 +1781,7 @@
       color: var(--text-muted);
       transition: color 0.2s;
       display: block;
+      overflow-wrap: break-word;
     }
     .footer-col ul a:hover { color: var(--brand); }
     .footer-contact {
@@ -1862,7 +1873,8 @@
     .prototype-badge { position:fixed; bottom:16px; right:16px; background:var(--primary); color:var(--white); padding:6px 14px; border-radius:20px; font-size:11px; font-weight:700; z-index:9999; box-shadow:0 4px 16px rgba(255,181,17,.4); }
 
     @media (max-width:1100px) {
-      .footer-links { grid-template-columns:repeat(3, minmax(0, 1fr)); gap:28px 20px; }
+      .footer-links { display: grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:28px 20px; }
+      .footer-col { max-width: none; }
       .equip-showcase { grid-template-columns:minmax(200px, .85fr) minmax(0, 1.25fr); gap:24px; }
       .equip-frame { border-radius:22px; }
       .partner-layout { grid-template-columns:minmax(240px, .9fr) minmax(280px, 1.1fr); gap:20px 24px; }
@@ -2125,7 +2137,8 @@
       .era-item.is-active { flex-basis:var(--era-w-active); width:var(--era-w-active); }
       .era-card-year strong { font-size:14px; }
       .footer-main { padding:40px 20px 0; }
-      .footer-links { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:28px 16px; }
+      .footer-links { display: grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:28px 16px; }
+      .footer-col { max-width: none; }
       .footer-contact { margin-top:32px; }
       .footer-contact-row { padding:18px 0; gap:10px; }
       .footer-phone { font-size:22px; }

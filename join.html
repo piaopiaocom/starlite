@@ -119,13 +119,13 @@
     .footer{background:#E8F2F8}
     .footer-main{padding:40px 24px}
     .footer-inner{max-width:1280px;margin:0 auto}
-    .footer-links{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 24px}
+    .footer-links{display:flex;justify-content:space-between;align-items:flex-start;width:100%;gap:28px 20px}.footer-col{flex:0 1 auto;min-width:0;max-width:200px}.footer-col ul a{overflow-wrap:break-word}
     .footer-col{min-width:0}
     .footer-col h4{color:var(--primary);font-size:15px;font-weight:700;margin:0 0 18px;letter-spacing:.04em}
     .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
     .footer-col ul a{font-size:13px;line-height:1.5;color:var(--text-muted);transition:color .2s;display:block}
     .footer-col ul a:hover{color:var(--primary)}
-    .footer-contact{margin-top:30px;border-top:1px solid rgba(0,110,182,.12);padding-top:8px}
+    .footer-contact{margin-top:30px;padding-top:8px}
     .footer-contact-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap}
     .footer-phone{font-size:clamp(22px,2.4vw,30px);font-weight:500;color:var(--primary);letter-spacing:.04em;line-height:1.2}
     .footer-phone:hover{color:var(--primary-light)}
@@ -145,8 +145,8 @@
     .footer-bar-brand-en{font-size:11px;font-weight:400;letter-spacing:.02em;color:#9EC9E8;white-space:nowrap}
     .footer-bar-copy{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5;text-align:right}
     .prototype-badge{position:fixed;bottom:16px;right:16px;background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;z-index:9999}
-    @media(max-width:1100px){.footer-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}}
-    @media(max-width:768px){.nav{display:none}.footer-main{padding:40px 20px 0}.footer-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.footer-contact{margin-top:32px}.footer-contact-row{padding:18px 0;gap:10px}.footer-phone{font-size:22px}.footer-fax{font-size:13px}.footer-address{padding:16px 0;font-size:13px}.footer-bar-inner{padding:14px 20px}.footer-bar-copy{text-align:left;font-size:11px}}
+    @media(max-width:1100px){.footer-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}.footer-col{max-width:none}}
+    @media(max-width:768px){.nav{display:none}.footer-main{padding:40px 20px 0}.footer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.footer-col{max-width:none}.footer-contact{margin-top:32px}.footer-contact-row{padding:18px 0;gap:10px}.footer-phone{font-size:22px}.footer-fax{font-size:13px}.footer-address{padding:16px 0;font-size:13px}.footer-bar-inner{padding:14px 20px}.footer-bar-copy{text-align:left;font-size:11px}}
 
     /* 教育培训 / 员工活动 — 整模块 680，背景色区分 */
     .news-module{height:var(--module-h);min-height:var(--module-h);max-height:var(--module-h);margin:0;padding:48px 0;box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden}
