@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品核心 - 星光树脂制品（昆山）有限公司</title>
+  <style>
+    :root{--primary:#006EB6;--primary-light:#0088D4;--accent:#FFB511;--accent-light:#FFCB4D;--text:#1A1A2E;--text-muted:#5A6270;--bg:#F5F7FA;--white:#FFF;--border:#E2E8F0;--shadow:0 4px 24px rgba(0,110,182,0.08);--radius:8px;--content-max:1280px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    [id]{scroll-margin-top:88px}
+    sup.reg{font-size:.55em;font-weight:inherit;line-height:0;vertical-align:super;letter-spacing:0}
+    .header{background:var(--primary);box-shadow:none;position:sticky;top:0;z-index:1000}
+/*二级菜单展开下推*/.header{transition:margin-bottom .25s ease;margin-bottom:0}.header:has(.nav>li:hover),.header:has(.nav>li:focus-within){margin-bottom:64px}.nav-dropdown{transform:none!important}
+    .header-inner{max-width:var(--content-max);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:flex-start;gap:12px;height:72px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo-img{height:48px;width:auto;object-fit:contain;display:block}
+    .logo-text{font-size:20px;line-height:1.35;font-weight:700;color:var(--white);letter-spacing:0.01em}
+    .logo-sub{display:none}
+    .nav{display:flex;gap:4px;align-items:stretch;margin-left:auto}
+    .nav>li{list-style:none;position:static}
+    .nav>li>a{display:flex;align-items:center;height:72px;padding:0 16px;font-size:16px;color:rgba(255,255,255,0.88);position:relative;transition:color .25s ease;white-space:nowrap;line-height:1.6}
+    .nav>li>a::after{content:"";position:absolute;left:16px;right:16px;bottom:18px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:center;transition:transform .3s cubic-bezier(.22,.61,.36,1)}
+    .nav>li>a:hover::after,.nav>li>a.active::after,.nav>li:hover>a::after{transform:scaleX(1)}
+    .nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:var(--white);font-weight:600}
+    .nav-dropdown{position:absolute;left:0;right:0;top:100%;width:100%;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 36px;margin:0;padding:18px 40px;background:var(--white);border-top:1px solid rgba(0,110,182,.08);box-shadow:0 16px 40px rgba(0,110,182,.1);border-radius:0;opacity:0;visibility:hidden;transform:none;transition:opacity .25s ease,visibility .25s;z-index:1001;list-style:none;box-sizing:border-box}
+    .nav-dropdown::before{content:'';position:absolute;left:0;right:0;top:-10px;height:10px}
+    .nav>li:hover>.nav-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+    .nav-dropdown li{list-style:none;flex:0 0 auto}
+    .nav-dropdown a{display:block;position:relative;padding:6px 2px;font-size:14px;color:var(--text-muted);transition:color .2s ease;white-space:nowrap;line-height:1.5}
+    .nav-dropdown a:hover{color:var(--primary)}
+    .lang-switch{display:flex;align-items:center;flex-shrink:0}
+    .lang-btn{padding:0 4px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.88);cursor:pointer;font-family:inherit;transition:color .2s;line-height:1.4}
+    .lang-btn:hover{color:var(--white)}
+
+    /* Product modules */
+    .products-page{padding:0}
+    .products-list{max-width:var(--content-max);margin:0 auto;padding:0 24px;display:flex;flex-direction:column;gap:28px}
+    .product-module{background:var(--white);border-radius:16px;overflow:visible;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease;border:1px solid rgba(0,110,182,.06)}
+    .product-module:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,110,182,.12)}
+    .product-module.is-open{transform:none;box-shadow:0 12px 36px rgba(0,110,182,.12)}
+    .product-module-main{display:flex;align-items:center;justify-content:space-between;gap:32px 48px;padding:40px 48px;min-height:320px;overflow:visible;background:var(--white);border-radius:16px}
+    .product-module.is-open .product-module-main{border-radius:16px 16px 0 0}
+    .product-module-info{flex:0 1 34%;min-width:0}
+    .product-module-brand{display:inline-block;font-size:12px;font-weight:700;color:var(--primary);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;padding:4px 12px;background:rgba(0,110,182,.08);border-radius:20px}
+    .product-module-title{display:inline-block;position:relative;font-size:42px;font-weight:500;color:#2A2A2A;line-height:1.3;margin:0 0 28px;letter-spacing:.02em;padding-bottom:12px}
+    .product-module-title::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px;transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.16,1,.3,1) .28s}
+    .product-hero.is-ready .product-module-title::after,
+    .biomass-module.is-inview .product-module-title::after,
+    .other-section.is-inview .product-module-title::after,
+    .clients-section.is-inview .clients-title::after,
+    .product-module-detail[data-detail].is-enter .process-showcase-head .product-module-title::after,
+    .product-module-detail[data-detail].is-enter .app-showcase-copy .product-module-title::after{transform:scaleX(1)}
+    .product-hero .product-module-title::after{transform-origin:left center}
+    .product-module-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--primary);color:var(--white);border:none;border-radius:999px;font-size:14px;font-weight:400;font-family:inherit;cursor:pointer;transition:background .3s ease,transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease}
+    .product-module-btn:hover{background:var(--primary-light);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,110,182,.28)}
+    .product-module-btn svg{width:16px;height:16px;transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+    .product-module.is-open .product-module-btn{background:var(--primary)}
+    .product-module.is-open .product-module-btn:hover{background:var(--primary-light);box-shadow:0 6px 16px rgba(0,110,182,.28)}
+    .product-module.is-open .product-module-btn svg{transform:rotate(90deg)}
+    .product-module-visual{flex:1 1 62%;display:flex;align-items:center;justify-content:center;min-width:0;padding:12px 0}
+    .product-module-visual>img{width:100%;max-width:480px;height:auto;max-height:260px;object-fit:contain;display:block}
+
+    /* Hero: full-bleed first module */
+    .product-hero{width:100vw;max-width:100vw;margin:0 calc(50% - 50vw);border-radius:0;border:none;box-shadow:none;overflow:visible;position:relative;background:#F5F7FA}
+    .product-hero::before{content:"";position:absolute;inset:0;background:url("img/banner/image-28-1.png") center / cover no-repeat;opacity:0;pointer-events:none;z-index:0;transition:opacity 1.1s ease}
+    .product-hero.is-ready::before{opacity:1}
+    .product-hero::after{content:"";position:absolute;left:-100px;top:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.88) 0%,rgba(230,244,252,.5) 30%,rgba(210,232,246,.18) 55%,transparent 72%);pointer-events:none;z-index:0}
+    .product-hero > *{position:relative;z-index:1}
+    .product-hero:hover,.product-hero.is-open{transform:none;box-shadow:none}
+    .product-hero-anchor{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+    .product-hero-switch{display:none}
+    .product-hero-main{align-items:center;justify-content:center;min-height:0;gap:clamp(36px,3.5vw,56px);padding:52px 24px 42px;max-width:var(--content-max);margin:0 auto;border-radius:0;width:100%;box-sizing:border-box;overflow:visible;background:transparent}
+    .product-hero.is-open .product-hero-main{border-radius:0}
+    .product-hero-info{flex:1 1 0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0;max-width:560px;text-align:left}
+    .product-hero .product-module-title{margin:0 0 12px;font-size:42px;color:#2A2A2A;max-width:none;width:100%;text-align:left;white-space:nowrap}
+    .product-hero .product-module-title::after{left:0;right:auto}
+    .product-hero-desc{font-size:15px;line-height:1.85;color:var(--text-muted);margin:0 0 28px;max-width:none;width:100%;text-align:left;letter-spacing:.01em;transition:opacity .35s ease,transform .4s cubic-bezier(.22,.61,.36,1)}
+    .product-hero-desc.is-long{font-size:13.5px;line-height:1.9;max-width:none}
+    .product-hero.is-switching .product-module-title,
+    .product-hero.is-switching .product-hero-desc{opacity:0;transform:translateY(8px)}
+    .product-hero-tags{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:flex-start;gap:8px;margin:0;width:100%;max-width:none}
+    .product-hero-tags[hidden]{display:none!important}
+    .product-feat{display:flex;align-items:center;gap:0;flex:0 0 auto;min-width:0;padding:8px 14px;box-sizing:border-box;background:#B4CEE5;border:1px solid #B4CEE5;border-radius:999px;opacity:0;transform:translateY(10px) scale(.96);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1),background .25s ease,border-color .25s ease,box-shadow .25s ease}
+    .product-hero.is-ready .product-hero-tags.is-enter:not([hidden]) .product-feat{opacity:1;transform:none}
+    .product-hero.is-ready .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(1){transition-delay:40ms}
+    .product-hero.is-ready .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(2){transition-delay:90ms}
+    .product-hero.is-ready .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(3){transition-delay:140ms}
+    .product-hero.is-ready .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(4){transition-delay:190ms}
+    .product-hero.is-ready .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(5){transition-delay:240ms}
+    .product-hero.is-ready .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(6){transition-delay:290ms}
+    .product-hero.is-ready .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(7){transition-delay:340ms}
+    .product-hero.is-ready.is-first-paint .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(1){transition-delay:420ms}
+    .product-hero.is-ready.is-first-paint .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(2){transition-delay:480ms}
+    .product-hero.is-ready.is-first-paint .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(3){transition-delay:540ms}
+    .product-hero.is-ready.is-first-paint .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(4){transition-delay:600ms}
+    .product-hero.is-ready.is-first-paint .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(5){transition-delay:660ms}
+    .product-hero.is-ready.is-first-paint .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(6){transition-delay:720ms}
+    .product-hero.is-ready.is-first-paint .product-hero-tags.is-enter:not([hidden]) .product-feat:nth-child(7){transition-delay:780ms}
+    .product-feat:hover{background:#A3C3DE;border-color:#A3C3DE;box-shadow:0 4px 14px rgba(180,206,229,.5);transform:translateY(-2px)}
+    .product-hero.is-ready .product-hero-tags.is-enter:not([hidden]) .product-feat:hover{transform:translateY(-2px)}
+    .product-hero.is-switching .product-hero-tags .product-feat{opacity:0;transform:translateY(8px) scale(.96);transition-delay:0s!important}
+    .product-feat-icon{display:none}
+    .product-feat-label{font-size:12px;line-height:1.35;color:#036EB6;text-align:center;font-weight:500;white-space:nowrap}
+    .product-hero-tabs{display:flex;align-items:stretch;justify-content:flex-start;gap:4px;padding:4px;margin:0 0 28px;background:rgba(255,255,255,.68);border:1px solid rgba(0,110,182,.08);border-radius:12px;backdrop-filter:blur(8px);width:fit-content;max-width:100%;opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1) .08s,transform .7s cubic-bezier(.16,1,.3,1) .08s}
+    .product-hero.is-ready .product-hero-tabs{opacity:1;transform:none}
+    .product-hero-tab{display:flex;flex-direction:row;align-items:center;gap:9px;border:none;background:transparent;padding:10px 16px;border-radius:9px;cursor:pointer;font-family:inherit;min-width:0;color:var(--text);transition:background .3s ease,box-shadow .3s ease,transform .3s ease}
+    .product-hero-tab:hover{transform:translateY(-1px)}
+    .product-hero-tab-icon{width:18px;height:18px;flex-shrink:0;border-radius:50%;border:1px solid #B8C0CC;background:transparent;display:flex;align-items:center;justify-content:center;transition:border-color .25s ease,background .25s ease}
+    .product-hero-tab-dot{width:6px;height:6px;border-radius:50%;background:#8B93A0;transition:background .25s ease,transform .3s ease}
+    .product-hero-tab.is-active{background:var(--white);box-shadow:0 4px 14px rgba(0,110,182,.09)}
+    .product-hero-tab.is-active .product-hero-tab-icon{border-color:var(--primary)}
+    .product-hero-tab.is-active .product-hero-tab-dot{background:var(--primary);transform:scale(1.15)}
+    .product-hero-tab-text{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left}
+    .product-hero-tab-name{font-size:14px;font-weight:700;line-height:1.25;color:var(--text);transition:color .25s ease}
+    .product-hero-tab-sub{font-size:12px;color:#8B93A0;line-height:1.3;opacity:1;transition:color .25s ease,opacity .25s ease}
+    .product-hero-tab.is-active .product-hero-tab-name{color:var(--primary)}
+    .product-hero-tab.is-active .product-hero-tab-sub{color:var(--primary);opacity:.75}
+    .product-hero-visual{flex:0 0 560px;width:560px;max-width:46%;position:relative;min-height:0;min-width:0;overflow:visible;display:flex;align-items:center;justify-content:center;padding-top:28px;opacity:0;transform:scale(.96) translateY(18px);transition:opacity .9s cubic-bezier(.16,1,.3,1) .2s,transform .9s cubic-bezier(.16,1,.3,1) .2s}
+    .product-hero.is-ready .product-hero-visual{opacity:1;transform:none}
+    .product-hero-panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s cubic-bezier(.22,.61,.36,1)}
+    .product-hero-panel.is-active{opacity:1;visibility:visible;pointer-events:auto;position:relative;inset:auto;width:100%;max-width:560px;overflow:visible}
+    .product-hero-info .product-module-title,
+    .product-hero-info .product-hero-desc{opacity:0;transform:translateY(18px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+    .product-hero.is-ready .product-hero-info .product-module-title{opacity:1;transform:none;transition-delay:.18s}
+    .product-hero.is-ready .product-hero-info .product-hero-desc{opacity:1;transform:none;transition-delay:.3s}
+    .product-hero.is-ready.is-switching .product-hero-info .product-module-title,
+    .product-hero.is-ready.is-switching .product-hero-info .product-hero-desc{opacity:0;transform:translateY(8px);transition-delay:0s}
+    .product-hero-panel[hidden],.product-module-detail[hidden]{display:none!important}
+    .product-hero .product-module-detail{border-radius:0;max-width:none;margin:0;border-top:none;background:transparent}
+    .product-hero .product-module-detail.is-active-detail{display:grid}
+    .product-hero.is-open .product-module-detail:not([hidden]){grid-template-rows:1fr}
+    .product-hero .product-module-detail-body{max-width:none;margin:0;padding:0;border-top:0;width:100%;box-sizing:border-box}
+
+    .process-showcase{background:transparent;padding:40px 0 32px;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    .product-module-detail[data-detail].is-enter .process-showcase{opacity:1;transform:none}
+    .process-showcase-head{max-width:var(--content-max);margin:0 auto 28px;padding:0 clamp(24px,4vw,64px);text-align:left;box-sizing:border-box;width:100%}
+    .process-showcase-head .product-module-title{display:inline-block;width:auto;max-width:none;margin:0 0 10px;font-size:clamp(28px,3.2vw,40px);white-space:normal}
+    .process-showcase-desc{margin:0;max-width:40em;font-size:15px;line-height:1.85;color:var(--text-muted)}
+    .process-showcase--bakes{max-width:var(--content-max);margin:0 auto;padding:72px clamp(24px,4vw,64px);box-sizing:border-box;width:100%;min-height:680px;display:flex;flex-direction:column;justify-content:center}
+    .process-showcase--bakes .process-showcase-head{max-width:none;margin:0 0 32px;padding:0;flex-shrink:0}
+    .process-showcase--bakes .process-showcase-desc{max-width:46em}
+    .process-bakes-flow{display:grid;grid-template-columns:190px 32px minmax(0,1fr);align-items:stretch;gap:0;flex:0 0 auto}
+    .process-bakes-inputs{display:flex;flex-direction:column;justify-content:stretch;gap:16px;padding:0;height:100%;min-height:0;box-sizing:border-box}
+    .process-bakes-in{margin:0;flex:1 1 0;min-height:0;display:flex;flex-direction:column;justify-content:center;text-align:center;box-sizing:border-box}
+    .process-bakes-in img{width:100%;flex:1 1 auto;height:auto;min-height:110px;object-fit:contain;display:block;background:#fff;border-radius:12px;box-shadow:0 8px 20px rgba(20,55,90,.08);padding:16px 12px;box-sizing:border-box}
+    .process-bakes-in figcaption{margin-top:8px;font-size:13px;line-height:1.3;color:#1A1A2E;flex-shrink:0}
+    .process-bakes-flow--3{grid-template-columns:210px 32px minmax(0,1fr)}
+    .process-bakes-flow--3 .process-bakes-inputs,.process-bakes-flow--3 .process-bakes-rail{gap:12px}
+    .process-bakes-in-media{flex:1 1 auto;min-height:72px;width:100%;background:#fff;border-radius:12px;box-shadow:0 8px 20px rgba(20,55,90,.08);padding:8px;box-sizing:border-box;overflow:hidden}
+    .process-bakes-in-pair{display:grid;grid-template-columns:1fr 1fr;gap:6px;height:100%;min-height:72px}
+    .process-bakes-in-pair span{display:block;overflow:hidden;border-radius:8px;min-height:64px}
+    .process-bakes-in-pair img{width:100%;height:100%;min-height:64px;object-fit:cover;object-position:center;padding:0;background:transparent;border-radius:0;box-shadow:none;flex:none;transform:scale(1.28)}
+    .process-bakes-in-cluster{display:grid;grid-template-columns:1.05fr .95fr;grid-template-rows:1fr 1fr;gap:4px;height:100%;min-height:72px;align-items:center}
+    .process-bakes-in-cluster img{width:100%;height:100%;min-height:0;object-fit:contain;padding:2px;background:transparent;border-radius:0;box-shadow:none;flex:none}
+    .process-bakes-in-cluster img:last-child{grid-column:2;grid-row:1 / 3}
+    .process-bakes-rail{position:relative;display:flex;flex-direction:column;gap:16px;min-width:32px;align-self:stretch}
+    .process-bakes-rail::before{content:"";position:absolute;left:50%;top:calc((100% - 16px) / 4);bottom:calc((100% - 16px) / 4);width:2px;margin-left:-1px;background:#6BAFD6}
+    .process-bakes-rail::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--primary);z-index:1}
+    .process-bakes-bracket-arm{flex:1 1 0;position:relative}
+    .process-bakes-bracket-arm::before{content:"";position:absolute;left:0;right:50%;top:50%;height:2px;margin-top:-1px;background:#6BAFD6}
+    .process-bakes-rail-out{position:absolute;left:50%;top:50%;width:18px;height:2px;margin-top:-1px;background:#6BAFD6}
+    .process-bakes-flow--3 .process-bakes-rail::before{top:calc((100% - 32px) / 6);bottom:calc((100% - 32px) / 6)}
+    .process-bakes-panel-wrap{min-width:0;height:100%;align-self:stretch;filter:drop-shadow(0 10px 24px rgba(0,110,182,.12))}
+    .process-bakes-panel{display:grid;grid-template-rows:auto auto 1fr;gap:0;height:100%;min-height:280px;padding:22px 72px 24px 28px;box-sizing:border-box;background:#fff;clip-path:polygon(0 0,calc(100% - 56px) 0,100% 50%,calc(100% - 56px) 100%,0 100%)}
+    .process-bakes-notes,.process-bakes-icons,.process-bakes-cards{grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr) 40px minmax(0,1.45fr)}
+    .process-bakes-notes{display:grid;align-items:end;gap:0}
+    .process-bakes-notes p{margin:0;font-size:12px;line-height:1.35;color:#3A4250;text-align:center;position:relative;justify-self:center}
+    .process-bakes-notes p:first-child{grid-column:1 / 4;white-space:nowrap;width:max-content}
+    .process-bakes-notes p:last-child{grid-column:5;white-space:nowrap;width:max-content}
+    .process-bakes-notes p:first-child::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:22px;margin-left:-1px;background:#6BAFD6}
+    .process-bakes-icons{position:relative;display:grid;justify-items:center;align-items:center;margin-top:4px}
+    .process-bakes-icons::before{content:"";position:absolute;left:8%;right:8%;top:50%;border-top:2px dashed #B7D4EA}
+    .process-bakes-icon{position:relative;z-index:1;width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,110,182,.22)}
+    .process-bakes-icon svg{width:18px;height:18px;display:block}
+    .process-bakes-dot{position:relative;z-index:1;width:8px;height:8px;border-radius:50%;background:#6BAFD6;align-self:center}
+    .process-bakes-icons .process-bakes-dot:nth-child(4){visibility:hidden}
+    .process-bakes-cards{display:grid;align-items:start;gap:0;margin-top:14px}
+    .process-bakes-card{margin:0;background:transparent;padding:0;text-align:center;box-sizing:border-box}
+    .process-bakes-card img{display:block;background:#fff;border-radius:14px;box-shadow:0 8px 22px rgba(0,110,182,.12);padding:8px;box-sizing:border-box;object-fit:contain}
+    .process-bakes-card:first-child img,.process-bakes-card:nth-child(3) img{width:156px;height:156px;margin:0 auto}
+    .process-bakes-card:last-child{padding-left:calc((100% / 1.45 - 156px) / 2)}
+    .process-bakes-card:last-child img{width:100%;height:156px}
+    .process-bakes-card figcaption{margin-top:10px;font-size:13px;line-height:1.4;color:#1A1A2E}
+    .process-bakes-next{display:flex;align-items:center;justify-content:center;align-self:start;height:156px;color:#5BB4E6;line-height:0}
+    .process-bakes-next svg{width:32px;height:32px;display:block}
+    .process-flow-board{display:grid;grid-template-columns:150px 36px minmax(0,1fr) minmax(200px,.36fr);align-items:stretch;gap:0 8px;max-width:var(--content-max);margin:0 auto;padding:0 clamp(24px,4vw,64px) 8px;box-sizing:border-box;width:100%}
+    .process-inputs{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:8px 0}
+    .process-input{margin:0;width:100%;text-align:center}
+    .process-input img{width:128px;height:110px;object-fit:contain;display:block;margin:0 auto 8px;background:transparent;opacity:1}
+    .process-input figcaption{font-size:13px;color:#3A4250;line-height:1.3}
+    .process-join{position:relative;align-self:stretch;min-width:22px}
+    .process-join::before{content:"";position:absolute;left:50%;top:8%;bottom:8%;width:8px;margin-left:-4px;background:#EC7C30;border-radius:99px}
+    .process-join::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:8px;margin-top:-4px;background:#EC7C30}
+    .process-arrow{position:relative;display:flex;align-items:stretch;min-height:220px;background:#EC7C30;clip-path:polygon(0 18px,calc(100% - 58px) 18px,calc(100% - 58px) 0,100% 50%,calc(100% - 58px) 100%,calc(100% - 58px) calc(100% - 18px),0 calc(100% - 18px));padding:10px 68px 10px 10px;box-sizing:border-box;opacity:1}
+    .process-arrow-inner{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 12px;width:100%;align-items:center;background:transparent}
+    .process-arrow-step{margin:0;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;background:transparent;padding:14px 10px 16px}
+    .process-arrow-step img{width:100%;height:148px;object-fit:contain;display:block;background:transparent;opacity:1}
+    .process-arrow-step figcaption{font-size:13px;line-height:1.4;color:#fff;min-height:2.8em}
+    .process-result{margin:0;text-align:center;min-width:0}
+    .process-result img{width:100%;height:190px;object-fit:contain;display:block;background:transparent}
+    .process-result figcaption{margin-top:10px;font-size:13px;font-weight:600;color:#1A1A2E;line-height:1.4}
+    .app-showcase{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,.88fr);align-items:stretch;align-content:center;gap:clamp(28px,3.5vw,48px);min-height:680px;max-width:var(--content-max);margin:0 auto;padding:72px clamp(24px,4vw,64px);box-sizing:border-box;width:100%;background:transparent;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    .product-module-detail[data-detail].is-enter .app-showcase{opacity:1;transform:none}
+    .app-showcase-copy{display:flex;flex-direction:column;justify-content:flex-start;gap:0;padding:0;box-sizing:border-box;min-width:0}
+    .app-showcase-copy .product-module-title{display:inline-block;width:auto;max-width:none;margin:0 0 14px;font-size:clamp(28px,3.2vw,40px);white-space:normal}
+    .app-showcase-desc{margin:0 0 40px;max-width:34em;font-size:15px;line-height:1.85;color:var(--text-muted)}
+    .app-showcase-thumbs{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 24px;margin:auto 0 0;padding:0;width:100%}
+    .app-showcase-thumbs li{min-width:0;text-align:center}
+    .app-showcase-thumbs img{width:100%;aspect-ratio:4/3;object-fit:contain;display:block}
+    .app-showcase-thumbs span{display:block;margin-top:10px;font-size:13px;line-height:1.45;color:#3A4250;min-height:2.9em}
+    .app-showcase-visual{position:relative;min-width:0;min-height:360px;overflow:hidden;border-radius:16px;background:transparent}
+    .app-showcase-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    .app-showcase-visual--vignette img{inset:-12%;width:124%;height:124%}
+    .app-showcase-thumbs--photos img{object-fit:cover;border-radius:12px}
+
+    /* Radial capability diagram — overlapping petal flower */
+    .bakes-radial{position:relative;width:100%;max-width:520px;margin:0 auto;transform:scale(1.04) translateY(-6%);transform-origin:center center;will-change:transform}
+    .bakes-radial::before{content:"";display:block;padding-top:100%}
+    .bakes-radial-orbit{display:none}
+    .bakes-radial-core{position:absolute;left:50%;top:63%;transform:translate(-50%,-50%) scale(.88);width:26%;height:26%;max-width:112px;max-height:112px;border-radius:50%;background:var(--white);box-shadow:0 2px 12px rgba(0,110,182,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:10;padding:8px;box-sizing:border-box;overflow:hidden;flex-shrink:0;opacity:0;transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    .product-hero-panel.is-active .bakes-radial-core{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    .product-hero-panel.is-active .bakes-radial-core strong{animation:radial-core-pulse 3.8s ease-in-out infinite .8s}
+    .bakes-radial-core strong{display:block;font-size:clamp(12px,1.6vw,15px);font-weight:700;color:var(--primary);letter-spacing:.04em;line-height:1.15;margin:0;text-shadow:none}
+    .bakes-radial-core span{display:none}
+    /* Oval petals: bloom in from center; hover expands petal outward + reveals desc inside */
+    .bakes-radial-item{--rot:0deg;position:absolute;left:50%;top:50%;z-index:2;width:32%;height:48%;margin:0;transform:translate(-50%,-100%) translateY(52%) rotate(var(--rot)) scale(.22);transform-origin:50% 100%;cursor:pointer;opacity:0;pointer-events:none;will-change:transform,opacity;transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.22,1.35,.36,1)}
+    .product-hero-panel.is-active .bakes-radial-item{opacity:1;pointer-events:auto;transform:translate(-50%,-100%) translateY(26%) rotate(var(--rot)) scale(1)}
+    .product-hero-panel.is-active .bakes-radial-item--1{transition-delay:.1s}
+    .product-hero-panel.is-active .bakes-radial-item--2{transition-delay:.2s}
+    .product-hero-panel.is-active .bakes-radial-item--3{transition-delay:.3s}
+    .product-hero-panel.is-active .bakes-radial-item--4{transition-delay:.4s}
+    .product-hero-panel.is-active .bakes-radial-item--5{transition-delay:.5s}
+    .product-hero-panel.is-active .bakes-radial-item:hover,
+    .product-hero-panel.is-active .bakes-radial-item:focus-within{z-index:12;transform:translate(-50%,-100%) translateY(26%) rotate(var(--rot)) scale(1);transition:opacity .3s ease,transform .45s cubic-bezier(.22,.61,.36,1);transition-delay:0s}
+    .bakes-radial-item--1{--rot:0deg}
+    .bakes-radial-item--2{--rot:72deg}
+    .bakes-radial-item--3{--rot:144deg}
+    .bakes-radial-item--4{--rot:216deg}
+    .bakes-radial-item--5{--rot:288deg}
+    .bakes-radial-icon{position:absolute;inset:0;border-radius:50% 50% 48% 48% / 58% 58% 42% 42%;background:rgba(0,110,182,.28);box-shadow:none;display:block;padding:0;box-sizing:border-box;color:var(--primary);overflow:hidden;transform:scale(1);transform-origin:center center;transition:background .3s ease,transform .45s cubic-bezier(.22,.61,.36,1)}
+    .product-hero-panel.is-active .bakes-radial-item:hover .bakes-radial-icon,
+    .product-hero-panel.is-active .bakes-radial-item:focus-within .bakes-radial-icon{background:rgba(0,110,182,.14);transform:scale(1.28)}
+    .bakes-radial-content{position:absolute;top:18%;left:50%;width:68%;max-width:none;box-sizing:border-box;padding:0 4%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;z-index:2;pointer-events:none;max-height:68%;overflow:hidden;transition:top .35s cubic-bezier(.22,.61,.36,1),width .35s ease,gap .35s ease,max-height .4s ease,padding .35s ease}
+    .bakes-radial-item:hover .bakes-radial-content,
+    .bakes-radial-item:focus-within .bakes-radial-content{top:10%;width:62%;padding:0 5%;gap:3px;max-height:78%}
+    .bakes-radial-item--1 .bakes-radial-content{transform:translateX(-50%) rotate(0deg)}
+    .bakes-radial-item--2 .bakes-radial-content{transform:translateX(-50%) rotate(-72deg)}
+    .bakes-radial-item--3 .bakes-radial-content{transform:translateX(-50%) rotate(-144deg)}
+    .bakes-radial-item--4 .bakes-radial-content{transform:translateX(-50%) rotate(-216deg)}
+    .bakes-radial-item--5 .bakes-radial-content{transform:translateX(-50%) rotate(-288deg)}
+    .bakes-radial-icon svg,.bakes-radial-icon img{width:48px;height:48px;display:block;object-fit:contain;flex-shrink:0;margin:0 auto;transition:width .3s ease,height .3s ease,opacity .3s ease}
+    .bakes-radial-item:hover .bakes-radial-icon svg,
+    .bakes-radial-item:hover .bakes-radial-icon img,
+    .bakes-radial-item:focus-within .bakes-radial-icon svg,
+    .bakes-radial-item:focus-within .bakes-radial-icon img{width:24px;height:24px;opacity:.95}
+    .bakes-radial-title{position:static;left:auto;width:100%;max-width:none;font-size:16px;font-weight:700;color:var(--text);line-height:1.25;letter-spacing:.02em;text-align:center;pointer-events:none;opacity:1;transform:none;z-index:auto;transition:font-size .3s ease}
+    .bakes-radial-item:hover .bakes-radial-title,
+    .bakes-radial-item:focus-within .bakes-radial-title{font-size:14px}
+    .bakes-radial-item--1 .bakes-radial-title,
+    .bakes-radial-item--2 .bakes-radial-title,
+    .bakes-radial-item--3 .bakes-radial-title,
+    .bakes-radial-item--4 .bakes-radial-title,
+    .bakes-radial-item--5 .bakes-radial-title{top:auto;bottom:auto;left:auto;right:auto;transform:none;text-align:center}
+    .bakes-radial-desc{width:100%;margin:0;font-size:12px;color:var(--text-muted);line-height:1.35;text-align:center;opacity:0;max-height:0;overflow:hidden;display:block;transform:translateY(6px);pointer-events:none;box-sizing:border-box;word-break:break-word;overflow-wrap:anywhere;transition:opacity .3s ease .08s,max-height .4s ease,transform .3s ease .08s,font-size .3s ease}
+    .bakes-radial-item:hover .bakes-radial-desc,
+    .bakes-radial-item:focus-within .bakes-radial-desc{opacity:1;max-height:12em;overflow:hidden;transform:none;font-size:10px}
+    @keyframes radial-orbit-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    @keyframes radial-core-pulse{
+      0%,100%{text-shadow:0 0 0 rgba(0,110,182,0)}
+      50%{text-shadow:0 0 18px rgba(0,110,182,.22)}
+    }
+
+
+    .product-hero-apps{position:relative;max-width:none;margin:0;padding:72px 0;box-sizing:border-box;width:100%;min-height:680px;display:flex;flex-direction:column;justify-content:center;border-top:none;background:transparent;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    .product-hero-apps.is-enter{opacity:1;transform:none}
+    .product-hero-apps[hidden]{display:none!important}
+    .product-hero-apps-head{max-width:var(--content-max);margin:0 auto 24px;padding:0 clamp(24px,4vw,64px);box-sizing:border-box;width:100%}
+    .product-hero-apps .product-module-title{display:inline-block;width:auto;max-width:none;margin:0;padding:0 0 12px;font-size:clamp(28px,3.2vw,40px);white-space:nowrap;box-sizing:border-box}
+    .product-hero-apps-marquee{position:relative;width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0, #000 72px, #000 calc(100% - 72px), transparent 100%);mask-image:linear-gradient(90deg,transparent 0, #000 72px, #000 calc(100% - 72px), transparent 100%)}
+    .product-hero-apps-marquee::before,.product-hero-apps-marquee::after{display:none}
+
+    .product-module-detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease;border-radius:0 0 16px 16px;overflow:hidden;}
+    .product-module.is-open .product-module-detail{grid-template-rows:1fr}
+    .product-module-detail-inner{overflow:hidden;min-height:0}
+    .product-module-detail-body{padding:0 56px 52px;border-top:1px solid rgba(0,110,182,.08)}
+    .product-desc{font-size:15px;color:var(--text-muted);line-height:1.9;max-width:900px;margin:28px 0 28px}
+    .product-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+    .product-tag{padding:8px 16px;background:rgba(0,110,182,.06);color:var(--primary);font-size:13px;font-weight:600;border-radius:999px;border:1px solid rgba(0,110,182,.1)}
+    .detail-block{margin-bottom:36px}
+    .detail-block:last-child{margin-bottom:0}
+    .detail-title{display:inline-block;position:relative;font-size:28px;font-weight:500;color:#2A2A2A;margin-bottom:18px;line-height:1.4;letter-spacing:.02em;padding-bottom:10px}
+    .detail-title::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px}
+    .process-grid{display:grid;grid-template-columns:1fr;gap:20px}
+    .process-grid--2{grid-template-columns:1fr 1fr}
+    .process-card{background:var(--bg);border-radius:12px;overflow:hidden;border:1px solid rgba(0,110,182,.08);box-shadow:var(--shadow)}
+    .process-card-head{padding:14px 20px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:var(--white);font-size:15px;font-weight:700}
+    .process-card-body{padding:20px}
+    .process-card-desc{font-size:16px;color:var(--text-muted);line-height:1.8;margin-bottom:16px}
+    .process-flow{display:flex;align-items:flex-start;justify-content:flex-start;gap:3px;overflow-x:auto;padding-bottom:4px}
+    .process-step{flex:0 0 110px;width:110px;min-width:110px;max-width:110px;text-align:center}
+    .product-module-detail[data-detail] .process-card{opacity:0;transform:translateY(14px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
+    .product-module-detail[data-detail].is-enter .process-card{opacity:1;transform:none}
+    .product-module-detail[data-detail].is-enter .process-card:nth-child(1){transition-delay:40ms}
+    .product-module-detail[data-detail].is-enter .process-card:nth-child(2){transition-delay:120ms}
+    .product-module-detail[data-detail].is-enter .process-card:nth-child(n+3){transition-delay:180ms}
+    .process-step-media{width:96px;height:96px;aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--white);border:1px solid rgba(0,110,182,.08);margin:0 auto 8px;box-sizing:border-box;transition:transform .35s ease,box-shadow .35s ease}
+    .process-step:hover .process-step-media{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,110,182,.12)}
+    .process-step-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+    .process-step:hover .process-step-media img{transform:scale(1.06)}
+    .process-step-label{font-size:14px;color:var(--text-muted);line-height:1.45}
+    .process-flow .process-arrow{flex-shrink:0;align-self:center;color:var(--primary-light);font-size:16px;font-weight:700;opacity:.7;margin-top:-18px}
+    .process-footer{display:flex;align-items:center;gap:10px;padding:12px 20px;border-top:1px solid rgba(0,110,182,.08);background:rgba(255,255,255,.6)}
+    .process-badge{font-size:11px;font-weight:700;color:var(--primary);background:rgba(0,110,182,.1);padding:4px 10px;border-radius:6px;white-space:nowrap}
+    .process-app{font-size:16px;color:var(--text);font-weight:400}
+    .app-grid,.app-grid--6,.app-grid--7{display:flex;width:max-content;gap:18px;padding:10px clamp(28px,5vw,72px) 18px;will-change:transform}
+    .product-hero-apps.is-enter .app-grid{animation:app-marquee 42s linear infinite}
+    .product-hero-apps.is-enter .app-grid:hover{animation-play-state:paused}
+    @keyframes app-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .app-card{position:relative;flex:0 0 clamp(280px,30vw,380px);width:clamp(280px,30vw,380px);aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:#1a2a3a;cursor:pointer;box-shadow:0 10px 28px rgba(20,55,90,.14);transition:transform .45s cubic-bezier(.22,.61,.36,1),box-shadow .4s ease}
+    .app-card img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform .8s cubic-bezier(.22,.61,.36,1)}
+    .app-card span{position:absolute;inset:auto 0 0;display:block;padding:48px 22px 20px;background:linear-gradient(180deg,transparent 0%,rgba(0,30,60,.82) 100%);color:#fff;font-size:clamp(16px,1.5vw,20px);font-weight:600;text-align:left;line-height:1.3;box-sizing:border-box;transition:padding .4s ease,background .4s ease}
+    .app-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,110,182,.22)}
+    .app-card:hover img{transform:scale(1.12)}
+    .app-card:hover span{padding:56px 22px 22px;background:linear-gradient(180deg,transparent 0%,rgba(0,70,130,.9) 100%)}
+
+    .biomass-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:0 auto;width:100%;max-width:var(--content-max)}
+    .biomass-col{position:relative;background:var(--white);border-radius:14px;padding:18px 18px 20px;border:1px solid rgba(0,110,182,.08);text-align:center;min-width:0;width:100%;box-sizing:border-box;opacity:0;transform:translateY(24px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),box-shadow .35s ease,border-color .35s ease;box-shadow:0 6px 20px rgba(20,55,90,.04)}
+    .biomass-col:nth-child(2){transition-delay:.1s}
+    .biomass-col:nth-child(3){transition-delay:.2s}
+    .biomass-col.is-inview{opacity:1;transform:translateY(0)}
+    .biomass-col:hover{border-color:rgba(0,110,182,.2);box-shadow:0 14px 32px rgba(0,110,182,.1)}
+    .biomass-col.is-inview:hover{transform:translateY(-4px)}
+    .biomass-card-head{display:flex;align-items:center;justify-content:center;gap:12px;padding-bottom:18px;}
+    .biomass-card-index{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--primary)}
+    .biomass-card-type{font-size:14px;font-weight:600;color:var(--text);line-height:1.4}
+    .biomass-stage-label{display:block;margin:0 0 12px;font-size:10px;font-weight:700;letter-spacing:.14em;color:#8B93A0}
+    .biomass-row{display:flex;align-items:flex-start;justify-content:center;gap:clamp(6px,1vw,12px)}
+    .biomass-row .process-step{min-width:0;max-width:none;flex:1 1 0;width:auto;text-align:center}
+    .biomass-row .process-step-media{width:min(56px,100%);aspect-ratio:1;height:auto;margin:0 auto 8px;border-radius:50%;border:1px solid rgba(0,110,182,.1);box-shadow:none;overflow:hidden;background:#F7FAFC}
+    .biomass-row .process-step-media img{width:100%;height:100%;object-fit:cover;display:block}
+    .biomass-row .process-step-label{font-size:11px;min-height:0;line-height:1.4;color:var(--text-muted);margin:0}
+    .biomass-row .process-arrow{margin:18px 0 0;align-self:flex-start;opacity:.55;color:var(--primary);font-size:15px;font-weight:600;flex-shrink:0;background:none;clip-path:none;min-height:0;padding:0;display:block;line-height:1}
+    .biomass-flow-axis{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--primary);font-size:11px;font-weight:600;white-space:nowrap}
+    .biomass-flow-axis::before,.biomass-flow-axis::after{content:"";height:1px;flex:1;background:rgba(0,110,182,.15)}
+    .biomass-flow-axis span::after{content:"↓";margin-left:7px}
+    .biomass-result{position:relative;margin:0 auto;max-width:220px}
+    .biomass-result .process-step{flex:none;width:100%;max-width:100%;min-width:0;margin:0}
+    .biomass-result .process-step-media{width:100%;aspect-ratio:1;height:auto;max-height:160px;border-radius:12px;overflow:hidden;margin:0;border:1px solid rgba(0,110,182,.08);background:#F5F8FB}
+    .biomass-result .process-step-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .45s ease}
+    .biomass-col:hover .biomass-result img{transform:scale(1.03)}
+    .biomass-col-title{font-size:15px;font-weight:600;color:var(--text);margin:12px 0 14px;line-height:1.4;text-align:center}
+    @media (prefers-reduced-motion:reduce){.biomass-col{opacity:1;transform:none;transition:box-shadow .2s ease,border-color .2s ease}.biomass-result .process-step-media img{transition:none}}
+
+    /* Biomass module — reference layout */
+    .biomass-module{width:100vw;max-width:100vw;height:680px;margin:0 calc(50% - 50vw) 8px;border-radius:0;border:none;box-shadow:none;overflow:visible;position:relative;isolation:isolate;background-color:#EAF2F6;background-image:radial-gradient(ellipse 72% 58% at 8% 12%,rgba(46,160,120,.09) 0%,transparent 58%),radial-gradient(ellipse 58% 52% at 92% 82%,rgba(0,110,182,.1) 0%,transparent 62%),linear-gradient(168deg,#E4EEF4 0%,#F0F6F9 38%,#EAF4F0 100%);display:flex;flex-direction:column;justify-content:center;box-sizing:border-box}
+    .biomass-module::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url("img/banner/bg2.png") center / cover no-repeat;opacity:.5}
+    .biomass-module > *{position:relative;z-index:1}
+    .product-hero + .biomass-module{margin-top:-28px}
+    .biomass-module:hover,.biomass-module.is-open{transform:none;box-shadow:none}
+    .biomass-module .product-module-main{display:none}
+    .biomass-hero{position:relative;padding:0 clamp(24px,4vw,64px) 12px;max-width:var(--content-max);margin:0 auto;overflow:hidden;box-sizing:border-box;width:100%;text-align:left;opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+    .biomass-module.is-inview .biomass-hero{opacity:1;transform:none}
+    .biomass-hero-inner{position:relative;z-index:1;max-width:720px;margin:0}
+    .biomass-eyebrow{display:block;margin-bottom:12px;font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--primary)}
+    .biomass-module .product-module-title{margin:0 0 10px;font-size:clamp(28px,3.2vw,40px);color:#2A2A2A;max-width:none}
+    .biomass-hero-desc{font-size:15px;line-height:1.75;color:var(--text-muted);margin:0;max-width:36em}
+    .biomass-module .product-module-detail{display:grid;grid-template-rows:1fr;background:transparent;border-radius:0}
+    .biomass-module .product-module-detail-body{padding:20px clamp(24px,4vw,64px) 0;border-top:none;max-width:var(--content-max);margin:0 auto}
+    .biomass-features{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--white);border:1px solid rgba(0,110,182,.1);border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(0,110,182,.05)}
+    .biomass-feature{display:flex;align-items:center;gap:14px;padding:22px 20px;position:relative;opacity:0;transform:translateY(16px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1),background .3s ease}
+    .biomass-module.is-inview .biomass-feature{opacity:1;transform:none}
+    .biomass-module.is-inview .biomass-feature:nth-child(1){transition-delay:.08s}
+    .biomass-module.is-inview .biomass-feature:nth-child(2){transition-delay:.16s}
+    .biomass-module.is-inview .biomass-feature:nth-child(3){transition-delay:.24s}
+    .biomass-module.is-inview .biomass-feature:nth-child(4){transition-delay:.32s}
+    .biomass-feature:hover{background:rgba(0,110,182,.03)}
+    .biomass-feature:not(:last-child)::after{content:"";position:absolute;right:0;top:22%;bottom:22%;width:1px;background:rgba(0,110,182,.1)}
+    .biomass-feature-icon{width:42px;height:42px;flex-shrink:0;border-radius:50%;background:rgba(0,110,182,.08);color:var(--primary);display:flex;align-items:center;justify-content:center;transition:transform .35s cubic-bezier(.22,.61,.36,1),background .3s ease}
+    .biomass-feature:hover .biomass-feature-icon{transform:scale(1.08) translateY(-2px);background:rgba(0,110,182,.12)}
+    .biomass-section-head{display:flex;align-items:center;justify-content:center;gap:18px;margin:8px 0 32px;opacity:0;transform:translateY(12px);transition:opacity .6s cubic-bezier(.16,1,.3,1) .05s,transform .6s cubic-bezier(.16,1,.3,1) .05s}
+    .biomass-module.is-inview .biomass-section-head{opacity:1;transform:none}
+    .biomass-section-head::before,.biomass-section-head::after{content:"";flex:1;max-width:160px;height:1px;background:linear-gradient(90deg,transparent,rgba(0,110,182,.28),transparent)}
+    .biomass-section-title{display:inline-flex;align-items:center;gap:10px;font-size:20px;font-weight:600;color:var(--primary);margin:0;padding:0;letter-spacing:.04em}
+    .biomass-section-title::before,.biomass-section-title::after{content:"";width:8px;height:8px;border:1.5px solid var(--primary);border-radius:50%;opacity:.55;box-shadow:0 0 0 3px rgba(0,110,182,.08);flex-shrink:0}
+    .biomass-feature-icon svg{width:22px;height:22px;display:block}
+    .biomass-feature-text{min-width:0}
+    .biomass-feature-text strong{display:block;font-size:14px;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:2px}
+    .biomass-feature-text span{display:block;font-size:12px;color:var(--text-muted);line-height:1.4}
+
+    /* Other business — editorial rows */
+    .other-section{width:100vw;max-width:100vw;margin:0 calc(50% - 50vw);position:relative;isolation:isolate;background-color:#F4F8FB;background-image:url("img/banner/bg.png");background-repeat:no-repeat;background-position:center center;background-size:cover;border:none;padding:0 0 72px;overflow:hidden}
+    .other-section::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 58% 42% at 88% 8%,rgba(0,110,182,.08) 0%,transparent 58%),radial-gradient(ellipse 48% 38% at 6% 92%,rgba(255,181,17,.06) 0%,transparent 55%),linear-gradient(180deg,rgba(255,255,255,.62) 0%,rgba(244,249,252,.4) 48%,rgba(236,244,250,.55) 100%)}
+    .other-section::after{content:"";position:absolute;left:-140px;bottom:-180px;width:380px;height:380px;border-radius:50%;border:1px solid rgba(0,110,182,.07);box-shadow:0 0 0 48px rgba(0,110,182,.025),0 0 0 96px rgba(0,110,182,.015);pointer-events:none;z-index:0}
+    .biomass-module + .other-section,.products-list + .other-section{margin-top:-28px}
+    .other-section-inner{position:relative;z-index:1;max-width:var(--content-max);margin:0 auto;padding:70px clamp(24px,4vw,64px) 0;box-sizing:border-box;width:100%}
+    .other-section-head{display:block;margin:0 0 36px;text-align:left;opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+    .other-section.is-inview .other-section-head{opacity:1;transform:none}
+    .other-section .product-module-title{display:inline-block;margin:0 0 12px;font-size:clamp(28px,3.2vw,40px);color:#2A2A2A;max-width:none}
+    .other-section-lead{max-width:40em;margin:0;font-size:15px;line-height:1.75;color:var(--text-muted);text-align:left}
+    .other-business{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:20px;align-items:center;padding:72px 0;border-bottom:1px solid #E8ECF1;opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+    .other-business.is-inview{opacity:1;transform:translateY(0);align-items:self-start}
+    .other-business:last-child{border-bottom:none;padding-bottom:0}
+    .other-business--reverse{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}
+    .other-business--barias{grid-template-columns:1fr;gap:36px;justify-items:stretch}
+    .other-business--barias .other-business-content{max-width:720px;width:100%;margin:0 auto;text-align:center}
+    .other-business--barias .other-business-index{justify-content:center}
+    .other-business--barias .other-funcs-list{justify-content:center}
+    .other-business--barias .other-business-media{width:100%}
+    .other-business-content{max-width:520px}
+    .other-business-index{display:flex;align-items:center;gap:12px;margin-bottom:22px;color:var(--primary);font-size:12px;font-weight:700;letter-spacing:.16em;opacity:0;transform:translateY(10px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+    .other-business.is-inview .other-business-index{opacity:1;transform:none;transition-delay:.08s}
+    .other-business-index::after{content:"";width:44px;height:1px;background:rgba(0,110,182,.35)}
+    .other-business-name{font-size:clamp(24px,2.4vw,34px);font-weight:500;color:#2A2A2A;line-height:1.35;margin:0 0 18px;opacity:0;transform:translateY(12px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
+    .other-business.is-inview .other-business-name{opacity:1;transform:none;transition-delay:.14s}
+    .other-business-desc{font-size:15px;color:var(--text-muted);line-height:1.9;margin:0 0 28px;opacity:0;transform:translateY(12px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
+    .other-business.is-inview .other-business-desc{opacity:1;transform:none;transition-delay:.2s}
+    .other-business-desc strong{color:var(--text);font-weight:600}
+    .other-business-media{min-width:0;opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+    .other-business.is-inview .other-business-media{opacity:1;transform:none;transition-delay:.18s}
+    .other-funcs-list{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+    .other-funcs-list li{font-size:12px;color:var(--primary);padding:6px 11px;background:rgba(0,110,182,.06);border-radius:999px;border:1px solid rgba(0,110,182,.09);opacity:0;transform:translateY(8px);transition:opacity .4s cubic-bezier(.16,1,.3,1),transform .4s cubic-bezier(.16,1,.3,1),background .25s ease,border-color .25s ease}
+    .other-business.is-inview .other-funcs-list li{opacity:1;transform:none}
+    .other-business.is-inview .other-funcs-list li:nth-child(1){transition-delay:.26s}
+    .other-business.is-inview .other-funcs-list li:nth-child(2){transition-delay:.3s}
+    .other-business.is-inview .other-funcs-list li:nth-child(3){transition-delay:.34s}
+    .other-business.is-inview .other-funcs-list li:nth-child(4){transition-delay:.38s}
+    .other-business.is-inview .other-funcs-list li:nth-child(5){transition-delay:.42s}
+    .other-business.is-inview .other-funcs-list li:nth-child(n+6){transition-delay:.46s}
+    .other-funcs-list li:hover{background:rgba(0,110,182,.1);border-color:rgba(0,110,182,.18)}
+    .emet-checklist li{font-size:13px;color:var(--text);padding:12px 14px 12px 14px;position:relative;line-height:1.45;background:#F3F7FB;border-radius:10px;border:1px solid rgba(0,110,182,.06);display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;opacity:0;transform:translateY(10px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1),box-shadow .3s ease,border-color .3s ease}
+    .other-business.is-inview .emet-checklist li{opacity:1;transform:none}
+    .other-business.is-inview .emet-checklist li:nth-child(1){transition-delay:.2s}
+    .other-business.is-inview .emet-checklist li:nth-child(2){transition-delay:.26s}
+    .other-business.is-inview .emet-checklist li:nth-child(3){transition-delay:.32s}
+    .other-business.is-inview .emet-checklist li:nth-child(4){transition-delay:.38s}
+    .emet-checklist li:hover{border-color:rgba(0,110,182,.16);box-shadow:0 6px 16px rgba(0,110,182,.08)}
+    .toilet-notes p{font-size:13px;color:var(--text);line-height:1.45;padding:12px 14px;margin:0;background:#F3F7FB;border:1px solid rgba(0,110,182,.06);border-radius:10px;border-left:none;text-align:center;white-space:nowrap;flex:1 1 0;min-width:0;opacity:0;transform:translateY(10px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1),box-shadow .3s ease}
+    .other-business.is-inview .toilet-notes p{opacity:1;transform:none}
+    .other-business.is-inview .toilet-notes p:nth-child(1){transition-delay:.2s}
+    .other-business.is-inview .toilet-notes p:nth-child(2){transition-delay:.26s}
+    .other-business.is-inview .toilet-notes p:nth-child(3){transition-delay:.32s}
+    .other-business.is-inview .toilet-notes p:nth-child(4){transition-delay:.38s}
+    .other-business.is-inview .toilet-notes p:nth-child(5){transition-delay:.44s}
+    .toilet-notes p:hover{box-shadow:0 6px 16px rgba(0,110,182,.08)}
+    .other-main-image{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:14px;border:1px solid #E8ECF1;background:var(--bg);transition:transform .55s cubic-bezier(.22,.61,.36,1),box-shadow .4s ease}
+    .other-business.is-inview .other-main-image:hover{transform:scale(1.015);box-shadow:0 12px 32px rgba(20,40,80,.08)}
+    .other-media-caption{font-size:12px;color:var(--text-muted);margin:10px 0 0;line-height:1.5}
+    .barias-gallery{display:flex;flex-wrap:nowrap;justify-content:stretch;align-items:stretch;gap:clamp(10px,1.2vw,16px);width:100%}
+    .barias-gallery-item{position:relative;flex:1 1 0;min-width:0;border-radius:14px;background:var(--bg);overflow:hidden;transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+    .barias-gallery-item:hover{transform:translateY(-4px)}
+    .barias-gallery-item:nth-child(4){margin-left:clamp(12px,1.5vw,20px)}
+    .barias-gallery-item:nth-child(4)::before{content:"";position:absolute;left:calc(-1 * clamp(12px,1.5vw,20px) / 2 - .5px);top:12%;bottom:12%;width:1px;background:rgba(0,110,182,.22);pointer-events:none}
+    .barias-gallery-item img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:14px;border:1px solid #E8ECF1;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+    .barias-gallery-item:hover img{transform:scale(1.04)}
+    .barias-gallery-item span{position:absolute;left:10px;bottom:10px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.92);font-size:12px;font-weight:600;color:var(--text);line-height:1.3;backdrop-filter:blur(6px);max-width:calc(100% - 20px);box-sizing:border-box;z-index:1}
+    .other-funcs-label{font-size:13px;font-weight:600;color:var(--text);margin:0 0 12px}
+    .emet-brand{display:flex;align-items:center;gap:18px;margin-bottom:24px}
+    .emet-logo{width:112px;max-height:54px;object-fit:contain;border:none!important;display:block;margin:0 0 18px}
+    .emet-brand span{font-size:13px;color:var(--text-muted);line-height:1.5}
+    .other-business--emet{grid-template-columns:1fr;gap:32px;justify-items:stretch}
+    .other-business--emet .other-business-content{max-width:none;width:100%;text-align:center}
+    .other-business--emet .other-business-name{margin:0 0 10px}
+    .other-business--emet .other-business-desc{margin:0 0 18px}
+    .emet-badges{display:grid;grid-template-columns:repeat(3,minmax(0,220px));justify-content:center;gap:clamp(16px,3vw,36px);margin:0 0 8px}
+    .emet-badges figure{margin:0;text-align:center;opacity:0;transform:translateY(12px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+    .other-business.is-inview .emet-badges figure{opacity:1;transform:none}
+    .other-business.is-inview .emet-badges figure:nth-child(1){transition-delay:.22s}
+    .other-business.is-inview .emet-badges figure:nth-child(2){transition-delay:.3s}
+    .other-business.is-inview .emet-badges figure:nth-child(3){transition-delay:.38s}
+    .emet-badges img{width:100%;object-fit:contain;display:block;margin:0 auto 12px;background:transparent;border:none}
+    .emet-badges figcaption{font-size:16px;color:var(--text);line-height:1.55;font-weight:500}
+    .emet-body{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,4vw,56px);align-items:center;width:100%;text-align:left}
+    .emet-body .other-main-image{margin:0}
+    .emet-body-side{min-width:0;display:flex;align-items:center;justify-content:center}
+    .emet-checklist{list-style:none;margin:0 auto 28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%;max-width:960px;text-align:center}
+    .emet-checklist li::before{content:"";flex:0 0 16px;width:16px;height:16px;margin:0;position:static;border-radius:50%;background:var(--primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M2.5 6.2l2.4 2.3 4.6-5'%3E%3C/path%3E%3C/svg%3E") center/10px 10px no-repeat}
+    .toilet-notes{display:flex;flex-wrap:nowrap;justify-content:stretch;align-items:stretch;gap:10px;margin:0 0 28px;width:100%;max-width:none;overflow:visible}
+    .other-business--toilet{grid-template-columns:1fr;gap:28px;justify-items:stretch}
+    .other-business--toilet .other-business-content{max-width:none;width:100%;margin:0;text-align:center}
+    .other-business--toilet .other-business-name,.other-business--toilet .other-business-desc{max-width:760px;margin-left:auto;margin-right:auto}
+    .other-business--toilet .other-business-desc{margin-bottom:18px}
+    .other-business--toilet .other-business-media{width:100%}
+    .other-business--toilet .other-main-image{aspect-ratio:auto;object-fit:contain;background:#F7F4EF;border:1px solid #E8ECF1}
+    @media (prefers-reduced-motion:reduce){
+      .other-business,.other-business-index,.other-business-name,.other-business-desc,.other-business-media,
+      .other-funcs-list li,.emet-checklist li,.toilet-notes p,.emet-badges figure,.biomass-section-head,.biomass-feature,.app-card{
+        opacity:1!important;transform:none!important;transition:none!important
+      }
+    }
+
+    /* Clients — full-bleed logo wall + marquee */
+    .clients-section{width:100vw;max-width:100vw;margin:0 calc(50% - 50vw);isolation:isolate;background-color:#EAF1F6;background-image:radial-gradient(ellipse 80% 55% at 50% -8%,rgba(0,110,182,.12) 0%,transparent 58%),radial-gradient(ellipse 42% 48% at 0% 100%,rgba(0,110,182,.07) 0%,transparent 55%),radial-gradient(ellipse 42% 48% at 100% 78%,rgba(0,136,212,.06) 0%,transparent 55%),linear-gradient(180deg,#E4EDF4 0%,#F2F6F9 48%,#EAF0F5 100%);border-radius:0;padding:64px 0 72px;box-shadow:none;border:none;overflow:hidden;position:relative}
+    .clients-section::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(0,110,182,.1) 1px,transparent 1px);background-size:22px 22px;opacity:.45;pointer-events:none;z-index:0}
+    .clients-section::after{content:"";position:absolute;left:50%;top:-40px;transform:translateX(-50%);width:min(780px,78vw);height:220px;background:radial-gradient(ellipse at center,rgba(0,110,182,.1) 0%,transparent 70%);pointer-events:none;z-index:0}
+    .clients-title{display:block;position:relative;z-index:1;font-size:42px;font-weight:500;color:#2A2A2A;margin:0 auto 40px;max-width:var(--content-max);padding:0 clamp(24px,4vw,64px) 12px;box-sizing:border-box;letter-spacing:.02em;line-height:1.3;opacity:0;transform:translateY(18px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+    .clients-section.is-inview .clients-title{opacity:1;transform:none}
+    .clients-title::after{content:"";position:absolute;left:clamp(24px,4vw,64px);bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px;transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.16,1,.3,1) .28s}
+    .clients-marquee{display:flex;flex-direction:column;gap:14px;margin:0;position:relative;z-index:1;opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.16,1,.3,1) .15s,transform .8s cubic-bezier(.16,1,.3,1) .15s}
+    .clients-section.is-inview .clients-marquee{opacity:1;transform:none}
+    .clients-marquee::before,.clients-marquee::after{content:"";position:absolute;top:0;bottom:0;width:clamp(40px,8vw,120px);z-index:2;pointer-events:none}
+    .clients-marquee::before{left:0;background:linear-gradient(90deg,#EAF1F6 0%,rgba(234,241,246,0) 100%)}
+    .clients-marquee::after{right:0;background:linear-gradient(270deg,#EAF1F6 0%,rgba(234,241,246,0) 100%)}
+    .clients-track{display:flex;width:max-content;gap:14px;will-change:transform}
+    .clients-track--a{animation:clients-scroll-left 55s linear infinite}
+    .clients-track--b{animation:clients-scroll-right 65s linear infinite}
+    .clients-track:hover{animation-play-state:paused}
+    @keyframes clients-scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes clients-scroll-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+    .clients-chip{flex:0 0 auto;width:168px;height:76px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;background:var(--white);border:1px solid rgba(0,110,182,.08);border-radius:12px;box-shadow:0 4px 16px rgba(20,40,80,.04);transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease,border-color .3s ease}
+    .clients-chip img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;filter:grayscale(.15);opacity:.88;transition:filter .3s ease,opacity .3s ease,transform .35s cubic-bezier(.22,.61,.36,1)}
+    .clients-chip:hover{transform:translateY(-5px);border-color:rgba(0,110,182,.22);box-shadow:0 12px 28px rgba(0,110,182,.12)}
+    .clients-chip:hover img{filter:none;opacity:1;transform:scale(1.05)}
+    @media (prefers-reduced-motion:reduce){
+      .clients-track--a,.clients-track--b{animation:none}
+      .product-hero-apps.is-enter .app-grid{animation:none;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;max-width:100%;padding-bottom:8px}
+      .product-hero-apps{overflow-x:auto}
+      .product-hero::before,.product-hero.is-ready::before{transition:none!important;opacity:1!important;background-size:cover!important}
+      .product-hero-tabs,.product-hero-visual,.product-hero-info .product-module-title,.product-hero-info .product-hero-desc,.product-feat,.biomass-hero,.biomass-col,.biomass-feature,.biomass-section-head,.other-section-head,.other-business,.other-business-index,.other-business-name,.other-business-desc,.other-business-media,.other-funcs-list li,.emet-checklist li,.toilet-notes p,.emet-badges figure,.clients-title,.clients-marquee,.bakes-radial-core,.bakes-radial-orbit,.app-card,.product-module-detail[data-detail] .process-showcase,.product-module-detail[data-detail] .app-showcase,.product-module-title::after,.clients-title::after{
+        opacity:1!important;transform:none!important;transition:none!important;animation:none!important
+      }
+      .product-hero.is-ready .bakes-radial-item{opacity:1!important;transition:none!important;animation:none!important}
+      .product-hero .product-module-title::after,.product-hero.is-ready .product-module-title::after{transform:none!important}
+      .bakes-radial-core{transform:translate(-50%,-50%)!important}
+      .bakes-radial-item--1{transform:translate(-50%,-100%) translateY(26%) rotate(0deg)!important;transform-origin:50% 100%!important}
+      .bakes-radial-item--2{transform:translate(-50%,-100%) translateY(26%) rotate(72deg)!important;transform-origin:50% 100%!important}
+      .bakes-radial-item--3{transform:translate(-50%,-100%) translateY(26%) rotate(144deg)!important;transform-origin:50% 100%!important}
+      .bakes-radial-item--4{transform:translate(-50%,-100%) translateY(26%) rotate(216deg)!important;transform-origin:50% 100%!important}
+      .bakes-radial-item--5{transform:translate(-50%,-100%) translateY(26%) rotate(288deg)!important;transform-origin:50% 100%!important}
+      .bakes-radial-item--1:hover,.bakes-radial-item--1:focus-within{transform:translate(-50%,-100%) translateY(26%) rotate(0deg)!important}
+      .bakes-radial-item--2:hover,.bakes-radial-item--2:focus-within{transform:translate(-50%,-100%) translateY(26%) rotate(72deg)!important}
+      .bakes-radial-item--3:hover,.bakes-radial-item--3:focus-within{transform:translate(-50%,-100%) translateY(26%) rotate(144deg)!important}
+      .bakes-radial-item--4:hover,.bakes-radial-item--4:focus-within{transform:translate(-50%,-100%) translateY(26%) rotate(216deg)!important}
+      .bakes-radial-item--5:hover,.bakes-radial-item--5:focus-within{transform:translate(-50%,-100%) translateY(26%) rotate(288deg)!important}
+      .bakes-radial-item:hover .bakes-radial-icon,.bakes-radial-item:focus-within .bakes-radial-icon{transform:scale(1.28)!important}
+      .bakes-radial-desc{transition:none!important}
+      .bakes-radial-item--1 .bakes-radial-content{transform:translateX(-50%) rotate(0deg)!important}
+      .bakes-radial-item--2 .bakes-radial-content{transform:translateX(-50%) rotate(-72deg)!important}
+      .bakes-radial-item--3 .bakes-radial-content{transform:translateX(-50%) rotate(-144deg)!important}
+      .bakes-radial-item--4 .bakes-radial-content{transform:translateX(-50%) rotate(-216deg)!important}
+      .bakes-radial-item--5 .bakes-radial-content{transform:translateX(-50%) rotate(-288deg)!important}
+    }
+
+    .footer{background:#E8F2F8}
+    .footer-main{padding:40px 24px}
+    .footer-inner{max-width:var(--content-max);margin:0 auto}
+    .footer-links{display:flex;justify-content:space-between;align-items:flex-start;width:100%;gap:28px 20px}.footer-col{flex:0 1 auto;min-width:0;max-width:200px}.footer-col ul a{overflow-wrap:break-word}
+    .footer-col{min-width:0}
+    .footer-col h4{color:var(--primary);font-size:15px;font-weight:700;margin:0 0 18px;letter-spacing:.04em}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .footer-col ul a{font-size:13px;line-height:1.5;color:var(--text-muted);transition:color .2s;display:block}
+    .footer-col ul a:hover{color:var(--primary)}
+    .footer-contact{margin-top:30px;padding-top:8px}
+    .footer-contact-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .footer-phone{font-size:clamp(22px,2.4vw,30px);font-weight:500;color:var(--primary);letter-spacing:.04em;line-height:1.2}
+    .footer-phone:hover{color:var(--primary-light)}
+    .footer-fax{font-size:15px;color:var(--text-muted);letter-spacing:.02em}
+    .footer-address{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;color:var(--text);font-size:14px;line-height:1.55;transition:color .2s;border-top:1px solid rgba(0,110,182,.12)}
+    .footer-address:hover{color:var(--primary)}
+    .footer-address-text{min-width:0}
+    .footer-address-label{display:block;font-size:12px;color:var(--text-muted);margin-bottom:4px}
+    .footer-address-meta{display:block;margin-top:6px;font-size:13px;color:var(--text-muted)}
+    .footer-address-arrow{flex-shrink:0;width:18px;height:18px;color:var(--primary);opacity:.7}
+    .footer-bar{background:var(--primary)}
+    .footer-bar-inner{max-width:var(--content-max);margin:0 auto;padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap}
+    .footer-bar-brand{display:flex;align-items:center;gap:12px;color:var(--white);min-width:0}
+    .footer-bar-brand img{height:36px;width:auto;display:block}
+    .footer-bar-brand-text{display:flex;flex-direction:column;gap:2px;min-width:0;line-height:1.25}
+    .footer-bar-brand-zh{font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--white);white-space:nowrap}
+    .footer-bar-brand-en{font-size:11px;font-weight:400;letter-spacing:.02em;color:#9EC9E8;white-space:nowrap}
+    .footer-bar-copy{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5;text-align:right}
+    .prototype-badge{position:fixed;bottom:16px;right:16px;background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;z-index:9999}
+
+    @media(max-width:1100px){
+      .footer-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}.footer-col{max-width:none}
+      .process-grid--2{grid-template-columns:1fr}
+      .process-flow-board{grid-template-columns:128px 28px minmax(0,1fr) minmax(160px,.36fr)}
+      .process-input img{width:110px;height:96px}
+      .process-bakes-flow{grid-template-columns:156px 28px minmax(0,1fr)}
+      .process-bakes-flow--3{grid-template-columns:168px 28px minmax(0,1fr)}
+      .process-bakes-in img{min-height:88px}
+      .process-bakes-panel{padding:16px 56px 18px 18px;min-height:240px}
+      .process-bakes-card:first-child img,.process-bakes-card:nth-child(3) img{width:120px;height:120px}
+      .process-bakes-card:last-child{padding-left:calc((100% / 1.45 - 120px) / 2)}
+      .process-bakes-card:last-child img{height:120px}
+      .process-bakes-next{height:120px}
+      .process-arrow{clip-path:polygon(0 14px,calc(100% - 46px) 14px,calc(100% - 46px) 0,100% 50%,calc(100% - 46px) 100%,calc(100% - 46px) calc(100% - 14px),0 calc(100% - 14px));padding:8px 54px 8px 8px;min-height:190px}
+      .process-arrow-step img{height:120px}
+      .process-result img{height:150px}
+      .biomass-cols{grid-template-columns:repeat(3,minmax(0,1fr));justify-items:stretch;gap:16px}
+      .biomass-col{max-width:none}
+      .biomass-features{grid-template-columns:1fr 1fr}
+      .biomass-feature:nth-child(2n)::after{display:none}
+      .biomass-hero{padding:0 20px 12px}
+      .biomass-module .product-module-title{font-size:28px}
+      .biomass-module .product-module-detail-body{padding:16px 20px 0}
+      .other-section-inner{padding:40px 20px 0}
+      .other-section .product-module-title{font-size:28px}
+      .other-section-head{margin-bottom:28px}
+      .other-section-lead{text-align:left;margin:0}
+      .other-business{grid-template-columns:1fr;gap:32px;padding:52px 0}
+      .other-business--reverse .other-business-media,.other-business--reverse .other-business-content{order:unset}
+      .other-business-content{max-width:none}
+      .biomass-module + .other-section,.products-list + .other-section{margin-top:-20px}
+      .product-module-main{padding:36px 32px;gap:28px}
+      .product-module-detail-body{padding-left:32px;padding-right:32px}
+    }
+    @media(max-width:768px){
+      .nav{display:none}
+      .footer-main{padding:40px 20px 0}
+      .footer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.footer-col{max-width:none}
+      .footer-contact{margin-top:32px}
+      .footer-contact-row{padding:18px 0;gap:10px}
+      .footer-phone{font-size:22px}
+      .footer-fax{font-size:13px}
+      .footer-address{padding:16px 0;font-size:13px}
+      .footer-bar-inner{padding:14px 20px}
+      .footer-bar-copy{text-align:left;font-size:11px}
+      .products-page{padding:0 0 48px}
+      .products-list{gap:20px;padding:0 16px}
+      .product-module{border-radius:16px}
+      .product-module-main{flex-direction:column;align-items:flex-start;padding:28px 24px;min-height:0;gap:24px}
+      .product-module-info{flex:none;width:100%}
+      .product-module-title{font-size:28px;margin-bottom:20px}
+      .product-hero{margin-bottom:0}
+      .product-hero + .biomass-module{margin-top:-20px}
+      .biomass-cols{grid-template-columns:1fr;gap:16px}
+      .biomass-module + .other-section{margin-top:-20px}
+      .other-section-head{margin-bottom:24px}
+      .other-business{padding:40px 0;gap:26px}
+      .other-business-name{font-size:24px}
+      .other-business-desc{font-size:14px;margin-bottom:22px}
+      .barias-gallery{flex-wrap:wrap}
+      .barias-gallery-item{flex:1 1 calc(50% - 8px);max-width:none}
+      .barias-gallery-item:nth-child(4){margin-left:0}
+      .barias-gallery-item:nth-child(4)::before{display:none}
+      .emet-badges{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+      .emet-body{grid-template-columns:1fr;gap:24px}
+      .emet-checklist{grid-template-columns:1fr 1fr;max-width:none}
+      .toilet-notes{gap:8px}
+      .product-hero-main{flex-direction:column;padding:36px 20px 32px;min-height:0;gap:28px}
+      .product-hero-info{flex:none;width:100%;align-items:flex-start}
+      .product-hero-tags{overflow:visible;padding-bottom:0;gap:6px}
+      .product-feat{flex:0 0 auto;max-width:none;padding:7px 12px}
+      .product-feat-label{font-size:11px}
+      .product-hero-visual{flex:none;width:100%;max-width:100%;min-height:0}
+      .product-hero-tabs{gap:3px;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:20px}
+      .product-hero-tab{gap:8px;padding:9px 11px;flex:1 0 auto}
+      .product-hero-tab-icon{width:16px;height:16px}
+      .product-hero-tab-dot{width:5px;height:5px}
+      .product-hero-tab-name{font-size:13px}
+      .product-hero-tab-sub{font-size:11px}
+      .product-hero .product-module-detail-body{padding:0}
+      .product-hero-apps{padding:32px 0 40px;min-height:0}
+      .product-hero-apps-head{padding:0 20px;margin-bottom:20px}
+      .product-hero-apps .product-module-title{padding:0 0 12px;margin:0;font-size:28px}
+      .product-hero-panel.is-active{position:relative;width:100%;max-width:360px}
+      .process-showcase--bakes{height:auto;min-height:0;padding:32px 20px 28px}
+      .process-showcase-head{padding:0 20px;margin-bottom:24px}
+      .process-showcase-head .product-module-title{font-size:28px}
+      .process-flow-board{grid-template-columns:1fr;gap:12px;padding:0 20px}
+      .process-inputs{flex-direction:row;justify-content:center;gap:16px}
+      .process-input{flex:1 1 0}
+      .process-input img{width:96px;height:80px;max-width:none}
+      .process-join{min-height:28px}
+      .process-join::before{left:12%;right:12%;top:50%;bottom:auto;width:auto;height:10px;margin:0;border-radius:8px}
+      .process-join::after{left:50%;top:50%;width:10px;height:18px;margin:-4px 0 0 -5px}
+      .process-bakes-flow{grid-template-columns:1fr;gap:12px}
+      .process-bakes-inputs{flex-direction:row;align-items:stretch;gap:12px;height:auto}
+      .process-bakes-in{flex:1 1 0;min-height:140px}
+      .process-bakes-rail{flex-direction:row;gap:12px;min-height:28px}
+      .process-bakes-rail::before{left:calc((100% - 12px) / 4);right:calc((100% - 12px) / 4);top:50%;bottom:auto;width:auto;height:2px;margin:0}
+      .process-bakes-rail::after{left:50%;margin:-5px 0 0 -5px}
+      .process-bakes-bracket-arm::before{left:50%;right:auto;top:0;bottom:50%;width:2px;height:auto;margin:0 0 0 -1px}
+      .process-bakes-rail-out{left:50%;top:50%;width:2px;height:16px;margin:0 0 0 -1px}
+      .process-bakes-flow--3 .process-bakes-rail::before{left:calc((100% - 24px) / 6);right:calc((100% - 24px) / 6);top:50%;bottom:auto}
+      .process-bakes-notes,.process-bakes-icons,.process-bakes-cards{grid-template-columns:1fr;gap:10px}
+      .process-bakes-notes p:first-child,.process-bakes-notes p:last-child{grid-column:auto}
+      .process-bakes-notes p{max-width:none;width:auto;padding-bottom:0}
+      .process-bakes-notes p::after,.process-bakes-dot{display:none}
+      .process-bakes-icons::before{display:none}
+      .process-bakes-panel{clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),50% 100%,0 calc(100% - 28px));padding:16px 16px 36px;min-height:0}
+      .process-bakes-next{transform:rotate(90deg)}
+      .process-arrow{clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),50% 100%,0 calc(100% - 28px));padding:10px 10px 36px;min-height:0}
+      .process-arrow-inner{grid-template-columns:1fr;gap:8px}
+      .process-arrow-step img{height:120px;max-height:120px}
+      .process-result{margin:0}
+      .process-result img{height:160px}
+      .app-showcase{grid-template-columns:1fr;height:auto;min-height:0;padding:32px 20px 28px;gap:20px}
+      .app-showcase-copy{padding:0}
+      .app-showcase-copy .product-module-title{font-size:28px}
+      .app-showcase-desc{margin-bottom:24px}
+      .app-showcase-visual{min-height:220px;aspect-ratio:16/10;order:-1;border-radius:12px}
+      .bakes-radial{max-width:360px;margin:0;transform:scale(1) translateY(-4%)}
+      .bakes-radial-item{width:30%;height:46%}
+      .bakes-radial-core{width:28%;height:28%;max-width:88px;max-height:88px}
+      .bakes-radial-content{top:16%;width:66%;gap:4px;max-height:70%;padding:0 4%}
+      .bakes-radial-item:hover .bakes-radial-content,
+      .bakes-radial-item:focus-within .bakes-radial-content{top:10%;width:60%;padding:0 5%;gap:3px;max-height:76%}
+      .bakes-radial-icon svg,.bakes-radial-icon img{width:38px;height:38px}
+      .bakes-radial-item:hover .bakes-radial-icon svg,
+      .bakes-radial-item:hover .bakes-radial-icon img,
+      .bakes-radial-item:focus-within .bakes-radial-icon svg,
+      .bakes-radial-item:focus-within .bakes-radial-icon img{width:24px;height:24px}
+      .bakes-radial-desc{font-size:10px;line-height:1.35}
+      .bakes-radial-title{font-size:14px}
+      .bakes-radial-core strong{font-size:11px}
+      .product-module-detail-body{padding:0 24px 32px}
+      .product-hero-apps.is-enter .app-grid{animation-duration:32s}
+      .app-card{flex-basis:min(78vw,300px);width:min(78vw,300px);border-radius:14px}
+      .app-card span{font-size:15px;padding:36px 16px 16px}
+      .app-card:hover span{padding:42px 16px 18px}
+      .clients-section{padding:44px 0 52px}
+      .clients-title{font-size:28px;padding-left:20px;padding-right:20px;padding-bottom:10px;margin-bottom:28px}
+      .clients-title::after{left:20px}
+      .clients-marquee{gap:10px}
+      .clients-chip{width:132px;height:64px;padding:10px 12px;border-radius:10px}
+      .detail-title{font-size:22px}
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/brand/logo-白.png" alt="STARLITE" class="logo-img">
+        <div>
+          <div class="logo-text">STARLITE</div>
+        </div>
+      </a>
+      <ul class="nav">
+        <li>
+          <a href="index.html">首页</a>
+          <ul class="nav-dropdown">
+            <li><a href="index.html#intro">企业简介</a></li>
+            <li><a href="index.html#history">发展历程</a></li>
+            <li><a href="index.html#logo">品牌标识解说</a></li>
+            <li><a href="index.html#vision">理念 & 愿景 & 使命</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="innovation.html">创新中心</a>
+          <ul class="nav-dropdown">
+            <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
+            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-mega">
+          <a href="products.html" class="active">产品核心</a>
+          <ul class="nav-dropdown">
+            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+            <li><a href="products.html#clients">合作客户</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">关于我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="about.html#honors">企业荣誉</a></li>
+            <li><a href="about.html#cert">认证资质</a></li>
+            <li><a href="about.html#sustain">可持续发展</a></li>
+            <li><a href="about.html#news">企业动态</a></li>
+            <li><a href="about.html#social">社会贡献</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="join.html">加入我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="join.html#welfare">人文关怀</a></li>
+            <li><a href="join.html#training">教育培训</a></li>
+            <li><a href="join.html#activities">员工活动</a></li>
+            <li><a href="join.html#careers">招贤纳士</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="contact.html">联系我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="contact.html#contact-info">联系方式</a></li>
+            <li><a href="contact.html#contact-map">电子地图</a></li>
+            <li><a href="contact.html#contact-form">客户留言</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="lang-switch"><button class="lang-btn" type="button" data-lang="zh" aria-label="切换语言">EN</button></div>
+    </div>
+  </header>
+
+  <main class="products-page">
+    <div class="products-list">
+
+      <!-- 树脂产品：BAKES / ALP / S-BEAR -->
+      <article class="product-module product-hero is-hero is-open" id="resin" data-bakes-brand="BAKES®" data-bakes-title="热固性树脂（BAKES®）性能" data-bakes-desc="基于本公司独特的材料设计技术，&lt;br&gt;热硬化树脂酚醛树脂以及环氧树脂为基础，&lt;br&gt;将有机・无机纤维等基材及填充材进行混合，&lt;br&gt;发挥优越的滑动特性、耐热性、力学特性的功能性积层材料。" data-alp-brand="ALP®" data-alp-title="热固性树脂（ALP®）性能" data-alp-desc="以拥有低摩擦特性、耐热性、耐药品性、非粘着性等多种特性的聚四氟乙烯（PTFE）为基础，运用独自的高性能树脂材料技术以及材料设计技术提高耐磨耗性、压缩特性等的材料。&lt;br&gt;&lt;br&gt;通过无润滑发挥着优越的滑动特性，适合所有的轴承、衬垫、密封件类。另，聚酰亚胺(PI)以及超高分子量聚乙烯(UHMWPE)等工程塑料为基础的材料也列入到阵营中。&lt;br&gt;&lt;br&gt;拥有丰富经验的人员，将根据产品用途从适合的材料及形状的选定、到评价分析技术提供最佳方案。从原料的混合、成形到机械加工的一条龙生产，从大量生产到多品种少量生产，可以广泛对应定制的需求。" data-sbear-brand="S-BEAR®" data-sbear-title="热塑性树脂（S-BEAR®）性能" data-sbear-desc="运用高性能树脂技术、本公司独特的材料设计技术、&lt;br&gt;以及材料生产技术，以工程塑料为基础开发的注塑成形用高性能材料。&lt;br&gt;在摩擦学特性的基础上，附加耐热性、导电性、难燃性等特性进行材料设计，&lt;br&gt;与精密注塑成形技术相结合，可根据客户的需求大量生产的高性能产品。">
+        <div id="bakes" class="product-hero-anchor" tabindex="-1"></div>
+        <div id="alp" class="product-hero-anchor" tabindex="-1"></div>
+        <div id="sbear" class="product-hero-anchor" tabindex="-1"></div>
+        <div class="product-module-main product-hero-main">
+          <div class="product-module-info product-hero-info">
+            <div class="product-hero-tabs" role="tablist" aria-label="树脂产品切换">
+              <button type="button" class="product-hero-tab is-active" role="tab" aria-selected="true" data-tab="bakes">
+                <span class="product-hero-tab-icon" aria-hidden="true"><span class="product-hero-tab-dot"></span></span>
+                <span class="product-hero-tab-text"><span class="product-hero-tab-name">BAKES®</span><span class="product-hero-tab-sub">热固性树脂</span></span>
+              </button>
+              <button type="button" class="product-hero-tab" role="tab" aria-selected="false" data-tab="alp">
+                <span class="product-hero-tab-icon" aria-hidden="true"><span class="product-hero-tab-dot"></span></span>
+                <span class="product-hero-tab-text"><span class="product-hero-tab-name">ALP®</span><span class="product-hero-tab-sub">热固性树脂</span></span>
+              </button>
+              <button type="button" class="product-hero-tab" role="tab" aria-selected="false" data-tab="sbear">
+                <span class="product-hero-tab-icon" aria-hidden="true"><span class="product-hero-tab-dot"></span></span>
+                <span class="product-hero-tab-text"><span class="product-hero-tab-name">S-BEAR®</span><span class="product-hero-tab-sub">热塑性树脂</span></span>
+              </button>
+            </div>
+            <h2 class="product-module-title" data-hero="title">热固性树脂（BAKES®）性能</h2>
+            <p class="product-hero-desc" data-hero="desc">基于本公司独特的材料设计技术，<br>热硬化树脂酚醛树脂以及环氧树脂为基础，<br>将有机・无机纤维等基材及填充材进行混合，<br>发挥优越的滑动特性、耐热性、力学特性的功能性积层材料。</p>
+            <div class="product-hero-tags" data-hero-tags="bakes">
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg></span>
+                <span class="product-feat-label" style="padding-left: 0;">高制动性</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18"/><path d="M3 17h18"/><path d="M6 12h9"/><path d="M13 9l4 3-4 3"/></svg></span>
+                <span class="product-feat-label">低摩擦·低磨耗</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2.5 3.2 5 5.8 5 9.2a5 5 0 1 1-10 0C7 8.8 9.5 6.2 12 3z"/><path d="M12 14.5c1.2 0 2.2.9 2.2 2.1S13.2 18.7 12 18.7"/></svg></span>
+                <span class="product-feat-label">耐热性</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5l-4 8a4 4 0 0 0 3.5 6h5a4 4 0 0 0 3.5-6l-4-8V3"/><path d="M8.5 14h7"/></svg></span>
+                <span class="product-feat-label">耐药品性</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></span>
+                <span class="product-feat-label">尺寸稳定性</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7l8-4z"/><path d="M9.5 12l2 2 4-4"/></svg></span>
+                <span class="product-feat-label">高耐久·高强度</span>
+              </div>
+            </div>
+            <div class="product-hero-tags" data-hero-tags="alp" hidden>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="3.5"/><circle cx="16" cy="12" r="3.5"/><path d="M11.5 12h1"/></svg></span>
+                <span class="product-feat-label">非粘着性</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18"/><path d="M3 17h18"/><path d="M6 12h9"/><path d="M13 9l4 3-4 3"/></svg></span>
+                <span class="product-feat-label">低摩擦·低磨损</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5l-4 8a4 4 0 0 0 3.5 6h5a4 4 0 0 0 3.5-6l-4-8V3"/><path d="M8.5 14h7"/></svg></span>
+                <span class="product-feat-label">耐药品性</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2.5 3.5-5 6.2-5 9.2a5 5 0 0 0 10 0C17 9.2 14.5 6.5 12 3z"/><path d="M9 14h6"/></svg></span>
+                <span class="product-feat-label">无润滑油</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16"/><path d="M7 18V10l5-5 5 5v8"/><path d="M12 13v5"/></svg></span>
+                <span class="product-feat-label">高负荷高表面压力</span>
+              </div>
+            </div>
+            <div class="product-hero-tags" data-hero-tags="sbear" hidden>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5l-4 8a4 4 0 0 0 3.5 6h5a4 4 0 0 0 3.5-6l-4-8V3"/><path d="M8.5 14h7"/></svg></span>
+                <span class="product-feat-label">耐药品性</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l7 4v8l-7 4-7-4V8l7-4z"/><path d="M12 12l7-4M12 12v8M12 12L5 8"/></svg></span>
+                <span class="product-feat-label">轻量</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18"/><path d="M3 17h18"/><path d="M6 12h9"/><path d="M13 9l4 3-4 3"/></svg></span>
+                <span class="product-feat-label">低摩擦·低磨耗</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2.5 3.5-5 6.2-5 9.2a5 5 0 0 0 10 0C17 9.2 14.5 6.5 12 3z"/><path d="M9 14h6"/></svg></span>
+                <span class="product-feat-label">无润滑油</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2.5 3.2 5 5.8 5 9.2a5 5 0 1 1-10 0C7 8.8 9.5 6.2 12 3z"/><path d="M12 14.5c1.2 0 2.2.9 2.2 2.1S13.2 18.7 12 18.7"/></svg></span>
+                <span class="product-feat-label">耐热性</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 13h6l-1 9 8-11h-6l1-9z"/></svg></span>
+                <span class="product-feat-label">热传导性</span>
+              </div>
+              <div class="product-feat">
+                <span class="product-feat-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h3l4 3V7l-4 3H4z"/><path d="M16 9a3.5 3.5 0 0 1 0 6M18.5 7a6 6 0 0 1 0 10"/></svg></span>
+                <span class="product-feat-label">静音性</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-module-visual product-hero-visual">
+            <div class="product-hero-panel is-active" data-panel="bakes" role="tabpanel">
+              <div class="bakes-radial" role="img" aria-label="BAKES® 五大能力">
+              <div class="bakes-radial-orbit" aria-hidden="true"></div>
+              <div class="bakes-radial-core">
+                <strong>BAKES®</strong>
+              </div>
+              <article class="bakes-radial-item bakes-radial-item--1">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/定制-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">定制</span>
+                    <p class="bakes-radial-desc">依据客户的要求特性，可以提供单品原创商品。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--2">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/高性能树脂-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">高性能树脂</span>
+                    <p class="bakes-radial-desc">运用多年经验培养的材料开发技术和新的想象力，提供满足客户的技术力。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--3">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/功能设计-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">功能设计</span>
+                    <p class="bakes-radial-desc">利用CAD,材料力学等的同时，活用丰富的技能及经验，提案最佳的形状。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--4">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/分析评价-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">分析评价</span>
+                    <p class="bakes-radial-desc">利用各种各样的分析仪器，提供恰当的解决方案。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--5">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/生产技术-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">生产技术</span>
+                    <p class="bakes-radial-desc">从原料到完成品的一条龙生产，提供良好的品质。</p>
+                  </span>
+                </span>
+              </article>
+            </div>
+            </div>
+            <div class="product-hero-panel" data-panel="alp" role="tabpanel" hidden>
+              <div class="bakes-radial" role="img" aria-label="ALP® 五大能力">
+              <div class="bakes-radial-orbit" aria-hidden="true"></div>
+              <div class="bakes-radial-core">
+                <strong>ALP®</strong>
+              </div>
+              <article class="bakes-radial-item bakes-radial-item--1">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/定制-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">定制</span>
+                    <p class="bakes-radial-desc">依据客户的要求特性，可以提供提供原创商品。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--2">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/高性能树脂-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">高性能树脂</span>
+                    <p class="bakes-radial-desc">从无润滑环境到特殊气体环境，通过各种各样的试验，提供高性能树脂技术。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--3">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/材料设计-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">材料设计</span>
+                    <p class="bakes-radial-desc">运用多年经验培养的材料开发技术，提供满足客户需求的材料。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--4">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/分析评价-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">分析评价</span>
+                    <p class="bakes-radial-desc">在丰富的技术以及经验的基础之上，运用CAE解析，提供最佳的材料以及形状。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--5">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/生产技术-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">生产技术</span>
+                    <p class="bakes-radial-desc">从原料混合、小~大直径产品的成形、直到机械加工一条龙生产，提供良好的品质。</p>
+                  </span>
+                </span>
+              </article>
+            </div>
+            </div>
+            <div class="product-hero-panel" data-panel="sbear" role="tabpanel" hidden>
+              <div class="bakes-radial" role="img" aria-label="S-BEAR® 五大能力">
+              <div class="bakes-radial-orbit" aria-hidden="true"></div>
+              <div class="bakes-radial-core">
+                <strong>S-BEAR®</strong>
+              </div>
+              <article class="bakes-radial-item bakes-radial-item--1">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/定制-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">定制</span>
+                    <p class="bakes-radial-desc">依据客户的要求特性，提供最合适的材料、形状的产品。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--2">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/高性能树脂-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">高性能树脂</span>
+                    <p class="bakes-radial-desc">在客户追求的高性能树脂的特性基础之上，提供附加耐热性、导电性、难燃性等功能的机能。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--3">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/材料设计-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">材料设计</span>
+                    <p class="bakes-radial-desc">运用多年经验培养的材料开发技术，根据客户需求提供独创材料。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--4">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/分析评价-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">评价解析</span>
+                    <p class="bakes-radial-desc">运用丰富的高性能树脂评价仪·分析仪器以及CAE解析，提供最佳的解决方案。</p>
+                  </span>
+                </span>
+              </article>
+              <article class="bakes-radial-item bakes-radial-item--5">
+                <span class="bakes-radial-icon">
+                  <span class="bakes-radial-content">
+                    <img src="img/图标/生产技术-line.svg" alt="" aria-hidden="true">
+                    <span class="bakes-radial-title">生产技术</span>
+                    <p class="bakes-radial-desc">从原料粒子的开发制造到高精度模具制作以及精密注塑成形的一条龙生产，可以对应高精度产品的量产。</p>
+                  </span>
+                </span>
+              </article>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-module-detail" data-detail="bakes">
+          <div class="product-module-detail-inner">
+            <div class="product-module-detail-body">
+              <article class="process-showcase process-showcase--bakes">
+                <header class="process-showcase-head">
+                  <h2 class="product-module-title">BAKES® 工艺</h2>
+                  <p class="process-showcase-desc">以热硬化性树脂酚醛树脂以及环氧树脂为基础，将有机・无机纤维等基材和填充材进行混合，发挥优越的滑动特性、耐热性、力学特性的功能性积层材料。</p>
+                </header>
+                <div class="process-bakes-flow">
+                  <div class="process-bakes-inputs">
+                    <figure class="process-bakes-in">
+                      <img src="img/products/bakes/ppt/resin.png" alt="酚醛树脂">
+                      <figcaption>酚醛树脂</figcaption>
+                    </figure>
+                    <figure class="process-bakes-in">
+                      <img src="img/products/bakes/ppt/additives.png" alt="添加剂">
+                      <figcaption>添加剂</figcaption>
+                    </figure>
+                  </div>
+                  <div class="process-bakes-rail" aria-hidden="true">
+                    <span class="process-bakes-bracket-arm"></span>
+                    <span class="process-bakes-bracket-arm"></span>
+                    <span class="process-bakes-rail-out"></span>
+                  </div>
+                  <div class="process-bakes-panel-wrap">
+                    <div class="process-bakes-panel">
+                      <div class="process-bakes-notes">
+                        <p>在布料上含浸树脂・添加剂，使其干燥制作附胶片</p>
+                        <p>积层压缩成形・精加工</p>
+                      </div>
+                      <div class="process-bakes-icons">
+                        <span class="process-bakes-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3s-6 7.2-6 11.2A6 6 0 0 0 12 21a6 6 0 0 0 6-6.8C18 10.2 12 3 12 3z"/></svg>
+                        </span>
+                        <span class="process-bakes-dot" aria-hidden="true"></span>
+                        <span class="process-bakes-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 4c1.4 1.8 1.4 3.7 0 5.5S6.6 13.2 8 15M12 3c1.4 1.8 1.4 3.7 0 5.5s-1.4 3.7 0 5.5 1.4 3.7 0 5.5M16 4c1.4 1.8 1.4 3.7 0 5.5S14.6 13.2 16 15"/></svg>
+                        </span>
+                        <span class="process-bakes-dot" aria-hidden="true"></span>
+                        <span class="process-bakes-icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v8M8 8l4 4 4-4M12 21v-8M8 16l4-4 4 4"/></svg>
+                        </span>
+                      </div>
+                      <div class="process-bakes-cards">
+                        <figure class="process-bakes-card">
+                          <img src="img/products/bakes/ppt/cloth.png" alt="布料">
+                          <figcaption>布料</figcaption>
+                        </figure>
+                        <span class="process-bakes-next" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4l10 8-10 8"/></svg></span>
+                        <figure class="process-bakes-card">
+                          <img src="img/products/bakes/ppt/prepreg.png" alt="胶片">
+                          <figcaption>胶片</figcaption>
+                        </figure>
+                        <span class="process-bakes-next" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4l10 8-10 8"/></svg></span>
+                        <figure class="process-bakes-card">
+                          <img src="img/products/bakes/ppt/molded-parts.png" alt="炼钢滚轧用的轧辊轴承">
+                          <figcaption>炼钢滚轧用的轧辊轴承</figcaption>
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="product-module-detail" data-detail="bakes">
+          <div class="product-module-detail-inner">
+            <div class="product-module-detail-body">
+              <article class="app-showcase">
+                <div class="app-showcase-copy">
+                  <div>
+                    <h2 class="product-module-title">BAKES® 应用</h2>
+                    <p class="app-showcase-desc">通过适配严苛工况环境的最优材料设计，支撑全球基础核心产业。</p>
+                  </div>
+                  <ul class="app-showcase-thumbs">
+                    <li>
+                      <img src="img/products/bakes/钢铁轧机用衬板.png" alt="钢铁轧机用衬板">
+                      <span>钢铁轧机用衬板</span>
+                    </li>
+                    <li>
+                      <img src="img/products/bakes/炼钢滚轧用的轧辊轴承.png" alt="炼钢滚轧用的轧辊轴承">
+                      <span>炼钢滚轧用的轧辊轴承</span>
+                    </li>
+                    <li>
+                      <img src="img/products/bakes/船舶用的尾舵轴.png" alt="船舶用的尾舵轴">
+                      <span>船舶用的尾舵轴</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="app-showcase-visual app-showcase-visual--vignette">
+                  <img src="img/products/bakes/ppt/steel-mill.png" alt="炼钢滚轧现场">
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="product-module-detail" data-detail="alp" hidden>
+          <div class="product-module-detail-inner">
+            <div class="product-module-detail-body">
+              <article class="process-showcase">
+                <header class="process-showcase-head">
+                  <h2 class="product-module-title">ALP® 工艺与应用</h2>
+                  <p class="process-showcase-desc">以具备低摩擦特性、耐热性、耐药品性、非粘着性等多种特性的树脂粉末为基础，提高其耐磨损性、压缩特性的材料。</p>
+                </header>
+                <div class="process-flow-board">
+                  <div class="process-inputs">
+                    <figure class="process-input">
+                      <img src="img/products/alp/process/resin-powder.png" alt="树脂粉末">
+                      <figcaption>树脂粉末</figcaption>
+                    </figure>
+                    <figure class="process-input">
+                      <img src="img/products/alp/process/图片1.png" alt="滑动添加剂">
+                      <figcaption>滑动添加剂</figcaption>
+                    </figure>
+                    <figure class="process-input">
+                      <img src="img/products/alp/process/additive.jpg" alt="添加剂">
+                      <figcaption>添加剂</figcaption>
+                    </figure>
+                  </div>
+                  <div class="process-join" aria-hidden="true"></div>
+                  <div class="process-arrow">
+                    <div class="process-arrow-inner">
+                      <figure class="process-arrow-step">
+                        <img src="img/products/alp/process/material-mixing.png" alt="材料混合">
+                        <figcaption>材料混合</figcaption>
+                      </figure>
+                      <figure class="process-arrow-step">
+                        <img src="img/products/alp/process/compression-mold.png" alt="模具压缩成形">
+                        <figcaption>模具压缩成形</figcaption>
+                      </figure>
+                      <figure class="process-arrow-step">
+                        <img src="img/products/alp/process/app-compressor-seal.png" alt="压缩机密封圈">
+                        <figcaption>压缩机用密封圈</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                  <figure class="process-result">
+                    <img src="img/products/alp/应用行业/活塞环.png" alt="活塞环应用现场">
+                    <figcaption>压缩机用密封圈</figcaption>
+                  </figure>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="product-module-detail" data-detail="sbear" hidden>
+          <div class="product-module-detail-inner">
+            <div class="product-module-detail-body">
+              <article class="process-showcase">
+                <header class="process-showcase-head">
+                  <h2 class="product-module-title">S-BEAR® 工艺与应用</h2>
+                  <p class="process-showcase-desc">运用高性能树脂技术、本公司独特的材料设计技术、以及材料生产技术，以工程塑料为基础开发的注塑成形用高性能材料。在摩擦学特性的基础上，附加耐热性、导电性、难燃性等特性进行材料设计，与精密注塑成形技术相结合，可根据客户的需求大量生产的高性能产品。</p>
+                </header>
+                <div class="process-flow-board">
+                  <div class="process-inputs">
+                    <figure class="process-input">
+                      <img src="img/products/sbear/process/工程塑料.png" alt="工程塑料">
+                      <figcaption>工程塑料</figcaption>
+                    </figure>
+                    <figure class="process-input">
+                      <img src="img/products/sbear/process/image3.png" alt="强化纤维">
+                      <figcaption>强化纤维</figcaption>
+                    </figure>
+                    <figure class="process-input">
+                      <img src="img/products/sbear/process/group-34.png" alt="添加剂">
+                      <figcaption>添加剂</figcaption>
+                    </figure>
+                  </div>
+                  <div class="process-join" aria-hidden="true"></div>
+                  <div class="process-arrow">
+                    <div class="process-arrow-inner">
+                      <figure class="process-arrow-step">
+                        <img src="img/products/sbear/process/混炼制作塑料粒子.png" alt="混炼制作塑料粒子">
+                        <figcaption>混炼・制作塑料粒子</figcaption>
+                      </figure>
+                      <figure class="process-arrow-step">
+                        <img src="img/products/sbear/process/图片2.png" alt="精密注塑成形">
+                        <figcaption>精密注塑成形</figcaption>
+                      </figure>
+                      <figure class="process-arrow-step">
+                        <img src="img/products/sbear/process/产业协作机器人驱动用齿轮.png" alt="驱动用齿轮">
+                        <figcaption>机器人驱动用齿轮</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                  <figure class="process-result">
+                    <img src="img/products/sbear/应用行业/重机.png" alt="重机应用现场">
+                    <figcaption>产业・协作机器人驱动用齿轮</figcaption>
+                  </figure>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="product-hero-apps" data-hero-apps="bakes">
+          <div class="product-hero-apps-head">
+            <h2 class="product-module-title">行业应用</h2>
+          </div>
+          <div class="product-hero-apps-marquee">
+            <div class="app-grid">
+              <div class="app-card"><img src="img/products/bakes/icon/造纸.png" alt="造纸"><span>造纸</span></div>
+              <div class="app-card"><img src="img/products/bakes/icon/铁铝滚轧.png" alt="铁铝滚轧"><span>铁/铝滚轧</span></div>
+              <div class="app-card"><img src="img/products/bakes/icon/陶瓷.png" alt="陶瓷"><span>陶瓷</span></div>
+              <div class="app-card"><img src="img/products/bakes/icon/食品.png" alt="食品"><span>食品</span></div>
+              <div class="app-card"><img src="img/products/bakes/icon/药品处理生产线.png" alt="药品处理生产线"><span>药品处理生产线</span></div>
+              <div class="app-card"><img src="img/products/bakes/icon/压力机起重机制动器.png" alt="压力机起重机制动器"><span>压力机、起重机</span></div>
+              <div class="app-card"><img src="img/products/bakes/icon/电梯.png" alt="电梯"><span>电梯</span></div>
+              <div class="app-card"><img src="img/products/bakes/icon/土木建筑机械.png" alt="土木建筑机械"><span>土木建筑机械</span></div>
+              <div class="app-card"><img src="img/products/bakes/icon/船舶.png" alt="船舶"><span>船舶</span></div>
+              <div class="app-card"><img src="img/products/bakes/icon/铁路车辆.png" alt="铁路车辆"><span>铁路车辆</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="product-hero-apps" data-hero-apps="alp" hidden>
+          <div class="product-hero-apps-head">
+            <h2 class="product-module-title">行业应用</h2>
+          </div>
+          <div class="product-hero-apps-marquee">
+            <div class="app-grid app-grid--6">
+              <div class="app-card"><img src="img/products/alp/应用行业/制作面包用的滚筒.png" alt=""><span>制作面包用的滚筒</span></div>
+              <div class="app-card"><img src="img/products/alp/应用行业/ALPCOMBI®.png" alt=""><span>ALPCOMBI®</span></div>
+              <div class="app-card"><img src="img/products/alp/应用行业/活塞环.png" alt=""><span>活塞环</span></div>
+              <div class="app-card"><img src="img/products/alp/应用行业/ALP密封圈.png" alt=""><span>ALP®密封圈</span></div>
+              <div class="app-card"><img src="img/products/alp/应用行业/载波盘.png" alt=""><span>载波盘</span></div>
+              <div class="app-card"><img src="img/products/alp/应用行业/隔震材料.png" alt=""><span>隔震材料</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="product-hero-apps" data-hero-apps="sbear" hidden>
+          <div class="product-hero-apps-head">
+            <h2 class="product-module-title">行业应用</h2>
+          </div>
+          <div class="product-hero-apps-marquee">
+            <div class="app-grid app-grid--6">
+              <div class="app-card"><img src="img/products/sbear/应用行业/纺织生产机械.png" alt=""><span>纺织、生产机械</span></div>
+              <div class="app-card"><img src="img/products/sbear/应用行业/重机.png" alt=""><span>重机</span></div>
+              <div class="app-card"><img src="img/products/sbear/应用行业/汽车动力列车.png" alt=""><span>汽车动力列车</span></div>
+              <div class="app-card"><img src="img/products/sbear/应用行业/住宅设备.png" alt=""><span>住宅设备</span></div>
+              <div class="app-card"><img src="img/products/sbear/应用行业/OA机器.png" alt=""><span>OA机器</span></div>
+              <div class="app-card"><img src="img/products/sbear/应用行业/压缩机油封.png" alt=""><span>压缩机・油封</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Biomass -->
+      <article class="product-module biomass-module is-open" id="biomass">
+        <div class="biomass-hero">
+          <div class="biomass-hero-inner">
+            <h2 class="product-module-title">非食用生物质摩擦材料</h2>
+            <p class="biomass-hero-desc">基于生物质的材料开发，回应可持续发展社会的提案首先从材料开始。</p>
+          </div>
+        </div>
+        <div class="product-module-detail">
+          <div class="product-module-detail-inner">
+            <div class="product-module-detail-body">
+              <div class="biomass-cols">
+                <div class="biomass-col">
+                  <div class="biomass-result">
+                    <div class="process-step"><div class="process-step-media"><img src="img/products/biomass/car-frp.png" alt="汽车外板用植物 FRP"></div></div>
+                  </div>
+                  <p class="biomass-col-title">汽车外板用植物 FRP</p>
+                  <div class="biomass-row">
+                    <div class="process-step"><div class="process-step-media"><img src="img/products/biomass/flax-fiber.png" alt=""></div><p class="process-step-label">亚麻纤维</p></div>
+                    <div class="process-arrow" aria-hidden="true">+</div>
+                    <div class="process-step"><div class="process-step-media"><img src="img/products/biomass/biomass-resin.png" alt=""></div><p class="process-step-label">生物质树脂</p></div>
+                  </div>
+                </div>
+                <div class="biomass-col">
+                  <div class="biomass-result">
+                    <div class="process-step"><div class="process-step-media"><img src="img/products/biomass/biomass-bakes.png" alt="生物质 BAKES®"></div></div>
+                  </div>
+                  <p class="biomass-col-title">生物质 BAKES®</p>
+                  <div class="biomass-row">
+                    <div class="process-step"><div class="process-step-media"><img src="img/products/biomass/cotton-fiber.png" alt=""></div><p class="process-step-label">棉纤维</p></div>
+                    <div class="process-arrow" aria-hidden="true">+</div>
+                    <div class="process-step"><div class="process-step-media"><img src="img/products/biomass/biomass-resin.png" alt=""></div><p class="process-step-label">生物质酚醛树脂</p></div>
+                  </div>
+                </div>
+                <div class="biomass-col">
+                  <div class="biomass-result">
+                    <div class="process-step"><div class="process-step-media"><img src="img/products/biomass/biomass-sbear.png" alt="生物质 S-BEAR®"></div></div>
+                  </div>
+                  <p class="biomass-col-title">生物质 S-BEAR®</p>
+                  <div class="biomass-row">
+                    <div class="process-step"><div class="process-step-media"><img src="img/products/biomass/non-food-plant.png" alt=""></div><p class="process-step-label">树脂用非可食植物</p></div>
+                    <div class="process-arrow" aria-hidden="true">+</div>
+                    <div class="process-step"><div class="process-step-media"><img src="img/products/biomass/natural-additive.jpg" alt=""></div><p class="process-step-label">天然原料添加剂</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- 合作客户 -->
+    <section class="clients-section" id="clients">
+      <h2 class="clients-title">合作客户</h2>
+      <div class="clients-marquee" aria-hidden="true">
+        <div class="clients-track clients-track--a" data-clients-track="a"></div>
+        <div class="clients-track clients-track--b" data-clients-track="b"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="footer-inner">
+        <nav class="footer-links" aria-label="页脚导航">
+          <div class="footer-col">
+            <h4>首页</h4>
+            <ul>
+              <li><a href="index.html#intro">企业简介</a></li>
+              <li><a href="index.html#history">发展历程</a></li>
+              <li><a href="index.html#logo">品牌标识解说</a></li>
+              <li><a href="index.html#vision">理念&愿景&使命</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>创新中心</h4>
+            <ul>
+              <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+              <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
+              <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+              <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>产品核心</h4>
+            <ul>
+              <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+              <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+              <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+              <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+              <li><a href="products.html#clients">合作客户</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>关于我们</h4>
+            <ul>
+              <li><a href="about.html#honors">企业荣誉</a></li>
+              <li><a href="about.html#cert">认证资质</a></li>
+              <li><a href="about.html#sustain">可持续发展</a></li>
+              <li><a href="about.html#news">企业动态</a></li>
+              <li><a href="about.html#social">社会贡献</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>加入我们</h4>
+            <ul>
+              <li><a href="join.html#welfare">人文关怀</a></li>
+              <li><a href="join.html#training">教育培训</a></li>
+              <li><a href="join.html#activities">员工活动</a></li>
+              <li><a href="join.html#careers">招贤纳士</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>联系我们</h4>
+            <ul>
+              <li><a href="contact.html#contact-info">联系方式</a></li>
+              <li><a href="contact.html#contact-map">电子地图</a></li>
+              <li><a href="contact.html#contact-form">客户留言</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="footer-contact">
+          <div class="footer-contact-row">
+            <a class="footer-phone" href="tel:+8651257641220">+86-512-57641220</a>
+            <span class="footer-fax">传真 +86-512-57641211</span>
+          </div>
+          <a class="footer-address" href="contact.html#contact-map">
+            <span class="footer-address-text">
+              <span class="footer-address-label">星光树脂制品（昆山）有限公司</span>
+              江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313
+            </span>
+            <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener" >
+            <span class="footer-address-text">
+              <span class="footer-address-label">星光工业株式会社</span>
+              日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002
+              <span class="footer-address-meta">电话 +81-6-6956-2240 · 传真 +81-6-6956-2715 · starlite.co.jp</span>
+            </span>
+            <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-bar-inner">
+        <a href="index.html" class="footer-bar-brand">
+          <img src="img/brand/logo-白.png" alt="星光树脂制品（昆山）有限公司">
+          <span class="footer-bar-brand-text">
+            <span class="footer-bar-brand-zh">星光树脂制品（昆山）有限公司</span>
+            <span class="footer-bar-brand-en">Starlite Plastic Products (Kunshan) Co.,Ltd.</span>
+          </span>
+        </a>
+        <div class="footer-bar-copy">版权所有 © 星光树脂制品（昆山）有限公司 All Rights Reserved　苏ICP备12003553号-1</div>
+      </div>
+    </div>
+  </footer>
+<script>
+document.querySelectorAll('.lang-switch').forEach(function(s){
+  var btn = s.querySelector('.lang-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
+    var lang = btn.getAttribute('data-lang') === 'zh' ? 'en' : 'zh';
+    btn.setAttribute('data-lang', lang);
+    btn.textContent = lang === 'zh' ? 'EN' : '中文';
+  });
+});
+
+function applyRegMarks(root){
+  if(!root) return;
+  var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+  var nodes = [];
+  var node;
+  while((node = walker.nextNode())) nodes.push(node);
+  nodes.forEach(function(textNode){
+    var value = textNode.nodeValue;
+    if(!value || value.indexOf('®') === -1) return;
+    var parent = textNode.parentElement;
+    if(!parent || parent.closest('script,style,noscript,code,pre,svg') || parent.tagName === 'SUP' || parent.classList.contains('reg')) return;
+    var frag = document.createDocumentFragment();
+    var parts = value.split('®');
+    parts.forEach(function(part, i){
+      if(part) frag.appendChild(document.createTextNode(part));
+      if(i < parts.length - 1){
+        var sup = document.createElement('sup');
+        sup.className = 'reg';
+        sup.textContent = '®';
+        frag.appendChild(sup);
+      }
+    });
+    textNode.parentNode.replaceChild(frag, textNode);
+  });
+}
+
+(function(){
+  function setOpen(module, open){
+    var btn = module.querySelector('.product-module-btn');
+    var label = module.querySelector('.product-module-btn-label');
+    module.classList.toggle('is-open', open);
+    if(btn){
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    if(label){
+      label.textContent = open ? '收起' : '了解更多';
+    }
+  }
+
+  document.querySelectorAll('.product-module-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var module = btn.closest('.product-module');
+      setOpen(module, !module.classList.contains('is-open'));
+    });
+  });
+
+  var hero = document.querySelector('.product-hero');
+  if(hero){
+    var tabs = Array.prototype.slice.call(hero.querySelectorAll('.product-hero-tab'));
+    var panels = Array.prototype.slice.call(hero.querySelectorAll('.product-hero-panel'));
+    var details = Array.prototype.slice.call(hero.querySelectorAll('.product-module-detail[data-detail]'));
+    var brandEl = hero.querySelector('[data-hero="brand"]');
+    var titleEl = hero.querySelector('[data-hero="title"]');
+    var descEl = hero.querySelector('[data-hero="desc"]');
+    var tagGroups = Array.prototype.slice.call(hero.querySelectorAll('[data-hero-tags]'));
+    var appGroups = Array.prototype.slice.call(hero.querySelectorAll('[data-hero-apps]'));
+    var activeProduct = '';
+    var switchTimer = null;
+
+    function playEnterAnims(){
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      tagGroups.forEach(function(group){
+        group.classList.remove('is-enter');
+        var on = group.getAttribute('data-hero-tags') === activeProduct && !group.hasAttribute('hidden');
+        if(!on) return;
+        if(reduced){ group.classList.add('is-enter'); return; }
+        void group.offsetWidth;
+        group.classList.add('is-enter');
+      });
+      appGroups.forEach(function(group){
+        group.classList.remove('is-enter');
+        var on = group.getAttribute('data-hero-apps') === activeProduct && !group.hasAttribute('hidden');
+        if(!on) return;
+        var grid = group.querySelector('.app-grid');
+        if(grid && grid.dataset.marqueeReady !== '1' && !reduced){
+          Array.prototype.slice.call(grid.children).forEach(function(node){
+            var clone = node.cloneNode(true);
+            clone.setAttribute('aria-hidden','true');
+            grid.appendChild(clone);
+          });
+          grid.dataset.marqueeReady = '1';
+        }
+        if(reduced){ group.classList.add('is-enter'); return; }
+        void group.offsetWidth;
+        group.classList.add('is-enter');
+      });
+      details.forEach(function(detail){
+        detail.classList.remove('is-enter');
+        var on = detail.getAttribute('data-detail') === activeProduct && !detail.hasAttribute('hidden');
+        if(!on) return;
+        if(reduced){ detail.classList.add('is-enter'); return; }
+        void detail.offsetWidth;
+        detail.classList.add('is-enter');
+      });
+    }
+
+    function renderDetailContent(){
+      appGroups.forEach(function(group){
+        var on = group.getAttribute('data-hero-apps') === activeProduct;
+        if(on) group.removeAttribute('hidden');
+        else group.setAttribute('hidden', '');
+      });
+      details.forEach(function(detail){
+        var on = detail.getAttribute('data-detail') === activeProduct;
+        if(on) detail.removeAttribute('hidden');
+        else detail.setAttribute('hidden', '');
+      });
+      if(hero.classList.contains('is-ready')) playEnterAnims();
+    }
+
+    function activateTab(id){
+      if(id === activeProduct) return;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function apply(){
+        activeProduct = id;
+        tabs.forEach(function(tab){
+          var on = tab.getAttribute('data-tab') === id;
+          tab.classList.toggle('is-active', on);
+          tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function(panel){
+          var on = panel.getAttribute('data-panel') === id;
+          panel.classList.toggle('is-active', on);
+          if(on) panel.removeAttribute('hidden');
+          else panel.setAttribute('hidden', '');
+        });
+        tagGroups.forEach(function(group){
+          var on = group.getAttribute('data-hero-tags') === id;
+          if(on) group.removeAttribute('hidden');
+          else group.setAttribute('hidden', '');
+        });
+        if(brandEl){
+          brandEl.textContent = hero.getAttribute('data-' + id + '-brand') || '';
+          applyRegMarks(brandEl);
+        }
+        if(titleEl){
+          titleEl.textContent = hero.getAttribute('data-' + id + '-title') || '';
+          applyRegMarks(titleEl);
+        }
+        if(descEl){
+          descEl.innerHTML = hero.getAttribute('data-' + id + '-desc') || '';
+          descEl.classList.toggle('is-long', id === 'alp');
+        }
+        renderDetailContent();
+        hero.classList.remove('is-switching');
+      }
+      if(reduced || !hero.classList.contains('is-ready') || !activeProduct){
+        apply();
+        return;
+      }
+      if(switchTimer) clearTimeout(switchTimer);
+      hero.classList.add('is-switching');
+      switchTimer = setTimeout(apply, 180);
+    }
+
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        activateTab(tab.getAttribute('data-tab'));
+      });
+    });
+
+    window.__activateProductTab = activateTab;
+    activateTab('bakes');
+    requestAnimationFrame(function(){
+      setTimeout(function(){
+        hero.classList.add('is-ready', 'is-first-paint');
+        playEnterAnims();
+        setTimeout(function(){ hero.classList.remove('is-first-paint'); }, 1100);
+      }, 60);
+    });
+  }
+
+  function openFromHash(){
+    var id = (location.hash || '').slice(1);
+    if(!id || id === 'clients' || id === 'resin'){
+      if(window.__activateProductTab) window.__activateProductTab('bakes');
+      return;
+    }
+    if(hero && (id === 'bakes' || id === 'alp' || id === 'sbear')){
+      if(window.__activateProductTab) window.__activateProductTab(id);
+      setOpen(hero, true);
+      return;
+    }
+    var module = document.getElementById(id);
+    if(module && module.classList.contains('product-module')){
+      setOpen(module, true);
+    }
+  }
+
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+  applyRegMarks(document.body);
+})();
+
+(function(){
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.biomass-col, .biomass-module, .clients-section');
+  if(!items.length) return;
+
+  function mark(el){ el.classList.add('is-inview'); }
+
+  if(reducedMotion || !('IntersectionObserver' in window)){
+    items.forEach(mark);
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      mark(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, {threshold: 0.14, rootMargin: '0px 0px -8% 0px'});
+
+  items.forEach(function(item){ observer.observe(item); });
+})();
+
+(function(){
+  var total = 43;
+  var logos = [];
+  for(var i = 1; i <= total; i++){
+    logos.push('img/logo/图片' + i + '.png');
+  }
+
+  function makeChip(src){
+    var el = document.createElement('div');
+    el.className = 'clients-chip';
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    img.loading = 'lazy';
+    el.appendChild(img);
+    return el;
+  }
+
+  function fillTrack(track, list){
+    if(!track) return;
+    var frag = document.createDocumentFragment();
+    list.forEach(function(src){ frag.appendChild(makeChip(src)); });
+    list.forEach(function(src){ frag.appendChild(makeChip(src)); });
+    track.appendChild(frag);
+  }
+
+  var rowA = logos.filter(function(_, idx){ return idx % 2 === 0; });
+  var rowB = logos.filter(function(_, idx){ return idx % 2 === 1; });
+  fillTrack(document.querySelector('[data-clients-track="a"]'), rowA);
+  fillTrack(document.querySelector('[data-clients-track="b"]'), rowB);
+})();
+</script>
+</body>
+</html>
