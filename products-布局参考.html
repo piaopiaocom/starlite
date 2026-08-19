@@ -801,7 +801,7 @@
         <div id="sbear" class="product-hero-anchor" tabindex="-1"></div>
         <div class="product-module-main product-hero-main">
           <div class="product-module-info product-hero-info">
-            <div class="product-hero-tabs" role="tablist" aria-label="树脂产品切换">
+            <div class="product-hero-tabs" role="tablist" aria-label="树脂产品">
               <button type="button" class="product-hero-tab is-active" role="tab" aria-selected="true" data-tab="bakes">
                 <span class="product-hero-tab-icon" aria-hidden="true"><span class="product-hero-tab-dot"></span></span>
                 <span class="product-hero-tab-text"><span class="product-hero-tab-name">BAKES®</span><span class="product-hero-tab-sub">热固性树脂</span></span>
@@ -1587,6 +1587,7 @@ function applyRegMarks(root){
     }
 
     function activateTab(id){
+      id = 'bakes';
       if(id === activeProduct) return;
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       function apply(){
@@ -1633,7 +1634,7 @@ function applyRegMarks(root){
 
     tabs.forEach(function(tab){
       tab.addEventListener('click', function(){
-        activateTab(tab.getAttribute('data-tab'));
+        activateTab('bakes');
       });
     });
 
@@ -1655,7 +1656,7 @@ function applyRegMarks(root){
       return;
     }
     if(hero && (id === 'bakes' || id === 'alp' || id === 'sbear')){
-      if(window.__activateProductTab) window.__activateProductTab(id);
+      if(window.__activateProductTab) window.__activateProductTab('bakes');
       setOpen(hero, true);
       return;
     }
