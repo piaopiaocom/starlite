@@ -1536,6 +1536,14 @@
       font-size:clamp(28px, 3vw, 38px);
       line-height:1.25;
     }
+    .equip-lead {
+      margin:16px 0 0;
+      max-width:38em;
+      font-size:18px;
+      line-height:1.8;
+      letter-spacing:.02em;
+      color:#6B7280;
+    }
     .equip-nav {
       display:flex;
       flex-direction:column;
@@ -1980,6 +1988,7 @@
       .timeline-intro-desc { font-size:14px; line-height:1.8; }
       .equip-showcase { grid-template-columns:1fr; gap:24px; height:auto; min-height:0; }
       .equip-copy { min-height:0; height:auto; }
+      .equip-lead { max-width:none; font-size:16px; line-height:1.85; }
       .equip-caption { margin-top:28px; padding-top:0; }
       .equip-nav { margin-top:24px; flex-direction:row; flex-wrap:wrap; gap:16px 20px; }
       .equip-nav-btn { font-size:14px; margin-bottom:0; }
@@ -2647,7 +2656,7 @@
     <div class="tribology-accordion" role="list">
       <article class="tribology-panel is-active" role="listitem" tabindex="0" aria-label="STARLITE 摩擦技术理念">
         <div class="tribology-panel-media" aria-hidden="true">
-          <img src="img/可持续发展.png" alt="">
+          <img src="img/innovation/可持续发展.png" alt="">
         </div>
         <div class="tribology-panel-overlay" aria-hidden="true"></div>
         <div class="tribology-panel-inner">
@@ -2665,7 +2674,7 @@
 
       <article class="tribology-panel" role="listitem" tabindex="0" aria-label="生态环保">
         <div class="tribology-panel-media" aria-hidden="true">
-          <img src="img/生态环保.png" alt="">
+          <img src="img/innovation/生态环保.png" alt="">
         </div>
         <div class="tribology-panel-overlay" aria-hidden="true"></div>
         <div class="tribology-panel-inner">
@@ -2693,7 +2702,7 @@
 
       <article class="tribology-panel" role="listitem" tabindex="0" aria-label="性能体验">
         <div class="tribology-panel-media" aria-hidden="true">
-          <img src="img/性能体验.png" alt="">
+          <img src="img/innovation/性能体验.png" alt="">
         </div>
         <div class="tribology-panel-overlay" aria-hidden="true"></div>
         <div class="tribology-panel-inner">
@@ -2718,7 +2727,7 @@
 
       <article class="tribology-panel" role="listitem" tabindex="0" aria-label="高效运维">
         <div class="tribology-panel-media" aria-hidden="true">
-          <img src="img/高效运维.png" alt="">
+          <img src="img/innovation/高效运维.png" alt="">
         </div>
         <div class="tribology-panel-overlay" aria-hidden="true"></div>
         <div class="tribology-panel-inner">
@@ -2743,7 +2752,7 @@
 
       <article class="tribology-panel" role="listitem" tabindex="0" aria-label="安全可靠">
         <div class="tribology-panel-media" aria-hidden="true">
-          <img src="img/安全可靠.png" alt="">
+          <img src="img/innovation/安全可靠.png" alt="">
         </div>
         <div class="tribology-panel-overlay" aria-hidden="true"></div>
         <div class="tribology-panel-inner">
@@ -2889,7 +2898,7 @@
           </svg>
 
           <article class="partner-node partner-node--material reveal-child-scale" style="--reveal-delay:220ms" tabindex="0" aria-label="材料设计">
-            <img class="partner-node-icon" src="img/图标/材料设计.png" alt="">
+            <img class="partner-node-icon" src="img/icons/材料设计.png" alt="">
             <h4>材料设计</h4>
             <ul class="partner-node-tags">
               <li>材料选定</li>
@@ -2900,7 +2909,7 @@
             </ul>
           </article>
           <article class="partner-node partner-node--molding reveal-child-scale" style="--reveal-delay:300ms" tabindex="0" aria-label="成型加工">
-            <img class="partner-node-icon" src="img/图标/加工成型.png" alt="">
+            <img class="partner-node-icon" src="img/icons/加工成型.png" alt="">
             <h4>成型加工</h4>
             <ul class="partner-node-tags">
               <li>模具技术</li>
@@ -2910,7 +2919,7 @@
             </ul>
           </article>
           <article class="partner-node partner-node--evaluation reveal-child-scale" style="--reveal-delay:380ms" tabindex="0" aria-label="评估与设计技术">
-            <img class="partner-node-icon" src="img/图标/评价分析.png" alt="">
+            <img class="partner-node-icon" src="img/icons/评价分析.png" alt="">
             <h4>评估与<br>设计技术</h4>
             <ul class="partner-node-tags">
               <li>产品开发设计</li>
@@ -2921,7 +2930,7 @@
             </ul>
           </article>
           <article class="partner-core reveal-child-scale" style="--reveal-delay:260ms">
-            <img class="partner-node-icon" src="img/图标/摩擦学技术.png" alt="">
+            <img class="partner-node-icon" src="img/icons/摩擦学技术.png" alt="">
             <h4>摩擦学技术</h4>
           </article>
         </div>
@@ -2934,6 +2943,7 @@
     <div class="section-inner equip-showcase">
       <div class="equip-copy reveal-group">
         <h2 class="section-title reveal-child" id="equipment" style="--reveal-delay:0ms">试验分析仪器<br>&摩擦学检测设备</h2>
+        <p class="equip-lead reveal-child" style="--reveal-delay:80ms">星光依托各类摩擦学检测设备及材料分析仪器，开展塑料滑动材料的研发工作。</p>
         <div class="equip-nav" role="tablist" aria-label="设备分类">
           <button type="button" class="equip-nav-btn reveal-child is-active" style="--reveal-delay:100ms" role="tab" aria-selected="true" data-equip-tab="analysis">试验、分析仪器</button>
           <button type="button" class="equip-nav-btn reveal-child" style="--reveal-delay:180ms" role="tab" aria-selected="false" data-equip-tab="tribology">摩擦学检测设备</button>
