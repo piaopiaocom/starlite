@@ -34,6 +34,9 @@
     .article-cover[hidden]{display:none}
     .article-content{font-size:16px;color:var(--text-muted);line-height:1.9}
     .article-content p{margin-bottom:16px}.article-content p:last-child{margin-bottom:0}
+    .article-content img{max-width:100%;height:auto;display:block;margin:8px 0 20px;border-radius:8px}
+    .article-content .img-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 24px}
+    .article-content .img-row img{width:100%;height:100%;margin:0;object-fit:cover;aspect-ratio:4/3}
     .article-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:36px;padding-top:24px;border-top:1px solid #EEF1F5;flex-wrap:wrap}
     .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--primary);font-size:14px;font-weight:600;transition:gap .2s,opacity .2s}
     .back-link:hover{gap:9px;opacity:.85}
@@ -77,7 +80,7 @@
 
     @media(max-width:1100px){.footer-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}.footer-col{max-width:none}}
     @media(max-width:768px){
-      .nav{display:none}
+      
       .section{padding:24px 16px 48px}
       .article-panel{padding:28px 20px 32px}
       .article-title{font-size:22px}
@@ -92,7 +95,28 @@
       .footer-bar-inner{padding:14px 20px}
       .footer-bar-copy{text-align:left;font-size:11px}
     }
-  </style>
+  
+    .nav-toggle{display:none;width:42px;height:42px;margin-left:4px;padding:0;border:none;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex-shrink:0}
+    .nav-toggle span{display:block;width:18px;height:2px;background:#fff;border-radius:1px;transition:transform .25s ease,opacity .2s}
+    .header.is-nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .header.is-nav-open .nav-toggle span:nth-child(2){opacity:0}
+    .header.is-nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    @media(max-width:768px){
+      .header:has(.nav>li:hover),.header:has(.nav>li:focus-within){margin-bottom:0}
+      .nav-toggle{display:flex;margin-left:auto}
+      .nav{position:absolute;left:0;right:0;top:72px;display:flex;flex-direction:column;align-items:stretch;gap:0;margin:0;max-height:min(72vh,calc(100dvh - 72px));overflow:auto;-webkit-overflow-scrolling:touch;background:#fff;box-shadow:0 18px 40px rgba(0,40,80,.16);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity .25s ease,visibility .25s,transform .25s ease;z-index:1002}
+      .header.is-nav-open .nav{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+      .nav>li{width:100%;border-bottom:1px solid #EEF1F5}
+      .nav>li>a{height:auto;padding:14px 20px 8px;color:#1A1A2E;font-size:15px;font-weight:600}
+      .nav>li>a::after{display:none}
+      .nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:#006EB6;font-weight:600}
+      .header.is-nav-open .nav-dropdown{position:static;display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;gap:0;width:auto;margin:0;padding:0 20px 12px;background:transparent;border:none;box-shadow:none;opacity:1;visibility:visible;transform:none}
+      .nav>li:hover>.nav-dropdown{opacity:1;visibility:visible}
+      .nav-dropdown a{padding:7px 0;font-size:13px;color:#5A6270;white-space:normal}
+      .nav-dropdown a:hover{color:#006EB6}
+      body.is-nav-lock{overflow:hidden}
+    }
+</style>
 </head>
 <body>
   <header class="header">
@@ -101,6 +125,7 @@
         <img src="img/brand/logo-白.png" alt="STARLITE" class="logo-img">
         <div>
           <div class="logo-text">STARLITE</div>
+          <div class="logo-sub">星光树脂（昆山）</div>
         </div>
       </a>
       <ul class="nav">
@@ -114,7 +139,19 @@
           </ul>
         </li>
         <li>
-          <a href="innovation.html">创新中心</a>
+          <a href="fields.html">核心领域产品</a>
+          <ul class="nav-dropdown">
+            <li><a href="fields.html#sbear">S-BEAR® 汽车</a></li>
+            <li><a href="fields.html#sbear-office">S-BEAR® 自动办公</a></li>
+            <li><a href="fields.html#bakes">BAKES® 船舶</a></li>
+            <li><a href="fields.html#bakes-press">BAKES® 压力机</a></li>
+            <li><a href="fields.html#alp">ALP® 压缩机</a></li>
+            <li><a href="fields.html#bakes-other">其他应用行业</a></li>
+            <li><a href="fields.html#clients">合作客户</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="innovation.html">摩擦学技术概要</a>
           <ul class="nav-dropdown">
             <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
             <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
@@ -123,14 +160,12 @@
           </ul>
         </li>
         <li class="nav-has-mega">
-          <a href="products.html">产品核心</a>
+          <a href="products.html">摩擦学核心技术</a>
           <ul class="nav-dropdown">
             <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
             <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
             <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
             <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-            <li><a href="products.html#clients">合作客户</a></li>
           </ul>
         </li>
         <li>
@@ -161,6 +196,7 @@
           </ul>
         </li>
       </ul>
+      <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
       <div class="lang-switch"><button class="lang-btn" type="button" data-lang="zh" aria-label="切换语言">EN</button></div>
     </div>
   </header>
@@ -193,7 +229,19 @@
             </ul>
           </div>
           <div class="footer-col">
-            <h4>创新中心</h4>
+            <h4>核心领域产品</h4>
+            <ul>
+              <li><a href="fields.html#sbear">S-BEAR® 汽车</a></li>
+              <li><a href="fields.html#sbear-office">S-BEAR® 自动办公</a></li>
+              <li><a href="fields.html#bakes">BAKES® 船舶</a></li>
+              <li><a href="fields.html#bakes-press">BAKES® 压力机</a></li>
+              <li><a href="fields.html#alp">ALP® 压缩机</a></li>
+              <li><a href="fields.html#bakes-other">其他应用行业</a></li>
+              <li><a href="fields.html#clients">合作客户</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>摩擦学技术概要</h4>
             <ul>
               <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
               <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
@@ -202,14 +250,12 @@
             </ul>
           </div>
           <div class="footer-col">
-            <h4>产品核心</h4>
+            <h4>摩擦学核心技术</h4>
             <ul>
               <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
               <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
               <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
               <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-              <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-              <li><a href="products.html#clients">合作客户</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -335,11 +381,12 @@
     social: [
       {
         id: 'social-01',
-        title: '第二十二次捐赠活动',
-        date: '2025-09-30',
-        image: 'https://www.starlite.cn/Upload/Images/2025-09-30/68db4cdc2c84a.jpg',
-        excerpt: '9月23日，秋阳轻柔地洒在周市中心小学，一场充满爱与希望的捐赠仪式在此温馨启幕。星光树脂制品（昆山）有限公司带着对教育事业的关切，为学校送来急需物资，尽显企业的责任与担当。',
-        content: '<p>9月23日，秋阳轻柔地洒在周市中心小学，一场充满爱与希望的捐赠仪式在此温馨启幕。</p><p>星光树脂制品（昆山）有限公司带着对教育事业的关切，为学校送来急需物资，尽显企业的责任与担当。</p>'
+        title: '冬日暖阳——情暖福利院',
+        date: '2019-12-22',
+        image: 'https://www.starlite.cn/Upload/Images/2020-02-26/5e56855589914.jpg',
+        hideCover: true,
+        excerpt: '寒风萧萧阴雨连绵，寒冬季节格外阴冷，星光公司秉承「敬天爱人」的理念，在2019年12月22日上午，由公司领导、工会成员及义工组的成员们一同冒着风雨前往昆山市福利院为老人们送上来自星光的关爱和温暖，同时提前跟老人们欢度一个愉快的圣诞节。',
+        content: '<p>寒风萧萧阴雨连绵，寒冬季节格外阴冷，星光公司秉承「敬天爱人」的理念，在2019年12月22日上午，由公司领导、工会成员及义工组的成员们一同冒着风雨前往昆山市福利院为老人们送上来自星光的关爱和温暖，同时提前跟老人们欢度一个愉快的圣诞节。</p><p><img src="https://www.starlite.cn/Upload/image/20200327/20200327161607_61558.jpg" alt="冬日暖阳——情暖福利院"></p><p>本次活动公司为老人们赠送了日常生活用品、水果点心。义工组成员们献上了精心排练的青春动感的舞蹈，还有爷爷奶奶们喜欢的熟悉歌曲。</p><div class="img-row"><img src="https://www.starlite.cn/Upload/image/20200327/20200327161645_63816.jpg" alt="义工表演与老人同乐"><img src="https://www.starlite.cn/Upload/image/20200327/20200327161725_36575.jpg" alt="发放水果点心"></div><p>节目一开始，爷爷奶奶们就和着节奏愉快地打着拍子，跟着歌曲一起哼唱，仿佛又回到了青春年代，脸上洋溢着愉悦的笑容，整个会场充满了温暖、幸福的氛围。最后大家一起为爷爷奶奶们发放水果点心，希望我们的心意像冬日暖阳，一直温暖着爷爷奶奶们的身心。</p>'
       },
       {
         id: 'social-02',
@@ -603,7 +650,7 @@
     document.getElementById('navAbout').classList.add('active');
   }
 
-  var coverHtml = item.image
+  var coverHtml = item.image && !item.hideCover
     ? '<div class="article-cover"><img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '" onerror="this.parentElement.hidden=true"></div>'
     : '<div class="article-cover" hidden></div>';
 
@@ -641,5 +688,38 @@
   });
 })();
   </script>
+<script>
+(function(){
+  var header = document.querySelector('.header');
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = header && header.querySelector('.nav');
+  if (!header || !toggle || !nav) return;
+  function closeNav(){
+    header.classList.remove('is-nav-open');
+    document.body.classList.remove('is-nav-lock');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','打开菜单');
+  }
+  function openNav(){
+    header.classList.add('is-nav-open');
+    document.body.classList.add('is-nav-lock');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-label','关闭菜单');
+  }
+  toggle.addEventListener('click', function(){
+    if (header.classList.contains('is-nav-open')) closeNav();
+    else openNav();
+  });
+  nav.addEventListener('click', function(e){
+    if (e.target.closest('a')) closeNav();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeNav();
+  });
+  window.addEventListener('resize', function(){
+    if (window.matchMedia('(min-width:769px)').matches) closeNav();
+  });
+})();
+</script>
 </body>
 </html>

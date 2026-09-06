@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>核心领域产品 - 星光树脂制品（昆山）有限公司</title>
+  <style>
+    :root{--primary:#006EB6;--primary-light:#0088D4;--accent:#FFB511;--accent-light:#FFCB4D;--text:#1A1A2E;--text-muted:#5A6270;--bg:#F5F7FA;--white:#FFF;--shadow:0 4px 24px rgba(0,110,182,0.08);--radius:8px;--content-max:1280px;--page-pad:24px;--ease-out:cubic-bezier(.22,.61,.36,1);--ease-soft:cubic-bezier(.16,1,.3,1)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{min-height:100%}
+    body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--white);line-height:1.7;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh}
+    a{text-decoration:none;color:inherit}
+    .header{background:var(--primary);box-shadow:none;position:sticky;top:0;z-index:1000}
+    .header{transition:margin-bottom .25s ease;margin-bottom:0}.header:has(.nav>li:hover),.header:has(.nav>li:focus-within){margin-bottom:64px}.nav-dropdown{transform:none!important}
+    .header-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:flex-start;gap:12px;height:72px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo-img{height:48px;width:auto;object-fit:contain;display:block}
+    .logo-text{font-size:20px;line-height:1.35;font-weight:700;color:var(--white);letter-spacing:0.01em}
+    .logo-sub{display:none}
+    [id]{scroll-margin-top:88px}
+    .nav{display:flex;gap:4px;align-items:stretch;margin-left:auto}
+    .nav>li{list-style:none;position:static}
+    .nav>li>a{display:flex;align-items:center;height:72px;padding:0 16px;font-size:16px;color:rgba(255,255,255,0.88);position:relative;transition:color .25s ease;white-space:nowrap;line-height:1.6}
+    .nav>li>a::after{content:"";position:absolute;left:16px;right:16px;bottom:18px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:center;transition:transform .3s cubic-bezier(.22,.61,.36,1)}
+    .nav>li>a:hover::after,.nav>li>a.active::after,.nav>li:hover>a::after{transform:scaleX(1)}
+    .nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:var(--white);font-weight:600}
+    .nav-dropdown{position:absolute;left:0;right:0;top:100%;width:100%;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 36px;margin:0;padding:18px 40px;background:var(--white);border-top:1px solid rgba(0,110,182,.08);box-shadow:0 16px 40px rgba(0,110,182,.1);border-radius:0;opacity:0;visibility:hidden;transform:none;transition:opacity .25s ease,visibility .25s;z-index:1001;list-style:none;box-sizing:border-box}
+    .nav-dropdown::before{content:'';position:absolute;left:0;right:0;top:-10px;height:10px}
+    .nav>li:hover>.nav-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+    .nav-dropdown li{list-style:none;flex:0 0 auto}
+    .nav-dropdown a{display:block;position:relative;padding:6px 2px;font-size:14px;color:var(--text-muted);transition:color .2s ease;white-space:nowrap;line-height:1.5}
+    .nav-dropdown a:hover{color:var(--primary)}
+    .lang-switch{display:flex;align-items:center;flex-shrink:0}
+    .lang-btn{padding:0 4px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.88);cursor:pointer;font-family:inherit;transition:color .2s;line-height:1.4}
+    .lang-btn:hover{color:var(--white)}
+    .fields-page{flex:1;min-height:0;background:var(--white)}
+    .fields-core{width:100%}
+    .fields-explorer{position:relative;width:100%;margin:0;padding:0;background:#E4ECF2;opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease-soft),transform .7s var(--ease-soft)}
+    .fields-explorer.is-enter{opacity:1;transform:none}
+    .fields-explorer-stage{position:relative;width:100%;height:clamp(560px,calc(100vh - 72px),740px);overflow:hidden}
+    .fields-explorer-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 62%;display:block;transform:scale(1.04);transition:transform 1.2s var(--ease-soft)}
+    .fields-explorer--office .fields-explorer-bg{object-position:center 42%}
+    .fields-explorer--ship .fields-explorer-bg{object-position:18% 58%}
+    .fields-explorer--press .fields-explorer-bg{object-position:center 42%}
+    .fields-explorer--compressor .fields-explorer-bg{object-position:center 48%}
+    .fields-explorer.is-enter .fields-explorer-bg{transform:none}
+    .fields-explorer-stage::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.18) 28%,transparent 52%);pointer-events:none;z-index:1}
+    .fields-explorer--office .fields-explorer-stage::after{background:linear-gradient(90deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.16) 28%,transparent 52%)}
+    .fields-explorer--ship .fields-explorer-stage::after{background:none}
+    .fields-explorer--press .fields-explorer-stage::after{background:linear-gradient(180deg,rgba(255,255,255,.88) 0%,rgba(255,255,255,.55) 16%,rgba(255,255,255,.18) 32%,transparent 46%)}
+    .fields-explorer--press .fields-apps-title{color:#1A1A2E;text-shadow:0 1px 0 rgba(255,255,255,.95),0 0 16px rgba(255,255,255,.8)}
+    .fields-explorer--press .fields-apps-desc{color:#2F3642;font-weight:500;text-shadow:0 1px 0 rgba(255,255,255,.92),0 0 12px rgba(255,255,255,.75)}
+    .fields-explorer--compressor .fields-explorer-stage::after{background:linear-gradient(180deg,rgba(8,30,70,.35) 0%,transparent 28%)}
+    .fields-explorer--compressor .fields-apps-title{color:#fff}
+    .fields-explorer--compressor .fields-apps-title::after{background:#fff}
+    .fields-explorer .fields-apps-desc{margin:2px 0 0;max-width:36em;font-size:14px;font-weight:400;line-height:1.65;color:#5A6270;opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease-soft),transform .6s var(--ease-soft)}
+    .fields-explorer.is-enter .fields-apps-desc{opacity:1;transform:none;transition-delay:.2s}
+    .fields-explorer--compressor .fields-apps-desc{color:rgba(255,255,255,.9)}
+    .fields-explorer-hero{position:absolute;left:52%;top:56%;width:min(46vw,560px);max-width:52%;height:auto;max-height:78%;object-fit:contain;z-index:2;pointer-events:none;filter:drop-shadow(0 22px 44px rgba(16,40,70,.22));opacity:0;transform:translate(-50%,-50%) scale(1.04);transition:opacity .8s var(--ease-soft),transform 1.2s var(--ease-soft)}
+    .fields-explorer--office .fields-explorer-hero{left:52%;top:58%;width:min(34vw,420px);max-width:38%;max-height:60%}
+    .fields-explorer.is-enter .fields-explorer-hero{opacity:1;transform:translate(-50%,-50%) scale(1);animation:fields-hero-float 6.4s ease-in-out 1.2s infinite}
+    @keyframes fields-hero-float{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-52%) scale(1.02)}}
+    .fields-explorer .fields-spotlight-head{position:absolute;left:0;right:0;top:clamp(28px,4.5vh,48px);z-index:5;margin:0 auto 0;pointer-events:none;opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease-soft),transform .65s var(--ease-soft)}
+    .fields-explorer.is-enter .fields-spotlight-head{opacity:1;transform:none;transition-delay:.06s}
+    .fields-explorer.is-enter .fields-apps-title::after{transform:scaleX(1)}
+    .fields-explorer-lines{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+    .fields-explorer-lines line{stroke:#5BA8D4;stroke-width:2;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:0;transition:opacity .45s ease,stroke .3s ease}
+    .fields-explorer.is-enter .fields-explorer-lines line{opacity:.28}
+    .fields-explorer.is-enter .fields-explorer-lines line:nth-child(1){transition-delay:.18s}
+    .fields-explorer.is-enter .fields-explorer-lines line:nth-child(2){transition-delay:.26s}
+    .fields-explorer.is-enter .fields-explorer-lines line:nth-child(3){transition-delay:.34s}
+    .fields-explorer.is-enter .fields-explorer-lines line:nth-child(4){transition-delay:.42s}
+    .fields-explorer.is-enter .fields-explorer-lines line:nth-child(5){transition-delay:.5s}
+    .fields-explorer.is-enter .fields-explorer-lines line:nth-child(6){transition-delay:.58s}
+    .fields-explorer.is-enter .fields-explorer-lines line:nth-child(7){transition-delay:.66s}
+    .fields-explorer.is-enter .fields-explorer-lines line:nth-child(n+8){transition-delay:.74s}
+    .fields-explorer.is-enter .fields-explorer-lines line.is-active{opacity:1;stroke:var(--primary)}
+    .fields-dot{position:absolute;left:var(--dot-x);top:var(--dot-y);width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:#fff;border:3px solid var(--primary);box-shadow:0 0 0 6px rgba(0,110,182,.16);z-index:3;pointer-events:none;opacity:0;transform:scale(.4);transition:opacity .45s var(--ease-soft),transform .55s var(--ease-out),box-shadow .3s ease}
+    .fields-dot::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:2px solid rgba(0,110,182,.4);opacity:0;pointer-events:none}
+    .fields-explorer.is-enter .fields-dot{opacity:.35;transform:scale(.85)}
+    .fields-explorer.is-enter .fields-dot.is-active{opacity:1;transform:scale(1);box-shadow:0 0 0 10px rgba(0,110,182,.2);animation:fields-dot-pulse 1.8s ease-in-out infinite}
+    .fields-explorer.is-enter .fields-dot.is-active::after{animation:fields-dot-ring 1.8s ease-out infinite}
+    .fields-dot:nth-of-type(1){--dot-delay:.22s}.fields-dot:nth-of-type(2){--dot-delay:.28s}.fields-dot:nth-of-type(3){--dot-delay:.34s}.fields-dot:nth-of-type(4){--dot-delay:.4s}.fields-dot:nth-of-type(5){--dot-delay:.46s}.fields-dot:nth-of-type(6){--dot-delay:.52s}.fields-dot:nth-of-type(7){--dot-delay:.58s}.fields-dot:nth-of-type(8){--dot-delay:.64s}.fields-dot:nth-of-type(n+9){--dot-delay:.7s}
+    .fields-explorer.is-enter .fields-dot{transition-delay:var(--dot-delay,.22s)}
+    .fields-explorer.is-enter .fields-dot.is-active{animation-delay:var(--dot-delay,.22s)}
+    @keyframes fields-dot-pulse{0%,100%{box-shadow:0 0 0 8px rgba(0,110,182,.18)}50%{box-shadow:0 0 0 14px rgba(0,110,182,.08)}}
+    @keyframes fields-dot-ring{0%{opacity:.55;transform:scale(.7)}100%{opacity:0;transform:scale(1.55)}}
+    .fields-pin{position:absolute;left:var(--pin-x);top:var(--pin-y);transform:translate(-50%,calc(-50% + 16px)) scale(.88);z-index:4;display:block;border:none;background:transparent;padding:0;cursor:pointer;font-family:inherit;opacity:0;transition:opacity .55s var(--ease-soft),transform .7s var(--ease-soft)}
+    .fields-explorer.is-enter .fields-pin{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    .fields-pin:nth-of-type(1){--pin-delay:.16s}.fields-pin:nth-of-type(2){--pin-delay:.24s}.fields-pin:nth-of-type(3){--pin-delay:.32s}.fields-pin:nth-of-type(4){--pin-delay:.4s}.fields-pin:nth-of-type(5){--pin-delay:.48s}.fields-pin:nth-of-type(6){--pin-delay:.56s}.fields-pin:nth-of-type(7){--pin-delay:.64s}.fields-pin:nth-of-type(8){--pin-delay:.72s}.fields-pin:nth-of-type(n+9){--pin-delay:.8s}
+    .fields-explorer.is-enter .fields-pin{transition-delay:var(--pin-delay,.16s)}
+    .fields-explorer.is-enter .fields-pin.is-active{z-index:6}
+    .fields-pin-bubble{width:180px;flex-shrink:0;border-radius:60px;background:rgba(255,255,255,.76);box-shadow:0 10px 28px rgba(20,50,90,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;border:3px solid rgba(255,255,255,.55);padding:10px 10px 8px;box-sizing:border-box;transition:transform .35s var(--ease-out),box-shadow .35s ease,border-color .3s ease,background .3s ease}
+    .fields-pin-bubble--wide{width:240px;padding:8px 14px 8px}
+    .fields-pin-bubble img{width:100%;height:80px;object-fit:contain;display:block;pointer-events:none}
+    .fields-pin-bubble--wide img{height:56px}
+    .fields-pin-lens{width:140px;height:140px;border-radius:50%;overflow:hidden;border:4px solid #fff;box-shadow:0 10px 28px rgba(16,40,70,.22);background:#16324a;display:block;box-sizing:border-box;transition:transform .35s var(--ease-out),box-shadow .35s ease}
+    .fields-pin-lens img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transform:scale(1.04)}
+    .fields-pin--lens .fields-pin-reg{position:absolute;top:2px;right:6px;z-index:5;width:20px;height:20px;border-radius:50%;background:#fff;color:var(--primary);font-size:11px;font-weight:700;line-height:20px;text-align:center;box-shadow:0 2px 8px rgba(16,40,70,.2);pointer-events:none}
+    .fields-pin--lens .fields-pin-name,.fields-pin--caption .fields-pin-name{margin:0;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.86);box-shadow:0 4px 14px rgba(20,50,90,.14);white-space:nowrap}
+    .fields-pin--lens .fields-pin-name{position:absolute;left:50%;right:auto;top:auto;bottom:calc(100% + 10px);transform:translateX(-50%)}
+    .fields-pin--caption .fields-pin-name{display:block}
+    .fields-pin--lens:hover .fields-pin-lens,.fields-pin--lens.is-active .fields-pin-lens{transform:scale(1.08);box-shadow:0 14px 32px rgba(0,110,182,.28)}
+    .fields-pin--lens:hover .fields-pin-name,.fields-pin--lens.is-active .fields-pin-name,.fields-pin--caption:hover .fields-pin-name,.fields-pin--caption.is-active .fields-pin-name{background:#fff}
+    .fields-pin-name{margin-top:6px;padding:0;border-radius:0;background:transparent;color:#1A1A2E;font-size:13px;font-weight:600;line-height:1.3;box-shadow:none;white-space:nowrap;transition:color .25s ease,background .3s ease}
+    sup.reg{font-size:.55em;font-weight:inherit;line-height:0;vertical-align:super;letter-spacing:0}
+    .fields-pin-bubble:not(:has(img)){padding:12px 18px}
+    .fields-pin-bubble:not(:has(img)) .fields-pin-name{margin-top:0}
+    .fields-pin:hover .fields-pin-bubble,.fields-pin.is-active .fields-pin-bubble{background:#fff;border-color:var(--primary);transform:scale(1.08);box-shadow:0 12px 28px rgba(0,110,182,.26)}
+    .fields-explorer.is-enter .fields-pin.is-active .fields-pin-bubble{animation:fields-pin-float 2.6s ease-in-out infinite}
+    .fields-explorer.is-enter .fields-pin--lens.is-active .fields-pin-lens{animation:fields-pin-float 2.6s ease-in-out infinite}
+    @keyframes fields-pin-float{0%,100%{transform:scale(1.08) translateY(0)}50%{transform:scale(1.08) translateY(-5px)}}
+    .fields-pin.is-active .fields-pin-name{color:var(--primary)}
+    .fields-pin--label{display:flex;align-items:center}
+    .fields-pin--label .fields-pin-name{padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.76);box-shadow:0 4px 14px rgba(20,50,90,.12)}
+    .fields-pin--label:hover .fields-pin-name,.fields-pin--label.is-active .fields-pin-name{background:#fff;color:var(--primary)}
+    .fields-spotlight{position:relative;margin:0;padding:64px 0 72px;box-sizing:border-box;width:100%;isolation:isolate;opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease-soft),transform .7s var(--ease-soft)}
+    .fields-core .fields-spotlight:nth-of-type(odd){background:rgba(226,238,247,.82)}
+    .fields-core .fields-spotlight:nth-of-type(even){background:rgba(244,248,251,.92)}
+    .fields-spotlight.is-enter{opacity:1;transform:none}
+    .fields-spotlight-head{max-width:var(--content-max);margin:0 auto 22px;padding:0 var(--page-pad);box-sizing:border-box;width:100%;opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease-soft),transform .65s var(--ease-soft)}
+    .fields-spotlight.is-enter .fields-spotlight-head{opacity:1;transform:none;transition-delay:.06s}
+    .fields-spotlight.is-enter .fields-apps-title::after{transform:scaleX(1)}
+    .fields-spotlight-figure{max-width:var(--content-max);margin:0 auto;padding:0 var(--page-pad);box-sizing:border-box;width:100%;opacity:0;transform:translateY(16px);transition:opacity .75s var(--ease-soft) .12s,transform .75s var(--ease-soft) .12s}
+    .fields-spotlight.is-enter .fields-spotlight-figure{opacity:1;transform:none}
+    .fields-spotlight-zoom{display:block;position:relative;width:100%;aspect-ratio:2940/1016;height:auto;margin:0;padding:0;border:none;background:#E8EEF3;cursor:zoom-in;border-radius:16px;overflow:hidden;box-shadow:0 12px 36px rgba(16,40,70,.12);appearance:none;-webkit-appearance:none;font-size:0;line-height:0;transition:transform .45s var(--ease-out),box-shadow .45s ease}
+    .fields-spotlight-zoom:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(16,40,70,.16)}
+    .fields-spotlight-zoom img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    .fields-spotlight-tags{display:flex;flex-wrap:wrap;gap:8px;max-width:var(--content-max);margin:18px auto 0;padding:0 var(--page-pad);box-sizing:border-box;width:100%;list-style:none;opacity:0;transform:translateY(10px);transition:opacity .65s var(--ease-soft) .2s,transform .65s var(--ease-soft) .2s}
+    .fields-spotlight.is-enter .fields-spotlight-tags{opacity:1;transform:none}
+    .fields-spotlight-tags li{padding:6px 12px;font-size:13px;line-height:1.35;color:var(--primary);background:rgba(0,110,182,.08);border-radius:999px}
+    .fields-lightbox{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(8,22,40,.88);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility .3s}
+    .fields-lightbox[hidden]{display:none!important}
+    .fields-lightbox.is-open{opacity:1;visibility:visible;pointer-events:auto}
+    .fields-lightbox img{max-width:min(1280px,96vw);max-height:90vh;width:auto;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+    .fields-lightbox-close{position:absolute;top:16px;right:20px;width:40px;height:40px;border:none;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:28px;line-height:1;cursor:pointer;font-family:inherit}
+    .fields-lightbox-close:hover{background:rgba(255,255,255,.24)}
+    .fields-apps{position:relative;max-width:none;margin:0;padding:clamp(28px,4.5vh,48px) 0 48px;box-sizing:border-box;width:100%;height:clamp(560px,calc(100vh - 72px),740px);min-height:clamp(560px,calc(100vh - 72px),740px);display:flex;flex-direction:column;justify-content:center;gap:28px;border-top:none;background:rgba(226,238,247,.82);isolation:isolate;opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease-soft),transform .7s var(--ease-soft)}
+    .fields-apps:nth-of-type(even){background:rgba(244,248,251,.92)}
+    .fields-apps::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url("img/banner/bg2.png") center / cover no-repeat;opacity:.5}
+    .fields-apps > *{position:relative;z-index:1}
+    .fields-apps.is-enter{opacity:1;transform:none}
+    .fields-apps-head{max-width:var(--content-max);margin:0 auto;padding:32px var(--page-pad) 0;box-sizing:border-box;width:100%;flex-shrink:0;opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease-soft),transform .65s var(--ease-soft)}
+    .fields-apps.is-enter .fields-apps-head{opacity:1;transform:none;transition-delay:.06s}
+    .fields-brand{margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--primary);opacity:0;transform:translateY(8px);transition:opacity .55s var(--ease-soft),transform .55s var(--ease-soft)}
+    .fields-apps.is-enter .fields-brand{opacity:1;transform:none;transition-delay:.08s}
+    .fields-apps-title{display:inline-block;position:relative;margin:0 0 10px;padding:0 0 12px;font-size:clamp(28px,3.2vw,40px);font-weight:500;line-height:1.35;letter-spacing:.02em;color:#2A2A2A}
+    .fields-apps-title::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px;transform:scaleX(0);transform-origin:left center;transition:transform .7s var(--ease-soft) .28s}
+    .fields-apps.is-enter .fields-apps-title::after{transform:scaleX(1)}
+    .fields-apps-desc{margin:0;max-width:52em;font-size:15px;line-height:1.85;color:var(--text-muted);opacity:0;transform:translateY(8px);transition:opacity .55s var(--ease-soft),transform .55s var(--ease-soft)}
+    .fields-apps.is-enter .fields-apps-desc{opacity:1;transform:none;transition-delay:.18s}
+    .fields-apps-marquee{position:relative;width:100%;flex:1;min-height:0;display:flex;align-items:center;overflow:hidden;opacity:0;transform:translateY(16px);transition:opacity .75s var(--ease-soft) .12s,transform .75s var(--ease-soft) .12s;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 56px,#000 calc(100% - 56px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 56px,#000 calc(100% - 56px),transparent 100%)}
+    .fields-apps.is-enter .fields-apps-marquee{opacity:1;transform:none}
+    .app-grid{display:flex;width:max-content;gap:28px;padding:16px var(--page-pad);will-change:transform}
+    .fields-apps.is-enter .app-grid{animation:app-marquee 72s linear infinite}
+    .fields-apps.is-enter .app-grid:hover{animation-play-state:paused}
+    @keyframes app-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .app-card{position:relative;flex:0 0 clamp(280px,32vw,420px);width:clamp(280px,32vw,420px);aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#1a2a3a;cursor:pointer;box-shadow:0 6px 18px rgba(16,40,70,0);filter:none;transition:transform .45s var(--ease-out),box-shadow .45s ease}
+    .app-card img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.03);transition:transform .85s var(--ease-soft)}
+    .app-card span{position:absolute;inset:auto 0 0;display:block;padding:48px 18px 16px;background:linear-gradient(180deg,transparent 0%,rgba(0,30,60,.82) 100%);color:#fff;font-size:clamp(14px,1.3vw,17px);font-weight:600;text-align:left;line-height:1.3;box-sizing:border-box;transition:padding .4s var(--ease-out),background .4s ease}
+    .app-card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(16,40,70,.16)}
+    .app-card:hover img{transform:scale(1.07)}
+    .app-card:hover span{padding:52px 18px 18px;background:linear-gradient(180deg,transparent 0%,rgba(0,70,130,.9) 100%)}
+    @media (prefers-reduced-motion:reduce){
+      .fields-explorer,.fields-explorer-bg,.fields-explorer .fields-spotlight-head,.fields-spotlight,.fields-spotlight-head,.fields-spotlight-figure,.fields-spotlight-tags,.fields-apps,.fields-apps-head,.fields-apps-marquee,.app-card,.fields-dot,.fields-explorer .fields-apps-desc,.fields-brand,.fields-apps-desc{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}
+      .fields-pin,.fields-explorer.is-enter .fields-pin{opacity:1!important;transform:translate(-50%,-50%)!important;transition:none!important;animation:none!important}
+      .fields-explorer-hero{opacity:1!important;transform:translate(-50%,-50%)!important;transition:none!important;animation:none!important}
+      .fields-explorer-lines line,.fields-explorer.is-enter .fields-explorer-lines line,.fields-explorer.is-enter .fields-explorer-lines line.is-active{opacity:.28!important;animation:none!important;transition:none!important}
+      .fields-explorer.is-enter .fields-explorer-lines line.is-active{opacity:1!important}
+      .fields-pin-bubble,.fields-pin-lens{animation:none!important}
+      .fields-apps.is-enter .app-grid{animation:none;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;max-width:100%;padding-bottom:8px}
+      .fields-apps-title::after,.fields-apps.is-enter .fields-apps-title::after,.fields-spotlight.is-enter .fields-apps-title::after,.fields-explorer.is-enter .fields-apps-title::after{transform:none!important}
+    }
+    @media(max-width:1100px){
+      .fields-pin-bubble{width:120px;border-radius:14px;padding:8px 8px 6px}
+      .fields-pin-bubble--wide{width:190px}
+      .fields-pin-bubble img{height:56px}
+      .fields-pin-bubble--wide img{height:44px}
+      .fields-pin-lens{width:110px;height:110px;border-width:3px}
+      .fields-pin-name{font-size:12px;margin-top:4px}
+    }
+    @media(max-width:768px){
+      .fields-explorer-stage{height:auto;min-height:520px;aspect-ratio:16/11}
+      .fields-explorer-hero{width:min(58vw,420px);max-height:62%}
+      .fields-explorer--office .fields-explorer-hero{width:min(40vw,280px);max-height:48%}
+      .fields-explorer .fields-spotlight-head{top:24px;padding-left:20px;padding-right:20px}
+      .fields-spotlight{padding:40px 0 48px}
+      .fields-spotlight-head,.fields-spotlight-figure,.fields-spotlight-tags{padding-left:20px;padding-right:20px}
+      .fields-spotlight-zoom{border-radius:12px}
+      .fields-apps{height:auto;min-height:520px;padding:40px 0 48px}
+      .fields-apps-head{padding:20px 20px 0;margin-bottom:0}
+      .fields-apps-title{font-size:28px}
+      .app-grid{gap:14px;padding:8px 20px}
+      .app-card{flex-basis:min(72vw,280px);width:min(72vw,280px);border-radius:14px}
+      .app-card span{font-size:14px;padding:40px 14px 14px}
+      .app-card:hover span{padding:44px 14px 16px}
+      .fields-apps.is-enter .app-grid{animation-duration:40s}
+    }
+    .clients-section{width:100%;margin:0;isolation:isolate;background-color:#EAF1F6;background-image:radial-gradient(ellipse 80% 55% at 50% -8%,rgba(0,110,182,.12) 0%,transparent 58%),radial-gradient(ellipse 42% 48% at 0% 100%,rgba(0,110,182,.07) 0%,transparent 55%),radial-gradient(ellipse 42% 48% at 100% 78%,rgba(0,136,212,.06) 0%,transparent 55%),linear-gradient(180deg,#E4EDF4 0%,#F2F6F9 48%,#EAF0F5 100%);border-radius:0;padding:64px 0 72px;box-shadow:none;border:none;overflow:hidden;position:relative}
+    .clients-section::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(0,110,182,.1) 1px,transparent 1px);background-size:22px 22px;opacity:.45;pointer-events:none;z-index:0}
+    .clients-section::after{content:"";position:absolute;left:50%;top:-40px;transform:translateX(-50%);width:min(780px,78vw);height:220px;background:radial-gradient(ellipse at center,rgba(0,110,182,.1) 0%,transparent 70%);pointer-events:none;z-index:0}
+    .clients-title{display:block;position:relative;z-index:1;font-size:42px;font-weight:500;color:#2A2A2A;margin:0 auto 40px;max-width:var(--content-max);padding:0 var(--page-pad) 12px;box-sizing:border-box;letter-spacing:.02em;line-height:1.3;opacity:0;transform:translateY(18px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+    .clients-section.is-inview .clients-title{opacity:1;transform:none}
+    .clients-title::after{content:"";position:absolute;left:var(--page-pad);bottom:0;width:36px;height:3px;background:var(--primary);border-radius:2px;transform:scaleX(0);transform-origin:left center;transition:transform .7s cubic-bezier(.16,1,.3,1) .28s}
+    .clients-section.is-inview .clients-title::after{transform:scaleX(1)}
+    .clients-marquee{display:flex;flex-direction:column;gap:14px;margin:0;position:relative;z-index:1;opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.16,1,.3,1) .15s,transform .8s cubic-bezier(.16,1,.3,1) .15s}
+    .clients-section.is-inview .clients-marquee{opacity:1;transform:none}
+    .clients-marquee::before,.clients-marquee::after{content:"";position:absolute;top:0;bottom:0;width:clamp(40px,8vw,120px);z-index:2;pointer-events:none}
+    .clients-marquee::before{left:0;background:linear-gradient(90deg,#EAF1F6 0%,rgba(234,241,246,0) 100%)}
+    .clients-marquee::after{right:0;background:linear-gradient(270deg,#EAF1F6 0%,rgba(234,241,246,0) 100%)}
+    .clients-track{display:flex;width:max-content;gap:14px;will-change:transform}
+    .clients-track--a{animation:clients-scroll-left 70s linear infinite}
+    .clients-track--b{animation:clients-scroll-right 82s linear infinite}
+    .clients-track:hover{animation-play-state:paused}
+    @keyframes clients-scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes clients-scroll-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+    .clients-chip{flex:0 0 auto;width:168px;height:76px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;background:var(--white);border:1px solid rgba(0,110,182,.08);border-radius:12px;box-shadow:0 4px 16px rgba(20,40,80,.04);transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease,border-color .3s ease}
+    .clients-chip img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;filter:grayscale(.15);opacity:.88;transition:filter .3s ease,opacity .3s ease,transform .35s cubic-bezier(.22,.61,.36,1)}
+    .clients-chip:hover{transform:translateY(-5px);border-color:rgba(0,110,182,.22);box-shadow:0 12px 28px rgba(0,110,182,.12)}
+    .clients-chip:hover img{filter:none;opacity:1;transform:scale(1.05)}
+    @media (prefers-reduced-motion:reduce){
+      .clients-track--a,.clients-track--b{animation:none}
+      .clients-title,.clients-marquee,.clients-title::after{opacity:1!important;transform:none!important;transition:none!important}
+    }
+    @media(max-width:768px){
+      .clients-section{padding:44px 0 52px}
+      .clients-title{font-size:28px;padding-left:20px;padding-right:20px;padding-bottom:10px;margin-bottom:28px}
+      .clients-title::after{left:20px}
+      .clients-marquee{gap:10px}
+      .clients-chip{width:132px;height:64px;padding:10px 12px;border-radius:10px}
+    }
+    .footer{background:#E8F2F8}
+    .footer-main{padding:40px 24px}
+    .footer-inner{max-width:1280px;margin:0 auto}
+    .footer-links{display:flex;justify-content:space-between;align-items:flex-start;width:100%;gap:28px 20px}.footer-col{flex:0 1 auto;min-width:0;max-width:200px}.footer-col ul a{overflow-wrap:break-word}
+    .footer-col{min-width:0}
+    .footer-col h4{color:var(--primary);font-size:15px;font-weight:700;margin:0 0 18px;letter-spacing:.04em}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .footer-col ul a{font-size:13px;line-height:1.5;color:var(--text-muted);transition:color .2s;display:block}
+    .footer-col ul a:hover{color:var(--primary)}
+    .footer-contact{margin-top:30px;padding-top:8px}
+    .footer-contact-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .footer-phone{font-size:clamp(22px,2.4vw,30px);font-weight:500;color:var(--primary);letter-spacing:.04em;line-height:1.2}
+    .footer-phone:hover{color:var(--primary-light)}
+    .footer-fax{font-size:15px;color:var(--text-muted);letter-spacing:.02em}
+    .footer-address{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;color:var(--text);font-size:14px;line-height:1.55;transition:color .2s;border-top:1px solid rgba(0,110,182,.12)}
+    .footer-address:hover{color:var(--primary)}
+    .footer-address-text{min-width:0}
+    .footer-address-label{display:block;font-size:12px;color:var(--text-muted);margin-bottom:4px}
+    .footer-address-meta{display:block;margin-top:6px;font-size:13px;color:var(--text-muted)}
+    .footer-address-arrow{flex-shrink:0;width:18px;height:18px;color:var(--primary);opacity:.7}
+    .footer-bar{background:var(--primary)}
+    .footer-bar-inner{max-width:1280px;margin:0 auto;padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap}
+    .footer-bar-brand{display:flex;align-items:center;gap:12px;color:var(--white);min-width:0}
+    .footer-bar-brand img{height:36px;width:auto;display:block}
+    .footer-bar-brand-text{display:flex;flex-direction:column;gap:2px;min-width:0;line-height:1.25}
+    .footer-bar-brand-zh{font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--white);white-space:nowrap}
+    .footer-bar-brand-en{font-size:11px;font-weight:400;letter-spacing:.02em;color:#9EC9E8;white-space:nowrap}
+    .footer-bar-copy{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5;text-align:right}
+    @media(max-width:1100px){.footer-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}.footer-col{max-width:none}}
+    @media(max-width:768px){.footer-main{padding:40px 20px 0}.footer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.footer-col{max-width:none}.footer-contact{margin-top:32px}.footer-contact-row{padding:18px 0;gap:10px}.footer-phone{font-size:22px}.footer-fax{font-size:13px}.footer-address{padding:16px 0;font-size:13px}.footer-bar-inner{padding:14px 20px}.footer-bar-copy{text-align:left;font-size:11px}}
+  
+    .nav-toggle{display:none;width:42px;height:42px;margin-left:4px;padding:0;border:none;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex-shrink:0}
+    .nav-toggle span{display:block;width:18px;height:2px;background:#fff;border-radius:1px;transition:transform .25s ease,opacity .2s}
+    .header.is-nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .header.is-nav-open .nav-toggle span:nth-child(2){opacity:0}
+    .header.is-nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    @media(max-width:768px){
+      .header:has(.nav>li:hover),.header:has(.nav>li:focus-within){margin-bottom:0}
+      .nav-toggle{display:flex;margin-left:auto}
+      .nav{position:absolute;left:0;right:0;top:72px;display:flex;flex-direction:column;align-items:stretch;gap:0;margin:0;max-height:min(72vh,calc(100dvh - 72px));overflow:auto;-webkit-overflow-scrolling:touch;background:#fff;box-shadow:0 18px 40px rgba(0,40,80,.16);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity .25s ease,visibility .25s,transform .25s ease;z-index:1002}
+      .header.is-nav-open .nav{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+      .nav>li{width:100%;border-bottom:1px solid #EEF1F5}
+      .nav>li>a{height:auto;padding:14px 20px 8px;color:#1A1A2E;font-size:15px;font-weight:600}
+      .nav>li>a::after{display:none}
+      .nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:#006EB6;font-weight:600}
+      .header.is-nav-open .nav-dropdown{position:static;display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;gap:0;width:auto;margin:0;padding:0 20px 12px;background:transparent;border:none;box-shadow:none;opacity:1;visibility:visible;transform:none}
+      .nav>li:hover>.nav-dropdown{opacity:1;visibility:visible}
+      .nav-dropdown a{padding:7px 0;font-size:13px;color:#5A6270;white-space:normal}
+      .nav-dropdown a:hover{color:#006EB6}
+      body.is-nav-lock{overflow:hidden}
+    }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/brand/logo-白.png" alt="STARLITE" class="logo-img">
+        <div>
+          <div class="logo-text">STARLITE</div>
+          <div class="logo-sub">星光树脂（昆山）</div>
+        </div>
+      </a>
+      <ul class="nav">
+        <li>
+          <a href="index.html">首页</a>
+          <ul class="nav-dropdown">
+            <li><a href="index.html#intro">企业简介</a></li>
+            <li><a href="index.html#history">发展历程</a></li>
+            <li><a href="index.html#logo">品牌标识解说</a></li>
+            <li><a href="index.html#vision">理念 & 愿景 & 使命</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="fields.html" class="active">核心领域产品</a>
+          <ul class="nav-dropdown">
+            <li><a href="fields.html#sbear">S-BEAR® 汽车</a></li>
+            <li><a href="fields.html#sbear-office">S-BEAR® 自动办公</a></li>
+            <li><a href="fields.html#bakes">BAKES® 船舶</a></li>
+            <li><a href="fields.html#bakes-press">BAKES® 压力机</a></li>
+            <li><a href="fields.html#alp">ALP® 压缩机</a></li>
+            <li><a href="fields.html#bakes-other">其他应用行业</a></li>
+            <li><a href="fields.html#clients">合作客户</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="innovation.html">摩擦学技术概要</a>
+          <ul class="nav-dropdown">
+            <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
+            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-mega">
+          <a href="products.html">摩擦学核心技术</a>
+          <ul class="nav-dropdown">
+            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">关于我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="about.html#honors">企业荣誉</a></li>
+            <li><a href="about.html#cert">认证资质</a></li>
+            <li><a href="about.html#sustain">可持续发展</a></li>
+            <li><a href="about.html#news">企业动态</a></li>
+            <li><a href="about.html#social">社会贡献</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="join.html">加入我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="join.html#welfare">人文关怀</a></li>
+            <li><a href="join.html#training">教育培训</a></li>
+            <li><a href="join.html#activities">员工活动</a></li>
+            <li><a href="join.html#careers">招贤纳士</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="contact.html">联系我们</a>
+          <ul class="nav-dropdown">
+            <li><a href="contact.html#contact-info">联系方式</a></li>
+            <li><a href="contact.html#contact-map">电子地图</a></li>
+            <li><a href="contact.html#contact-form">客户留言</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="lang-switch"><button class="lang-btn" type="button" data-lang="zh" aria-label="切换语言">EN</button></div>
+    </div>
+  </header>
+
+  <main class="fields-page" aria-label="核心领域产品">
+    <div class="fields-core">
+      <section class="fields-explorer" id="sbear" aria-label="S-BEAR 产品应用领域-汽车">
+        <div class="fields-explorer-stage">
+          <img class="fields-explorer-bg" src="img/fields/sbear-auto.png" alt="">
+          <div class="fields-spotlight-head">
+            <h2 class="fields-apps-title">S-BEAR 产品应用领域-汽车</h2>
+            <p class="fields-apps-desc">为汽车领域提供高性能和轻量化作出贡献</p>
+          </div>
+          <svg class="fields-explorer-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line data-part="grille" x1="26" y1="36" x2="40" y2="40"/>
+            <line data-part="compressor" x1="18" y1="68" x2="36" y2="48"/>
+            <line data-part="strut" x1="78" y1="24" x2="75" y2="34"/>
+            <line data-part="lock" x1="85" y1="42" x2="72" y2="42"/>
+            <line data-part="shifter" x1="83" y1="65" x2="58" y2="56"/>
+            <line data-part="valve" x1="57" y1="86" x2="38" y2="60"/>
+          </svg>
+          <span class="fields-dot" data-part="grille" style="--dot-x:40%;--dot-y:40%"></span>
+          <span class="fields-dot" data-part="compressor" style="--dot-x:36%;--dot-y:48%"></span>
+          <span class="fields-dot" data-part="strut" style="--dot-x:75%;--dot-y:34%"></span>
+          <span class="fields-dot" data-part="lock" style="--dot-x:72%;--dot-y:42%"></span>
+          <span class="fields-dot" data-part="shifter" style="--dot-x:58%;--dot-y:56%"></span>
+          <span class="fields-dot" data-part="valve" style="--dot-x:38%;--dot-y:60%"></span>
+          <button type="button" class="fields-pin" data-part="grille" style="--pin-x:18%;--pin-y:36%" aria-pressed="true">
+            <span class="fields-pin-bubble fields-pin-bubble--wide"><img src="img/fields/水槽格栅.png" alt=""><span class="fields-pin-name">水槽格栅</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="compressor" style="--pin-x:12%;--pin-y:70%">
+            <span class="fields-pin-bubble"><img src="img/fields/空调压缩机组件.png" alt=""><span class="fields-pin-name">空调压缩机组件</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="strut" style="--pin-x:86%;--pin-y:20%">
+            <span class="fields-pin-bubble fields-pin-bubble--wide"><img src="img/fields/尾门撑杆总成.png" alt=""><span class="fields-pin-name">尾门撑杆总成</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="lock" style="--pin-x:90%;--pin-y:42%">
+            <span class="fields-pin-bubble"><img src="img/fields/车门锁用执行器.png" alt=""><span class="fields-pin-name">车门锁用执行器</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="shifter" style="--pin-x:88%;--pin-y:64%">
+            <span class="fields-pin-bubble"><img src="img/fields/挂档总成.png" alt=""><span class="fields-pin-name">挂档总成</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="valve" style="--pin-x:62%;--pin-y:86%">
+            <span class="fields-pin-bubble"><img src="img/fields/燃料泵密封阀.png" alt=""><span class="fields-pin-name">燃料泵密封阀</span></span>
+          </button>
+        </div>
+      </section>
+      <section class="fields-explorer fields-explorer--office" id="sbear-office" aria-label="S-BEAR 产品应用领域-自动办公">
+        <div class="fields-explorer-stage">
+          <img class="fields-explorer-bg" src="img/fields/sbear-office.png" alt="">
+          <img class="fields-explorer-hero" src="img/fields/打印机.png" alt="">
+          <div class="fields-spotlight-head">
+            <h2 class="fields-apps-title">S-BEAR 产品应用领域-自动办公</h2>
+          </div>
+          <svg class="fields-explorer-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line data-part="bar" x1="22" y1="34" x2="42" y2="46"/>
+            <line data-part="toner" x1="14" y1="54" x2="40" y2="54"/>
+            <line data-part="claws" x1="22" y1="76" x2="42" y2="66"/>
+            <line data-part="tray" x1="62" y1="22" x2="52" y2="42"/>
+            <line data-part="gears" x1="84" y1="30" x2="60" y2="46"/>
+            <line data-part="slats" x1="86" y1="52" x2="64" y2="54"/>
+            <line data-part="rail" x1="84" y1="74" x2="60" y2="66"/>
+            <line data-part="housing" x1="50" y1="86" x2="52" y2="70"/>
+          </svg>
+          <span class="fields-dot" data-part="bar" style="--dot-x:42%;--dot-y:46%"></span>
+          <span class="fields-dot" data-part="toner" style="--dot-x:40%;--dot-y:54%"></span>
+          <span class="fields-dot" data-part="claws" style="--dot-x:42%;--dot-y:66%"></span>
+          <span class="fields-dot" data-part="tray" style="--dot-x:52%;--dot-y:42%"></span>
+          <span class="fields-dot" data-part="gears" style="--dot-x:60%;--dot-y:46%"></span>
+          <span class="fields-dot" data-part="slats" style="--dot-x:64%;--dot-y:54%"></span>
+          <span class="fields-dot" data-part="rail" style="--dot-x:60%;--dot-y:66%"></span>
+          <span class="fields-dot" data-part="housing" style="--dot-x:52%;--dot-y:70%"></span>
+          <button type="button" class="fields-pin" data-part="bar" style="--pin-x:22%;--pin-y:34%" aria-pressed="true">
+            <span class="fields-pin-bubble fields-pin-bubble--wide"><img src="img/fields/导纸辊.png" alt=""><span class="fields-pin-name">导纸辊</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="toner" style="--pin-x:14%;--pin-y:54%">
+            <span class="fields-pin-bubble fields-pin-bubble--wide"><img src="img/fields/碳粉组件.png" alt=""><span class="fields-pin-name">碳粉组件</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="claws" style="--pin-x:22%;--pin-y:76%">
+            <span class="fields-pin-bubble"><img src="img/fields/分离爪.png" alt=""><span class="fields-pin-name">分离爪</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="tray" style="--pin-x:62%;--pin-y:22%">
+            <span class="fields-pin-bubble"><img src="img/fields/结构机架.png" alt=""><span class="fields-pin-name">结构机架</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="gears" style="--pin-x:84%;--pin-y:30%">
+            <span class="fields-pin-bubble"><img src="img/fields/精密齿轮衬套.png" alt=""><span class="fields-pin-name">精密齿轮・衬套</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="slats" style="--pin-x:86%;--pin-y:52%">
+            <span class="fields-pin-bubble"><img src="img/fields/导轨组件.png" alt=""><span class="fields-pin-name">导轨组件</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="rail" style="--pin-x:84%;--pin-y:74%">
+            <span class="fields-pin-bubble fields-pin-bubble--wide"><img src="img/fields/结构件.png" alt=""><span class="fields-pin-name">结构件</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="housing" style="--pin-x:50%;--pin-y:86%">
+            <span class="fields-pin-bubble"><img src="img/fields/内部壳体.png" alt=""><span class="fields-pin-name">内部壳体</span></span>
+          </button>
+        </div>
+      </section>
+      <section class="fields-explorer fields-explorer--ship" id="bakes" aria-label="BAKES 产品应用领域-船舶">
+        <div class="fields-explorer-stage">
+          <img class="fields-explorer-bg" src="img/fields/bakes-ship.png" alt="">
+          <div class="fields-spotlight-head">
+            <h2 class="fields-apps-title">BAKES 产品应用领域-船舶</h2>
+            <p class="fields-apps-desc">为航海运输事业的发展做出贡献</p>
+          </div>
+          <svg class="fields-explorer-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line data-part="rudder" x1="18" y1="36" x2="24" y2="59"/>
+            <line data-part="rudder" x1="18" y1="36" x2="18" y2="54"/>
+            <line data-part="cover" x1="86" y1="72" x2="66" y2="60"/>
+            <line data-part="damper" x1="70" y1="84" x2="58" y2="58"/>
+            <line data-part="fin" x1="50" y1="86" x2="50" y2="60"/>
+            <line data-part="ring" x1="34" y1="84" x2="44" y2="58"/>
+          </svg>
+          <span class="fields-dot" data-part="rudder" style="--dot-x:18%;--dot-y:54%"></span>
+          <span class="fields-dot" data-part="rudder" style="--dot-x:24%;--dot-y:59%"></span>
+          <span class="fields-dot" data-part="cover" style="--dot-x:66%;--dot-y:60%"></span>
+          <span class="fields-dot" data-part="damper" style="--dot-x:58%;--dot-y:58%"></span>
+          <span class="fields-dot" data-part="fin" style="--dot-x:50%;--dot-y:60%"></span>
+          <span class="fields-dot" data-part="ring" style="--dot-x:44%;--dot-y:58%"></span>
+          <button type="button" class="fields-pin" data-part="rudder" style="--pin-x:12%;--pin-y:38%" aria-pressed="true">
+            <span class="fields-pin-bubble"><img src="img/fields/尾舵轴承.png" alt=""><span class="fields-pin-name">尾舵轴承</span></span>
+          </button>
+          <button type="button" class="fields-pin fields-pin--lens" data-part="plate" style="--pin-x:88%;--pin-y:38%">
+            <span class="fields-pin-lens"><img src="img/fields/防止海洋生物附着的薄板.png" alt=""></span>
+            <span class="fields-pin-name">防止海洋生物附着的薄板</span>
+          </button>
+          <button type="button" class="fields-pin" data-part="cover" style="--pin-x:86%;--pin-y:72%">
+            <span class="fields-pin-bubble"><img src="img/fields/BARIAS外罩.png" alt=""><span class="fields-pin-name">BARIAS<sup class="reg">®</sup> 外罩</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="damper" style="--pin-x:70%;--pin-y:84%">
+            <span class="fields-pin-bubble"><img src="img/fields/BARIAS减震器.png" alt=""><span class="fields-pin-name">BARIAS<sup class="reg">®</sup> 减震器</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="fin" style="--pin-x:50%;--pin-y:86%">
+            <span class="fields-pin-bubble"><img src="img/fields/翼片稳定器.png" alt=""><span class="fields-pin-name">翼片稳定器</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="ring" style="--pin-x:34%;--pin-y:84%">
+            <span class="fields-pin-bubble"><img src="img/fields/减震环.png" alt=""><span class="fields-pin-name">减震环</span></span>
+          </button>
+          <button type="button" class="fields-pin fields-pin--caption" data-part="bollard" style="--pin-x:9%;--pin-y:70%">
+            <span class="fields-pin-name">系船柱</span>
+          </button>
+        </div>
+      </section>
+      <section class="fields-explorer fields-explorer--press" id="bakes-press" aria-label="BAKES 产品应用领域-压力机">
+        <div class="fields-explorer-stage">
+          <img class="fields-explorer-bg" src="img/fields/bakes-press.png" alt="">
+          <div class="fields-spotlight-head">
+            <h2 class="fields-apps-title">BAKES 产品应用领域-压力机</h2>
+            <p class="fields-apps-desc">为产业机械领域的推进作出贡献</p>
+          </div>
+          <svg class="fields-explorer-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line data-part="disc" x1="16" y1="48" x2="51" y2="29"/>
+            <line data-part="block" x1="86" y1="48" x2="51" y2="29"/>
+          </svg>
+          <span class="fields-dot" data-part="disc" style="--dot-x:51%;--dot-y:29%"></span>
+          <span class="fields-dot" data-part="block" style="--dot-x:51%;--dot-y:29%"></span>
+          <button type="button" class="fields-pin" data-part="disc" style="--pin-x:16%;--pin-y:48%" aria-pressed="true">
+            <span class="fields-pin-bubble"><img src="img/fields/摩擦制动盘.png" alt=""><span class="fields-pin-name">摩擦制动盘</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="block" style="--pin-x:86%;--pin-y:48%">
+            <span class="fields-pin-bubble"><img src="img/fields/三角摩擦块.png" alt=""><span class="fields-pin-name">三角摩擦块</span></span>
+          </button>
+        </div>
+      </section>
+      <section class="fields-explorer fields-explorer--compressor" id="alp" aria-label="ALP 产品应用领域-压缩机">
+        <div class="fields-explorer-stage">
+          <img class="fields-explorer-bg" src="img/fields/alp-compressor.png" alt="">
+          <div class="fields-spotlight-head">
+            <h2 class="fields-apps-title">ALP 产品应用领域-压缩机</h2>
+            <p class="fields-apps-desc">实现各种特殊气体压缩的密封技术</p>
+          </div>
+          <svg class="fields-explorer-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line data-part="piston" x1="16" y1="38" x2="36" y2="48"/>
+            <line data-part="support" x1="16" y1="64" x2="34" y2="62"/>
+            <line data-part="valve" x1="86" y1="38" x2="61" y2="48"/>
+            <line data-part="oil" x1="86" y1="64" x2="63" y2="62"/>
+            <line data-part="seal" x1="50" y1="88" x2="50" y2="68"/>
+          </svg>
+          <span class="fields-dot" data-part="piston" style="--dot-x:36%;--dot-y:48%"></span>
+          <span class="fields-dot" data-part="support" style="--dot-x:34%;--dot-y:62%"></span>
+          <span class="fields-dot" data-part="valve" style="--dot-x:61%;--dot-y:48%"></span>
+          <span class="fields-dot" data-part="oil" style="--dot-x:63%;--dot-y:62%"></span>
+          <span class="fields-dot" data-part="seal" style="--dot-x:50%;--dot-y:68%"></span>
+          <button type="button" class="fields-pin" data-part="piston" style="--pin-x:16%;--pin-y:38%" aria-pressed="true">
+            <span class="fields-pin-bubble"><img src="img/fields/活塞环.png" alt=""><span class="fields-pin-name">活塞环</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="support" style="--pin-x:16%;--pin-y:64%">
+            <span class="fields-pin-bubble"><img src="img/fields/支撑环.png" alt=""><span class="fields-pin-name">支撑环</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="valve" style="--pin-x:86%;--pin-y:38%">
+            <span class="fields-pin-bubble"><img src="img/fields/阀片.png" alt=""><span class="fields-pin-name">阀片</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="oil" style="--pin-x:86%;--pin-y:64%">
+            <span class="fields-pin-bubble"><img src="img/fields/控油环.png" alt=""><span class="fields-pin-name">控油环</span></span>
+          </button>
+          <button type="button" class="fields-pin" data-part="seal" style="--pin-x:50%;--pin-y:88%">
+            <span class="fields-pin-bubble"><img src="img/fields/活塞杆用密封件.png" alt=""><span class="fields-pin-name">活塞杆用密封件</span></span>
+          </button>
+        </div>
+      </section>
+    </div>
+    <section class="fields-apps" id="bakes-other">
+      <div class="fields-apps-head">
+        <h2 class="fields-apps-title">其他应用行业</h2>
+      </div>
+      <div class="fields-apps-marquee">
+        <div class="app-grid">
+          <div class="app-card"><img src="img/products/造纸.png" alt="造纸"><span>造纸</span></div>
+          <div class="app-card"><img src="img/products/钢铝滚轧.png" alt="钢铝滚轧"><span>钢/铝滚轧</span></div>
+          <div class="app-card"><img src="img/products/食品.png" alt="食品"><span>食品</span></div>
+          <div class="app-card"><img src="img/products/土木建筑机械.png" alt="土木建筑机械"><span>土木建筑机械</span></div>
+          <div class="app-card"><img src="img/products/电梯.png" alt="电梯"><span>电梯</span></div>
+          <div class="app-card"><img src="img/products/铁路车辆.png" alt="铁路车辆"><span>铁路车辆</span></div>
+          <div class="app-card"><img src="img/products/住宅设备.png" alt="住宅设备"><span>住宅设备</span></div>
+          <div class="app-card"><img src="img/products/建机农机.png" alt="建机农机"><span>建机・农机</span></div>
+          <div class="app-card"><img src="img/products/往复运动气缸.png" alt="往复运动气缸"><span>往复运动气缸</span></div>
+          <div class="app-card"><img src="img/products/水泥.png" alt="水泥"><span>水泥</span></div>
+          <div class="app-card"><img src="img/products/土木建筑.png" alt="土木建筑"><span>土木建筑</span></div>
+          <div class="app-card"><img src="img/products/化工.png" alt="化工"><span>化工</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="clients-section" id="clients">
+      <h2 class="clients-title">合作客户</h2>
+      <div class="clients-marquee" aria-hidden="true">
+        <div class="clients-track clients-track--a" data-clients-track="a"></div>
+        <div class="clients-track clients-track--b" data-clients-track="b"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="footer-inner">
+        <nav class="footer-links" aria-label="页脚导航">
+          <div class="footer-col">
+            <h4>首页</h4>
+            <ul>
+              <li><a href="index.html#intro">企业简介</a></li>
+              <li><a href="index.html#history">发展历程</a></li>
+              <li><a href="index.html#logo">品牌标识解说</a></li>
+              <li><a href="index.html#vision">理念&愿景&使命</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>核心领域产品</h4>
+            <ul>
+              <li><a href="fields.html#sbear">S-BEAR® 汽车</a></li>
+              <li><a href="fields.html#sbear-office">S-BEAR® 自动办公</a></li>
+              <li><a href="fields.html#bakes">BAKES® 船舶</a></li>
+              <li><a href="fields.html#bakes-press">BAKES® 压力机</a></li>
+              <li><a href="fields.html#alp">ALP® 压缩机</a></li>
+              <li><a href="fields.html#bakes-other">其他应用行业</a></li>
+              <li><a href="fields.html#clients">合作客户</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>摩擦学技术概要</h4>
+            <ul>
+              <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+              <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
+              <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+              <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>摩擦学核心技术</h4>
+            <ul>
+              <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+              <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+              <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+              <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>关于我们</h4>
+            <ul>
+              <li><a href="about.html#honors">企业荣誉</a></li>
+              <li><a href="about.html#cert">认证资质</a></li>
+              <li><a href="about.html#sustain">可持续发展</a></li>
+              <li><a href="about.html#news">企业动态</a></li>
+              <li><a href="about.html#social">社会贡献</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>加入我们</h4>
+            <ul>
+              <li><a href="join.html#welfare">人文关怀</a></li>
+              <li><a href="join.html#training">教育培训</a></li>
+              <li><a href="join.html#activities">员工活动</a></li>
+              <li><a href="join.html#careers">招贤纳士</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>联系我们</h4>
+            <ul>
+              <li><a href="contact.html#contact-info">联系方式</a></li>
+              <li><a href="contact.html#contact-map">电子地图</a></li>
+              <li><a href="contact.html#contact-form">客户留言</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="footer-contact">
+          <div class="footer-contact-row">
+            <a class="footer-phone" href="tel:+8651257641220">+86-512-57641220</a>
+            <span class="footer-fax">传真 +86-512-57641211</span>
+          </div>
+          <a class="footer-address" href="contact.html#contact-map">
+            <span class="footer-address-text">
+              <span class="footer-address-label">星光树脂制品（昆山）有限公司</span>
+              江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313
+            </span>
+            <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+          <a class="footer-address" href="https://starlite.co.jp/" target="_blank" rel="noopener">
+            <span class="footer-address-text">
+              <span class="footer-address-label">星光工业株式会社</span>
+              日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002
+              <span class="footer-address-meta">电话 +81-6-6956-2240 · 传真 +81-6-6956-2715 · starlite.co.jp</span>
+            </span>
+            <svg class="footer-address-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-bar-inner">
+        <a href="index.html" class="footer-bar-brand">
+          <img src="img/brand/logo-白.png" alt="星光树脂制品（昆山）有限公司">
+          <span class="footer-bar-brand-text">
+            <span class="footer-bar-brand-zh">星光树脂制品（昆山）有限公司</span>
+            <span class="footer-bar-brand-en">Starlite Plastic Products (Kunshan) Co.,Ltd.</span>
+          </span>
+        </a>
+        <div class="footer-bar-copy">版权所有 © 星光树脂制品（昆山）有限公司 All Rights Reserved　苏ICP备12003553号-1</div>
+      </div>
+    </div>
+  </footer>
+  <div class="fields-lightbox" id="fieldsLightbox" hidden>
+    <button class="fields-lightbox-close" type="button" aria-label="关闭">&times;</button>
+    <img alt="">
+  </div>
+<script>
+document.querySelectorAll('.lang-switch').forEach(function(s){
+  var btn = s.querySelector('.lang-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
+    var lang = btn.getAttribute('data-lang') === 'zh' ? 'en' : 'zh';
+    btn.setAttribute('data-lang', lang);
+    btn.textContent = lang === 'zh' ? 'EN' : '中文';
+  });
+});
+
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.fields-apps, .fields-spotlight, .fields-explorer'));
+  groups.forEach(function(group){
+    var grid = group.querySelector('.app-grid');
+    if(grid && grid.dataset.marqueeReady !== '1' && !reduced){
+      Array.prototype.slice.call(grid.children).forEach(function(node){
+        var clone = node.cloneNode(true);
+        clone.setAttribute('aria-hidden','true');
+        grid.appendChild(clone);
+      });
+      grid.dataset.marqueeReady = '1';
+    }
+  });
+  function enter(group){ group.classList.add('is-enter'); }
+  if(reduced || !('IntersectionObserver' in window)){
+    groups.forEach(enter);
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      enter(entry.target);
+      io.unobserve(entry.target);
+    });
+  }, {threshold: 0.18, rootMargin: '0px 0px -8% 0px'});
+  groups.forEach(function(group){ io.observe(group); });
+})();
+
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var interval = 2000;
+  document.querySelectorAll('.fields-explorer').forEach(function(root){
+    var pins = Array.prototype.slice.call(root.querySelectorAll('.fields-pin'));
+    var parts = pins.map(function(el){ return el.getAttribute('data-part'); }).filter(Boolean);
+    if(!parts.length) return;
+    var idx = 0;
+    var timer = null;
+    var startDelay = null;
+    var paused = false;
+    var entered = false;
+    function layoutLines(){
+      if(!root.classList.contains('fields-explorer--office') && !root.classList.contains('fields-explorer--compressor')) return;
+      var stage = root.querySelector('.fields-explorer-stage');
+      if(!stage) return;
+      var sr = stage.getBoundingClientRect();
+      if(!sr.width || !sr.height) return;
+      root.querySelectorAll('.fields-explorer-lines line').forEach(function(line){
+        var part = line.getAttribute('data-part');
+        var pin = root.querySelector('.fields-pin[data-part="'+part+'"]');
+        var bubble = pin && (pin.querySelector('.fields-pin-bubble') || pin);
+        if(!bubble) return;
+        var br = bubble.getBoundingClientRect();
+        var cx = br.left + br.width / 2;
+        var cy = br.top + br.height / 2;
+        var tx = sr.left + parseFloat(line.getAttribute('x2')) / 100 * sr.width;
+        var ty = sr.top + parseFloat(line.getAttribute('y2')) / 100 * sr.height;
+        var dx = tx - cx;
+        var dy = ty - cy;
+        if(!dx && !dy) return;
+        var sx = br.width ? (br.width / 2) / Math.abs(dx) : Infinity;
+        var sy = br.height ? (br.height / 2) / Math.abs(dy) : Infinity;
+        var s = Math.min(sx, sy);
+        line.setAttribute('x1', ((cx + dx * s - sr.left) / sr.width * 100).toFixed(2));
+        line.setAttribute('y1', ((cy + dy * s - sr.top) / sr.height * 100).toFixed(2));
+      });
+    }
+    function set(next){
+      idx = (next + parts.length) % parts.length;
+      var id = parts[idx];
+      layoutLines();
+      root.querySelectorAll('.fields-pin, .fields-dot, .fields-explorer-lines line').forEach(function(el){
+        var on = el.getAttribute('data-part') === id;
+        el.classList.toggle('is-active', on);
+        if(el.classList.contains('fields-pin')) el.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      requestAnimationFrame(layoutLines);
+    }
+    function stop(){
+      if(startDelay){ clearTimeout(startDelay); startDelay = null; }
+      if(timer){ clearInterval(timer); timer = null; }
+    }
+    function start(){
+      if(reduced || paused || document.hidden) return;
+      stop();
+      var delay = entered ? 0 : 1100;
+      entered = true;
+      startDelay = setTimeout(function(){
+        startDelay = null;
+        if(reduced || paused || document.hidden) return;
+        timer = setInterval(function(){ set(idx + 1); }, interval);
+      }, delay);
+    }
+    pins.forEach(function(el){
+      function activate(){
+        var i = parts.indexOf(el.getAttribute('data-part'));
+        if(i >= 0) set(i);
+      }
+      el.addEventListener('click', activate);
+      el.addEventListener('mouseenter', function(){
+        paused = true;
+        stop();
+        activate();
+      });
+      el.addEventListener('mouseleave', function(){
+        paused = false;
+        start();
+      });
+    });
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden) stop();
+      else start();
+    });
+    set(0);
+    window.addEventListener('resize', layoutLines);
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting) start();
+          else stop();
+        });
+      }, {threshold: 0.25});
+      io.observe(root);
+    } else {
+      start();
+    }
+  });
+})();
+
+(function(){
+  var box = document.getElementById('fieldsLightbox');
+  if(!box) return;
+  var img = box.querySelector('img');
+  var closeBtn = box.querySelector('.fields-lightbox-close');
+  function close(){
+    box.classList.remove('is-open');
+    box.setAttribute('hidden','');
+    document.body.style.overflow = '';
+  }
+  function open(src, alt){
+    img.src = src;
+    img.alt = alt || '';
+    box.removeAttribute('hidden');
+    box.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.querySelectorAll('.fields-spotlight-zoom').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var pic = btn.querySelector('img');
+      open(btn.getAttribute('data-zoom') || (pic && pic.src), pic && pic.alt);
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function(e){
+    if(e.target === box) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && box.classList.contains('is-open')) close();
+  });
+})();
+
+(function(){
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var section = document.querySelector('.clients-section');
+  if(!section) return;
+  function mark(){ section.classList.add('is-inview'); }
+  if(reducedMotion || !('IntersectionObserver' in window)){
+    mark();
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      mark();
+      observer.unobserve(entry.target);
+    });
+  }, {threshold: 0.14, rootMargin: '0px 0px -8% 0px'});
+  observer.observe(section);
+})();
+
+(function(){
+  var total = 43;
+  var logos = [];
+  for(var i = 1; i <= total; i++){
+    logos.push('img/logo/图片' + i + '.png');
+  }
+  function makeChip(src){
+    var el = document.createElement('div');
+    el.className = 'clients-chip';
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    img.loading = 'lazy';
+    el.appendChild(img);
+    return el;
+  }
+  function fillTrack(track, list){
+    if(!track) return;
+    var frag = document.createDocumentFragment();
+    list.forEach(function(src){ frag.appendChild(makeChip(src)); });
+    list.forEach(function(src){ frag.appendChild(makeChip(src)); });
+    track.appendChild(frag);
+  }
+  var rowA = logos.filter(function(_, idx){ return idx % 2 === 0; });
+  var rowB = logos.filter(function(_, idx){ return idx % 2 === 1; });
+  fillTrack(document.querySelector('[data-clients-track="a"]'), rowA);
+  fillTrack(document.querySelector('[data-clients-track="b"]'), rowB);
+})();
+</script>
+<script>
+(function(){
+  var header = document.querySelector('.header');
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = header && header.querySelector('.nav');
+  if (!header || !toggle || !nav) return;
+  function closeNav(){
+    header.classList.remove('is-nav-open');
+    document.body.classList.remove('is-nav-lock');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','打开菜单');
+  }
+  function openNav(){
+    header.classList.add('is-nav-open');
+    document.body.classList.add('is-nav-lock');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-label','关闭菜单');
+  }
+  toggle.addEventListener('click', function(){
+    if (header.classList.contains('is-nav-open')) closeNav();
+    else openNav();
+  });
+  nav.addEventListener('click', function(e){
+    if (e.target.closest('a')) closeNav();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeNav();
+  });
+  window.addEventListener('resize', function(){
+    if (window.matchMedia('(min-width:769px)').matches) closeNav();
+  });
+})();
+</script>
+</body>
+</html>

@@ -51,7 +51,7 @@
     @media(max-width:768px){.join-hero-content{padding:0 20px}.join-hero-content h1{font-size:28px}}
 
     /* 人文关怀 — 文案 + 照片，整模块 680，置于视频下方 */
-    .welfare-section{width:100%;height:var(--module-h);min-height:var(--module-h);max-height:var(--module-h);margin:0;padding:48px 0 40px;background:var(--white);position:relative;z-index:1;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column}
+    .welfare-section{width:100%;height:var(--module-h);min-height:var(--module-h);max-height:var(--module-h);margin:0;padding:48px 0 40px;background:rgba(226,238,247,.82);position:relative;z-index:1;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column}
     .welfare-section::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url("img/banner/bg2.png") center / cover no-repeat;opacity:.5}
     .welfare-section > .section-inner{position:relative;z-index:1;flex:1;min-height:0;display:flex;flex-direction:column;max-width:1280px}
     .welfare-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-shrink:0;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
@@ -146,7 +146,7 @@
     .footer-bar-copy{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5;text-align:right}
     .prototype-badge{position:fixed;bottom:16px;right:16px;background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;z-index:9999}
     @media(max-width:1100px){.footer-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}.footer-col{max-width:none}}
-    @media(max-width:768px){.nav{display:none}.footer-main{padding:40px 20px 0}.footer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.footer-col{max-width:none}.footer-contact{margin-top:32px}.footer-contact-row{padding:18px 0;gap:10px}.footer-phone{font-size:22px}.footer-fax{font-size:13px}.footer-address{padding:16px 0;font-size:13px}.footer-bar-inner{padding:14px 20px}.footer-bar-copy{text-align:left;font-size:11px}}
+    @media(max-width:768px){.footer-main{padding:40px 20px 0}.footer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.footer-col{max-width:none}.footer-contact{margin-top:32px}.footer-contact-row{padding:18px 0;gap:10px}.footer-phone{font-size:22px}.footer-fax{font-size:13px}.footer-address{padding:16px 0;font-size:13px}.footer-bar-inner{padding:14px 20px}.footer-bar-copy{text-align:left;font-size:11px}}
 
     /* 教育培训 / 员工活动 — 整模块 680，背景色区分 */
     .news-module{height:var(--module-h);min-height:var(--module-h);max-height:var(--module-h);margin:0;padding:48px 0;box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden}
@@ -172,10 +172,10 @@
     .news-module.is-inview .card-grid .article-item:nth-child(3){transition-delay:.28s}
     .news-module.is-inview .card-grid .article-item:nth-child(n+4){transition-delay:.34s}
     .card-grid .article-item:hover,.news-module.is-inview .card-grid .article-item:hover{box-shadow:0 10px 26px rgba(15,55,100,.12);transform:translateY(-4px);border-color:#D9E2EC}
-    .card-grid .article-thumb{width:100%;flex:1 1 auto;min-height:0;aspect-ratio:auto;border-radius:0;overflow:hidden;background:linear-gradient(135deg,var(--bg),#E8EDF3)}
+    .card-grid .article-thumb{width:100%;flex:none;height:auto;aspect-ratio:4/3;min-height:0;border-radius:0;overflow:hidden;background:linear-gradient(135deg,var(--bg),#E8EDF3)}
     .card-grid .article-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
     .card-grid .article-item:hover .article-thumb img{transform:scale(1.04)}
-    .news-card-body{display:flex;flex-direction:column;flex:0 0 auto;padding:16px 18px 18px;background:inherit;min-height:0}
+    .news-card-body{display:flex;flex-direction:column;flex:1 1 auto;padding:16px 18px 18px;background:inherit;min-height:0}
     .card-grid .article-title{font-size:18px;color:var(--text);font-weight:400;line-height:1.55;margin:0;transition:color .2s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .card-grid .article-item:hover .article-title{color:var(--primary)}
     .news-date-row{display:flex;align-items:center;justify-content:flex-start;gap:6px;margin:14px 0 0}
@@ -183,14 +183,18 @@
     .card-grid .article-date{display:inline;font-size:16px;font-weight:400;color:#B0B7C1;letter-spacing:.02em;margin:0}
     .card-grid .article-excerpt{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     .article-thumb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted);text-align:center;padding:12px}
-    @media(max-width:1024px){.card-grid{grid-template-columns:repeat(2,1fr);gap:24px 20px}.card-grid .article-item:nth-child(3){display:none}}
+    @media(max-width:1024px){
+      .card-grid{grid-template-columns:repeat(2,1fr);gap:24px 20px}
+      .card-grid .article-item:nth-child(3){display:none}
+      .news-module{height:auto;min-height:0;max-height:none}
+    }
     @media(max-width:768px){
       .news-module{height:auto;min-height:0;max-height:none;padding:48px 0}
       .news-module-head{flex-wrap:wrap;align-items:flex-start;margin-bottom:24px}
       .card-grid{grid-template-columns:1fr;gap:24px;flex:none}
       .card-grid .article-item{height:auto}
       .card-grid .article-item:nth-child(3){display:flex}
-      .card-grid .article-thumb{flex:none;height:180px}
+      .card-grid .article-thumb{flex:none;height:auto;aspect-ratio:4/3}
       .card-grid .article-title{font-size:16px}
     }
     @media (prefers-reduced-motion:reduce){
@@ -205,7 +209,28 @@
       .welfare-copy h2::after,.welfare-section.is-inview .welfare-copy h2::after,
       .news-module-title::after,.news-module.is-inview .news-module-title::after{transform:none!important}
     }
-  </style>
+  
+    .nav-toggle{display:none;width:42px;height:42px;margin-left:4px;padding:0;border:none;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex-shrink:0}
+    .nav-toggle span{display:block;width:18px;height:2px;background:#fff;border-radius:1px;transition:transform .25s ease,opacity .2s}
+    .header.is-nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .header.is-nav-open .nav-toggle span:nth-child(2){opacity:0}
+    .header.is-nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    @media(max-width:768px){
+      .header:has(.nav>li:hover),.header:has(.nav>li:focus-within){margin-bottom:0}
+      .nav-toggle{display:flex;margin-left:auto}
+      .nav{position:absolute;left:0;right:0;top:72px;display:flex;flex-direction:column;align-items:stretch;gap:0;margin:0;max-height:min(72vh,calc(100dvh - 72px));overflow:auto;-webkit-overflow-scrolling:touch;background:#fff;box-shadow:0 18px 40px rgba(0,40,80,.16);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity .25s ease,visibility .25s,transform .25s ease;z-index:1002}
+      .header.is-nav-open .nav{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+      .nav>li{width:100%;border-bottom:1px solid #EEF1F5}
+      .nav>li>a{height:auto;padding:14px 20px 8px;color:#1A1A2E;font-size:15px;font-weight:600}
+      .nav>li>a::after{display:none}
+      .nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:#006EB6;font-weight:600}
+      .header.is-nav-open .nav-dropdown{position:static;display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;gap:0;width:auto;margin:0;padding:0 20px 12px;background:transparent;border:none;box-shadow:none;opacity:1;visibility:visible;transform:none}
+      .nav>li:hover>.nav-dropdown{opacity:1;visibility:visible}
+      .nav-dropdown a{padding:7px 0;font-size:13px;color:#5A6270;white-space:normal}
+      .nav-dropdown a:hover{color:#006EB6}
+      body.is-nav-lock{overflow:hidden}
+    }
+</style>
 </head>
 <body>
   <header class="header">
@@ -214,6 +239,7 @@
         <img src="img/brand/logo-白.png" alt="STARLITE" class="logo-img">
         <div>
           <div class="logo-text">STARLITE</div>
+          <div class="logo-sub">星光树脂（昆山）</div>
         </div>
       </a>
       <ul class="nav">
@@ -227,7 +253,19 @@
           </ul>
         </li>
         <li>
-          <a href="innovation.html">创新中心</a>
+          <a href="fields.html">核心领域产品</a>
+          <ul class="nav-dropdown">
+            <li><a href="fields.html#sbear">S-BEAR® 汽车</a></li>
+            <li><a href="fields.html#sbear-office">S-BEAR® 自动办公</a></li>
+            <li><a href="fields.html#bakes">BAKES® 船舶</a></li>
+            <li><a href="fields.html#bakes-press">BAKES® 压力机</a></li>
+            <li><a href="fields.html#alp">ALP® 压缩机</a></li>
+            <li><a href="fields.html#bakes-other">其他应用行业</a></li>
+            <li><a href="fields.html#clients">合作客户</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="innovation.html">摩擦学技术概要</a>
           <ul class="nav-dropdown">
             <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
             <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
@@ -236,14 +274,12 @@
           </ul>
         </li>
         <li class="nav-has-mega">
-          <a href="products.html">产品核心</a>
+          <a href="products.html">摩擦学核心技术</a>
           <ul class="nav-dropdown">
             <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
             <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
             <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
             <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-            <li><a href="products.html#clients">合作客户</a></li>
           </ul>
         </li>
         <li>
@@ -274,6 +310,7 @@
           </ul>
         </li>
       </ul>
+      <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
       <div class="lang-switch"><button class="lang-btn" type="button" data-lang="zh" aria-label="切换语言">EN</button></div>
     </div>
   </header>
@@ -281,7 +318,7 @@
   <!-- 顶部视频（首页同款滚动缩放） -->
   <div class="join-hero-pin">
     <section class="join-hero" aria-label="加入我们主视觉">
-      <video class="join-hero-video" src="https://media.5gsy.com/zp.mp4" autoplay muted loop playsinline preload="auto" aria-label="公司环境视频"></video>
+      <video class="join-hero-video" src="https://media.5gsy.com/zp.mp4" poster="img/media/vcr.png" autoplay muted loop playsinline preload="auto" aria-label="公司环境视频"></video>
       <div class="join-hero-overlay">
         <div class="join-hero-content">
           <h1>与星光同行</h1>
@@ -305,73 +342,73 @@
           <div class="welfare-slider-track">
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/宿舍/宿舍外貌.jpg" alt="员工宿舍外观" loading="lazy">
+                <img src="img/join/宿舍外貌.jpg" alt="员工宿舍外观" loading="lazy">
                 <div class="welfare-slide-cap"><strong>员工宿舍</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/宿舍/房间内部.jpg" alt="宿舍房间内部" loading="lazy">
+                <img src="img/join/房间内部.jpg" alt="宿舍房间内部" loading="lazy">
                 <div class="welfare-slide-cap"><strong>房间内部</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/宿舍/洗衣房.jpg" alt="洗衣房" loading="lazy">
+                <img src="img/join/洗衣房.jpg" alt="洗衣房" loading="lazy">
                 <div class="welfare-slide-cap"><strong>洗衣房</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/宿舍/聚缘堂-客厅.jpg" alt="聚缘堂客厅" loading="lazy">
+                <img src="img/join/聚缘堂-客厅.jpg" alt="聚缘堂客厅" loading="lazy">
                 <div class="welfare-slide-cap"><strong>聚缘堂</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/宿舍/便利店.jpg" alt="宿舍便利店" loading="lazy">
+                <img src="img/join/便利店.jpg" alt="宿舍便利店" loading="lazy">
                 <div class="welfare-slide-cap"><strong>便利店</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/宿舍/装饰.jpg" alt="宿舍装饰" loading="lazy">
+                <img src="img/join/装饰.jpg" alt="宿舍装饰" loading="lazy">
                 <div class="welfare-slide-cap"><strong>温馨装饰</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/和乐园/日间1.jpg" alt="和乐园日间景观" loading="lazy">
+                <img src="img/join/日间1.jpg" alt="和乐园日间景观" loading="lazy">
                 <div class="welfare-slide-cap"><strong>和乐园</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/和乐园/日间2.jpg" alt="和乐园休憩区" loading="lazy">
+                <img src="img/join/日间2.jpg" alt="和乐园休憩区" loading="lazy">
                 <div class="welfare-slide-cap"><strong>休憩区</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/和乐园/夜景1.jpg" alt="和乐园夜景" loading="lazy">
+                <img src="img/join/夜景1.jpg" alt="和乐园夜景" loading="lazy">
                 <div class="welfare-slide-cap"><strong>夜景</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/浴室/浴室全景.jpg" alt="员工浴室" loading="lazy">
+                <img src="img/join/浴室全景.jpg" alt="员工浴室" loading="lazy">
                 <div class="welfare-slide-cap"><strong>浴室设施</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/浴室/淋浴间.jpg" alt="淋浴间" loading="lazy">
+                <img src="img/join/淋浴间.jpg" alt="淋浴间" loading="lazy">
                 <div class="welfare-slide-cap"><strong>淋浴间</strong></div>
               </div>
             </article>
             <article class="welfare-slide">
               <div class="welfare-slide-media">
-                <img src="img/join/浴室/文化墙.jpg" alt="女性氛围文化墙" loading="lazy">
+                <img src="img/join/文化墙.jpg" alt="女性氛围文化墙" loading="lazy">
                 <div class="welfare-slide-cap"><strong>文化墙</strong></div>
               </div>
             </article>
@@ -515,7 +552,19 @@
             </ul>
           </div>
           <div class="footer-col">
-            <h4>创新中心</h4>
+            <h4>核心领域产品</h4>
+            <ul>
+              <li><a href="fields.html#sbear">S-BEAR® 汽车</a></li>
+              <li><a href="fields.html#sbear-office">S-BEAR® 自动办公</a></li>
+              <li><a href="fields.html#bakes">BAKES® 船舶</a></li>
+              <li><a href="fields.html#bakes-press">BAKES® 压力机</a></li>
+              <li><a href="fields.html#alp">ALP® 压缩机</a></li>
+              <li><a href="fields.html#bakes-other">其他应用行业</a></li>
+              <li><a href="fields.html#clients">合作客户</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>摩擦学技术概要</h4>
             <ul>
               <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
               <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
@@ -524,14 +573,12 @@
             </ul>
           </div>
           <div class="footer-col">
-            <h4>产品核心</h4>
+            <h4>摩擦学核心技术</h4>
             <ul>
               <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
               <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
               <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
               <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-              <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-              <li><a href="products.html#clients">合作客户</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -949,6 +996,39 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
   }
 })();
 
+</script>
+<script>
+(function(){
+  var header = document.querySelector('.header');
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = header && header.querySelector('.nav');
+  if (!header || !toggle || !nav) return;
+  function closeNav(){
+    header.classList.remove('is-nav-open');
+    document.body.classList.remove('is-nav-lock');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','打开菜单');
+  }
+  function openNav(){
+    header.classList.add('is-nav-open');
+    document.body.classList.add('is-nav-lock');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-label','关闭菜单');
+  }
+  toggle.addEventListener('click', function(){
+    if (header.classList.contains('is-nav-open')) closeNav();
+    else openNav();
+  });
+  nav.addEventListener('click', function(e){
+    if (e.target.closest('a')) closeNav();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeNav();
+  });
+  window.addEventListener('resize', function(){
+    if (window.matchMedia('(min-width:769px)').matches) closeNav();
+  });
+})();
 </script>
 </body>
 </html>

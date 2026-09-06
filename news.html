@@ -17,33 +17,30 @@
     .lang-switch{display:flex;align-items:center;flex-shrink:0}.lang-btn{padding:0 4px;font-size:13px;border:none;background:transparent;color:rgba(255,255,255,0.88);cursor:pointer;font-family:inherit;transition:color .2s;line-height:1.4}.lang-btn:hover{color:var(--white)}
 
     .breadcrumb{background:var(--white);border-bottom:1px solid #EEF1F5}
-    .breadcrumb-inner{max-width:1080px;margin:0 auto;padding:0 24px;min-height:52px;font-size:13px;color:var(--text-muted);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .breadcrumb-inner{max-width:1280px;margin:0 auto;padding:0 24px;min-height:52px;font-size:13px;color:var(--text-muted);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
     .breadcrumb-path{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
     .breadcrumb a{color:var(--text-muted);transition:color .2s}.breadcrumb a:hover{color:var(--primary)}
     .breadcrumb-sep{opacity:.45}.breadcrumb-current{color:var(--text-muted)}
 
-    .section{padding:28px 24px 64px}.section-inner{max-width:1080px;margin:0 auto}
+    .section{padding:28px 24px 64px}.section-inner{max-width:1280px;margin:0 auto}
     .cat-tabs{display:flex;align-items:stretch;gap:0;margin:0;padding:0;flex-shrink:0}
     .cat-tab{display:inline-flex;align-items:center;justify-content:center;padding:16px 14px;border:none;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:var(--text-muted);font-size:14px;font-family:inherit;cursor:pointer;transition:color .2s,border-color .2s;line-height:1;white-space:nowrap;margin-bottom:-1px}
     .cat-tab:hover{color:var(--primary)}
     .cat-tab.is-active{color:var(--primary);font-weight:600;border-bottom-color:var(--primary)}
 
-    .news-list{display:flex;flex-direction:column;background:var(--white);overflow:hidden}
-    .news-row{display:grid;grid-template-columns:160px minmax(0,1fr) 48px;gap:20px;align-items:center;padding:20px 24px;border-bottom:1px solid #EEF1F5;transition:background .2s;cursor:pointer}
-    .news-row:last-child{border-bottom:none}
-    .news-row:hover{background:rgba(0,110,182,.03)}
-    .news-row-thumb{width:160px;height:106px;overflow:hidden;background:linear-gradient(135deg,var(--bg),#E8EDF3);flex-shrink:0}
-    .news-row-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
-    .news-row:hover .news-row-thumb img{transform:scale(1.04)}
-    .news-row-thumb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted)}
-    .news-row-body{min-width:0}
-    .news-row-title{font-size:18px;font-weight:400;color:var(--text);line-height:1.45;margin:0 0 10px;transition:color .2s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .news-row:hover .news-row-title{color:var(--primary)}
-    .news-row-excerpt{font-size:14px;color:var(--text-muted);line-height:1.7;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .news-row-date{font-size:14px;color:#B0B7C1;white-space:nowrap;text-align:left;display:block}
-    .news-row-arrow{display:flex;align-items:center;justify-content:center;width:48px;height:48px;color:var(--primary);opacity:0;transform:translateX(-6px);transition:opacity .2s,transform .2s;pointer-events:none}
-    .news-row-arrow svg{width:22px;height:22px;display:block}
-    .news-row:hover .news-row-arrow{opacity:1;transform:translateX(0)}
+    .news-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px;background:transparent}
+    .news-card{display:flex;flex-direction:column;background:var(--white);overflow:hidden;cursor:pointer;min-width:0;border-bottom:1px solid #DDE3EA;transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+    .news-card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(15,55,100,.12);border-color:#D9E2EC}
+    .news-card-cover{width:100%;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,var(--bg),#E8EDF3);flex-shrink:0}
+    .news-card-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+    .news-card:hover .news-card-cover img{transform:scale(1.04)}
+    .news-card-cover-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted)}
+    .news-card-body{display:flex;flex-direction:column;padding:16px 18px 18px;flex:1}
+    .news-card-title{font-size:18px;font-weight:400;color:var(--text);line-height:1.55;margin:0;padding:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .2s}
+    .news-card:hover .news-card-title{color:var(--primary)}
+    .news-date-row{display:flex;align-items:center;justify-content:flex-start;gap:6px;margin:14px 0 0}
+    .news-date-row svg{width:16px;height:16px;flex-shrink:0;color:#B0B7C1}
+    .news-card-date{font-size:16px;font-weight:400;color:#B0B7C1;letter-spacing:.02em}
 
     .list-empty{padding:64px 24px;text-align:center;color:var(--text-muted);font-size:15px;background:var(--white);border-radius:12px;box-shadow:var(--shadow)}
 
@@ -85,19 +82,16 @@
     .footer-bar-copy{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5;text-align:right}
     .prototype-badge{position:fixed;bottom:16px;right:16px;background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;z-index:9999}
 
-    @media(max-width:1100px){.footer-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}.footer-col{max-width:none}}
+    @media(max-width:1100px){.footer-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}.footer-col{max-width:none}.news-list{gap:24px 20px}}
     @media(max-width:768px){
-      .nav{display:none}
+      
       .section{padding:20px 16px 48px}
       .breadcrumb-inner{padding:0 16px;min-height:48px;gap:12px}
       .cat-tabs{width:100%;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch}
       .cat-tab{padding:12px 12px;font-size:13px}
-      .news-row{grid-template-columns:112px minmax(0,1fr) 36px;gap:14px;padding:16px}
-      .news-row-thumb{width:112px;height:78px}
-      .news-row-arrow{width:36px;height:36px;opacity:1;transform:none}
-      .news-row-arrow svg{width:18px;height:18px}
-      .news-row-title{font-size:15px}
-      .news-row-excerpt{display:none}
+      .news-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px}
+      .news-card-title{font-size:16px}
+      .news-card-body{padding:12px 14px 14px}
       .footer-main{padding:40px 20px 0}
       .footer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.footer-col{max-width:none}
       .footer-contact{margin-top:32px}
@@ -108,7 +102,29 @@
       .footer-bar-inner{padding:14px 20px}
       .footer-bar-copy{text-align:left;font-size:11px}
     }
-  </style>
+    @media(max-width:520px){.news-list{grid-template-columns:1fr}}
+  
+    .nav-toggle{display:none;width:42px;height:42px;margin-left:4px;padding:0;border:none;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex-shrink:0}
+    .nav-toggle span{display:block;width:18px;height:2px;background:#fff;border-radius:1px;transition:transform .25s ease,opacity .2s}
+    .header.is-nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .header.is-nav-open .nav-toggle span:nth-child(2){opacity:0}
+    .header.is-nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    @media(max-width:768px){
+      .header:has(.nav>li:hover),.header:has(.nav>li:focus-within){margin-bottom:0}
+      .nav-toggle{display:flex;margin-left:auto}
+      .nav{position:absolute;left:0;right:0;top:72px;display:flex;flex-direction:column;align-items:stretch;gap:0;margin:0;max-height:min(72vh,calc(100dvh - 72px));overflow:auto;-webkit-overflow-scrolling:touch;background:#fff;box-shadow:0 18px 40px rgba(0,40,80,.16);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity .25s ease,visibility .25s,transform .25s ease;z-index:1002}
+      .header.is-nav-open .nav{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+      .nav>li{width:100%;border-bottom:1px solid #EEF1F5}
+      .nav>li>a{height:auto;padding:14px 20px 8px;color:#1A1A2E;font-size:15px;font-weight:600}
+      .nav>li>a::after{display:none}
+      .nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:#006EB6;font-weight:600}
+      .header.is-nav-open .nav-dropdown{position:static;display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;gap:0;width:auto;margin:0;padding:0 20px 12px;background:transparent;border:none;box-shadow:none;opacity:1;visibility:visible;transform:none}
+      .nav>li:hover>.nav-dropdown{opacity:1;visibility:visible}
+      .nav-dropdown a{padding:7px 0;font-size:13px;color:#5A6270;white-space:normal}
+      .nav-dropdown a:hover{color:#006EB6}
+      body.is-nav-lock{overflow:hidden}
+    }
+</style>
 </head>
 <body>
   <header class="header">
@@ -117,6 +133,7 @@
         <img src="img/brand/logo-白.png" alt="STARLITE" class="logo-img">
         <div>
           <div class="logo-text">STARLITE</div>
+          <div class="logo-sub">星光树脂（昆山）</div>
         </div>
       </a>
       <ul class="nav">
@@ -130,7 +147,19 @@
           </ul>
         </li>
         <li>
-          <a href="innovation.html">创新中心</a>
+          <a href="fields.html">核心领域产品</a>
+          <ul class="nav-dropdown">
+            <li><a href="fields.html#sbear">S-BEAR® 汽车</a></li>
+            <li><a href="fields.html#sbear-office">S-BEAR® 自动办公</a></li>
+            <li><a href="fields.html#bakes">BAKES® 船舶</a></li>
+            <li><a href="fields.html#bakes-press">BAKES® 压力机</a></li>
+            <li><a href="fields.html#alp">ALP® 压缩机</a></li>
+            <li><a href="fields.html#bakes-other">其他应用行业</a></li>
+            <li><a href="fields.html#clients">合作客户</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="innovation.html">摩擦学技术概要</a>
           <ul class="nav-dropdown">
             <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
             <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
@@ -139,14 +168,12 @@
           </ul>
         </li>
         <li class="nav-has-mega">
-          <a href="products.html">产品核心</a>
+          <a href="products.html">摩擦学核心技术</a>
           <ul class="nav-dropdown">
             <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
             <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
             <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
             <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-            <li><a href="products.html#clients">合作客户</a></li>
           </ul>
         </li>
         <li>
@@ -177,6 +204,7 @@
           </ul>
         </li>
       </ul>
+      <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
       <div class="lang-switch"><button class="lang-btn" type="button" data-lang="zh" aria-label="切换语言">EN</button></div>
     </div>
   </header>
@@ -213,7 +241,19 @@
             </ul>
           </div>
           <div class="footer-col">
-            <h4>创新中心</h4>
+            <h4>核心领域产品</h4>
+            <ul>
+              <li><a href="fields.html#sbear">S-BEAR® 汽车</a></li>
+              <li><a href="fields.html#sbear-office">S-BEAR® 自动办公</a></li>
+              <li><a href="fields.html#bakes">BAKES® 船舶</a></li>
+              <li><a href="fields.html#bakes-press">BAKES® 压力机</a></li>
+              <li><a href="fields.html#alp">ALP® 压缩机</a></li>
+              <li><a href="fields.html#bakes-other">其他应用行业</a></li>
+              <li><a href="fields.html#clients">合作客户</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>摩擦学技术概要</h4>
             <ul>
               <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
               <li><a href="innovation.html#tribology">STARLITE 摩擦技术理念</a></li>
@@ -222,14 +262,12 @@
             </ul>
           </div>
           <div class="footer-col">
-            <h4>产品核心</h4>
+            <h4>摩擦学核心技术</h4>
             <ul>
               <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
               <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
               <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
               <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
-              <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
-              <li><a href="products.html#clients">合作客户</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -355,11 +393,12 @@
     social: [
       {
         id: 'social-01',
-        title: '第二十二次捐赠活动',
-        date: '2025-09-30',
-        image: 'https://www.starlite.cn/Upload/Images/2025-09-30/68db4cdc2c84a.jpg',
-        excerpt: '9月23日，秋阳轻柔地洒在周市中心小学，一场充满爱与希望的捐赠仪式在此温馨启幕。星光树脂制品（昆山）有限公司带着对教育事业的关切，为学校送来急需物资，尽显企业的责任与担当。',
-        content: '<p>9月23日，秋阳轻柔地洒在周市中心小学，一场充满爱与希望的捐赠仪式在此温馨启幕。</p><p>星光树脂制品（昆山）有限公司带着对教育事业的关切，为学校送来急需物资，尽显企业的责任与担当。</p>'
+        title: '冬日暖阳——情暖福利院',
+        date: '2019-12-22',
+        image: 'https://www.starlite.cn/Upload/Images/2020-02-26/5e56855589914.jpg',
+        hideCover: true,
+        excerpt: '寒风萧萧阴雨连绵，寒冬季节格外阴冷，星光公司秉承「敬天爱人」的理念，在2019年12月22日上午，由公司领导、工会成员及义工组的成员们一同冒着风雨前往昆山市福利院为老人们送上来自星光的关爱和温暖，同时提前跟老人们欢度一个愉快的圣诞节。',
+        content: '<p>寒风萧萧阴雨连绵，寒冬季节格外阴冷，星光公司秉承「敬天爱人」的理念，在2019年12月22日上午，由公司领导、工会成员及义工组的成员们一同冒着风雨前往昆山市福利院为老人们送上来自星光的关爱和温暖，同时提前跟老人们欢度一个愉快的圣诞节。</p><p><img src="https://www.starlite.cn/Upload/image/20200327/20200327161607_61558.jpg" alt="冬日暖阳——情暖福利院"></p><p>本次活动公司为老人们赠送了日常生活用品、水果点心。义工组成员们献上了精心排练的青春动感的舞蹈，还有爷爷奶奶们喜欢的熟悉歌曲。</p><div class="img-row"><img src="https://www.starlite.cn/Upload/image/20200327/20200327161645_63816.jpg" alt="义工表演与老人同乐"><img src="https://www.starlite.cn/Upload/image/20200327/20200327161725_36575.jpg" alt="发放水果点心"></div><p>节目一开始，爷爷奶奶们就和着节奏愉快地打着拍子，跟着歌曲一起哼唱，仿佛又回到了青春年代，脸上洋溢着愉悦的笑容，整个会场充满了温暖、幸福的氛围。最后大家一起为爷爷奶奶们发放水果点心，希望我们的心意像冬日暖阳，一直温暖着爷爷奶奶们的身心。</p>'
       },
       {
         id: 'social-02',
@@ -554,7 +593,7 @@
   global.NewsStore = {
     CATEGORIES: CATEGORIES,
     DATA: NEWS_DATA,
-    PAGE_SIZE: 3,
+    PAGE_SIZE: 12,
     getCategory: getCategory,
     getItems: getItems,
     getItemById: getItemById
@@ -640,18 +679,19 @@
     }
     newsList.className = 'news-list';
     newsList.innerHTML = items.map(function (item) {
-      var thumb = item.image
-        ? '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '" loading="lazy" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<div class=\\\'news-row-thumb-placeholder\\\'>配图占位</div>\'">'
-        : '<div class="news-row-thumb-placeholder">配图占位</div>';
+      var cover = item.image
+        ? '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '" loading="lazy" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<div class=\\\'news-card-cover-placeholder\\\'>配图占位</div>\'">'
+        : '<div class="news-card-cover-placeholder">配图占位</div>';
       return (
-        '<a class="news-row" role="listitem" href="news-detail.html?id=' + encodeURIComponent(item.id) + '">' +
-          '<div class="news-row-thumb">' + thumb + '</div>' +
-          '<div class="news-row-body">' +
-            '<h3 class="news-row-title">' + escapeHtml(item.title) + '</h3>' +
-            '<p class="news-row-excerpt">' + escapeHtml(item.excerpt) + '</p>' +
-            '<span class="news-row-date">' + escapeHtml(item.date) + '</span>' +
+        '<a class="news-card" role="listitem" href="news-detail.html?id=' + encodeURIComponent(item.id) + '">' +
+          '<div class="news-card-cover">' + cover + '</div>' +
+          '<div class="news-card-body">' +
+            '<h3 class="news-card-title">' + escapeHtml(item.title) + '</h3>' +
+            '<div class="news-date-row">' +
+              '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5.5V8l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+              '<span class="news-card-date">' + escapeHtml(item.date) + '</span>' +
+            '</div>' +
           '</div>' +
-          '<span class="news-row-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>' +
         '</a>'
       );
     }).join('');
@@ -766,5 +806,38 @@
   });
 })();
   </script>
+<script>
+(function(){
+  var header = document.querySelector('.header');
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = header && header.querySelector('.nav');
+  if (!header || !toggle || !nav) return;
+  function closeNav(){
+    header.classList.remove('is-nav-open');
+    document.body.classList.remove('is-nav-lock');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','打开菜单');
+  }
+  function openNav(){
+    header.classList.add('is-nav-open');
+    document.body.classList.add('is-nav-lock');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-label','关闭菜单');
+  }
+  toggle.addEventListener('click', function(){
+    if (header.classList.contains('is-nav-open')) closeNav();
+    else openNav();
+  });
+  nav.addEventListener('click', function(e){
+    if (e.target.closest('a')) closeNav();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeNav();
+  });
+  window.addEventListener('resize', function(){
+    if (window.matchMedia('(min-width:769px)').matches) closeNav();
+  });
+})();
+</script>
 </body>
 </html>
