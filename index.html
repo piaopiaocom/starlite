@@ -3119,7 +3119,7 @@
   <!-- Hero 主视觉区 -->
   <div class="hero-pin">
   <section class="hero">
-    <video class="hero-video" src="https://media.5gsy.com/index.mp4" poster="img/media/vcr.png" autoplay muted loop playsinline preload="metadata" aria-label="首页主视觉"></video>
+    <video class="hero-video" src="https://media.5gsy.com/index.mp4" autoplay muted loop playsinline preload="auto" aria-label="首页主视觉"></video>
     <div class="hero-overlay">
       <div class="hero-content reveal-hero">
         <h1>成为树脂行业的<br>闪耀之星</h1>
@@ -3622,9 +3622,25 @@
   }
 
   if (heroSection) {
-    requestAnimationFrame(function(){
-      heroSection.classList.add('is-ready');
-    });
+    (function readyHero(){
+      var video = heroSection.querySelector('.hero-video');
+      var done = false;
+      function mark(){
+        if (done) return;
+        done = true;
+        heroSection.classList.add('is-ready');
+      }
+      if (!video) {
+        requestAnimationFrame(mark);
+        return;
+      }
+      if (video.readyState >= 2) mark();
+      else {
+        video.addEventListener('loadeddata', mark, { once: true });
+        video.addEventListener('playing', mark, { once: true });
+        setTimeout(mark, 4000);
+      }
+    })();
 
     (function setupHeroScrollShrink() {
       var pin = heroSection.closest('.hero-pin') || heroSection.parentElement;

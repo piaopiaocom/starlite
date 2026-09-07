@@ -318,7 +318,7 @@
   <!-- 顶部视频（首页同款滚动缩放） -->
   <div class="join-hero-pin">
     <section class="join-hero" aria-label="加入我们主视觉">
-      <video class="join-hero-video" src="https://media.5gsy.com/zp.mp4" poster="img/media/vcr.png" autoplay muted loop playsinline preload="auto" aria-label="公司环境视频"></video>
+      <video class="join-hero-video" src="https://media.5gsy.com/zp.mp4" autoplay muted loop playsinline preload="auto" aria-label="公司环境视频"></video>
       <div class="join-hero-overlay">
         <div class="join-hero-content">
           <h1>与星光同行</h1>
@@ -866,7 +866,25 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
   function mark(el){ if(el) el.classList.add('is-inview'); }
 
   if (hero) {
-    requestAnimationFrame(function(){ hero.classList.add('is-ready'); });
+    (function readyJoinHero(){
+      var video = hero.querySelector('.join-hero-video');
+      var done = false;
+      function mark(){
+        if (done) return;
+        done = true;
+        hero.classList.add('is-ready');
+      }
+      if (!video) {
+        requestAnimationFrame(mark);
+        return;
+      }
+      if (video.readyState >= 2) mark();
+      else {
+        video.addEventListener('loadeddata', mark, { once: true });
+        video.addEventListener('playing', mark, { once: true });
+        setTimeout(mark, 4000);
+      }
+    })();
 
     (function setupJoinHeroScrollShrink() {
       var pin = hero.closest('.join-hero-pin') || hero.parentElement;
