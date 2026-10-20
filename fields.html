@@ -87,6 +87,10 @@
     @keyframes fields-hud-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.28);opacity:.82}}
     .fields-pin{position:absolute;left:var(--pin-x);top:var(--pin-y);transform:translate(-50%,calc(-50% + 16px)) scale(.88);z-index:4;display:block;border:none;background:transparent;padding:0;cursor:pointer;font-family:inherit;opacity:0;transition:opacity .55s var(--ease-soft),transform .7s var(--ease-soft)}
     .fields-explorer.is-enter .fields-pin{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    .fields-explorer .fields-pin[data-part="grille"],
+    .fields-explorer--office .fields-pin[data-part="bar"],
+    .fields-explorer--ship .fields-pin[data-part="rudder"]{top:max(var(--pin-y),calc(clamp(28px,4.5vh,48px) + 210px))}
+    .fields-explorer--compressor .fields-pin[data-part="valve"]{top:max(var(--pin-y),calc(clamp(28px,4.5vh,48px) + 192px))}
     .fields-pin:nth-of-type(1){--pin-delay:.16s}.fields-pin:nth-of-type(2){--pin-delay:.24s}.fields-pin:nth-of-type(3){--pin-delay:.32s}.fields-pin:nth-of-type(4){--pin-delay:.4s}.fields-pin:nth-of-type(5){--pin-delay:.48s}.fields-pin:nth-of-type(6){--pin-delay:.56s}.fields-pin:nth-of-type(7){--pin-delay:.64s}.fields-pin:nth-of-type(8){--pin-delay:.72s}.fields-pin:nth-of-type(n+9){--pin-delay:.8s}
     .fields-explorer.is-enter .fields-pin{transition-delay:var(--pin-delay,.16s)}
     .fields-explorer.is-enter .fields-pin.is-active{z-index:6}
@@ -196,6 +200,10 @@
       .fields-dot{width:34px;height:34px;margin:-17px 0 0 -17px}
     }
     @media(max-width:768px){
+      .fields-explorer .fields-pin[data-part="grille"],
+      .fields-explorer--office .fields-pin[data-part="bar"],
+      .fields-explorer--ship .fields-pin[data-part="rudder"],
+      .fields-explorer--compressor .fields-pin[data-part="valve"]{top:var(--pin-y)}
       .fields-explorer-stage{height:auto;min-height:520px;aspect-ratio:16/11}
       .fields-explorer-hero{width:min(58vw,420px);max-height:62%}
       .fields-explorer--office .fields-explorer-hero{width:min(40vw,280px);max-height:48%}
@@ -333,10 +341,10 @@
           <a href="innovation.html">研究开发</a>
           <ul class="nav-dropdown">
             <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-            <li><a href="innovation.html#mold">模具开发</a></li>
             <li><a href="innovation.html#tribology">摩擦学技术理念</a></li>
             <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
             <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+            <li><a href="innovation.html#mold">模具开发</a></li>
           </ul>
         </li>
         <li>
@@ -636,10 +644,10 @@
             <h4>研究开发</h4>
             <ul>
               <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-              <li><a href="innovation.html#mold">模具开发</a></li>
               <li><a href="innovation.html#tribology">摩擦学技术理念</a></li>
               <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
               <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+              <li><a href="innovation.html#mold">模具开发</a></li>
             </ul>
           </div>
           <div class="footer-col">

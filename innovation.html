@@ -764,7 +764,20 @@
       display:flex;
       align-items:stretch;
       color:var(--text);
-      background:var(--white);
+      background:
+        radial-gradient(ellipse 42% 48% at 54% 46%, rgba(255,255,255,.92) 0%, rgba(255,255,255,0) 68%),
+        linear-gradient(180deg, #e7f3fc 0%, #f5fafd 52%, #eaf3fa 100%);
+    }
+    .tribology-section::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background-image:repeating-linear-gradient(
+        -16deg,
+        transparent 0 22px,
+        rgba(0,110,182,.04) 22px 23px
+      );
     }
     .tribology-board {
       position:relative;
@@ -857,17 +870,17 @@
       position:absolute;
       inset:0;
       z-index:1;
-      background:linear-gradient(180deg, rgba(110,186,235,.48) 0%, rgba(140,205,245,.40) 48%, rgba(90,175,225,.52) 100%);
+      background:linear-gradient(180deg, rgba(72,152,208,.64) 0%, rgba(96,170,220,.56) 48%, rgba(58,142,198,.68) 100%);
       transition:background .5s ease;
     }
     .tribology-accordion:not(:hover) .tribology-panel.is-active .tribology-panel-media img,
     .tribology-accordion:hover .tribology-panel:hover .tribology-panel-media img {
       transform:scale(1.1);
-      filter:saturate(.95) contrast(1.06) brightness(1);
+      filter:saturate(1.5) contrast(1.06) brightness(1);
     }
     .tribology-accordion:not(:hover) .tribology-panel.is-active .tribology-panel-overlay,
     .tribology-accordion:hover .tribology-panel:hover .tribology-panel-overlay {
-      background:linear-gradient(180deg, rgba(70,165,225,.58) 0%, rgba(110,190,240,.46) 52%, rgba(85,175,230,.54) 100%);
+      background:linear-gradient(180deg, rgb(37 133 223 / 72%) 0%, rgb(58 174 250 / 62%) 52%, rgba(52, 140, 198, .70) 100%);
     }
     .tribology-panel-inner {
       position:relative;
@@ -1965,7 +1978,7 @@
       }
       .tribology-accordion:not(:hover) .tribology-panel.is-active .tribology-panel-overlay,
       .tribology-panel.is-open .tribology-panel-overlay {
-        background:linear-gradient(180deg, rgba(70,165,225,.58) 0%, rgba(110,190,240,.46) 52%, rgba(85,175,230,.54) 100%);
+        background:linear-gradient(180deg, rgba(46,138,196,.72) 0%, rgba(78,158,210,.62) 52%, rgba(52,140,198,.70) 100%);
       }
     }
     @media (max-width:768px) {
@@ -2381,20 +2394,13 @@
       overflow:hidden;
       display:flex;
       align-items:stretch;
-      background:
-        radial-gradient(ellipse 42% 48% at 54% 46%, rgba(255,255,255,.92) 0%, rgba(255,255,255,0) 68%),
-        linear-gradient(180deg, #e7f3fc 0%, #f5fafd 52%, #eaf3fa 100%);
-    }
-    .mold-section::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background-image:repeating-linear-gradient(
-        -16deg,
-        transparent 0 22px,
-        rgba(0,110,182,.04) 22px 23px
-      );
+      background-color:#f4f9fd;
+      background-image:
+        radial-gradient(ellipse 50% 58% at 60% 56%, rgba(255,255,255,.7) 0%, rgba(255,255,255,0) 72%),
+        url("img/innovation/mold/wave-bg.svg");
+      background-repeat:no-repeat;
+      background-size:auto, cover;
+      background-position:center, center;
     }
     .mold-board {
       position:relative;
@@ -2414,7 +2420,7 @@
     }
     .mold-intro {
       margin:0;
-      max-width:46em;
+      max-width:50em;
       font-size:15px;
       line-height:1.75;
       color:var(--text-muted);
@@ -2600,10 +2606,10 @@
           <a href="innovation.html" class="active">研究开发</a>
           <ul class="nav-dropdown">
             <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-            <li><a href="innovation.html#mold">模具开发</a></li>
             <li><a href="innovation.html#tribology">摩擦学技术理念</a></li>
             <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
             <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+            <li><a href="innovation.html#mold">模具开发</a></li>
           </ul>
         </li>
         <li>
@@ -2890,49 +2896,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 模具开发 -->
-  <section class="section mold-section" aria-label="模具开发">
-    <div class="section-inner mold-board" id="moldGallery">
-      <header class="mold-board-head reveal-group">
-        <h2 class="section-title reveal-child" id="mold">模具开发</h2>
-        <p class="mold-intro reveal-child" style="--reveal-delay:80ms">星光树脂拥有优秀的模具设计、开发团队，根据客户要求，开发出生产性强，精度高的优质模具。<br>运用流动解析、翘度解析、应力解析等CAE技术为客户提供合适的模具方案，为客户提供最佳模具育成方案。</p>
-      </header>
-      <div class="mold-cluster mold-stage">
-        <svg class="mold-links" id="moldLinks" aria-hidden="true"></svg>
-        <img class="mold-subject" src="img/innovation/mold/subject.png" alt="模具">
-        <article class="mold-card mold-card--design">
-          <button type="button" class="mold-shot" data-name="模具设计" aria-label="查看模具设计">
-            <img src="img/innovation/mold/design.jpg" alt="模具设计：工程师在计算机辅助设计软件中绘制模具图">
-          </button>
-          <h3>模具设计</h3>
-        </article>
-        <article class="mold-card mold-card--machine">
-          <button type="button" class="mold-shot mold-shot--machine" data-name="模具加工" aria-label="查看模具加工">
-            <img src="img/innovation/mold/machining.png" alt="模具加工：加工中心铣削模具零件">
-          </button>
-          <h3>模具加工</h3>
-        </article>
-        <article class="mold-card mold-card--measure">
-          <button type="button" class="mold-shot" data-name="测量" aria-label="查看测量">
-            <img src="img/innovation/mold/measure.jpg" alt="测量：使用三坐标测量仪检测模具">
-          </button>
-          <h3>测量</h3>
-        </article>
-        <div class="mold-cae-charts">
-          <div class="mold-cae-shots">
-            <button type="button" class="mold-shot" data-name="产品解析" aria-label="查看产品流动分析">
-              <img src="img/innovation/mold/flow.png" alt="产品流动分析：树脂充填时间的CAE结果">
-            </button>
-            <button type="button" class="mold-shot" data-name="产品解析" aria-label="查看产品翘曲分析">
-              <img src="img/innovation/mold/warp.png" alt="产品翘曲分析：成型件位移的CAE结果">
-            </button>
-          </div>
-          <h3>产品解析</h3>
         </div>
       </div>
     </div>
@@ -3268,6 +3231,49 @@
     </div>
   </section>
 
+
+  <!-- 模具开发 -->
+  <section class="section mold-section" aria-label="模具开发">
+    <div class="section-inner mold-board" id="moldGallery">
+      <header class="mold-board-head reveal-group">
+        <h2 class="section-title reveal-child" id="mold">模具开发</h2>
+        <p class="mold-intro reveal-child" style="--reveal-delay:80ms">星光树脂拥有优秀的模具设计、开发团队，根据客户要求，开发出生产性强，精度高的优质模具。<br>运用流动解析、翘度解析、应力解析等CAE技术，为客户提供最佳模具育成方案。</p>
+      </header>
+      <div class="mold-cluster mold-stage">
+        <svg class="mold-links" id="moldLinks" aria-hidden="true"></svg>
+        <img class="mold-subject" src="img/innovation/mold/subject.png" alt="模具">
+        <article class="mold-card mold-card--design">
+          <button type="button" class="mold-shot" data-name="模具设计" aria-label="查看模具设计">
+            <img src="img/innovation/mold/design.jpg" alt="模具设计：工程师在计算机辅助设计软件中绘制模具图">
+          </button>
+          <h3>模具设计</h3>
+        </article>
+        <article class="mold-card mold-card--machine">
+          <button type="button" class="mold-shot mold-shot--machine" data-name="模具加工" aria-label="查看模具加工">
+            <img src="img/innovation/mold/machining.png" alt="模具加工：加工中心铣削模具零件">
+          </button>
+          <h3>模具加工</h3>
+        </article>
+        <article class="mold-card mold-card--measure">
+          <button type="button" class="mold-shot" data-name="测量" aria-label="查看测量">
+            <img src="img/innovation/mold/measure.jpg" alt="测量：使用三坐标测量仪检测模具">
+          </button>
+          <h3>测量</h3>
+        </article>
+        <div class="mold-cae-charts">
+          <div class="mold-cae-shots">
+            <button type="button" class="mold-shot" data-name="产品解析" aria-label="查看产品流动分析">
+              <img src="img/innovation/mold/flow.png" alt="产品流动分析：树脂充填时间的CAE结果">
+            </button>
+            <button type="button" class="mold-shot" data-name="产品解析" aria-label="查看产品翘曲分析">
+              <img src="img/innovation/mold/warp.png" alt="产品翘曲分析：成型件位移的CAE结果">
+            </button>
+          </div>
+          <h3>产品解析</h3>
+        </div>
+      </div>
+    </div>
+  </section>
   <footer class="footer">
     <div class="footer-main">
       <div class="footer-inner">
@@ -3297,10 +3303,10 @@
             <h4>研究开发</h4>
             <ul>
               <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
-              <li><a href="innovation.html#mold">模具开发</a></li>
               <li><a href="innovation.html#tribology">摩擦学技术理念</a></li>
               <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
               <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
+              <li><a href="innovation.html#mold">模具开发</a></li>
             </ul>
           </div>
           <div class="footer-col">
