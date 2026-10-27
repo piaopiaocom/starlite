@@ -304,6 +304,225 @@
       .nav-dropdown a:hover{color:#006EB6}
       body.is-nav-lock{overflow:hidden}
     }
+
+    /* 模具开发 — 外壳与产品中心其他模块一致 */
+    .mold-section {
+      --mold-shot:136px;
+      justify-content:flex-start;
+      gap:12px;
+      overflow:hidden;
+    }
+    .mold-section .fields-apps-head { padding-bottom:0; }
+    .mold-section .fields-apps-desc { max-width:50em; }
+    .mold-board {
+      position:relative;
+      z-index:1;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      width:100%;
+      max-width:var(--content-max);
+      margin:0 auto;
+      padding:0 var(--page-pad) 28px;
+      box-sizing:border-box;
+      min-height:0;
+    }
+    .mold-cluster {
+      flex:1;
+      position:relative;
+      min-height:0;
+    }
+    .mold-links {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:1;
+      pointer-events:none;
+      overflow:visible;
+    }
+    .mold-links line {
+      stroke:#5ED8FF;
+      stroke-width:1.7;
+      stroke-linecap:round;
+      filter:drop-shadow(0 0 2px rgba(0,216,255,.42));
+      transition:stroke .3s ease,stroke-width .3s ease,filter .3s ease;
+    }
+    .mold-links line.is-hover {
+      stroke:#00E5FF;
+      stroke-width:1.9;
+      filter:drop-shadow(0 0 1px #E7FFFF) drop-shadow(0 0 4px #00E5FF) drop-shadow(0 0 10px rgba(0,200,255,.95));
+    }
+    .mold-dot {
+      position:absolute;
+      left:var(--dot-x);
+      top:var(--dot-y);
+      width:42px;
+      height:42px;
+      margin:-21px 0 0 -21px;
+      z-index:3;
+      pointer-events:none;
+      color:#00E5FF;
+      filter:drop-shadow(0 0 5px rgba(0,229,255,.85));
+      transition:transform .3s ease,filter .3s ease;
+    }
+    .mold-section.is-enter .mold-dot .hud-dash { animation:fields-hud-spin 9s linear infinite; transform-origin:center; transform-box:fill-box; }
+    .mold-section.is-enter .mold-dot .hud-core { animation:fields-hud-pulse 1.8s ease-in-out infinite; transform-origin:center; transform-box:fill-box; }
+    .mold-dot.is-hover {
+      transform:scale(1.28);
+      filter:drop-shadow(0 0 8px #E7FFFF) drop-shadow(0 0 16px #00E5FF) drop-shadow(0 0 28px rgba(0,200,255,.9));
+    }
+    .mold-dot.is-hover .hud-dash { animation-duration:3.6s; }
+    .mold-dot.is-hover .hud-core { animation-duration:.85s; }
+    .mold-subject {
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+      z-index:2;
+      width:min(46%, 460px);
+      height:96%;
+      object-fit:contain;
+      filter:drop-shadow(0 18px 24px rgba(30, 80, 130, .16));
+      pointer-events:none;
+    }
+    .mold-card {
+      position:absolute;
+      z-index:4;
+      width:180px;
+    }
+    .mold-card--design { left:10%; top:6%; }
+    .mold-card--machine { right:2%; top:2%; }
+    .mold-card--measure { right:0; bottom:0; }
+    .mold-pin {
+      display:block;
+      width:180px;
+      margin:0;
+      padding:0;
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      font-family:inherit;
+      text-align:inherit;
+    }
+    .mold-pin-bubble {
+      width:180px;
+      border-radius:60px;
+      background:rgba(255,255,255,.76);
+      box-shadow:0 10px 28px rgba(20,50,90,.18);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      border:3px solid rgba(255,255,255,.55);
+      padding:10px 10px 8px;
+      box-sizing:border-box;
+      transition:box-shadow .3s ease,background .3s ease;
+    }
+    .mold-pin-bubble img {
+      width:100%;
+      height:80px;
+      object-fit:contain;
+      display:block;
+      pointer-events:none;
+      background:transparent;
+    }
+    .mold-pin-name {
+      margin-top:6px;
+      color:#1A1A2E;
+      font-size:13px;
+      font-weight:600;
+      line-height:1.3;
+      white-space:nowrap;
+      transition:color .3s ease;
+    }
+    .mold-pin:hover .mold-pin-bubble,
+    .mold-pin:focus-visible .mold-pin-bubble {
+      box-shadow:0 0 6px #E7FFFF,0 0 16px #00E5FF,0 0 36px rgba(0,200,255,.7);
+    }
+    .mold-pin:hover .mold-pin-name,
+    .mold-pin:focus-visible .mold-pin-name { color:var(--primary); }
+    .mold-pin:focus-visible { outline:none; }
+    .mold-pin:focus-visible .mold-pin-bubble { outline:2px solid var(--primary); outline-offset:3px; }
+    .mold-cae-charts {
+      position:absolute;
+      left:0;
+      bottom:0;
+      z-index:4;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      width:max-content;
+    }
+    .mold-cae-shots {
+      display:flex;
+      gap:14px;
+    }
+    .mold-cae-shots .mold-card { position:static; }
+    @media (max-width:1100px) {
+      .mold-card,
+      .mold-pin,
+      .mold-pin-bubble { width:140px; }
+      .mold-pin-bubble img { height:58px; }
+      .mold-pin-name { font-size:12px; }
+      .mold-card--design { left:4%; top:4%; }
+      .mold-card--machine { right:0; }
+      .mold-card--measure { right:0; bottom:0; }
+      .mold-cae-charts { left:0; }
+    }
+    @media (max-width:900px) {
+      .mold-section {
+        height:auto;
+        min-height:520px;
+        max-height:none;
+        overflow:visible;
+      }
+      .mold-board { height:auto; min-height:280px; }
+      .mold-cluster {
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+        margin:0;
+      }
+      .mold-subject {
+        position:static;
+        transform:none;
+        order:-1;
+        width:100%;
+        height:220px;
+      }
+      .mold-card,
+      .mold-cae-charts {
+        position:static;
+      }
+      .mold-cae-charts { width:100%; align-items:center; }
+      .mold-cae-shots { justify-content:center; flex-wrap:wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .mold-dot .hud-dash,
+      .mold-dot .hud-core { animation:none !important; }
+    }
+
+    .equip-lightbox { position:fixed; inset:0; z-index:10001; display:flex; align-items:center; justify-content:center; padding:24px; opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s ease; }
+    .equip-lightbox.is-open { opacity:1; visibility:visible; }
+    .equip-lightbox-backdrop { position:absolute; inset:0; background:rgba(26,26,46,.82); backdrop-filter:blur(4px); }
+    .equip-lightbox-panel { position:relative; z-index:1; max-width:min(92vw,960px); max-height:90vh; display:flex; flex-direction:column; align-items:center; }
+    .equip-lightbox-img { display:block; max-width:100%; max-height:calc(90vh - 56px); object-fit:contain; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,.35); background:var(--white); }
+    .equip-lightbox-caption { margin-top:14px; font-size:14px; color:rgba(255,255,255,.88); text-align:center; }
+    .equip-lightbox-close { position:absolute; top:-44px; right:0; width:36px; height:36px; border:none; border-radius:50%; background:rgba(255,255,255,.14); color:var(--white); font-size:24px; line-height:1; cursor:pointer; transition:background .2s; }
+    .equip-lightbox-close:hover { background:rgba(255,255,255,.24); }
+    .equip-lightbox-nav { position:absolute; top:50%; transform:translateY(-50%); width:40px; height:40px; border:1px solid #D8DCE3; border-radius:50%; background:var(--white); color:#4A5058; font-size:18px; line-height:1; cursor:pointer; transition:background .2s,border-color .2s,color .2s; display:inline-flex; align-items:center; justify-content:center; font-family:inherit; padding:0; box-shadow:none; }
+    .equip-lightbox-nav:hover { border-color:#AEB4BD; color:#1A1A1A; background:#FAFBFC; }
+    .equip-lightbox-prev { left:-56px; }
+    .equip-lightbox-next { right:-56px; }
+    @media (max-width:768px) {
+      .equip-lightbox { padding:16px; }
+      .equip-lightbox-close { top:-40px; right:0; }
+      .equip-lightbox-prev { left:8px; }
+      .equip-lightbox-next { right:8px; }
+    }
 </style>
 </head>
 <body>
@@ -333,6 +552,7 @@
             <li><a href="fields.html#bakes">船舶</a></li>
             <li><a href="fields.html#bakes-press">压力机</a></li>
             <li><a href="fields.html#alp">压缩机</a></li>
+            <li><a href="fields.html#mold">模具开发制作</a></li>
             <li><a href="fields.html#bakes-other">其他应用行业</a></li>
             <li><a href="fields.html#clients">合作客户</a></li>
           </ul>
@@ -344,7 +564,6 @@
             <li><a href="innovation.html#tribology">摩擦学技术理念</a></li>
             <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
             <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
-            <li><a href="innovation.html#mold">模具开发</a></li>
           </ul>
         </li>
         <li>
@@ -585,6 +804,59 @@
         </div>
       </section>
     </div>
+  <!-- 模具开发 -->
+  <section class="fields-apps mold-section" id="mold" aria-label="模具开发制作">
+    <div class="fields-apps-head">
+      <h2 class="fields-apps-title">模具开发制作</h2>
+      <p class="fields-apps-desc">星光树脂拥有优秀的模具设计、开发团队，根据客户要求，开发出生产性强，精度高的优质模具。<br>运用流动解析、翘度解析、应力解析等CAE技术，为客户提供最佳模具育成方案。</p>
+    </div>
+    <div class="mold-board" id="moldGallery">
+      <div class="mold-cluster mold-stage">
+        <svg class="mold-links" id="moldLinks" aria-hidden="true"></svg>
+        <img class="mold-subject" src="img/innovation/mold/subject.png" alt="模具">
+        <article class="mold-card mold-card--design">
+          <button type="button" class="mold-pin" data-link="0" data-name="模具设计" aria-label="查看模具设计">
+            <span class="mold-pin-bubble">
+              <img src="img/innovation/mold/design.jpg" alt="模具设计：工程师在计算机辅助设计软件中绘制模具图">
+              <span class="mold-pin-name">模具设计</span>
+            </span>
+          </button>
+        </article>
+        <article class="mold-card mold-card--machine">
+          <button type="button" class="mold-pin" data-link="1" data-name="模具加工" aria-label="查看模具加工">
+            <span class="mold-pin-bubble">
+              <img src="img/innovation/mold/machining.png" alt="模具加工：加工中心铣削模具零件">
+              <span class="mold-pin-name">模具加工</span>
+            </span>
+          </button>
+        </article>
+        <article class="mold-card mold-card--measure">
+          <button type="button" class="mold-pin" data-link="2" data-name="测量" aria-label="查看测量">
+            <span class="mold-pin-bubble">
+              <img src="img/innovation/mold/measure.jpg" alt="测量：使用三坐标测量仪检测模具">
+              <span class="mold-pin-name">测量</span>
+            </span>
+          </button>
+        </article>
+        <div class="mold-cae-charts" data-link="3">
+          <div class="mold-cae-shots">
+            <button type="button" class="mold-pin" data-link="3" data-name="流动解析" aria-label="查看产品流动分析">
+              <span class="mold-pin-bubble">
+                <img src="img/innovation/mold/flow.png" alt="产品流动分析：树脂充填时间的CAE结果">
+                <span class="mold-pin-name">流动解析</span>
+              </span>
+            </button>
+            <button type="button" class="mold-pin" data-link="3" data-name="翘曲解析" aria-label="查看产品翘曲分析">
+              <span class="mold-pin-bubble">
+                <img src="img/innovation/mold/warp.png" alt="产品翘曲分析：成型件位移的CAE结果">
+                <span class="mold-pin-name">翘曲解析</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
     <section class="fields-apps" id="bakes-other">
       <div class="fields-apps-head">
         <h2 class="fields-apps-title">其他应用行业</h2>
@@ -636,6 +908,7 @@
               <li><a href="fields.html#bakes">船舶</a></li>
               <li><a href="fields.html#bakes-press">压力机</a></li>
               <li><a href="fields.html#alp">压缩机</a></li>
+              <li><a href="fields.html#mold">模具开发制作</a></li>
               <li><a href="fields.html#bakes-other">其他应用行业</a></li>
               <li><a href="fields.html#clients">合作客户</a></li>
             </ul>
@@ -647,7 +920,6 @@
               <li><a href="innovation.html#tribology">摩擦学技术理念</a></li>
               <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
               <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
-              <li><a href="innovation.html#mold">模具开发</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -716,6 +988,16 @@
       </div>
     </div>
   </footer>
+  <div class="equip-lightbox" id="moldLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="查看模具图片">
+    <div class="equip-lightbox-backdrop" data-mold-close></div>
+    <div class="equip-lightbox-panel">
+      <button type="button" class="equip-lightbox-close" data-mold-close aria-label="关闭">×</button>
+      <button type="button" class="equip-lightbox-nav equip-lightbox-prev" id="moldLightboxPrev" aria-label="上一张">←</button>
+      <button type="button" class="equip-lightbox-nav equip-lightbox-next" id="moldLightboxNext" aria-label="下一张">→</button>
+      <img class="equip-lightbox-img" id="moldLightboxImg" src="" alt="">
+      <div class="equip-lightbox-caption" id="moldLightboxCaption"></div>
+    </div>
+  </div>
   <div class="fields-lightbox" id="fieldsLightbox" hidden>
     <button class="fields-lightbox-close" type="button" aria-label="关闭">&times;</button>
     <img alt="">
@@ -1091,6 +1373,139 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
   });
   window.addEventListener('resize', function(){
     if (window.matchMedia('(min-width:769px)').matches) closeNav();
+  });
+})();
+</script>
+<script>
+(function(){
+  var root = document.getElementById('moldGallery');
+  var lightbox = document.getElementById('moldLightbox');
+  if (!root || !lightbox) return;
+  var shots = Array.prototype.slice.call(root.querySelectorAll('.mold-pin'));
+  var img = document.getElementById('moldLightboxImg');
+  var caption = document.getElementById('moldLightboxCaption');
+  var prev = document.getElementById('moldLightboxPrev');
+  var next = document.getElementById('moldLightboxNext');
+  var index = 0;
+  var stage = root.querySelector('.mold-cluster');
+  var links = document.getElementById('moldLinks');
+
+  var hudSvg = '<svg class="fields-dot-hud" viewBox="0 0 64 64" aria-hidden="true"><circle class="hud-dash" cx="32" cy="32" r="29" stroke-width="1.1" stroke-dasharray="2.4 3.6" opacity=".55"/><circle class="hud-ring" cx="32" cy="32" r="20.5" stroke-width="1.2" opacity=".78"/><circle class="hud-ring-in" cx="32" cy="32" r="12.5" stroke-width=".9" opacity=".4"/><circle class="hud-core" cx="32" cy="32" r="3.3"/><g class="hud-chevrons"><path d="M32 3.2l3.1 5.1h-6.2z"/><path d="M60.8 32l-5.1 3.1v-6.2z"/><path d="M32 60.8l-3.1-5.1h6.2z"/><path d="M3.2 32l5.1-3.1v6.2z"/></g><g class="hud-chevrons-accent"><path d="M50.4 13.6l1.5 5.4-4.7-3.1z"/><path d="M13.6 50.4l-1.5-5.4 4.7 3.1z"/></g></svg>';
+  function clearDots() {
+    if (!stage) return;
+    stage.querySelectorAll('.mold-dot').forEach(function(dot){ dot.remove(); });
+  }
+  function drawLinks() {
+    if (!stage || !links || window.matchMedia('(max-width:900px)').matches) {
+      if (links) links.innerHTML = '';
+      clearDots();
+      return;
+    }
+    var sr = stage.getBoundingClientRect();
+    var mold = stage.querySelector('.mold-subject');
+    if (!mold || !sr.width) return;
+    var mr = mold.getBoundingClientRect();
+
+    function startOf(sel, side) {
+      var el = stage.querySelector(sel);
+      if (!el) return null;
+      if (sel === '.mold-cae-charts') {
+        var pins = el.querySelectorAll('.mold-pin');
+        if (!pins.length) return null;
+        var a = pins[0].getBoundingClientRect();
+        var b = pins[pins.length - 1].getBoundingClientRect();
+        return {
+          x: Math.max(a.right, b.right) - sr.left,
+          y: (a.top + a.bottom + b.top + b.bottom) / 4 - sr.top
+        };
+      }
+      var r = el.getBoundingClientRect();
+      return {
+        x: (side === 'right' ? r.right : r.left) - sr.left,
+        y: r.top + r.height * 0.5 - sr.top
+      };
+    }
+
+    var items = [
+      ['.mold-card--design .mold-pin', 'right', { x: 0.07978261, y: 0.32536062 }],
+      ['.mold-card--machine .mold-pin', 'left', { x: 0.6673, y: 0.3674 }],
+      ['.mold-card--measure .mold-pin', 'left', { x: 0.94347826, y: 0.71243048 }],
+      ['.mold-cae-charts', 'right', { x: 0.2565948, y: 0.684624 }]
+    ];
+    links.setAttribute('viewBox', '0 0 ' + sr.width + ' ' + sr.height);
+    clearDots();
+    links.innerHTML = items.map(function(item, i){
+      var start = startOf(item[0], item[1]);
+      if (!start) return '';
+      var end = {
+        x: mr.left + mr.width * item[2].x - sr.left,
+        y: mr.top + mr.height * item[2].y - sr.top
+      };
+      var dot = document.createElement('span');
+      dot.className = 'mold-dot';
+      dot.dataset.link = String(i);
+      dot.style.setProperty('--dot-x', (end.x / sr.width * 100) + '%');
+      dot.style.setProperty('--dot-y', (end.y / sr.height * 100) + '%');
+      dot.innerHTML = hudSvg;
+      stage.appendChild(dot);
+      return '<line data-link="' + i + '" x1="' + start.x.toFixed(1) + '" y1="' + start.y.toFixed(1) + '" x2="' + end.x.toFixed(1) + '" y2="' + end.y.toFixed(1) + '"></line>';
+    }).join('');
+  }
+  function setHover(id) {
+    if (!links) return;
+    links.querySelectorAll('line').forEach(function(line){
+      line.classList.toggle('is-hover', line.getAttribute('data-link') === id);
+    });
+    if (!stage) return;
+    stage.querySelectorAll('.mold-dot').forEach(function(dot){
+      dot.classList.toggle('is-hover', dot.dataset.link === id);
+    });
+  }
+  root.querySelectorAll('[data-link]').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ setHover(el.getAttribute('data-link')); });
+    el.addEventListener('mouseleave', function(){ setHover(''); });
+    el.addEventListener('focusin', function(){ setHover(el.getAttribute('data-link')); });
+    el.addEventListener('focusout', function(){ setHover(''); });
+  });
+  drawLinks();
+  window.addEventListener('resize', drawLinks);
+  window.addEventListener('load', drawLinks);
+
+  function show(i) {
+    if (!shots.length || !img) return;
+    index = (i + shots.length) % shots.length;
+    var shot = shots[index];
+    var source = shot.querySelector('img');
+    var name = shot.getAttribute('data-name') || '';
+    img.src = source.getAttribute('src');
+    img.alt = source.getAttribute('alt') || name;
+    if (caption) caption.textContent = (index + 1) + ' / ' + shots.length + ' · ' + name;
+  }
+  function open(i) {
+    show(i);
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (img) img.src = '';
+  }
+  shots.forEach(function(shot, i){
+    shot.addEventListener('click', function(){ open(i); });
+  });
+  lightbox.querySelectorAll('[data-mold-close]').forEach(function(el){
+    el.addEventListener('click', close);
+  });
+  if (prev) prev.addEventListener('click', function(e){ e.stopPropagation(); show(index - 1); });
+  if (next) next.addEventListener('click', function(e){ e.stopPropagation(); show(index + 1); });
+  document.addEventListener('keydown', function(e){
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(index - 1);
+    else if (e.key === 'ArrowRight') show(index + 1);
   });
 })();
 </script>

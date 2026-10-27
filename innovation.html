@@ -2382,193 +2382,6 @@
     }
     sup.reg{font-size:.55em;font-weight:inherit;line-height:0;vertical-align:super;letter-spacing:0}
 
-    /* 模具开发 — 与其他模块同高 */
-    .mold-section {
-      --mold-shot:136px;
-      position:relative;
-      box-sizing:border-box;
-      height:var(--module-h);
-      min-height:var(--module-h);
-      max-height:var(--module-h);
-      padding:32px 28px 26px;
-      overflow:hidden;
-      display:flex;
-      align-items:stretch;
-      background-color:#f4f9fd;
-      background-image:
-        radial-gradient(ellipse 50% 58% at 60% 56%, rgba(255,255,255,.7) 0%, rgba(255,255,255,0) 72%),
-        url("img/innovation/mold/wave-bg.svg");
-      background-repeat:no-repeat;
-      background-size:auto, cover;
-      background-position:center, center;
-    }
-    .mold-board {
-      position:relative;
-      z-index:1;
-      flex:1;
-      width:100%;
-      height:100%;
-      min-height:0;
-      display:flex;
-      flex-direction:column;
-    }
-    .mold-board-head { flex:none; }
-    .mold-board-head .section-title {
-      margin:0 0 10px;
-      font-size:clamp(30px, 3vw, 40px);
-      line-height:1.25;
-    }
-    .mold-intro {
-      margin:0;
-      max-width:50em;
-      font-size:15px;
-      line-height:1.75;
-      color:var(--text-muted);
-      letter-spacing:.02em;
-    }
-    .mold-cluster {
-      flex:1;
-      position:relative;
-      min-height:0;
-      margin-top:-6px;
-    }
-    .mold-links {
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      z-index:1;
-      pointer-events:none;
-      overflow:visible;
-    }
-    .mold-links polyline {
-      fill:none;
-      stroke:#7ec0ea;
-      stroke-width:1.5;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-    }
-    .mold-links circle {
-      fill:#4aa3d8;
-      stroke:#fff;
-      stroke-width:1.2;
-    }
-    .mold-subject {
-      position:absolute;
-      left:60%;
-      top:52%;
-      transform:translate(-50%, -50%);
-      z-index:2;
-      width:min(68%, 550px);
-      height:96%;
-      object-fit:contain;
-      filter:drop-shadow(0 18px 24px rgba(30, 80, 130, .16));
-      pointer-events:none;
-    }
-    .mold-card {
-      position:absolute;
-      z-index:3;
-      width:var(--mold-shot, 136px);
-    }
-    .mold-card--design { left:18%; top:8%; }
-    .mold-card--machine { right:8%; top:4%; }
-    .mold-card--measure { right:2%; bottom:2%; }
-    .mold-card h3,
-    .mold-cae-charts h3 {
-      margin:8px 0 0;
-      font-size:14px;
-      font-weight:700;
-      line-height:1.3;
-      color:#1c2b3a;
-      text-align:center;
-    }
-    .mold-shot {
-      display:block;
-      width:var(--mold-shot, 136px);
-      margin:0;
-      padding:0;
-      border:none;
-      border-radius:10px;
-      overflow:hidden;
-      background:#fff;
-      box-shadow:0 8px 22px rgba(30, 90, 150, .12);
-      cursor:pointer;
-      font-family:inherit;
-    }
-    .mold-shot img {
-      display:block;
-      width:100%;
-      height:var(--mold-shot, 136px);
-      aspect-ratio:1 / 1;
-      object-fit:cover;
-      transition:transform .45s cubic-bezier(.22,.61,.36,1);
-    }
-    .mold-shot--machine img,
-    .mold-cae-shots img {
-      object-fit:contain;
-      background:#fff;
-    }
-    .mold-shot:hover img,
-    .mold-shot:focus-visible img { transform:scale(1.04); }
-    .mold-shot:focus-visible {
-      outline:2px solid var(--brand);
-      outline-offset:3px;
-    }
-    .mold-cae-charts {
-      position:absolute;
-      left:12%;
-      bottom:2%;
-      z-index:3;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      width:max-content;
-    }
-    .mold-cae-shots {
-      display:flex;
-      gap:12px;
-    }
-    @media (max-width:1100px) {
-      .mold-section { --mold-shot:120px; padding:28px 20px 20px; }
-      .mold-intro { font-size:14px; }
-      .mold-card--design { left:8%; top:8%; }
-      .mold-card--machine { right:8%; }
-      .mold-card--measure { right:2%; bottom:2%; }
-      .mold-cae-charts { left:4%; }
-    }
-    @media (max-width:900px) {
-      .mold-section {
-        height:auto;
-        min-height:0;
-        max-height:none;
-        display:block;
-        padding:40px 20px;
-        overflow:visible;
-      }
-      .mold-board { height:auto; gap:16px; }
-      .mold-cluster {
-        display:flex;
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:12px;
-        margin:0;
-      }
-      .mold-subject {
-        position:static;
-        transform:none;
-        order:-1;
-        width:100%;
-        height:220px;
-      }
-      .mold-card,
-      .mold-cae-charts {
-        position:static;
-      }
-      .mold-cae-charts { width:100%; justify-content:flex-start; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .mold-shot img { transition:none; }
-    }
 </style>
 </head>
 <body>
@@ -2598,6 +2411,7 @@
             <li><a href="fields.html#bakes">船舶</a></li>
             <li><a href="fields.html#bakes-press">压力机</a></li>
             <li><a href="fields.html#alp">压缩机</a></li>
+            <li><a href="fields.html#mold">模具开发制作</a></li>
             <li><a href="fields.html#bakes-other">其他应用行业</a></li>
             <li><a href="fields.html#clients">合作客户</a></li>
           </ul>
@@ -2609,7 +2423,6 @@
             <li><a href="innovation.html#tribology">摩擦学技术理念</a></li>
             <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
             <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
-            <li><a href="innovation.html#mold">模具开发</a></li>
           </ul>
         </li>
         <li>
@@ -3232,48 +3045,6 @@
   </section>
 
 
-  <!-- 模具开发 -->
-  <section class="section mold-section" aria-label="模具开发">
-    <div class="section-inner mold-board" id="moldGallery">
-      <header class="mold-board-head reveal-group">
-        <h2 class="section-title reveal-child" id="mold">模具开发</h2>
-        <p class="mold-intro reveal-child" style="--reveal-delay:80ms">星光树脂拥有优秀的模具设计、开发团队，根据客户要求，开发出生产性强，精度高的优质模具。<br>运用流动解析、翘度解析、应力解析等CAE技术，为客户提供最佳模具育成方案。</p>
-      </header>
-      <div class="mold-cluster mold-stage">
-        <svg class="mold-links" id="moldLinks" aria-hidden="true"></svg>
-        <img class="mold-subject" src="img/innovation/mold/subject.png" alt="模具">
-        <article class="mold-card mold-card--design">
-          <button type="button" class="mold-shot" data-name="模具设计" aria-label="查看模具设计">
-            <img src="img/innovation/mold/design.jpg" alt="模具设计：工程师在计算机辅助设计软件中绘制模具图">
-          </button>
-          <h3>模具设计</h3>
-        </article>
-        <article class="mold-card mold-card--machine">
-          <button type="button" class="mold-shot mold-shot--machine" data-name="模具加工" aria-label="查看模具加工">
-            <img src="img/innovation/mold/machining.png" alt="模具加工：加工中心铣削模具零件">
-          </button>
-          <h3>模具加工</h3>
-        </article>
-        <article class="mold-card mold-card--measure">
-          <button type="button" class="mold-shot" data-name="测量" aria-label="查看测量">
-            <img src="img/innovation/mold/measure.jpg" alt="测量：使用三坐标测量仪检测模具">
-          </button>
-          <h3>测量</h3>
-        </article>
-        <div class="mold-cae-charts">
-          <div class="mold-cae-shots">
-            <button type="button" class="mold-shot" data-name="产品解析" aria-label="查看产品流动分析">
-              <img src="img/innovation/mold/flow.png" alt="产品流动分析：树脂充填时间的CAE结果">
-            </button>
-            <button type="button" class="mold-shot" data-name="产品解析" aria-label="查看产品翘曲分析">
-              <img src="img/innovation/mold/warp.png" alt="产品翘曲分析：成型件位移的CAE结果">
-            </button>
-          </div>
-          <h3>产品解析</h3>
-        </div>
-      </div>
-    </div>
-  </section>
   <footer class="footer">
     <div class="footer-main">
       <div class="footer-inner">
@@ -3295,6 +3066,7 @@
               <li><a href="fields.html#bakes">船舶</a></li>
               <li><a href="fields.html#bakes-press">压力机</a></li>
               <li><a href="fields.html#alp">压缩机</a></li>
+              <li><a href="fields.html#mold">模具开发制作</a></li>
               <li><a href="fields.html#bakes-other">其他应用行业</a></li>
               <li><a href="fields.html#clients">合作客户</a></li>
             </ul>
@@ -3306,7 +3078,6 @@
               <li><a href="innovation.html#tribology">摩擦学技术理念</a></li>
               <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
               <li><a href="innovation.html#equipment">试验分析仪器&摩擦学检测设备</a></li>
-              <li><a href="innovation.html#mold">模具开发</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -3375,17 +3146,6 @@
       </div>
     </div>
   </footer>
-
-  <div class="equip-lightbox" id="moldLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="查看模具图片">
-    <div class="equip-lightbox-backdrop" data-mold-close></div>
-    <div class="equip-lightbox-panel">
-      <button type="button" class="equip-lightbox-close" data-mold-close aria-label="关闭">×</button>
-      <button type="button" class="equip-lightbox-nav equip-lightbox-prev" id="moldLightboxPrev" aria-label="上一张">←</button>
-      <button type="button" class="equip-lightbox-nav equip-lightbox-next" id="moldLightboxNext" aria-label="下一张">→</button>
-      <img class="equip-lightbox-img" id="moldLightboxImg" src="" alt="">
-      <div class="equip-lightbox-caption" id="moldLightboxCaption"></div>
-    </div>
-  </div>
 
   <div class="equip-lightbox" id="equipLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="查看设备大图">
     <div class="equip-lightbox-backdrop" data-equip-close></div>
@@ -4149,148 +3909,6 @@ document.querySelectorAll('.lang-switch').forEach(function(s){
   });
   window.addEventListener('resize', function(){
     if (window.matchMedia('(min-width:769px)').matches) closeNav();
-  });
-})();
-</script>
-<script>
-(function(){
-  var root = document.getElementById('moldGallery');
-  var lightbox = document.getElementById('moldLightbox');
-  if (!root || !lightbox) return;
-  var shots = Array.prototype.slice.call(root.querySelectorAll('.mold-shot'));
-  var img = document.getElementById('moldLightboxImg');
-  var caption = document.getElementById('moldLightboxCaption');
-  var prev = document.getElementById('moldLightboxPrev');
-  var next = document.getElementById('moldLightboxNext');
-  var index = 0;
-  var stage = root.querySelector('.mold-cluster');
-  var links = document.getElementById('moldLinks');
-
-  function drawLinks() {
-    if (!stage || !links || window.matchMedia('(max-width:900px)').matches) {
-      if (links) links.innerHTML = '';
-      return;
-    }
-    var sr = stage.getBoundingClientRect();
-    var mold = stage.querySelector('.mold-subject');
-    if (!mold || !sr.width) return;
-    var mr = mold.getBoundingClientRect();
-    var box = {
-      l: mr.left - sr.left + mr.width * 0.18,
-      r: mr.right - sr.left - mr.width * 0.06,
-      t: mr.top - sr.top + mr.height * 0.18,
-      b: mr.bottom - sr.top - mr.height * 0.12
-    };
-
-    function edgeOf(x1, y1) {
-      var cx = (box.l + box.r) / 2;
-      var cy = (box.t + box.b) / 2;
-      var dx = cx - x1;
-      var dy = cy - y1;
-      var ts = [];
-      if (dx) { ts.push((box.l - x1) / dx); ts.push((box.r - x1) / dx); }
-      if (dy) { ts.push((box.t - y1) / dy); ts.push((box.b - y1) / dy); }
-      var best = 1;
-      var found = false;
-      ts.forEach(function(t){
-        if (t <= 0.02 || t > 1) return;
-        var x = x1 + dx * t;
-        var y = y1 + dy * t;
-        if (x >= box.l - 1 && x <= box.r + 1 && y >= box.t - 1 && y <= box.b + 1) {
-          if (!found || t < best) { best = t; found = true; }
-        }
-      });
-      if (!found) best = 0.82;
-      var len = Math.sqrt(dx * dx + dy * dy) || 1;
-      var tPull = best - 8 / len;
-      if (tPull < 0.08) tPull = best * 0.9;
-      return { x: x1 + dx * tPull, y: y1 + dy * tPull };
-    }
-
-    function startOf(sel, side) {
-      var el = stage.querySelector(sel);
-      if (!el) return null;
-      if (sel === '.mold-cae-charts') {
-        var shots = el.querySelectorAll('.mold-shot');
-        if (!shots.length) return null;
-        var a = shots[0].getBoundingClientRect();
-        var b = shots[shots.length - 1].getBoundingClientRect();
-        return {
-          x: Math.max(a.right, b.right) - sr.left,
-          y: (a.top + a.bottom + b.top + b.bottom) / 4 - sr.top
-        };
-      }
-      var r = el.getBoundingClientRect();
-      return {
-        x: (side === 'right' ? r.right : r.left) - sr.left,
-        y: r.top + r.height * 0.5 - sr.top
-      };
-    }
-
-    var items = [
-      ['.mold-card--design .mold-shot', 'right', 0.84, { x: 0.04945, y: 0.242 }],
-      ['.mold-card--machine .mold-shot', 'left', 0.22, { x: 0.6673, y: 0.3674 }],
-      ['.mold-card--measure .mold-shot', 'left', 0.78, { x: 0.976, y: 0.6568 }],
-      ['.mold-cae-charts', 'right', 0.82, { x: 0.4313, y: 0.8052 }]
-    ];
-    links.setAttribute('viewBox', '0 0 ' + sr.width + ' ' + sr.height);
-    links.innerHTML = items.map(function(item){
-      var start = startOf(item[0], item[1]);
-      if (!start) return '';
-      var end = item[3]
-        ? { x: mr.left + mr.width * item[3].x - sr.left, y: mr.top + mr.height * item[3].y - sr.top }
-        : edgeOf(start.x, start.y);
-      var x1 = start.x;
-      var y1 = start.y;
-      var x2 = end.x;
-      var y2 = end.y;
-      var mid = x1 + (x2 - x1) * item[2];
-      if (x2 >= x1) mid = Math.min(mid, x2);
-      else mid = Math.max(mid, x2);
-      var pts = x1.toFixed(1) + ',' + y1.toFixed(1) + ' ' + mid.toFixed(1) + ',' + y1.toFixed(1) + ' ' + x2.toFixed(1) + ',' + y2.toFixed(1);
-      return '<polyline points="' + pts + '"></polyline>'
-        + '<circle cx="' + x2.toFixed(1) + '" cy="' + y2.toFixed(1) + '" r="3.4"></circle>';
-    }).join('');
-  }
-  drawLinks();
-  window.addEventListener('resize', drawLinks);
-  window.addEventListener('load', drawLinks);
-
-  function show(i) {
-    if (!shots.length || !img) return;
-    index = (i + shots.length) % shots.length;
-    var shot = shots[index];
-    var source = shot.querySelector('img');
-    var name = shot.getAttribute('data-name') || '';
-    img.src = source.getAttribute('src');
-    img.alt = source.getAttribute('alt') || name;
-    if (caption) caption.textContent = (index + 1) + ' / ' + shots.length + ' · ' + name;
-  }
-  function open(i) {
-    show(i);
-    lightbox.classList.add('is-open');
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-  function close() {
-    lightbox.classList.remove('is-open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (img) img.src = '';
-  }
-  shots.forEach(function(shot, i){
-    shot.addEventListener('click', function(){ open(i); });
-  });
-  lightbox.querySelectorAll('[data-mold-close]').forEach(function(el){
-    el.addEventListener('click', close);
-  });
-  if (prev) prev.addEventListener('click', function(e){ e.stopPropagation(); show(index - 1); });
-  if (next) next.addEventListener('click', function(e){ e.stopPropagation(); show(index + 1); });
-  document.addEventListener('keydown', function(e){
-    if (!lightbox.classList.contains('is-open')) return;
-    if (e.key === 'Escape') close();
-    else if (e.key === 'ArrowLeft') show(index - 1);
-    else if (e.key === 'ArrowRight') show(index + 1);
   });
 })();
 </script>
