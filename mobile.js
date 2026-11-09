@@ -175,3 +175,109 @@
     });
   });
 })();
+(function () {
+  var mq = window.matchMedia("(max-width: 768px)");
+  var root = document.querySelector("#sustain");
+  if (!root) return;
+  var built = false;
+  var bodies = [];
+  function bind(trigger, body) {
+    bodies.push(body);
+    trigger.classList.add("sustain-toggle");
+    trigger.setAttribute("role", "button");
+    trigger.setAttribute("tabindex", "0");
+    trigger.setAttribute("aria-expanded", "false");
+    function toggle() {
+      var open = trigger.classList.toggle("is-open");
+      trigger.setAttribute("aria-expanded", String(open));
+      body.style.maxHeight = open ? body.scrollHeight + "px" : "0px";
+    }
+    trigger.addEventListener("click", toggle);
+    trigger.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  }
+  function build() {
+    if (built) return;
+    built = true;
+    root.querySelectorAll(".sustain-env-item").forEach(function (item) {
+      var h5 = item.querySelector("h5");
+      var p = item.querySelector("p");
+      if (!h5 || !p) return;
+      var body = document.createElement("div");
+      body.className = "sustain-toggle-body";
+      p.parentNode.insertBefore(body, p);
+      body.appendChild(p);
+      bind(h5, body);
+    });
+    root.querySelectorAll(".sustain-col").forEach(function (col) {
+      if (col.querySelector(".sustain-env-item")) return;
+      var title = col.querySelector(".sustain-col-title");
+      if (!title) return;
+      var body = document.createElement("div");
+      body.className = "sustain-toggle-body";
+      var node = title.nextElementSibling;
+      title.parentNode.insertBefore(body, title.nextSibling);
+      while (node) {
+        var next = node.nextElementSibling;
+        body.appendChild(node);
+        node = next;
+      }
+      bind(title, body);
+    });
+  }
+  function release() {
+    bodies.forEach(function (body) {
+      body.style.maxHeight = "";
+    });
+  }
+  if (mq.matches) build();
+  var sub = root.querySelector(".sustain-head .sustain-module-sub, .sustain-report-actions .sustain-module-sub");
+  var actions = root.querySelector(".sustain-report-actions");
+  var subHome = null;
+  function placeSub(enabled) {
+    if (!sub || !actions) return;
+    if (enabled) {
+      if (!subHome) subHome = { parent: sub.parentNode, next: sub.nextSibling };
+      if (sub.parentNode !== actions) actions.insertBefore(sub, actions.firstChild);
+    } else if (subHome && sub.parentNode === actions) {
+      subHome.parent.insertBefore(sub, subHome.next);
+    }
+  }
+  placeSub(mq.matches);
+  var onChange = function (e) {
+    placeSub(e.matches);
+    if (e.matches) build();
+    else release();
+  };
+  if (mq.addEventListener) mq.addEventListener("change", onChange);
+  else if (mq.addListener) mq.addListener(onChange);
+})();
+(function () {
+  // 咨询类型：手机端换成短文案，避免原生下拉框内文字被截断
+  var mq = window.matchMedia("(max-width: 768px)");
+  var select = document.querySelector("#msg-type");
+  if (!select) return;
+  var short = {
+    thermosetting: "产品咨询（汽车、办公、医疗等）",
+    thermoplastic: "产品咨询（电梯、船舶、压缩机等）"
+  };
+  var full = {};
+  Array.prototype.forEach.call(select.options, function (opt) {
+    if (!Object.prototype.hasOwnProperty.call(short, opt.value)) return;
+    full[opt.value] = opt.textContent;
+  });
+  function apply(enabled) {
+    Array.prototype.forEach.call(select.options, function (opt) {
+      if (!Object.prototype.hasOwnProperty.call(short, opt.value)) return;
+      opt.textContent = enabled ? short[opt.value] : full[opt.value];
+    });
+  }
+  apply(mq.matches);
+  var onChange = function (e) { apply(e.matches); };
+  if (mq.addEventListener) mq.addEventListener("change", onChange);
+  else if (mq.addListener) mq.addListener(onChange);
+})();
